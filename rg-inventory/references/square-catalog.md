@@ -7,46 +7,96 @@
 
 ## Categories
 
-Query categories with: `catalog.listCatalog` with `types: ["CATEGORY"]`
+### Required Categories (ALL items must have BOTH)
 
-Common categories for vintage items:
-- Books & Media
-- Home & Garden
-- Collectibles
-- Art & Decor
+| Category | ID | Purpose |
+|----------|----|---------|
+| **Timeless Treasures** | `3N3II4W6Q7AA43RWQGEEWELY` | Main vintage/antique category |
+| **The New Finds** | `P34KX3L7XRZJJ5RP6W35K4YO` | **REQUIRED** for all new items |
+
+### Reporting Category
+
+- **MUST be set** for items to appear in Category Sales reports
+- Use `The New Finds` (`P34KX3L7XRZJJ5RP6W35K4YO`) as the reporting category
+- If not set via API, item won't be attributed to any category in reports
+
+### Tax ID
+- **IL State + Richmond Local (8.5%):** `LPKEJF7H27NOPK7EE6A5CA7V`
+
+Query all categories with: `catalog.searchObjects` with `object_types: ["CATEGORY"]`
 
 ## Creating Catalog Items
 
 ### Endpoint
-`catalog.upsertCatalogObject`
+`catalog.batchInsertObjects` (use `batchUpdateObjects` with `sparse_update: true` for updates)
 
-### Minimal Item Creation
+### Complete Item Creation (with required fields)
 
 ```json
 {
   "idempotency_key": "uuid-v4-here",
-  "object": {
-    "type": "ITEM",
-    "id": "#temp-id",
-    "item_data": {
-      "name": "Product Name",
-      "description": "Description with <br> for line breaks",
-      "variations": [{
-        "type": "ITEM_VARIATION",
-        "id": "#temp-var-id",
-        "item_variation_data": {
-          "item_id": "#temp-id",
-          "name": "Regular",
-          "sku": "RG-0001",
-          "pricing_type": "FIXED_PRICING",
-          "price_money": {
-            "amount": 1999,
-            "currency": "USD"
+  "batches": [{
+    "objects": [{
+      "type": "ITEM",
+      "id": "#temp-id",
+      "present_at_all_locations": false,
+      "present_at_location_ids": ["B87BAEZ0NWV34"],
+      "item_data": {
+        "name": "Product Name",
+        "description": "Description with <br> for line breaks",
+        "categories": [
+          {"id": "3N3II4W6Q7AA43RWQGEEWELY"},
+          {"id": "P34KX3L7XRZJJ5RP6W35K4YO"}
+        ],
+        "reporting_category": {"id": "P34KX3L7XRZJJ5RP6W35K4YO"},
+        "tax_ids": ["LPKEJF7H27NOPK7EE6A5CA7V"],
+        "is_taxable": true,
+        "ecom_visibility": "VISIBLE",
+        "variations": [{
+          "type": "ITEM_VARIATION",
+          "id": "#temp-var-id",
+          "item_variation_data": {
+            "item_id": "#temp-id",
+            "name": "Regular",
+            "sku": "RG-XXXX",
+            "pricing_type": "FIXED_PRICING",
+            "price_money": {
+              "amount": 1999,
+              "currency": "USD"
+            },
+            "track_inventory": false,
+            "sellable": true,
+            "stockable": true
           }
-        }
-      }]
-    }
-  }
+        }]
+      }
+    }]
+  }]
+}
+```
+
+### Updating Existing Items
+
+When updating, you MUST include the current `version` and use `sparse_update: true`:
+
+```json
+{
+  "idempotency_key": "uuid-v4-here",
+  "sparse_update": true,
+  "batches": [{
+    "objects": [{
+      "type": "ITEM",
+      "id": "EXISTING_ITEM_ID",
+      "version": 1234567890123,
+      "item_data": {
+        "categories": [
+          {"id": "3N3II4W6Q7AA43RWQGEEWELY"},
+          {"id": "P34KX3L7XRZJJ5RP6W35K4YO"}
+        ],
+        "reporting_category": {"id": "P34KX3L7XRZJJ5RP6W35K4YO"}
+      }
+    }]
+  }]
 }
 ```
 

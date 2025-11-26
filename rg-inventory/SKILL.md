@@ -15,6 +15,14 @@ Complete workflow for processing vintage and antique items from acquisition thro
 **GitHub Pages:** https://richmondgeneral.github.io/items/
 **Repository:** github.com/richmondgeneral/items
 
+### Required Categories (BOTH must be assigned to every item)
+| Category | ID | Purpose |
+|----------|----|---------|
+| Timeless Treasures | `3N3II4W6Q7AA43RWQGEEWELY` | Main vintage category |
+| The New Finds | `P34KX3L7XRZJJ5RP6W35K4YO` | **REQUIRED** for all new items |
+
+**Reporting Category:** Set to `The New Finds` for sales reporting
+
 ## 7-Phase Workflow
 
 ### Phase 1: Appraisal & Research
@@ -55,7 +63,7 @@ Complete workflow for processing vintage and antique items from acquisition thro
 
 ### Phase 3: Square Catalog Creation
 
-**API Endpoint:** `catalog.upsertCatalogObject`
+**API Endpoint:** `catalog.batchInsertObjects` (use `batchUpdateObjects` with `sparse_update: true` for updates)
 
 **Required fields:**
 ```json
@@ -64,11 +72,19 @@ Complete workflow for processing vintage and antique items from acquisition thro
   "object": {
     "type": "ITEM",
     "id": "#RG-XXXX",
+    "present_at_all_locations": false,
+    "present_at_location_ids": ["B87BAEZ0NWV34"],
     "item_data": {
       "name": "Item Title",
       "description": "HTML description with <br> tags",
-      "category_id": "CATEGORY_ID",
-      "tax_ids": ["TAX_ID"],
+      "categories": [
+        {"id": "3N3II4W6Q7AA43RWQGEEWELY"},
+        {"id": "P34KX3L7XRZJJ5RP6W35K4YO"}
+      ],
+      "reporting_category": {"id": "P34KX3L7XRZJJ5RP6W35K4YO"},
+      "tax_ids": ["LPKEJF7H27NOPK7EE6A5CA7V"],
+      "is_taxable": true,
+      "ecom_visibility": "VISIBLE",
       "variations": [{
         "type": "ITEM_VARIATION",
         "id": "#RG-XXXX-var",
@@ -90,6 +106,8 @@ Complete workflow for processing vintage and antique items from acquisition thro
   }
 }
 ```
+
+**⚠️ CRITICAL:** Both categories AND reporting_category are REQUIRED for proper sales tracking and online visibility.
 
 **SEO Title Formula:**
 `[Era] [Maker] [Item Type] - [Key Feature] | [Condition]`
