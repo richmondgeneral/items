@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Richmond General</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rg-gold: #C9A961;
+            --rg-cream: #F5F1E8;
+            --rg-charcoal: #2C2C2C;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: var(--rg-cream);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .error-code {
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            font-weight: 600;
+            color: var(--rg-gold);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--rg-charcoal);
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 400px;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        a {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        a:hover {
+            transform: translateY(-2px);
+        }
+        
+        .primary {
+            background: var(--rg-gold);
+            color: white;
+        }
+        
+        .secondary {
+            background: white;
+            color: var(--rg-charcoal);
+            border: 2px solid var(--rg-charcoal);
+        }
+        
+        .logo {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--rg-charcoal);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--rg-charcoal);
+            color: var(--rg-gold);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <a href="./" class="logo">
+        <span class="logo-icon">RG</span>
+        Richmond General
+    </a>
+    
+    <div class="error-code">404</div>
+    <h1>Treasure Not Found</h1>
+    <p>Looks like this piece has already been claimed, or perhaps it never existed in our collection. Let's get you back on track.</p>
+    
+    <div class="buttons">
+        <a href="./" class="primary">Browse Collection</a>
+        <a href="https://www.richmondgeneral.com" class="secondary">Visit Shop</a>
+    </div>
+</body>
+</html>
