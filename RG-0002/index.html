@@ -66,13 +66,15 @@
         .card-front { display: flex; flex-direction: column; }
         
         .item-image-container {
-            flex: 1;
+            flex: 0 1 auto;
+            max-height: 60%;
             background: var(--rg-cream);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 1.5rem;
             position: relative;
+            overflow: hidden;
         }
         
         .item-image { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; }
@@ -91,7 +93,8 @@
         }
         
         .front-info {
-            padding: 1.25rem 1.5rem;
+            flex: 0 0 auto;
+            padding: 1rem 1.25rem;
             background: white;
             border-top: 3px solid var(--rg-gold);
         }
