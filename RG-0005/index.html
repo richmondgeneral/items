@@ -70,13 +70,13 @@
         }
         
         .item-image-container {
-            flex: 1 1 0;
+            flex: 1;
             min-height: 0;
             background: var(--rg-cream);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
+            padding: 1.5rem;
             position: relative;
             overflow: hidden;
         }
@@ -97,10 +97,11 @@
         }
         
         .front-info {
-            flex: 0 0 auto;
-            padding: 0.875rem 1rem;
+            flex-shrink: 0;
+            padding: 1rem 1.25rem;
             background: white;
             border-top: 3px solid var(--rg-gold);
+            min-height: 120px;
         }
         
         .item-title {
