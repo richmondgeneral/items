@@ -15,6 +15,7 @@
 
 | SKU | Item Description | List Price | Sale Price | Status | Date Listed | Date Sold | Net Revenue |
 |-----|-----------------|------------|------------|--------|-------------|-----------|-------------|
+| RG-0001 | Little Orphan Annie 1930s Comic Strip Collection | $19.99 | - | ACTIVE | Nov 2025 | - | - |
 | L2-VIN-DEC-001 | Bohemian Diamond-Cut Glass Decanter (Swiss Cross) | $65.00 | $49.00 | ACTIVE | Nov 2025 | - | - |
 | | | | | | | | |
 | | | | | | | | |
@@ -25,7 +26,7 @@
 
 ### RUNNING TOTALS
 
-**Items Listed**: 1  
+**Items Listed**: 2  
 **Items Sold**: 0  
 **Total Revenue Generated**: $0  
 **Investment Remaining**: $235  
@@ -53,8 +54,8 @@
 ### LOT CONTENTS (TO BE CATALOGUED)
 *Add items here as they're identified and processed from the lot*
 
-1. ✅ Swiss Cross Diamond-Cut Glass Decanter - LISTED
-2. _________________________
+1. ✅ Little Orphan Annie Comic Collection (RG-0001) - LISTED
+2. ✅ Swiss Cross Diamond-Cut Glass Decanter - LISTED
 3. _________________________
 4. _________________________
 5. _________________________
