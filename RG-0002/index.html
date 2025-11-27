@@ -61,8 +61,6 @@
             background: white;
         }
         
-        .card-back { transform: rotateY(180deg); }
-        
         .card-front { 
             display: flex; 
             flex-direction: column; 
@@ -131,7 +129,12 @@
         .flip-hint { font-size: 0.7rem; color: #888; display: flex; align-items: center; gap: 0.25rem; }
         .flip-icon { width: 14px; height: 14px; }
         
-        .card-back { display: flex; flex-direction: column; background: white; }
+        .card-back {
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            background: white;
+        }
         
         .back-header {
             background: var(--rg-charcoal);
@@ -227,11 +230,56 @@
         .brand-strip a { color: var(--rg-gold); text-decoration: none; }
         
         .flip-card:focus { outline: 3px solid var(--rg-gold); outline-offset: 4px; }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .card-container {
+                max-width: 4in;
+            }
+
+            .flip-card {
+                transform: none !important;
+            }
+
+            .card-face {
+                position: relative;
+                box-shadow: none;
+            }
+
+            .card-front {
+                margin-bottom: 0.5in;
+            }
+
+            .card-back {
+                transform: rotateY(0) !important;
+                page-break-before: always;
+            }
+
+            .flip-hint, .buy-button {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="card-container">
-        <div class="flip-card" tabindex="0" role="button" aria-label="Item info card. Press Enter or click to flip.">
+        <div class="flip-card" tabindex="0" role="button" aria-expanded="false" aria-describedby="flip-instructions" aria-label="Kings of the Forest info card">
             
             <!-- FRONT SIDE -->
             <div class="card-face card-front">
@@ -307,15 +355,60 @@
                     RICHMOND GENERAL · <a href="https://www.richmondgeneral.com">richmondgeneral.com</a>
                 </div>
             </div>
-            
+
         </div>
+        <span id="flip-instructions" class="sr-only">Press Enter or click to flip between front and back views.</span>
     </div>
-    
+
     <script>
+        // Flip card interaction
         const flipCard = document.querySelector('.flip-card');
-        flipCard.addEventListener('click', () => flipCard.classList.toggle('flipped'));
+
+        // Update aria-expanded state for accessibility
+        const updateAriaState = () => {
+            const isFlipped = flipCard.classList.contains('flipped');
+            flipCard.setAttribute('aria-expanded', isFlipped);
+        };
+
+        // Analytics tracking
+        const trackEvent = (eventName, data) => {
+            console.log('Event:', eventName, data);
+        };
+
+        flipCard.addEventListener('click', (e) => {
+            if (e.target.closest('.buy-button')) return;
+            flipCard.classList.toggle('flipped');
+            updateAriaState();
+            const isFlipped = flipCard.classList.contains('flipped');
+            trackEvent(isFlipped ? 'card_flip_to_back' : 'card_flip_to_front', {
+                sku: 'RG-0002',
+                item: 'Kings of the Forest 1892',
+                timestamp: new Date().toISOString()
+            });
+        });
+
         flipCard.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flipCard.classList.toggle('flipped'); }
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                flipCard.classList.toggle('flipped');
+                updateAriaState();
+                const isFlipped = flipCard.classList.contains('flipped');
+                trackEvent(isFlipped ? 'card_flip_to_back' : 'card_flip_to_front', {
+                    sku: 'RG-0002',
+                    item: 'Kings of the Forest 1892',
+                    method: 'keyboard',
+                    timestamp: new Date().toISOString()
+                });
+            }
+        });
+
+        // Track payment link clicks (stop propagation to prevent card flip)
+        document.querySelector('.buy-button')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            trackEvent('buy_button_click', {
+                sku: 'RG-0002',
+                price: 34.99
+            });
         });
     </script>
 </body>
