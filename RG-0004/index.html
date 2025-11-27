@@ -3,175 +3,495 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chase Japan Four Seasons Wall Plaques | Richmond General</title>
+    <title>Chase Japan Four Seasons Wall Plaques (4pc) | Richmond General</title>
+    
+    <!-- SEO Meta Tags -->
     <meta name="description" content="Complete set of 4 hand-painted MCM ceramic wall plaques by Chase Japan. 1950s pastoral scenes depicting four seasons. Like new condition.">
+    <meta property="og:title" content="Chase Japan Four Seasons Wall Plaques (4pc) | Richmond General">
+    <meta property="og:description" content="Complete set of 4 hand-painted MCM ceramic wall plaques by Chase Japan. 1950s pastoral scenes depicting four seasons. Like new condition.">
+    <meta property="og:image" content="https://richmondgeneral.github.io/items/RG-0004/hero.jpeg">
+    <meta property="og:url" content="https://richmondgeneral.github.io/items/RG-0004/">
+    <meta property="og:type" content="product">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --rg-gold: #C9A961;
+            --rg-cream: #F5F1E8;
+            --rg-charcoal: #2C2C2C;
+            --rg-brown: #6B4423;
+            --rg-shadow: rgba(44, 44, 44, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Georgia', serif;
-            background: #F5F1E8;
-            color: #2C2C2C;
+            font-family: 'Source Sans Pro', sans-serif;
+            background: linear-gradient(135deg, #F5F1E8 0%, #E8E2D5 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 2rem;
         }
-        .card {
-            background: #fff;
-            max-width: 400px;
+        
+        .card-container {
+            perspective: 1500px;
+            width: 100%;
+            max-width: 420px;
+        }
+        
+        .flip-card {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 5 / 7;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 60px var(--rg-shadow), 0 8px 25px var(--rg-shadow);
             overflow: hidden;
+            background: white;
         }
-        .card-header {
-            background: linear-gradient(135deg, #2C2C2C 0%, #4a4a4a 100%);
-            color: #C9A961;
-            padding: 20px;
-            text-align: center;
+        
+        /* FRONT SIDE */
+        .card-front {
+            display: flex;
+            flex-direction: column;
         }
-        .sku {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+        
+        .item-image-container {
+            flex: 1;
+            background: var(--rg-cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .item-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        
+        .sku-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--rg-charcoal);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+        
+        .front-info {
+            padding: 1.25rem 1.5rem;
+            background: white;
+            border-top: 3px solid var(--rg-gold);
+        }
+        
+        .item-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--rg-charcoal);
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+        
+        .item-era {
+            font-size: 0.85rem;
+            color: var(--rg-brown);
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+        }
+        
+        .front-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .item-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--rg-charcoal);
+        }
+        
+        .flip-hint {
+            font-size: 0.75rem;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .flip-icon {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* BACK SIDE */
+        .card-back {
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            background: white;
+        }
+        
+        .back-header {
+            background: var(--rg-charcoal);
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .back-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .back-sku {
+            font-size: 0.75rem;
             opacity: 0.8;
         }
-        .card-header h1 {
-            font-size: 1.4rem;
-            margin-top: 8px;
-            color: #F5F1E8;
+        
+        .story-section {
+            flex: 1;
+            padding: 1.25rem 1.5rem;
+            overflow-y: auto;
         }
-        .era {
-            font-style: italic;
-            margin-top: 6px;
-            font-size: 0.95rem;
+        
+        .section-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--rg-gold);
+            margin-bottom: 0.5rem;
         }
-        .price-banner {
-            background: #C9A961;
-            color: #2C2C2C;
-            text-align: center;
-            padding: 12px;
-            font-size: 1.8rem;
-            font-weight: bold;
+        
+        .story-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--rg-charcoal);
+            margin-bottom: 1.25rem;
         }
-        .card-body {
-            padding: 24px;
-        }
-        .story {
-            line-height: 1.7;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
+        
         .details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
         }
+        
         .detail-item {
-            background: #F5F1E8;
-            padding: 10px;
+            background: var(--rg-cream);
+            padding: 0.6rem 0.8rem;
             border-radius: 6px;
         }
+        
         .detail-label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #6B4423;
+            letter-spacing: 0.5px;
+            color: #666;
+            margin-bottom: 0.15rem;
         }
+        
         .detail-value {
-            font-weight: bold;
-            margin-top: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--rg-charcoal);
         }
-        .maker-mark {
-            text-align: center;
-            margin: 20px 0;
+        
+        .back-footer {
+            padding: 1rem 1.5rem;
+            background: var(--rg-cream);
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .maker-mark img {
-            max-width: 150px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        
+        .qr-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
-        .maker-mark p {
-            font-size: 0.8rem;
-            color: #6B4423;
-            margin-top: 8px;
-            font-style: italic;
+        
+        .qr-code {
+            width: 60px;
+            height: 60px;
+            background: white;
+            padding: 4px;
+            border-radius: 4px;
         }
-        .buy-button {
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .qr-text {
+            font-size: 0.7rem;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        .qr-text strong {
             display: block;
-            background: #2C2C2C;
-            color: #C9A961;
-            text-align: center;
-            padding: 16px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        .buy-button:hover {
-            background: #6B4423;
-            transform: translateY(-2px);
-        }
-        .footer {
-            text-align: center;
-            padding: 16px;
+            color: var(--rg-charcoal);
             font-size: 0.8rem;
-            color: #6B4423;
-            border-top: 1px solid #eee;
+        }
+        
+        .buy-button {
+            background: var(--rg-gold);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+        
+        .buy-button:hover {
+            background: #B8963A;
+            transform: translateY(-1px);
+        }
+        
+        /* BRAND FOOTER */
+        .brand-strip {
+            text-align: center;
+            padding: 0.6rem;
+            background: var(--rg-charcoal);
+            color: white;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+        }
+        
+        .brand-strip a {
+            color: var(--rg-gold);
+            text-decoration: none;
+        }
+        
+        /* PRINT STYLES */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .card-container {
+                max-width: 4in;
+            }
+
+            .flip-card {
+                transform: none !important;
+            }
+
+            .card-face {
+                position: relative;
+                box-shadow: none;
+            }
+
+            .card-front {
+                margin-bottom: 0.5in;
+            }
+
+            .card-back {
+                transform: rotateY(0) !important;
+                page-break-before: always;
+            }
+
+            .flip-hint, .buy-button {
+                display: none;
+            }
+        }
+        
+        /* ACCESSIBILITY */
+        .flip-card:focus {
+            outline: 3px solid var(--rg-gold);
+            outline-offset: 4px;
+        }
+        
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="card-header">
-            <div class="sku">RG-0004</div>
-            <h1>Chase Japan Four Seasons Wall Plaques</h1>
-            <div class="era">1950s Mid-Century Modern</div>
-        </div>
-        
-        <div class="price-banner">$69.99</div>
-        
-        <div class="card-body">
-            <p class="story">
-                Bring mid-century charm to your walls with this complete set of four hand-painted ceramic wall plaques from Chase Japan.
-                <br><br>
-                Each plaque depicts a different season with delicate pastoral scenes in soft, period-perfect colors. These post-war Japanese exports were prized for their craftsmanship and attention to detail—the kind of decorative art that defined 1950s home decor.
-            </p>
+    <div class="card-container">
+        <div class="flip-card" tabindex="0" role="button" aria-expanded="false" aria-describedby="flip-instructions" aria-label="Chase Japan Four Seasons Wall Plaques (4pc) info card">
             
-            <div class="details-grid">
-                <div class="detail-item">
-                    <div class="detail-label">Era</div>
-                    <div class="detail-value">1950s</div>
+            <!-- FRONT SIDE -->
+            <div class="card-face card-front">
+                <div class="item-image-container">
+                    <span class="sku-badge">RG-0004</span>
+                    <img src="https://richmondgeneral.github.io/items/RG-0004/hero.jpeg" alt="Chase Japan Four Seasons Wall Plaques (4pc)" class="item-image">
                 </div>
-                <div class="detail-item">
-                    <div class="detail-label">Condition</div>
-                    <div class="detail-value">Like New</div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Maker</div>
-                    <div class="detail-value">Chase Japan</div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Pieces</div>
-                    <div class="detail-value">Complete Set of 4</div>
+                <div class="front-info">
+                    <h1 class="item-title">Chase Japan Four Seasons Wall Plaques (4pc)</h1>
+                    <p class="item-era">1950s · MCM Ceramics · Hand-Painted</p>
+                    <div class="front-footer">
+                        <span class="item-price">$69.99</span>
+                        <span class="flip-hint">
+                            <svg class="flip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 1l4 4-4 4"/>
+                                <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+                                <path d="M7 23l-4-4 4-4"/>
+                                <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+                            </svg>
+                            Tap for story
+                        </span>
+                    </div>
                 </div>
             </div>
-
-            <div class="maker-mark">
-                <img src="chase-mark.png" alt="Chase Japan Pegasus Mark">
-                <p>Original Chase Japan Pegasus mark</p>
+            
+            <!-- BACK SIDE -->
+            <div class="card-face card-back">
+                <div class="back-header">
+                    <span class="back-title">The Story</span>
+                    <span class="back-sku">RG-0004</span>
+                </div>
+                
+                <div class="story-section">
+                    <p class="section-label">History & Provenance</p>
+                    <p class="story-text">Bring mid-century charm to your walls with this complete set of four hand-painted ceramic wall plaques from <strong>Chase Japan</strong>. Each plaque depicts a different season with delicate pastoral scenes in soft, period-perfect colors. These post-war Japanese exports were prized for their craftsmanship and attention to detail—the kind of decorative art that defined 1950s home decor.</p>
+                    
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <p class="detail-label">Era</p>
+                            <p class="detail-value">1950s</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="detail-label">Condition</p>
+                            <p class="detail-value">Like New</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="detail-label">Maker</p>
+                            <p class="detail-value">Chase Japan</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="detail-label">Origin</p>
+                            <p class="detail-value">Japan</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="back-footer">
+                    <div class="qr-section">
+                        <div class="qr-code">
+                            <img src="qr-code.png" alt="Scan to purchase">
+                        </div>
+                        <div class="qr-text">
+                            <strong>Scan to Buy</strong>
+                            Quick checkout
+                        </div>
+                    </div>
+                    <a href="https://square.link/u/b4YTpdoG" class="buy-button">Buy Now</a>
+                </div>
+                
+                <div class="brand-strip">
+                    RICHMOND GENERAL · <a href="https://www.richmondgeneral.com">richmondgeneral.com</a>
+                </div>
             </div>
             
-            <a href="https://square.link/u/b4YTpdoG" class="buy-button">
-                Buy Now →
-            </a>
         </div>
-        
-        <div class="footer">
-            Richmond General · Richmond, IL<br>
-            Vintage & Antique Treasures
-        </div>
+        <span id="flip-instructions" class="sr-only">Press Enter or click to flip between front and back views.</span>
     </div>
+    
+    <script>
+        // Flip card interaction
+        const flipCard = document.querySelector('.flip-card');
+
+        // Update aria-expanded state for accessibility
+        const updateAriaState = () => {
+            const isFlipped = flipCard.classList.contains('flipped');
+            flipCard.setAttribute('aria-expanded', isFlipped);
+        };
+
+        flipCard.addEventListener('click', () => {
+            flipCard.classList.toggle('flipped');
+            updateAriaState();
+        });
+        
+        flipCard.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                flipCard.classList.toggle('flipped');
+                updateAriaState();
+                const isFlipped = flipCard.classList.contains('flipped');
+                trackEvent(isFlipped ? 'card_flip_to_back' : 'card_flip_to_front', {
+                    sku: 'RG-0004',
+                    method: 'keyboard',
+                    timestamp: new Date().toISOString()
+                });
+            }
+        });
+        
+        // Analytics - can integrate with your existing flip-card-project event system
+        const trackEvent = (eventName, data) => {
+            // Hook into your GitHub-based analytics here
+            console.log('Event:', eventName, data);
+            
+            // If using the flip-card-project event system:
+            // window.dispatchEvent(new CustomEvent('flipcard:event', { 
+            //     detail: { event: eventName, ...data, sku: 'RG-0004' }
+            // }));
+        };
+        
+        flipCard.addEventListener('click', () => {
+            const isFlipped = flipCard.classList.contains('flipped');
+            trackEvent(isFlipped ? 'card_flip_to_back' : 'card_flip_to_front', {
+                sku: 'RG-0004',
+                timestamp: new Date().toISOString()
+            });
+        });
+        
+        // Track payment link clicks (stop propagation to prevent card flip)
+        document.querySelector('.buy-button')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            trackEvent('buy_button_click', { sku: 'RG-0004' });
+        });
+    </script>
 </body>
 </html>
