@@ -20,11 +20,14 @@ items/
 ├── 404.html                      # Custom 404 "Treasure Not Found" page
 ├── README.md                     # Development guide
 ├── assets/
-│   └── favicon.svg               # RG favicon
+│   ├── favicon.svg               # RG favicon
+│   └── working-images/           # Original images before processing
 ├── template/
 │   └── rg-item-card-template.html  # Master template for new items
 ├── RG-0001/
-│   └── index.html                # Item card (e.g., Little Orphan Annie)
+│   ├── index.html                # Item card (e.g., Little Orphan Annie)
+│   ├── hero.jpeg                 # Processed item image
+│   └── qr-code.png               # Square payment QR code
 └── RG-XXXX/
     └── index.html                # Each new item gets its own folder
 ```
@@ -50,6 +53,55 @@ items/
 **Typography:**
 - Headings: Playfair Display (serif)
 - Body: Source Sans Pro (sans-serif)
+
+## Image Management
+
+### Working Images Directory
+
+**Path**: `assets/working-images/`
+
+This directory stores original/source images before processing:
+- Original photos (with backgrounds)
+- Detail shots and close-ups
+- Maker's marks and labels
+- Work-in-progress files
+
+### Image Processing Workflow
+
+**1. Add original image:**
+```bash
+cp ~/Desktop/photo.jpeg assets/working-images/RG-XXXX-hero.jpeg
+```
+
+**2. Process with square-image-upload skill:**
+- Removes background
+- Creates `*-converted.*` file in root (git-ignored)
+- Uploads to Square catalog
+- Optimizes for web
+
+**3. Deploy to item folder:**
+```bash
+cp RG-XXXX-hero-converted.jpeg RG-XXXX/hero.jpeg
+```
+
+### File Naming Convention
+
+- `RG-XXXX-hero.{jpeg|png}` - Primary item photo
+- `RG-XXXX-detail.{jpeg|png}` - Close-up or alternate view
+- `RG-XXXX-mark.png` - Maker's mark or signature
+- `RG-XXXX-label.png` - Original labels or tags
+
+### What's Tracked in Git
+
+**Tracked** (version controlled):
+- `assets/working-images/*` - Original source images
+- `RG-XXXX/hero.{jpeg|png}` - Final deployed images
+- `RG-XXXX/qr-code.png` - Payment QR codes
+
+**Ignored** (`.gitignore`):
+- `*-converted.*` - Processed images (temporary)
+- `*.zip` - Archive files
+- Root-level working files
 
 ## Workflow: Adding a New Item
 
@@ -192,10 +244,21 @@ gh api repos/richmondgeneral/items/pages/builds/latest
 
 ### File Organization Best Practices
 
-- One folder per SKU: `RG-XXXX/`
-- Store images in item folder if needed: `RG-XXXX/images/`
-- Keep QR codes with item: `RG-XXXX/qr/`
-- Archive sold items to `_archive/` (not currently implemented)
+**Item Folders** (`RG-XXXX/`):
+- `index.html` - Item card HTML
+- `hero.{jpeg|png}` - Final processed image (REQUIRED)
+- `qr-code.png` - Square payment QR (REQUIRED)
+
+**Working Images** (`assets/working-images/`):
+- Original photos before processing
+- Detail shots, marks, labels
+- Source files for square-image-upload
+
+**Root Level**:
+- Keep clean - no loose image files
+- Processed `*-converted.*` files are auto-ignored
+
+**Future**: Archive sold items to `_archive/` (not implemented)
 
 ## Testing
 

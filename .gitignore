@@ -35,3 +35,15 @@ __pycache__/
 .Python
 venv/
 env/
+
+# Working Images (use /assets/ or item folders instead)
+/*-converted.jpeg
+/*-converted.png
+/*-converted.webp
+/*.zip
+/*-nobg.png
+/*-label.png
+
+# Keep item folder images and assets directory
+!RG-*/
+!assets/
