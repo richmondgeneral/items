@@ -105,60 +105,70 @@ cp RG-XXXX-hero-converted.jpeg RG-XXXX/hero.jpeg
 
 ## Workflow: Adding a New Item
 
-### 1. Create Item Folder
+### Automated Workflow (Recommended)
 
+Use the automation scripts for a consistent, error-free process:
+
+**1. Run the setup script:**
 ```bash
-mkdir RG-XXXX
+./new-item.sh
 ```
 
-### 2. Copy Template
+The script will:
+- Auto-generate the next SKU (e.g., RG-0007)
+- Interactively prompt for all item details
+- Create the folder and index.html with placeholders replaced
+- Display clear next steps
 
+**2. Add and process images:**
 ```bash
-cp template/rg-item-card-template.html RG-XXXX/index.html
+# Add original to working images
+cp [source] assets/working-images/RG-XXXX-hero.jpeg
+
+# Process with square-image-upload skill
+# (removes background, uploads to Square, creates *-converted.* in root)
+
+# Move to item folder
+mv RG-XXXX-hero-converted.jpeg RG-XXXX/hero.jpeg
 ```
 
-### 3. Replace Placeholders
+**3. Generate QR code:**
+- Visit Square payment link
+- Generate QR code (300x300px)
+- Save as `RG-XXXX/qr-code.png`
 
-Edit `RG-XXXX/index.html` and replace all template variables:
-
-- `{{SKU}}` → Item SKU (e.g., `RG-0002`)
-- `{{ITEM_TITLE}}` → Full item title
-- `{{ERA_LINE}}` → Era description (e.g., "1930s Americana · 1979 Dover Reprint")
-- `{{PRICE}}` → Price (e.g., `19.99`)
-- `{{STORY_TEXT}}` → The item's history, provenance, and description
-- `{{ERA}}` → Era value for details grid (e.g., "1930s")
-- `{{CONDITION}}` → Condition grade (e.g., "Very Good")
-- `{{MAKER}}` → Maker/publisher/manufacturer
-- `{{ORIGIN}}` → Origin/location (e.g., "USA")
-- `{{IMAGE_URL}}` → Path to item image
-- `{{QR_CODE_URL}}` → Path to payment QR code image
-- `{{PAYMENT_LINK_URL}}` → Square payment link (square.link/u/...)
-- `{{SEO_DESCRIPTION}}` → 150-160 character meta description
-
-### 4. Add to Gallery (Optional)
-
-Edit `index.html` to add the item to the gallery grid.
-
-### 5. Deploy
-
+**4. Validate before deploying:**
 ```bash
-git add .
-git commit -m "Add RG-XXXX [Item Name]"
+./validate-item.sh RG-XXXX
+```
+
+Validation checks:
+- Required files present (index.html, hero.*, qr-code.png)
+- No unreplaced {{placeholders}}
+- File sizes optimized (< 1MB recommended)
+- Square payment link present
+- Accessibility features
+
+**5. Deploy:**
+```bash
+git add RG-XXXX
+git commit -m "Add RG-XXXX: [Item Name]"
 git push origin main
 ```
 
-GitHub Pages will automatically deploy the changes. The item will be live at:
-`https://richmondgeneral.github.io/items/RG-XXXX/`
+**6. Verify:**
+Visit `https://richmondgeneral.github.io/items/RG-XXXX/`
 
-### 6. Verify
+### Manual Workflow (Alternative)
 
-Visit the live URL to verify:
-- Flip card interaction works
-- All placeholder text replaced
-- QR code displays correctly
-- Payment link works
-- Mobile responsiveness
-- Print layout (if printing cards)
+If not using automation scripts:
+
+1. Create folder: `mkdir RG-XXXX`
+2. Copy template: `cp template/rg-item-card-template.html RG-XXXX/index.html`
+3. Manually replace all {{placeholders}} (see template header for full list)
+4. Add images following ITEM_FOLDER_STRUCTURE.md
+5. Run `./validate-item.sh RG-XXXX` before deploying
+6. Deploy as above
 
 ## Item Card Features
 
@@ -204,14 +214,158 @@ This site is part of a larger inventory management system:
 - **Catalog System**: Square POS catalog
 - **Inventory Tracking**: Excel/Square integration
 
+## Automation Scripts
+
+### new-item.sh
+
+**Purpose:** Interactive script to scaffold new items with auto-generated SKU and placeholder replacement.
+
+**Usage:**
+```bash
+./new-item.sh
+```
+
+**Features:**
+- Auto-generates next SKU number (or allows custom)
+- Prompts for all item details interactively
+- Creates folder structure
+- Generates index.html with all placeholders replaced
+- Provides step-by-step next actions
+
+**Interactive prompts:**
+- SKU number (auto-suggested)
+- Item title
+- Era line
+- Price
+- Condition, maker, origin
+- Square payment link
+- Item story/provenance (multi-line input)
+- SEO description
+
+### validate-item.sh
+
+**Purpose:** Pre-deployment validation to catch errors before pushing to production.
+
+**Usage:**
+```bash
+./validate-item.sh RG-XXXX
+```
+
+**Checks performed:**
+- ✓ Required files exist (index.html, hero.*, qr-code.png)
+- ✓ No unreplaced {{placeholders}}
+- ✓ Working images present in assets/working-images/
+- ✓ Square payment link present
+- ✓ Flip card UI and accessibility features
+- ⚠ File sizes (warns if > 1MB)
+- ⚠ SVG QR codes (should be PNG only)
+
+**Exit codes:**
+- 0: Validation passed (may have warnings)
+- 1: Validation failed (errors found)
+
+### audit-items.sh
+
+**Purpose:** Comprehensive audit of all existing items for design consistency and completeness.
+
+**Usage:**
+```bash
+./audit-items.sh
+```
+
+**Audits:**
+- File presence and naming
+- Design elements (brand colors, fonts, flip card UI)
+- Square integration (payment links, QR codes)
+- Accessibility features (ARIA, keyboard nav)
+- Print styles
+
+## Troubleshooting
+
+### Unreplaced Placeholders
+
+**Problem:** `{{PLACEHOLDER}}` text visible on live site
+
+**Solution:**
+- Run `./validate-item.sh RG-XXXX` to detect unreplaced placeholders
+- Edit `RG-XXXX/index.html` and replace the placeholder
+- Check template header for complete list of placeholders
+
+### Large Image Files
+
+**Problem:** Hero image > 1MB, slow page load
+
+**Solution:**
+```bash
+# Re-process image with compression
+# Or use ImageOptim/TinyPNG to optimize
+cp optimized-image.jpeg RG-XXXX/hero.jpeg
+```
+
+### Converted Files in Git
+
+**Problem:** `*-converted.*` files accidentally committed
+
+**Solution:**
+```bash
+# Remove from tracking but keep locally
+git rm --cached *-converted.*
+git commit -m "Remove converted files from tracking"
+```
+
+These are already in `.gitignore` but may have been committed before the rule was added.
+
+### QR Code Not Displaying
+
+**Problem:** QR code broken or missing on item card
+
+**Checklist:**
+- File exists: `RG-XXXX/qr-code.png` (PNG format, not SVG)
+- Path correct in index.html: `./qr-code.png`
+- File size reasonable (< 100KB)
+- Generated from Square payment link (not product URL)
+
+### Missing Working Images
+
+**Problem:** Validation warns about missing original in assets/working-images/
+
+**Impact:** Low - working images are for reference/re-processing
+
+**Solution:**
+```bash
+# Copy original if available
+cp original.jpeg assets/working-images/RG-XXXX-hero.jpeg
+git add assets/working-images/RG-XXXX-hero.jpeg
+```
+
+### Flip Card Not Working
+
+**Problem:** Card doesn't flip on click/tap
+
+**Checklist:**
+- JavaScript present in index.html
+- CSS classes correct: `.flip-card`, `.card-front`, `.card-back`
+- No JavaScript errors in browser console
+- Test keyboard navigation (Space/Enter key)
+
+### Item Not Appearing in Gallery
+
+**Problem:** New item deployed but not visible on main gallery page
+
+**Solution:**
+- Gallery (`index.html`) is manually curated
+- Add item to gallery grid if desired
+- Or rely on direct URL: `https://richmondgeneral.github.io/items/RG-XXXX/`
+
 ## Supporting Documentation
 
 The repository includes several reference documents:
 
-- **README.md** - Quick start guide for adding items
-- **RG-Inventory-System-Requirements.md** - Complete system architecture
+- **README.md** - Quick start guide with automated workflow
+- **ITEM_FOLDER_STRUCTURE.md** - Complete file structure specification
+- **RG-Inventory-System-Requirements.md** - System architecture
 - **\*.skill files** - AI assistant skills for inventory management
-- **\*.xlsx files** - Inventory tracking and label generation
+- **\*.xlsx files** - Inventory tracking and label generation (in rg-inventory/)
 
 ## Version Control
 
@@ -244,21 +398,28 @@ gh api repos/richmondgeneral/items/pages/builds/latest
 
 ### File Organization Best Practices
 
-**Item Folders** (`RG-XXXX/`):
-- `index.html` - Item card HTML
+**See ITEM_FOLDER_STRUCTURE.md for complete documentation.**
+
+**Item Folders** (`RG-XXXX/`) - Required files:
+- `index.html` - Item card HTML (REQUIRED)
 - `hero.{jpeg|png}` - Final processed image (REQUIRED)
-- `qr-code.png` - Square payment QR (REQUIRED)
+- `qr-code.png` - Square payment QR, PNG only (REQUIRED)
+
+**Item Folders** - Optional files:
+- `detail.{jpeg|png}` - Close-up or alternate view
+- `mark.png` - Maker's mark or signature
+- `label.png` - Original labels or tags
+- Custom named images (e.g., `titlepage.jpeg`)
 
 **Working Images** (`assets/working-images/`):
 - Original photos before processing
-- Detail shots, marks, labels
-- Source files for square-image-upload
+- Naming: `RG-XXXX-[type].{jpeg|png}`
+- Tracked in git (version controlled)
 
 **Root Level**:
 - Keep clean - no loose image files
-- Processed `*-converted.*` files are auto-ignored
-
-**Future**: Archive sold items to `_archive/` (not implemented)
+- Processed `*-converted.*` files are git-ignored
+- Scripts: `new-item.sh`, `validate-item.sh`, `audit-items.sh`
 
 ## Testing
 
