@@ -25,6 +25,59 @@ items/
 
 ## Adding a New Item
 
+### Automated Workflow (Recommended)
+
+1. **Run the setup script:**
+   ```bash
+   ./new-item.sh
+   ```
+   
+   The script will:
+   - Auto-generate the next SKU number (or let you specify one)
+   - Prompt for all item details interactively
+   - Create the item folder
+   - Generate `index.html` with all placeholders replaced
+   - Display next steps for images and deployment
+
+2. **Add and process item image:**
+   ```bash
+   # Add original image to working directory
+   cp [source-image] assets/working-images/RG-XXXX-hero.jpeg
+   
+   # Process with square-image-upload skill (removes background, uploads to Square)
+   # This creates RG-XXXX-hero-converted.jpeg in root (git-ignored)
+   
+   # Move processed image to item folder
+   mv RG-XXXX-hero-converted.jpeg RG-XXXX/hero.jpeg
+   ```
+
+3. **Generate QR code:**
+   - Visit your Square payment link
+   - Generate QR code (300x300px recommended)
+   - Save as `RG-XXXX/qr-code.png`
+
+4. **Validate before deploying:**
+   ```bash
+   ./validate-item.sh RG-XXXX
+   ```
+   
+   This checks for:
+   - Required files (index.html, hero image, qr-code.png)
+   - Unreplaced placeholders
+   - File sizes and optimization
+   - Content completeness
+
+5. **Deploy to GitHub Pages:**
+   ```bash
+   git add RG-XXXX
+   git commit -m "Add RG-XXXX: [Item Name]"
+   git push origin main
+   ```
+
+6. **Verify:** Visit `https://richmondgeneral.github.io/items/RG-XXXX/`
+
+### Manual Workflow (Alternative)
+
 1. **Create folder:** `mkdir RG-XXXX`
 
 2. **Copy template:** 
@@ -32,31 +85,24 @@ items/
    cp template/rg-item-card-template.html RG-XXXX/index.html
    ```
 
-3. **Replace placeholders** in the new `index.html`:
-   - `{{SKU}}` → `RG-XXXX`
-   - `{{ITEM_TITLE}}` → Full item title
-   - `{{ERA_LINE}}` → e.g., "1930s Americana · 1979 Dover Reprint"
-   - `{{PRICE}}` → e.g., `19.99`
-   - `{{STORY_TEXT}}` → The item's history and provenance
-   - `{{ERA}}` → e.g., "1930s"
-   - `{{CONDITION}}` → e.g., "Very Good"
-   - `{{MAKER}}` → e.g., "Dover Publications"
-   - `{{ORIGIN}}` → e.g., "USA"
-   - `{{IMAGE_URL}}` → Path to item image
-   - `{{QR_CODE_URL}}` → Path to payment QR code image
-   - `{{PAYMENT_LINK_URL}}` → Square payment link (square.link/u/...)
-   - `{{SEO_DESCRIPTION}}` → 150-160 char description
+3. **Replace placeholders** - See `template/rg-item-card-template.html` header for complete list
 
-4. **Add to gallery** - Edit `index.html` and add a new item card in the `.items-grid` section
+4. **Add images** - Follow image workflow in ITEM_FOLDER_STRUCTURE.md
 
-5. **Commit & push:**
-   ```bash
-   git add .
-   git commit -m "Add RG-XXXX [Item Name]"
-   git push origin main
-   ```
+5. **Validate:** `./validate-item.sh RG-XXXX`
 
-6. **Verify:** Visit `https://richmondgeneral.github.io/items/RG-XXXX/`
+6. **Deploy:** Commit and push as above
+
+## Scripts
+
+### `./new-item.sh`
+Interactive script to scaffold a new item from template. Auto-generates SKU, creates folder, replaces placeholders.
+
+### `./validate-item.sh RG-XXXX`
+Validates an item folder before deployment. Checks for required files, unreplaced placeholders, file sizes, and content completeness.
+
+### `./audit-items.sh`
+Audits all existing items for design elements, accessibility features, and content completeness.
 
 ## Item Card Features
 
