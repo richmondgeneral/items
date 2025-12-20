@@ -105,7 +105,45 @@ cp RG-XXXX-hero-converted.jpeg RG-XXXX/hero.jpeg
 
 ## Workflow: Adding a New Item
 
-### Automated Workflow (Recommended)
+### Claude-Supervised Workflow (Recommended - New!)
+
+**When you have a photo of an item**, use Claude's automated workflow:
+
+1. **Load photo into Claude Desktop**
+   - AirDrop from iPhone to Mac
+   - Drag/drop or attach image to Claude
+
+2. **Say "new item"** or "add to inventory"
+   - Claude automatically loads the `rg-new-item` or `rg-inventory` skill
+   - Claude analyzes the photo visually
+   - Claude asks for your approval at key steps
+
+3. **Claude handles everything**:
+   - Phase 1: Appraisal & research (visual analysis, pricing)
+   - Phase 2: Background removal (remove.bg API)
+   - Phase 3: Square catalog creation (with categories, tax, SEO)
+   - Phase 4: Image upload to Square
+   - Phase 5: Payment link generation
+   - Phase 6: Label CSV entry
+   - Phase 7: GitHub Pages deployment (optional)
+
+4. **You supervise**:
+   - Approve pricing after Phase 1
+   - Approve catalog creation after Phase 3
+   - Approve publishing after Phase 7
+
+**Output:** Complete item listing with:
+- Square catalog item ID
+- Payment link (square.link/u/XXXXXXXX)
+- Label CSV row
+- GitHub Pages card (optional)
+- Files organized in `RG-XXXX/` folder
+
+**Requirements:**
+- `SQUARE_ACCESS_TOKEN` set in environment
+- `REMOVEBG_API_KEY` set in environment (get at remove.bg/api)
+
+### Script-Based Workflow (Alternative)
 
 Use the automation scripts for a consistent, error-free process:
 
