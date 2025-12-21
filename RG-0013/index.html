@@ -4,219 +4,574 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Story of Flight - Step-Up Books (1967) | Richmond General</title>
+    
+    <!-- SEO Meta Tags -->
     <meta name="description" content="Vintage 1967 Step-Up Book by Mary Lee Settle with EC Comics artist George Evans illustrations. Aviation history from Wright Brothers to Mercury. Richmond, IL.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <meta property="og:title" content="The Story of Flight | Richmond General">
+    <meta property="og:description" content="1967 Step-Up Book with George Evans illustrations. From Wright Brothers to Mercury astronauts.">
+    <meta property="og:image" content="./hero.png">
+    <meta property="og:url" content="https://richmondgeneral.github.io/items/RG-0013/">
+    <meta property="og:type" content="product">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --gold: #C9A961;
-            --cream: #F5F1E8;
-            --charcoal: #2C2C2C;
+            --rg-gold: #C9A961;
+            --rg-cream: #F5F1E8;
+            --rg-charcoal: #2C2C2C;
+            --rg-brown: #6B4423;
+            --rg-shadow: rgba(44, 44, 44, 0.15);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Source Sans Pro', sans-serif;
-            background: var(--cream);
-            color: var(--charcoal);
-            line-height: 1.6;
+            background: linear-gradient(135deg, #F5F1E8 0%, #E8E2D5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
+        
+        .card-container {
+            perspective: 1500px;
+            width: 100%;
+            max-width: 420px;
         }
-        header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--gold);
+        
+        .flip-card {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 5 / 7;
+            min-height: 550px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .logo {
+        
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px var(--rg-shadow), 0 8px 25px var(--rg-shadow);
+            overflow: hidden;
+            background: white;
+        }
+        
+        /* FRONT SIDE */
+        .card-front {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .item-image-container {
+            flex: 1 1 0;
+            min-height: 0;
+            background: var(--rg-cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .item-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        
+        .sku-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--rg-charcoal);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+        
+        .front-info {
+            flex: 0 0 auto;
+            padding: 1.25rem 1.5rem;
+            background: white;
+            border-top: 3px solid var(--rg-gold);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .item-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--rg-charcoal);
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+        
+        .item-era {
+            font-size: 0.85rem;
+            color: var(--rg-brown);
+            font-weight: 400;
+            flex: 1;
+            margin-bottom: 0.75rem;
+        }
+        
+        .front-footer {
+            flex-shrink: 0;
+            height: 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .item-price {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            color: var(--gold);
-            text-decoration: none;
+            font-weight: 700;
+            color: var(--rg-charcoal);
         }
-        .sku {
-            font-size: 0.85rem;
+        
+        .flip-hint {
+            font-size: 0.75rem;
             color: #888;
-            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            line-height: 1;
         }
-        .hero-image {
-            text-align: center;
-            margin: 2rem 0;
+        
+        .flip-icon {
+            width: 16px;
+            height: 16px;
         }
-        .hero-image img {
-            max-width: 100%;
-            max-height: 400px;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: var(--charcoal);
-        }
-        .meta {
-            color: #666;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .price-box {
+        
+        /* BACK SIDE */
+        .card-back {
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
             background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            margin: 2rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
-        .price {
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--charcoal);
-        }
-        .condition {
-            color: #666;
-            margin-top: 0.5rem;
-        }
-        .buy-button {
-            display: inline-block;
-            background: var(--gold);
+        
+        .back-header {
+            background: var(--rg-charcoal);
             color: white;
-            padding: 1rem 3rem;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .back-title {
+            font-family: 'Playfair Display', serif;
             font-size: 1.1rem;
             font-weight: 600;
-            text-decoration: none;
-            border-radius: 4px;
-            margin-top: 1rem;
-            transition: background 0.2s;
         }
-        .buy-button:hover {
-            background: #b8944d;
+        
+        .back-sku {
+            font-size: 0.75rem;
+            opacity: 0.8;
         }
-        .story {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        
+        .story-section {
+            flex: 1;
+            padding: 1.25rem 1.5rem;
+            overflow-y: auto;
         }
-        .story h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--gold);
-            margin-bottom: 1rem;
+        
+        .section-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--rg-gold);
+            margin-bottom: 0.5rem;
         }
-        .story p {
-            margin-bottom: 1rem;
+        
+        .story-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--rg-charcoal);
+            margin-bottom: 1.25rem;
         }
-        .details {
+        
+        .details-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
         }
-        .detail-card {
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
+        
+        .detail-item {
+            background: var(--rg-cream);
+            padding: 0.6rem 0.8rem;
+            border-radius: 6px;
         }
-        .detail-card strong {
-            display: block;
-            color: var(--gold);
-            margin-bottom: 0.25rem;
-        }
-        .qr-section {
-            text-align: center;
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 8px;
-        }
-        .qr-section img {
-            max-width: 150px;
-        }
-        .qr-section p {
+        
+        .detail-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             color: #666;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
+            margin-bottom: 0.15rem;
         }
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: #888;
-            font-size: 0.9rem;
+        
+        .detail-value {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--rg-charcoal);
+        }
+        
+        .back-footer {
+            flex-shrink: 0;
+            height: 80px;
+            padding: 1rem 1.5rem;
+            background: var(--rg-cream);
             border-top: 1px solid #ddd;
-            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        footer a { color: var(--gold); }
+        
+        .qr-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .qr-code {
+            width: 60px;
+            height: 60px;
+            background: white;
+            padding: 4px;
+            border-radius: 4px;
+        }
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .qr-text {
+            font-size: 0.7rem;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        .qr-text strong {
+            display: block;
+            color: var(--rg-charcoal);
+            font-size: 0.8rem;
+        }
+        
+        .buy-button {
+            background: var(--rg-gold);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+        
+        .buy-button:hover {
+            background: #B8963A;
+            transform: translateY(-1px);
+        }
+        
+        /* BRAND FOOTER */
+        .brand-strip {
+            flex-shrink: 0;
+            text-align: center;
+            padding: 0.6rem;
+            background: var(--rg-charcoal);
+            color: white;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+        }
+        
+        .brand-strip a {
+            color: var(--rg-gold);
+            text-decoration: none;
+            line-height: inherit;
+        }
+        
+        /* PRINT STYLES */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .card-container {
+                max-width: 4in;
+            }
+            .flip-card {
+                transform: none !important;
+            }
+            .card-face {
+                position: relative;
+                box-shadow: none;
+            }
+            .card-front {
+                margin-bottom: 0.5in;
+            }
+            .card-back {
+                transform: rotateY(0) !important;
+                page-break-before: always;
+            }
+            .flip-hint, .buy-button {
+                display: none;
+            }
+        }
+        
+        /* ACCESSIBILITY */
+        .flip-card:focus {
+            outline: 3px solid var(--rg-gold);
+            outline-offset: 4px;
+        }
+        
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+                align-items: flex-start;
+            }
+            
+            .card-container {
+                margin-bottom: 2rem;
+            }
+            
+            .flip-card {
+                min-height: max(650px, 85vh);
+                aspect-ratio: auto;
+                height: auto;
+            }
+            
+            .card-face {
+                position: absolute;
+                height: auto;
+                min-height: 100%;
+            }
+            
+            .card-front {
+                display: flex;
+                flex-direction: column;
+                min-height: max(650px, 85vh);
+            }
+            
+            .card-back {
+                position: absolute;
+                min-height: max(650px, 85vh);
+                overflow-y: auto;
+            }
+            
+            .story-section {
+                padding: 1rem 1.25rem;
+            }
+            
+            .item-title {
+                font-size: 1.05rem;
+            }
+            
+            .story-text {
+                font-size: 0.82rem;
+                line-height: 1.5;
+                margin-bottom: 1rem;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .detail-item {
+                padding: 0.5rem 0.7rem;
+            }
+            
+            .back-footer {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: stretch;
+            }
+            
+            .qr-section {
+                justify-content: center;
+            }
+            
+            .qr-code {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .qr-text {
+                font-size: 0.65rem;
+            }
+            
+            .buy-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .flip-card,
+            .card-front,
+            .card-back {
+                min-height: max(600px, 90vh);
+            }
+            
+            .back-header {
+                padding: 0.85rem 1.25rem;
+            }
+            
+            .back-title {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <a href="https://richmondgeneral.github.io/items/" class="logo">Richmond General</a>
-            <div class="sku">RG-0013</div>
-        </header>
-
-        <div class="hero-image">
-            <img src="./hero.png" alt="The Story of Flight - Step-Up Books (1967)">
+    <div class="card-container">
+        <div class="flip-card" tabindex="0" role="button" aria-expanded="false" aria-describedby="flip-instructions" aria-label="The Story of Flight info card">
+            
+            <!-- FRONT SIDE -->
+            <div class="card-face card-front">
+                <div class="item-image-container">
+                    <span class="sku-badge">RG-0013</span>
+                    <img src="./hero.png" alt="The Story of Flight - Step-Up Books" class="item-image">
+                </div>
+                <div class="front-info">
+                    <h1 class="item-title">The Story of Flight</h1>
+                    <p class="item-era">Step-Up Books • 1967 • George Evans Illustrations</p>
+                    <div class="front-footer">
+                        <span class="item-price">$12.99</span>
+                        <span class="flip-hint">
+                            <svg class="flip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 1l4 4-4 4"/>
+                                <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+                                <path d="M7 23l-4-4 4-4"/>
+                                <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+                            </svg>
+                            Tap for story
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- BACK SIDE -->
+            <div class="card-face card-back">
+                <div class="back-header">
+                    <span class="back-title">The Story</span>
+                    <span class="back-sku">RG-0013</span>
+                </div>
+                
+                <div class="story-section">
+                    <p class="section-label">History & Provenance</p>
+                    <p class="story-text">A vintage gem from the Space Race era! Written by Mary Lee Settle—who would later win the National Book Award—and illustrated by George Evans, a legendary EC Comics artist known for his aviation work in titles like "Aces High." This 1967 Step-Up Book captures the magic of flight from the Wright Brothers at Kitty Hawk to the Mercury astronauts reaching for the stars. Published just a year before Apollo 8 orbited the moon, it's a perfect time capsule of Space Age optimism. Random House created the Step-Up Books series for young readers hungry for real knowledge—substantive content in an accessible format. 86 pages of beautifully illustrated aviation history.</p>
+                    
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <p class="detail-label">Author</p>
+                            <p class="detail-value">Mary Lee Settle</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="detail-label">Illustrator</p>
+                            <p class="detail-value">George Evans</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="detail-label">Publisher</p>
+                            <p class="detail-value">Random House</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="detail-label">Condition</p>
+                            <p class="detail-value">Good - tight binding</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="back-footer">
+                    <div class="qr-section">
+                        <div class="qr-code">
+                            <img src="./qr-code.png" alt="Scan to purchase">
+                        </div>
+                        <div class="qr-text">
+                            <strong>Scan to Buy</strong>
+                            Quick checkout
+                        </div>
+                    </div>
+                    <a href="https://square.link/u/oT0aJN5y" class="buy-button">Buy Now</a>
+                </div>
+                
+                <div class="brand-strip">
+                    RICHMOND GENERAL · <a href="https://www.richmondgeneral.com">richmondgeneral.com</a>
+                </div>
+            </div>
+            
         </div>
-
-        <h1>The Story of Flight</h1>
-        <p class="meta">Step-Up Books • 1967 • Random House</p>
-
-        <div class="price-box">
-            <div class="price">$12.99</div>
-            <div class="condition">Condition: Good</div>
-            <a href="https://square.link/u/oT0aJN5y" class="buy-button">Buy Now</a>
-        </div>
-
-        <div class="story">
-            <h2>The Story</h2>
-            <p>A vintage gem from the Space Race era! This 1967 Step-Up Book captures the magic of aviation history—from the Wright Brothers' first flight at Kitty Hawk to the Mercury astronauts reaching for the stars.</p>
-            <p>Written by Mary Lee Settle (who would later win the National Book Award) and illustrated by George Evans, a legendary EC Comics artist known for his aviation work. Evans brought the same meticulous attention to detail that made him famous in titles like "Aces High."</p>
-            <p>These Step-Up Books were Random House's answer to young readers hungry for real knowledge—substantive content delivered in an accessible format. This particular title arrived just a year before Apollo 8 orbited the moon, making it a perfect time capsule of Space Age optimism.</p>
-        </div>
-
-        <div class="details">
-            <div class="detail-card">
-                <strong>Author</strong>
-                Mary Lee Settle
-            </div>
-            <div class="detail-card">
-                <strong>Illustrator</strong>
-                George Evans
-            </div>
-            <div class="detail-card">
-                <strong>Publisher</strong>
-                Random House
-            </div>
-            <div class="detail-card">
-                <strong>Year</strong>
-                1967
-            </div>
-            <div class="detail-card">
-                <strong>Pages</strong>
-                86
-            </div>
-            <div class="detail-card">
-                <strong>Condition</strong>
-                Good - tight binding
-            </div>
-        </div>
-
-        <div class="qr-section">
-            <img src="./qr-code.png" alt="QR Code - Buy Now">
-            <p>Scan to purchase</p>
-        </div>
-
-        <footer>
-            <p><a href="https://richmondgeneral.github.io/items/">← Back to Gallery</a></p>
-            <p style="margin-top: 1rem;">Richmond General • 10308 Main St, Richmond, IL</p>
-        </footer>
+        <span id="flip-instructions" class="sr-only">Press Enter or click to flip between front and back views.</span>
     </div>
+    
+    <script>
+        // Flip card interaction
+        const flipCard = document.querySelector('.flip-card');
+        
+        const updateAriaState = () => {
+            const isFlipped = flipCard.classList.contains('flipped');
+            flipCard.setAttribute('aria-expanded', isFlipped);
+        };
+        
+        flipCard.addEventListener('click', () => {
+            flipCard.classList.toggle('flipped');
+            updateAriaState();
+        });
+        
+        flipCard.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                flipCard.classList.toggle('flipped');
+                updateAriaState();
+            }
+        });
+        
+        // Track payment link clicks (stop propagation to prevent card flip)
+        document.querySelector('.buy-button')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    </script>
 </body>
 </html>
