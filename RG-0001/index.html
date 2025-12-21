@@ -110,9 +110,12 @@
         }
         
         .front-info {
+            flex: 1;
             padding: 1.25rem 1.5rem;
             background: white;
             border-top: 3px solid var(--rg-gold);
+            display: flex;
+            flex-direction: column;
         }
         
         .item-title {
@@ -128,10 +131,13 @@
             font-size: 0.85rem;
             color: var(--rg-brown);
             font-weight: 400;
+            flex: 1;
             margin-bottom: 0.75rem;
         }
         
         .front-footer {
+            flex-shrink: 0;
+            height: 44px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -150,6 +156,7 @@
             display: flex;
             align-items: center;
             gap: 0.3rem;
+            line-height: 1;
         }
         
         .flip-icon {
@@ -235,6 +242,8 @@
         }
         
         .back-footer {
+            flex-shrink: 0;
+            height: 80px;
             padding: 1rem 1.5rem;
             background: var(--rg-cream);
             border-top: 1px solid #ddd;
@@ -296,6 +305,7 @@
         
         /* BRAND FOOTER */
         .brand-strip {
+            flex-shrink: 0;
             text-align: center;
             padding: 0.6rem;
             background: var(--rg-charcoal);
@@ -307,6 +317,7 @@
         .brand-strip a {
             color: var(--rg-gold);
             text-decoration: none;
+            line-height: inherit;
         }
         
         /* PRINT STYLES - For 4x6 or 5x7 card stock */
