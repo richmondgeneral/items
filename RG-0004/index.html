@@ -78,7 +78,8 @@
         }
         
         .item-image-container {
-            flex: 1;
+            flex: 1 1 0;
+            min-height: 0;
             background: var(--rg-cream);
             display: flex;
             align-items: center;
@@ -108,9 +109,12 @@
         }
         
         .front-info {
+            flex: 0 0 auto;
             padding: 1.25rem 1.5rem;
             background: white;
             border-top: 3px solid var(--rg-gold);
+            display: flex;
+            flex-direction: column;
         }
         
         .item-title {
@@ -130,6 +134,8 @@
         }
         
         .front-footer {
+            flex-shrink: 0;
+            height: 44px;
             display: flex;
             justify-content: space-between;
             align-items: center;
