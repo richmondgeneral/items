@@ -41,7 +41,6 @@ items/
 │   ├── labels/build_batch_csv.py   # Batch label CSV builder
 │   └── ui/                         # UI screenshot QA tooling
 ├── rg-inventory/                 # Inventory management files
-│   ├── rg-inventory-tracker.xlsx
 │   ├── rg-labels-batch.csv
 │   └── rg-labels-batch.xlsx
 ├── RG-0001/                      # Item folders
@@ -534,10 +533,13 @@ Label source of truth:
 Generated batch output:
 - `qa-artifacts/labels/rg-labels-batch.csv` via `npm run labels:build`
 
-Legacy operational files (planned move to ops repo):
+Public label artifacts kept in this repo:
 - `rg-inventory/rg-labels-batch.csv`
 - `rg-inventory/rg-labels-batch.xlsx`
-- `rg-inventory/rg-inventory-tracker.xlsx`
+
+Financial tracking data moved out of this repo:
+- lot acquisition records, ROI notes, and inventory cost tracker
+- home: `richmondgeneral/ops` (private ops repository)
 
 ## Supporting Documentation
 

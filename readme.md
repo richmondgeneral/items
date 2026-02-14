@@ -110,7 +110,8 @@ Validates `qa-artifacts/agent-review/findings.json` from a coworker agent agains
 ## Skills
 
 Item-processing skills are maintained in the separate `richmondgeneral/skills` repository.
-This repo focuses on the deployed item pages, static assets, and inventory data files.
+This repo focuses on deployed item pages, static assets, and item-level label metadata.
+Financial tracking (lot costs, ROI, margin analysis) lives in the private ops repository.
 
 ## Item Card Features
 
