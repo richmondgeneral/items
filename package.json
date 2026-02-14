@@ -1,0 +1,17 @@
+{
+  "name": "richmondgeneral-items-ui-tests",
+  "private": true,
+  "version": "0.1.0",
+  "description": "UI testing and screenshot review harness for Richmond General item pages.",
+  "scripts": {
+    "ui:install-browsers": "playwright install chromium",
+    "ui:test": "playwright test",
+    "ui:test:headed": "playwright test --headed",
+    "ui:review-pack": "python3 scripts/ui/build_agent_review_pack.py",
+    "ui:review": "npm run ui:test && npm run ui:review-pack",
+    "ui:agent:validate": "python3 scripts/ui/validate_agent_findings.py"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0"
+  }
+}

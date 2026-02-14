@@ -73,6 +73,6 @@ Original images are compressed JPEG/PNG suitable for web deployment after proces
 
 ## Related Documentation
 
-- **WARP.md** - Full site architecture and workflow
+- **CLAUDE.md** - Full architecture and workflow guidance for agents
 - **readme.md** (root) - Item card creation guide
 - **square-image-upload skill** - Background removal automation

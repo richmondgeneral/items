@@ -14,7 +14,7 @@ items/
 ├── readme.md               # This file
 ├── assets/
 │   ├── favicon.svg         # Site favicon
-│   └── og-image.jpg        # Social sharing image (add later)
+│   └── working-images/     # Source images before processing/deploy
 ├── template/
 │   └── rg-item-card-template.html  # Master template for new items
 ├── RG-0001/
