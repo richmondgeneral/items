@@ -123,7 +123,6 @@ Before deploying a new item, verify:
 
 ## Current Repository Status
 
-As of 2025-12-20, all 6 items (RG-0001 through RG-0006) conform to this standard:
-- All have required files (index.html, hero.jpeg, qr-code.png)
-- QR codes standardized to PNG format
-- Working images properly organized in `assets/working-images/`
+Repository inventory changes frequently. Use runtime checks instead of static counts:
+- `./validate-item.sh RG-XXXX` for item-level validation
+- `./audit-items.sh` for repository-wide audits across all `RG-*` folders

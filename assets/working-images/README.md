@@ -67,12 +67,12 @@ cp RG-XXXX-hero-converted.jpeg RG-XXXX/hero.jpeg
 
 ## Storage Size
 
-Current directory: ~5.7MB (11 images)
+Current directory size and file count change as inventory grows; check with `du -sh` and `ls`.
 
 Original images are compressed JPEG/PNG suitable for web deployment after processing.
 
 ## Related Documentation
 
 - **WARP.md** - Full site architecture and workflow
-- **README.md** (root) - Item card creation guide
+- **readme.md** (root) - Item card creation guide
 - **square-image-upload skill** - Background removal automation

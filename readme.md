@@ -3,6 +3,7 @@
 A GitHub Pages site showcasing the curated vintage and antique collection at Richmond General, with museum-style info cards for each item.
 
 **Live Site:** [richmondgeneral.github.io/items](https://richmondgeneral.github.io/items/)
+**Skills Repo:** [github.com/richmondgeneral/skills](https://github.com/richmondgeneral/skills)
 
 ## Structure
 
@@ -10,7 +11,7 @@ A GitHub Pages site showcasing the curated vintage and antique collection at Ric
 items/
 ├── index.html              # Main gallery/landing page
 ├── 404.html                # Custom 404 page
-├── README.md               # This file
+├── readme.md               # This file
 ├── assets/
 │   ├── favicon.svg         # Site favicon
 │   └── og-image.jpg        # Social sharing image (add later)
@@ -103,6 +104,11 @@ Validates an item folder before deployment. Checks for required files, unreplace
 
 ### `./audit-items.sh`
 Audits all existing items for design elements, accessibility features, and content completeness.
+
+## Skills
+
+Item-processing skills are maintained in the separate `richmondgeneral/skills` repository.
+This repo focuses on the deployed item pages, static assets, and inventory data files.
 
 ## Item Card Features
 

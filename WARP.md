@@ -9,6 +9,12 @@ This is a **GitHub Pages site** for Richmond General, showcasing a curated vinta
 **Live Site:** [richmondgeneral.github.io/items](https://richmondgeneral.github.io/items/)
 
 **Repository:** `git@github.com:richmondgeneral/items.git`
+**Skills Repository:** [github.com/richmondgeneral/skills](https://github.com/richmondgeneral/skills)
+
+## Skills
+
+This repository no longer stores skill definitions. Keep all operational skills in
+`richmondgeneral/skills` and reference them from there.
 
 ## Architecture
 
@@ -18,7 +24,7 @@ This is a **GitHub Pages site** for Richmond General, showcasing a curated vinta
 items/
 ├── index.html                    # Gallery landing page
 ├── 404.html                      # Custom 404 "Treasure Not Found" page
-├── README.md                     # Development guide
+├── readme.md                     # Development guide
 ├── assets/
 │   ├── favicon.svg               # RG favicon
 │   └── working-images/           # Original images before processing
@@ -114,7 +120,7 @@ cp RG-XXXX-hero-converted.jpeg RG-XXXX/hero.jpeg
    - Drag/drop or attach image to Claude
 
 2. **Say "new item"** or "add to inventory"
-   - Claude automatically loads the `rg-new-item` or `rg-inventory` skill
+   - Claude loads item-processing skills from `richmondgeneral/skills`
    - Claude analyzes the photo visually
    - Claude asks for your approval at key steps
 
@@ -304,7 +310,7 @@ This site is part of a larger inventory management system:
 
 ### audit-items.sh
 
-**Purpose:** Comprehensive audit of all existing items for design consistency and completeness.
+**Purpose:** Comprehensive audit of all `RG-*` item folders for design consistency and completeness.
 
 **Usage:**
 ```bash
@@ -399,10 +405,10 @@ git add assets/working-images/RG-XXXX-hero.jpeg
 
 The repository includes several reference documents:
 
-- **README.md** - Quick start guide with automated workflow
+- **readme.md** - Quick start guide with automated workflow
 - **ITEM_FOLDER_STRUCTURE.md** - Complete file structure specification
 - **RG-Inventory-System-Requirements.md** - System architecture
-- **\*.skill files** - AI assistant skills for inventory management
+- **SKILLS.md** - Skills migration policy and external repository link
 - **\*.xlsx files** - Inventory tracking and label generation (in rg-inventory/)
 
 ## Version Control

@@ -5,7 +5,7 @@ echo "Richmond General Item Audit"
 echo "=========================================="
 echo ""
 
-for dir in RG-0001 RG-0002 RG-0003 RG-0004 RG-0005 RG-0006; do
+for dir in RG-*; do
     if [ ! -d "$dir" ]; then
         continue
     fi

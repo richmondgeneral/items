@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a **GitHub Pages site** for Richmond General, showcasing a curated vintage and antique collection with museum-style info cards. It's a static HTML/CSS/JavaScript site with no build process, designed for simplicity and direct deployment.
 
 **Live Site:** [richmondgeneral.github.io/items](https://richmondgeneral.github.io/items/)
+**Skills Repo:** [github.com/richmondgeneral/skills](https://github.com/richmondgeneral/skills)
 
 ## Common Development Commands
 
@@ -40,10 +41,9 @@ items/
 ├── 404.html                # Custom 404 page
 ├── template/
 │   └── rg-item-card-template.html  # Master template for new items
-├── scripts/
-│   ├── new-item.sh         # Create new item from template
-│   ├── validate-item.sh    # Validate item before deployment
-│   └── audit-items.sh      # Audit all items for consistency
+├── new-item.sh             # Create new item from template
+├── validate-item.sh        # Validate item before deployment
+├── audit-items.sh          # Audit all items for consistency
 ├── assets/
 │   ├── favicon.svg         # Site favicon
 │   └── working-images/     # Original images before processing
@@ -136,7 +136,8 @@ Each item integrates with Square for payments:
 
 ## Important Files
 
-- **README.md**: Quick start guide and project overview
+- **readme.md**: Quick start guide and project overview
 - **WARP.md**: Extended documentation for WARP terminal users
 - **ITEM_FOLDER_STRUCTURE.md**: Detailed file organization specification
 - **template/rg-item-card-template.html**: Master template with all placeholders documented
+- **SKILLS.md**: Skill migration status and canonical skills repository

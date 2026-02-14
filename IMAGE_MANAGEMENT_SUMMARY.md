@@ -2,7 +2,10 @@
 
 **Date**: 2025-12-20  
 **Commit**: `3d49e42`  
-**Status**: ✅ DEPLOYED
+**Status**: Historical snapshot (not a live status dashboard)
+
+> This document describes the December 2025 image-management migration state.  
+> Use `./validate-item.sh` and `./audit-items.sh` for current repository status.
 
 ## What Changed
 
@@ -205,7 +208,8 @@ No impact on live site:
 1. **Automated deployment script**:
    ```bash
    # Process and deploy in one command
-   ~/skills/square-image-upload/deploy.sh RG-XXXX
+   # from https://github.com/richmondgeneral/skills
+   square-image-upload/deploy.sh RG-XXXX
    ```
 
 2. **Image validation**:
