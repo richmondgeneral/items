@@ -52,6 +52,13 @@ else
     ERRORS=$((ERRORS + 1))
 fi
 
+if [ -f "$ITEM_FOLDER/label.json" ]; then
+    echo "${GREEN}✓${NC} label.json"
+else
+    echo "${RED}✗${NC} label.json MISSING"
+    ERRORS=$((ERRORS + 1))
+fi
+
 # Check for SVG QR codes (should be PNG only)
 if [ -f "$ITEM_FOLDER/qr-code.svg" ]; then
     echo "${YELLOW}⚠${NC} qr-code.svg found (should use PNG only)"
@@ -59,6 +66,67 @@ if [ -f "$ITEM_FOLDER/qr-code.svg" ]; then
 fi
 
 echo ""
+
+# Validate label metadata
+if [ -f "$ITEM_FOLDER/label.json" ]; then
+    echo "Label Metadata:"
+    LABEL_CHECK_OUTPUT=$(python3 - "$ITEM_FOLDER" <<'PY'
+import json
+import re
+import sys
+from pathlib import Path
+
+item_folder = Path(sys.argv[1])
+sku = item_folder.name
+path = item_folder / "label.json"
+
+required = [
+    "sku",
+    "product_name",
+    "attributes",
+    "price",
+    "condition",
+    "condition_notes",
+    "qr_code_url",
+]
+
+payload = json.loads(path.read_text(encoding="utf-8"))
+if not isinstance(payload, dict):
+    raise ValueError("label.json root must be an object")
+
+missing = [key for key in required if key not in payload]
+if missing:
+    raise ValueError(f"missing field(s): {', '.join(missing)}")
+
+if payload.get("sku") != sku:
+    raise ValueError(f"sku field ({payload.get('sku')}) does not match folder ({sku})")
+
+if not re.fullmatch(r"RG-\d{4}", str(payload.get("sku", ""))):
+    raise ValueError("sku must match RG-XXXX")
+
+price_raw = str(payload.get("price", "")).replace("$", "").strip()
+float(price_raw)
+
+qr_url = str(payload.get("qr_code_url", "")).strip()
+if not qr_url.startswith("http://") and not qr_url.startswith("https://"):
+    raise ValueError("qr_code_url must be an absolute URL")
+
+for key in ("product_name", "attributes", "condition"):
+    if not str(payload.get(key, "")).strip():
+        raise ValueError(f"{key} must not be empty")
+
+print("ok")
+PY
+)
+    LABEL_CHECK_STATUS=$?
+    if [ $LABEL_CHECK_STATUS -eq 0 ]; then
+        echo "${GREEN}✓${NC} label.json schema valid"
+    else
+        echo "${RED}✗${NC} label.json invalid: $LABEL_CHECK_OUTPUT"
+        ERRORS=$((ERRORS + 1))
+    fi
+    echo ""
+fi
 
 # Check for unreplaced placeholders
 if [ -f "$ITEM_FOLDER/index.html" ]; then

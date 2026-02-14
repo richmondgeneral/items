@@ -15,7 +15,7 @@ This is a **GitHub Pages site** for Richmond General, showcasing a curated vinta
 This repository is the source of truth for:
 - GitHub Pages item cards (`RG-XXXX/index.html`)
 - Item media used by the site (`hero.*`, `qr-code.png`)
-- Inventory label/data files used in operations (`rg-inventory/`)
+- Item-level label metadata (`RG-XXXX/label.json`)
 
 **Out of scope:**
 - Skill definitions (maintained in `richmondgeneral/skills`)
@@ -37,6 +37,9 @@ items/
 │   └── working-images/           # Original images before processing
 ├── template/
 │   └── rg-item-card-template.html  # Master template for new items
+├── scripts/
+│   ├── labels/build_batch_csv.py   # Batch label CSV builder
+│   └── ui/                         # UI screenshot QA tooling
 ├── rg-inventory/                 # Inventory management files
 │   ├── rg-inventory-tracker.xlsx
 │   ├── rg-labels-batch.csv
@@ -44,6 +47,7 @@ items/
 ├── RG-0001/                      # Item folders
 │   ├── index.html                # Item card page
 │   ├── hero.jpeg                 # Processed item image
+│   ├── label.json                # Label metadata source
 │   └── qr-code.png               # Square payment QR code
 └── RG-XXXX/                      # Pattern for all items
 ```
@@ -80,12 +84,14 @@ Every item folder (`RG-XXXX/`) **MUST** contain:
 RG-XXXX/
 ├── index.html         # Item card page (from template)
 ├── hero.{jpeg|png}    # Primary item image (processed, background removed)
+├── label.json         # Label metadata source for batch export
 └── qr-code.png        # Square payment QR code (PNG format only)
 ```
 
 **File requirements:**
 - **index.html**: Generated from `template/rg-item-card-template.html` with all `{{placeholders}}` replaced
 - **hero.{jpeg|png}**: Processed image (background removed, optimized for web, < 1MB recommended)
+- **label.json**: Required fields: `sku`, `product_name`, `attributes`, `price`, `condition`, `condition_notes`, `qr_code_url`
 - **qr-code.png**: QR code linking to Square payment page (PNG format, NOT SVG)
 
 ### Optional Files
@@ -170,7 +176,7 @@ cp RG-XXXX-hero-converted.jpeg RG-XXXX/hero.jpeg
    - Phase 3: Square catalog creation (with categories, tax, SEO)
    - Phase 4: Image upload to Square
    - Phase 5: Payment link generation
-   - Phase 6: Label CSV entry
+   - Phase 6: Label metadata generation (`RG-XXXX/label.json`)
    - Phase 7: GitHub Pages deployment (optional)
 
 4. **You supervise**:
@@ -181,7 +187,7 @@ cp RG-XXXX-hero-converted.jpeg RG-XXXX/hero.jpeg
 **Output:** Complete item listing with:
 - Square catalog item ID
 - Payment link (square.link/u/XXXXXXXX)
-- Label CSV row
+- Item-level `label.json` metadata
 - GitHub Pages card (optional)
 - Files organized in `RG-XXXX/` folder
 
@@ -216,6 +222,7 @@ If not using the automated skill:
 
 **Checks performed:**
 - ✓ Required files exist (index.html, hero.*, qr-code.png)
+- ✓ label.json exists and schema validates
 - ✓ No unreplaced {{placeholders}}
 - ✓ Working images present in assets/working-images/
 - ✓ Square payment link present
@@ -248,6 +255,17 @@ for d in RG-*; do
   ./validate-item.sh "$d" || true
 done
 ```
+
+### Label Batch Export
+
+Build a printable label CSV from per-item metadata:
+
+```bash
+npm run labels:build
+```
+
+Default output:
+- `qa-artifacts/labels/rg-labels-batch.csv`
 
 ### Local Preview
 
@@ -510,8 +528,13 @@ See `richmondgeneral/skills` for complete skill documentation.
 
 ## Data Files
 
-Primary tracked label/inventory files:
-- `rg-labels-batch.csv` (root)
+Label source of truth:
+- `RG-XXXX/label.json` in each item folder
+
+Generated batch output:
+- `qa-artifacts/labels/rg-labels-batch.csv` via `npm run labels:build`
+
+Legacy operational files (planned move to ops repo):
 - `rg-inventory/rg-labels-batch.csv`
 - `rg-inventory/rg-labels-batch.xlsx`
 - `rg-inventory/rg-inventory-tracker.xlsx`

@@ -17,8 +17,13 @@ items/
 │   └── working-images/     # Source images before processing/deploy
 ├── template/
 │   └── rg-item-card-template.html  # Master template for new items
+├── scripts/
+│   └── labels/build_batch_csv.py    # Build batch label CSV from RG-*/label.json
 ├── RG-0001/
-│   └── index.html          # Little Orphan Annie info card
+│   ├── index.html          # Item card page
+│   ├── hero.{jpeg|png}     # Item image
+│   ├── qr-code.png         # Payment QR
+│   └── label.json          # Label metadata
 ├── RG-0002/
 │   └── index.html          # Next item...
 └── ...
@@ -38,13 +43,13 @@ Use the **rg-full-auto** skill for complete item onboarding:
    - Phase 3: Square catalog creation (approve)
    - Phase 4: Image upload
    - Phase 5: Payment link generation
-   - Phase 6: Label CSV entry
+   - Phase 6: Label metadata generation (`RG-XXXX/label.json`)
    - Phase 7: GitHub Pages deployment (approve)
 
 **Output:**
 - Square catalog item
 - Payment link (square.link/u/XXXXXXXX)
-- Label CSV entry
+- Item-level `label.json` metadata
 - GitHub Pages card
 - Files organized in `RG-XXXX/` folder
 
@@ -59,7 +64,7 @@ See **CLAUDE.md** for complete workflow documentation.
 1. **Create folder:** `mkdir RG-XXXX`
 2. **Copy template:** `cp template/rg-item-card-template.html RG-XXXX/index.html`
 3. **Replace placeholders:** See template header for complete list
-4. **Add images:** Follow structure in CLAUDE.md
+4. **Add images + label metadata:** Follow structure in CLAUDE.md
 5. **Validate:** `./validate-item.sh RG-XXXX`
 6. **Deploy:**
    ```bash
@@ -68,6 +73,23 @@ See **CLAUDE.md** for complete workflow documentation.
    git push origin main
    ```
 
+### Label Metadata
+
+Each item folder should include `label.json` with:
+- `sku`
+- `product_name`
+- `attributes`
+- `price`
+- `condition`
+- `condition_notes`
+- `qr_code_url`
+
+Build a batch CSV for printing labels:
+
+```bash
+npm run labels:build
+```
+
 ## Scripts
 
 ### `./validate-item.sh RG-XXXX`
@@ -75,6 +97,9 @@ Validates an item folder before deployment. Checks for required files, unreplace
 
 ### `./audit-items.sh`
 Audits all existing items for design elements, accessibility features, and content completeness.
+
+### `npm run labels:build`
+Builds `qa-artifacts/labels/rg-labels-batch.csv` from all `RG-*/label.json` files.
 
 ### `npm run ui:review`
 Runs Playwright screenshot QA (desktop/mobile, front/back) and builds an agent-review pack in `qa-artifacts/agent-review/`.

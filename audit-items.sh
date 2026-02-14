@@ -33,6 +33,12 @@ for dir in RG-*; do
     else
         echo "  ❌ qr-code.png MISSING"
     fi
+
+    if [ -f "$dir/label.json" ]; then
+        echo "  ✅ label.json"
+    else
+        echo "  ❌ label.json MISSING"
+    fi
     
     # Check index.html content
     if [ -f "$dir/index.html" ]; then

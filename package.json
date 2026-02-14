@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "description": "UI testing and screenshot review harness for Richmond General item pages.",
   "scripts": {
+    "labels:build": "python3 scripts/labels/build_batch_csv.py",
     "ui:install-browsers": "playwright install chromium",
     "ui:test": "playwright test",
     "ui:test:headed": "playwright test --headed",
