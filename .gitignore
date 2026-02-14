@@ -36,6 +36,12 @@ __pycache__/
 venv/
 env/
 
+# Node / Playwright
+node_modules/
+qa-artifacts/
+playwright-report/
+test-results/
+
 # Working Images (use /assets/ or item folders instead)
 /*-converted.jpeg
 /*-converted.png
