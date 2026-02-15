@@ -215,6 +215,49 @@
         }
         
         .buy-button:hover { background: #B8963A; transform: translateY(-1px); }
+
+        .sku-badge.sold-badge {
+            background: #8A5A3B;
+        }
+
+        .item-price.sold-price {
+            font-size: 1.05rem;
+            color: #8A5A3B;
+            font-weight: 700;
+        }
+
+        .sold-status-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            width: 100%;
+        }
+
+        .sold-status {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--rg-charcoal);
+            letter-spacing: 0.3px;
+        }
+
+        .sold-meta {
+            font-size: 0.72rem;
+            color: #666;
+        }
+
+        .archive-link {
+            display: inline-flex;
+            width: fit-content;
+            margin-top: 0.15rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--rg-brown);
+            text-decoration: none;
+        }
+
+        .archive-link:hover {
+            text-decoration: underline;
+        }
         
         .brand-strip {
             text-align: center;
@@ -237,14 +280,14 @@
             <!-- FRONT SIDE -->
             <div class="card-face card-front">
                 <div class="item-image-container">
-                    <span class="sku-badge">RG-0005</span>
+                    <span class="sku-badge sold-badge">RG-0005 · SOLD</span>
                     <img src="hero.jpeg" alt="Chicago Bears 1985 World Champions Button on Card" class="item-image">
                 </div>
                 <div class="front-info">
                     <h1 class="item-title">Chicago Bears 1985 World Champions Button on Card</h1>
                     <p class="item-era">Sports Memorabilia • NFL • Super Bowl XX</p>
                     <div class="front-footer">
-                        <span class="item-price">$12.99</span>
+                        <span class="item-price sold-price">Sold · $13.00</span>
                         <span class="flip-hint">
                             <svg class="flip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
@@ -292,16 +335,11 @@
                 </div>
                 
                 <div class="back-footer">
-                    <div class="qr-section">
-                        <div class="qr-code">
-                            <img src="qr-code.png" alt="Scan to purchase">
-                        </div>
-                        <div class="qr-text">
-                            <strong>Scan to Buy</strong>
-                            Quick checkout
-                        </div>
+                    <div class="sold-status-panel">
+                        <span class="sold-status">Sold on August 24, 2025</span>
+                        <span class="sold-meta">Final sale price: $13.00</span>
+                        <a href="../" class="archive-link">Browse available items</a>
                     </div>
-                    <a href="https://square.link/u/CVHUjfRY" class="buy-button">Buy Now</a>
                 </div>
                 
                 <div class="brand-strip">
