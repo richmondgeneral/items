@@ -1,0 +1,14 @@
+[
+  {"variation_id": "UQORP6UPBOGGNDKOE4GU2M2J", "amount_cents": 1950, "sku": "RG-0001", "note": "$19.99 -> $19.50"},
+  {"variation_id": "KNOOKEXGF37G2WSUAUX6C6PC", "amount_cents": 3500, "sku": "RG-0002", "note": "$34.99 -> $35.00"},
+  {"variation_id": "3TGL6STUAR3JBOIWCXSV3G63", "amount_cents": 7000, "sku": "RG-0004", "note": "$69.99 -> $70.00"},
+  {"variation_id": "TJLCXJSPHEDNS2R3OV5ZVX5I", "amount_cents": 4500, "sku": "RG-0006", "note": "$49.99 -> $45.00"},
+  {"variation_id": "IVUV6KVYIGWYIWTEI2J52B25", "amount_cents": 1500, "sku": "RG-0007", "note": "$14.99 -> $15.00"},
+  {"variation_id": "5JD2MEEGQBXOZUNBPLD2ZIAJ", "amount_cents": 3000, "sku": "RG-0008", "note": "$29.99 -> $30.00"},
+  {"variation_id": "WJ7RJI2ECDTRAJW7J6WH7PTQ", "amount_cents": 4500, "sku": "RG-0009", "note": "$44.95 -> $45.00"},
+  {"variation_id": "LQVR73GMXBDETD7PTGKME6XB", "amount_cents": 9000, "sku": "RG-0010", "note": "$89.99 -> $90.00"},
+  {"variation_id": "DOGGZ4MLPOQNBRCIFTXTP7WN", "amount_cents": 1500, "sku": "RG-0011", "note": "$14.99 -> $15.00"},
+  {"variation_id": "DTMHI76VCVD6JNEVZ35BWAWN", "amount_cents": 1950, "sku": "RG-0012", "note": "$19.99 -> $19.50"},
+  {"variation_id": "AR63H4MGON7VTBQ3TZB3KOHJ", "amount_cents": 1300, "sku": "RG-0013", "note": "$12.99 -> $13.00"},
+  {"variation_id": "EUJSMYTD4RTDN76TZUVEGRBL", "amount_cents": 2500, "sku": "RG-0014", "note": "$24.99 -> $25.00"}
+]
