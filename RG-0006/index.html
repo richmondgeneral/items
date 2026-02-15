@@ -378,5 +378,19 @@
             trackEvent('buy_button_click', { sku: 'RG-0006', price: 44.99 });
         });
     </script>
+    <!-- PRICE_DISPLAY_FORMATTER: visual-only strip of trailing .00 -->
+    <script>
+        (() => {
+            const moneyPattern = /\$([0-9]+)\.00\b/g;
+            const formatMoneyText = (text) => text.replace(moneyPattern, '$$$1');
+            const targets = document.querySelectorAll('.item-price, .sold-meta');
+
+            targets.forEach((el) => {
+                if (!el || !el.textContent) return;
+                const updated = formatMoneyText(el.textContent);
+                if (updated !== el.textContent) el.textContent = updated;
+            });
+        })();
+    </script>
 </body>
 </html>
