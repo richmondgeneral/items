@@ -50,6 +50,13 @@ test-results/
 /*-nobg.png
 /*-label.png
 
+# Setup/temp scripts (generated during onboarding, delete after use)
+**/setup_square.py
+**/create_catalog.py
+**/finalize.py
+**/square_ids.json
+**/*_temp.png
+
 # Keep item folder images and assets directory
 !RG-*/
 !assets/
