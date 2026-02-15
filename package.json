@@ -5,6 +5,7 @@
   "description": "UI testing and screenshot review harness for Richmond General item pages.",
   "scripts": {
     "labels:build": "python3 scripts/labels/build_batch_csv.py",
+    "square:smoke": "python3 scripts/square/smoke_catalog_upsert.py",
     "ui:install-browsers": "playwright install chromium",
     "ui:test": "playwright test",
     "ui:test:headed": "playwright test --headed",

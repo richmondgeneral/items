@@ -19,6 +19,7 @@ items/
 │   └── rg-item-card-template.html  # Master template for new items
 ├── scripts/
 │   └── labels/build_batch_csv.py    # Build batch label CSV from RG-*/label.json
+│   └── square/smoke_catalog_upsert.py  # Square upsert smoke test (create + delete temp item)
 ├── RG-0001/
 │   ├── index.html          # Item card page
 │   ├── hero.{jpeg|png}     # Item image
@@ -100,6 +101,9 @@ Audits all existing items for design elements, accessibility features, and conte
 
 ### `npm run labels:build`
 Builds `qa-artifacts/labels/rg-labels-batch.csv` from all `RG-*/label.json` files.
+
+### `npm run square:smoke`
+Runs a Square Catalog write-path smoke test (`upsertCatalogObject` + cleanup delete) and logs request/response payloads to `qa-artifacts/square-smoke/`.
 
 ### `npm run ui:review`
 Runs Playwright screenshot QA (desktop/mobile, front/back) and builds an agent-review pack in `qa-artifacts/agent-review/`.
