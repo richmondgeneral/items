@@ -378,7 +378,7 @@
                     <h1 class="item-title">Chase Japan Four Seasons Wall Plaques (4pc)</h1>
                     <p class="item-era">1950s · MCM Ceramics · Hand-Painted</p>
                     <div class="front-footer">
-                        <span class="item-price">$69.99</span>
+                        <span class="item-price">$70</span>
                         <span class="flip-hint">
                             <svg class="flip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M17 1l4 4-4 4"/>
@@ -496,7 +496,7 @@
         // Track payment link clicks (stop propagation to prevent card flip)
         document.querySelector('.buy-button')?.addEventListener('click', (e) => {
             e.stopPropagation();
-            trackEvent('buy_button_click', { sku: 'RG-0004' });
+            trackEvent('buy_button_click', { sku: 'RG-0004', price: 70 });
         });
     </script>
     <!-- PRICE_DISPLAY_FORMATTER: visual-only strip of trailing .00 -->
