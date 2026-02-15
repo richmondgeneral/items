@@ -25,6 +25,7 @@ items/
 │   ├── hero.{jpeg|png}     # Item image
 │   ├── qr-code.png         # Payment QR
 │   └── label.json          # Label metadata
+│   └── status.json         # Optional lifecycle metadata (e.g., sold archive state)
 ├── RG-0002/
 │   └── index.html          # Next item...
 └── ...
@@ -125,6 +126,14 @@ Financial tracking (lot costs, ROI, margin analysis) lives in the private ops re
 - **WCAG 2.1 AA accessible** - Keyboard navigation, screen reader support
 - **Mobile responsive** - Works on all device sizes
 - **SEO optimized** - Open Graph tags, semantic HTML
+
+## Sold Item Handling
+
+When an item sells:
+- Keep the `RG-XXXX/` page live for provenance and SEO.
+- Add `status.json` with `"status": "sold"` plus `sold_at` and `sold_price`.
+- Replace checkout UI with sold/archive messaging on the item page.
+- Update the gallery card badge/price to indicate sold status.
 
 ## Branding
 

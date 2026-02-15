@@ -39,6 +39,12 @@ for dir in RG-*; do
     else
         echo "  ❌ label.json MISSING"
     fi
+
+    ITEM_STATUS="available"
+    if [ -f "$dir/status.json" ] && grep -q '"status"[[:space:]]*:[[:space:]]*"sold"' "$dir/status.json"; then
+        ITEM_STATUS="sold"
+    fi
+    echo "  ℹ️  status: $ITEM_STATUS"
     
     # Check index.html content
     if [ -f "$dir/index.html" ]; then
@@ -103,16 +109,32 @@ for dir in RG-*; do
         # Check for Square payment link
         if grep -q "square.link" "$dir/index.html"; then
             LINK=$(grep -o "square.link/u/[A-Za-z0-9]*" "$dir/index.html" | head -1)
-            echo "  ✅ Square payment link ($LINK)"
+            if [ "$ITEM_STATUS" = "sold" ]; then
+                echo "  ⚠️  Square payment link still present on sold item ($LINK)"
+            else
+                echo "  ✅ Square payment link ($LINK)"
+            fi
         else
-            echo "  ❌ Square payment link MISSING"
+            if [ "$ITEM_STATUS" = "sold" ]; then
+                echo "  ✅ Sold archive item has no Square payment link"
+            else
+                echo "  ❌ Square payment link MISSING"
+            fi
         fi
         
-        # Check for Buy Now button
-        if grep -q "buy-button\|Buy Now" "$dir/index.html"; then
-            echo "  ✅ Buy Now button"
+        # Check for Buy Now button (actual interactive element, not CSS class declarations)
+        if grep -Eq "<(a|button)[^>]*buy-button|>Buy Now<" "$dir/index.html"; then
+            if [ "$ITEM_STATUS" = "sold" ]; then
+                echo "  ⚠️  Buy button still present on sold item"
+            else
+                echo "  ✅ Buy Now button"
+            fi
         else
-            echo "  ❌ Buy Now button missing"
+            if [ "$ITEM_STATUS" = "sold" ]; then
+                echo "  ✅ Sold archive item has no Buy button"
+            else
+                echo "  ❌ Buy Now button missing"
+            fi
         fi
         
         # Check for QR code reference

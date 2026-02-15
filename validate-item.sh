@@ -27,6 +27,14 @@ echo ""
 
 ERRORS=0
 WARNINGS=0
+ITEM_STATUS="available"
+
+if [ -f "$ITEM_FOLDER/status.json" ] && grep -q '"status"[[:space:]]*:[[:space:]]*"sold"' "$ITEM_FOLDER/status.json"; then
+    ITEM_STATUS="sold"
+fi
+
+echo "Item Status: $ITEM_STATUS"
+echo ""
 
 # Check required files
 echo "Required Files:"
@@ -165,10 +173,19 @@ if [ -f "$ITEM_FOLDER/index.html" ]; then
     echo "Content Check:"
     
     if grep -q "square.link" "$ITEM_FOLDER/index.html"; then
-        echo "${GREEN}✓${NC} Square payment link present"
+        if [ "$ITEM_STATUS" = "sold" ]; then
+            echo "${YELLOW}⚠${NC} Square payment link present on sold archive item (consider removing checkout)"
+            WARNINGS=$((WARNINGS + 1))
+        else
+            echo "${GREEN}✓${NC} Square payment link present"
+        fi
     else
-        echo "${RED}✗${NC} Square payment link missing"
-        ERRORS=$((ERRORS + 1))
+        if [ "$ITEM_STATUS" = "sold" ]; then
+            echo "${GREEN}✓${NC} Sold archive item intentionally has no Square payment link"
+        else
+            echo "${RED}✗${NC} Square payment link missing"
+            ERRORS=$((ERRORS + 1))
+        fi
     fi
     
     if grep -q "flip-card" "$ITEM_FOLDER/index.html"; then

@@ -10,6 +10,7 @@ const VIEWPORTS: Viewport[] = [
 ];
 
 const SCREENSHOT_ROOT = path.join("qa-artifacts", "screenshots");
+const statusCache = new Map<string, "available" | "sold">();
 
 function discoverSkus(): string[] {
   return fs
@@ -18,6 +19,28 @@ function discoverSkus(): string[] {
     .filter((entry) => fs.existsSync(path.join(entry.name, "index.html")))
     .map((entry) => entry.name)
     .sort();
+}
+
+function readSkuStatus(sku: string): "available" | "sold" {
+  const cached = statusCache.get(sku);
+  if (cached) return cached;
+
+  const statusPath = path.join(process.cwd(), sku, "status.json");
+  if (!fs.existsSync(statusPath)) {
+    statusCache.set(sku, "available");
+    return "available";
+  }
+
+  try {
+    const raw = fs.readFileSync(statusPath, "utf-8");
+    const parsed = JSON.parse(raw) as { status?: string };
+    const status = parsed.status === "sold" ? "sold" : "available";
+    statusCache.set(sku, status);
+    return status;
+  } catch {
+    statusCache.set(sku, "available");
+    return "available";
+  }
 }
 
 async function assertNoBrokenImages(page: Page): Promise<void> {
@@ -62,6 +85,7 @@ async function flipCard(page: Page): Promise<void> {
 const skus = discoverSkus();
 
 for (const sku of skus) {
+  const status = readSkuStatus(sku);
   for (const viewport of VIEWPORTS) {
     test(`${sku} ${viewport.name} front`, async ({ page }) => {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
@@ -70,11 +94,19 @@ for (const sku of skus) {
       const card = page.locator(".flip-card").first();
       await expect(card).toBeVisible();
 
-      const buyButton = page.locator(".buy-button").first();
-      await expect(buyButton).toBeVisible();
-      const href = await buyButton.getAttribute("href");
-      expect(href).toBeTruthy();
-      expect(href).not.toBe("#");
+      if (status === "sold") {
+        const soldMarker = page.locator(
+          ".sold-status, .sold-badge, .item-price.sold-price, .sku-badge.sold-badge"
+        ).first();
+        await expect(soldMarker).toBeVisible();
+        await expect(page.locator(".buy-button")).toHaveCount(0);
+      } else {
+        const buyButton = page.locator(".buy-button").first();
+        await expect(buyButton).toBeVisible();
+        const href = await buyButton.getAttribute("href");
+        expect(href).toBeTruthy();
+        expect(href).not.toBe("#");
+      }
 
       await page.waitForLoadState("networkidle");
       await assertNoBrokenImages(page);
