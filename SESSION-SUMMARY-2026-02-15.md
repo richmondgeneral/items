@@ -71,3 +71,29 @@
   - `alpaca`
   - `square_cache_mcp`
 - Confirmed referenced backup exists and contains older key naming (`RGSquareItemCache`).
+
+## 8) MCP hardening, env flattening, and restart verification
+
+- Standardized runtime around Astral `uv` install path (`~/.local/bin/uvx`) and removed ambiguity from mixed install locations.
+- Consolidated environment handling to one canonical file:
+  - `~/.config/claude-mcp/.env`
+- Preserved dual-Square architecture by intent:
+  - `mcp_square_api` = official remote OAuth server (no local key injection)
+  - `square_cache_mcp` = custom Richmond General cache server
+- Simplified local server launch paths with explicit wrappers:
+  - `~/.config/claude-mcp/bin/start-alpaca-mcp.sh`
+  - `~/.config/claude-mcp/bin/start-square-cache-mcp.sh`
+- Updated Claude Desktop MCP config to use wrapper commands for local servers and kept remote OAuth server via `npx mcp-remote`.
+- Investigated load errors in:
+  - `~/Library/Logs/Claude/mcp.log`
+  - `~/Library/Logs/Claude/mcp-server-mcp_square_api.log`
+  - `~/Library/Logs/Claude/main.log`
+  - `~/Library/Logs/Claude/claude.ai-web.log`
+- Root finding:
+  - `alpaca` and `square_cache_mcp` were healthy and initialized cleanly.
+  - Remote `mcp_square_api` showed repeated `http-first` 404 fallback churn before SSE connect.
+- Applied transport tuning for stability/noise reduction:
+  - `mcp_square_api.args` -> `["mcp-remote","https://mcp.squareup.com/sse","--transport","sse-first"]`
+- Restarted Claude Desktop and verified in logs that new sessions use `sse-first` and connect via `SSEClientTransport`.
+- Created timestamped config backup for this transport change:
+  - `~/.codex-backups/mcp-square-transport-20260215-090757/`
