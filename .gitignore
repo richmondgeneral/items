@@ -57,6 +57,9 @@ test-results/
 **/square_ids.json
 **/*_temp.png
 
+# Onboarding state files (per-item, managed by rg-full-auto)
+**/.state.json
+
 # Keep item folder images and assets directory
 !RG-*/
 !assets/
