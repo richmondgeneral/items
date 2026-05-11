@@ -108,11 +108,13 @@ RG-XXXX/
 
 ### `restored.jpg` — As Found / As Restored variant (conservation pattern)
 
-When [`refresh_item_image.py --both`](../skills/square-image-upload/scripts/refresh_item_image.py) runs against an item, it produces two cleanup variants — one preserving visible damage (truthful condition documentation) and one with damage repaired (restored look). The preserved variant is what goes to Square as the storefront primary; the restored variant is saved here as `restored.jpg`.
+When [`refresh_item_image.py --both`](../skills/square-image-upload/scripts/refresh_item_image.py) runs against an item, it produces two cleanup variants — one preserving visible damage (truthful condition documentation) and one with damage repaired (restored look). The preserved variant goes to Square as the storefront primary; the restored variant is saved here as `restored.jpg`.
 
-The item card template detects `restored.jpg` at page load and reveals a small "As Found / As Restored" pill toggle over the hero image. Items without `restored.jpg` look identical to the pre-toggle layout. Defaults to "As Found" (honest condition snapshot).
+The item card template detects `restored.jpg` at page load and reveals a **drag-to-compare slider** over the hero image. The handle starts at 50/50; dragging right reveals more of "As Found", dragging left reveals more of "As Restored". Two small corner pills label which side is which. Keyboard users can focus the handle (Tab) and drive it with arrow keys / Home / End / PageUp / PageDown.
 
-This is intentional: Richmond General is part-storefront, part-museum. Customers see actual condition first; the restored view is opt-in context, not the default sales image. Especially important for books, where collectors specifically want to see wear, foxing, missing dust jackets, etc.
+Items without `restored.jpg` look identical to the pre-toggle layout — the slider is hidden via JS probe on page load.
+
+This pattern is intentional: Richmond General is part-storefront, part-museum. Customers see actual condition first; the restored view is opt-in context, not the default sales image. Especially important for books, where collectors specifically want to see wear, foxing, missing dust jackets, etc. The slider preserves provenance honesty (the "before" stays visible at all times) while showing what a restored version *could* look like.
 
 **Producing `restored.jpg`** is automatic when you run:
 
@@ -123,7 +125,14 @@ python3 ../skills/square-image-upload/scripts/refresh_item_image.py \
 
 The script uploads the preserved variant to Square in-place and copies the restored variant into `items/RG-XXXX/restored.jpg`. No manual HTML editing required when starting from the current template.
 
-Future-proofing note: the template's `.variant-stack` data model is shared with a planned **drag-to-reveal slider** (Phase 2). When that lands, the pill toggle is swapped for a slider handle and the rest of the wiring stays identical — no per-item migration beyond the template edit.
+**Interaction modes** — the template's `.variant-stack` is data-mode-agnostic:
+
+| `data-mode` | Control | Status |
+|---|---|---|
+| `slider` | Drag-to-compare handle (current default) | Phase 2 — shipped |
+| `toggle` | Pill toggle ("As Found / As Restored" buttons) | Phase 1 — kept as fallback; CSS still wired |
+
+Both modes use the same `.variant-stack[data-variant="..."]` images and the same JS probe for `restored.jpg`. Switching between them is one HTML attribute change on the `.variant-stack` element. Future modes (e.g., a thumbnail gallery for multi-variant items) add another `data-mode` value without disturbing the DOM structure.
 
 ### Naming Conventions
 

@@ -97,10 +97,9 @@
         }
 
         /* ─── Conservation variants (As Found / As Restored) ────────────────
-           Phase 1 = pill toggle (this version).
-           Phase 2 (planned) = drag slider replaces .variant-controls; the
-           .variant-stack data model below stays identical, so most of the
-           swap is CSS + a handful of JS lines, not a rewrite.
+           Two interaction modes share a single .variant-stack data model:
+             data-mode="toggle"  → Phase 1: pill toggle, opacity-based swap
+             data-mode="slider"  → Phase 2 (current): drag-to-compare slider
         */
         .variant-stack {
             position: relative;
@@ -111,19 +110,39 @@
 
         .variant-image {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Phase 1 — pill toggle (kept for back-compat) */
+        .variant-stack[data-mode="toggle"] .variant-image {
             opacity: 0;
             transition: opacity 0.35s ease;
         }
-
-        .variant-stack[data-active="as-found"] .variant-image[data-variant="as-found"],
-        .variant-stack[data-active="as-restored"] .variant-image[data-variant="as-restored"] {
+        .variant-stack[data-mode="toggle"][data-active="as-found"] .variant-image[data-variant="as-found"],
+        .variant-stack[data-mode="toggle"][data-active="as-restored"] .variant-image[data-variant="as-restored"] {
             opacity: 1;
         }
 
-        .variant-controls {
+        /* Phase 2 — drag slider (current default) */
+        .variant-stack[data-mode="slider"] {
+            --slider-pos: 50%;
+            touch-action: pan-y;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .variant-stack[data-mode="slider"] .variant-image {
+            opacity: 1;
+            transition: none;
+        }
+        .variant-stack[data-mode="slider"] .variant-image[data-variant="as-restored"] {
+            clip-path: inset(0 0 0 var(--slider-pos));
+            -webkit-clip-path: inset(0 0 0 var(--slider-pos));
+        }
+
+        .variant-controls--toggle {
             position: absolute;
             bottom: 0.85rem;
             left: 50%;
@@ -137,7 +156,6 @@
             -webkit-backdrop-filter: blur(8px);
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
         }
-
         .variant-btn {
             background: transparent;
             color: rgba(255, 255, 255, 0.72);
@@ -153,20 +171,75 @@
             transition: background 0.2s, color 0.2s;
             white-space: nowrap;
         }
+        .variant-btn[aria-pressed="true"] { background: var(--rg-gold); color: white; }
+        .variant-btn:hover:not([aria-pressed="true"]) { color: white; }
+        .variant-btn:focus-visible { outline: 2px solid var(--rg-gold); outline-offset: 3px; }
 
-        .variant-btn[aria-pressed="true"] {
+        .variant-controls--slider {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            pointer-events: none;
+        }
+        .variant-controls--slider > * { pointer-events: auto; }
+
+        .variant-label {
+            position: absolute;
+            bottom: 0.85rem;
+            background: rgba(44, 44, 44, 0.85);
+            color: white;
+            font-size: 0.62rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 0.3rem 0.7rem;
+            border-radius: 999px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            pointer-events: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            user-select: none;
+        }
+        .variant-label--found    { left: 0.85rem; }
+        .variant-label--restored { right: 0.85rem; }
+
+        .variant-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: var(--slider-pos, 50%);
+            width: 3px;
             background: var(--rg-gold);
-            color: white;
+            transform: translateX(-50%);
+            cursor: ew-resize;
+            touch-action: none;
+            outline: none;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.45);
         }
-
-        .variant-btn:hover:not([aria-pressed="true"]) {
-            color: white;
+        .variant-handle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            background: var(--rg-gold);
+            border-radius: 50%;
+            box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
         }
-
-        .variant-btn:focus-visible {
-            outline: 2px solid var(--rg-gold);
-            outline-offset: 3px;
+        .variant-handle-icons {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+            pointer-events: none;
         }
+        .variant-handle:focus-visible::before {
+            box-shadow: 0 0 0 3px white, 0 2px 14px rgba(0, 0, 0, 0.4);
+        }
+        .variant-handle:active::before { transform: translate(-50%, -50%) scale(1.05); }
 
         .sku-badge {
             position: absolute;
@@ -424,12 +497,15 @@
                 display: none;
             }
 
-            /* Variants in print: hide the toggle, only render the active variant.
-               Default = as-found (honest condition snapshot). */
-            .variant-controls { display: none; }
-            .variant-image { transition: none; }
-            .variant-stack[data-active="as-found"] .variant-image[data-variant="as-restored"] { display: none; }
+            /* Variants in print: collapse to a single image (as-found by default).
+               Slider/toggle controls don't print. */
+            .variant-controls,
+            .variant-controls--toggle,
+            .variant-controls--slider { display: none; }
+            .variant-image { transition: none; clip-path: none !important; -webkit-clip-path: none !important; opacity: 1 !important; }
+            .variant-stack .variant-image[data-variant="as-restored"] { display: none; }
             .variant-stack[data-active="as-restored"] .variant-image[data-variant="as-found"] { display: none; }
+            .variant-stack[data-active="as-restored"] .variant-image[data-variant="as-restored"] { display: block; }
         }
         
         /* ACCESSIBILITY */
@@ -561,9 +637,9 @@
                     <span class="sku-badge">RG-0011</span>
                     <!-- Variant stack: 'as-found' is always present; 'as-restored'
                          is wired up by JS only if ./restored.jpg actually exists.
-                         The data model (data-mode/data-active) is shared with the
-                         future slider control. -->
-                    <div class="variant-stack" data-mode="toggle" data-active="as-found">
+                         The data model (data-mode/data-variant) is mode-agnostic so
+                         the same DOM supports toggle, slider, or future modes. -->
+                    <div class="variant-stack" data-mode="slider" data-active="as-found">
                         <img src="./hero.png" alt="The Settlement Cook Book"
                              class="item-image variant-image"
                              data-variant="as-found">
@@ -571,15 +647,24 @@
                              data-variant="as-restored"
                              data-src="./restored.jpg"
                              alt="">
-                    </div>
-                    <div class="variant-controls variant-controls--toggle" hidden
-                         role="group" aria-label="Image variant">
-                        <button type="button" class="variant-btn"
-                                data-variant="as-found"
-                                aria-pressed="true">As Found</button>
-                        <button type="button" class="variant-btn"
-                                data-variant="as-restored"
-                                aria-pressed="false">As Restored</button>
+                        <div class="variant-controls variant-controls--slider" hidden>
+                            <span class="variant-label variant-label--found" aria-hidden="true">As Found</span>
+                            <span class="variant-label variant-label--restored" aria-hidden="true">As Restored</span>
+                            <div class="variant-handle"
+                                 role="slider"
+                                 tabindex="0"
+                                 aria-label="Drag to compare As Found versus As Restored"
+                                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"
+                                 aria-orientation="horizontal">
+                                <svg class="variant-handle-icons" width="24" height="14"
+                                     viewBox="0 0 24 14" aria-hidden="true" focusable="false">
+                                    <path d="M5 2L1 7L5 12" stroke="white" stroke-width="2"
+                                          fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19 2L23 7L19 12" stroke="white" stroke-width="2"
+                                          fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="front-info">
@@ -707,55 +792,109 @@
             trackEvent('buy_button_click', { sku: 'RG-0011' });
         });
 
-        // ─── Conservation variant toggle (Phase 1) ─────────────────────────
-        // Reveals the As Found / As Restored pill only when ./restored.jpg
-        // actually loads. Items without a restored variant are visually
-        // identical to the pre-toggle template.
+        // ─── Conservation variant slider (Phase 2) ─────────────────────────
+        // Reveals a drag-to-compare slider only when ./restored.jpg actually
+        // loads. Items without a restored variant are visually identical to
+        // the pre-toggle template.
         (() => {
             const stack = document.querySelector('.variant-stack');
-            const controls = document.querySelector('.variant-controls--toggle');
+            const controls = document.querySelector('.variant-controls--slider');
             if (!stack || !controls) return;
             const restoredImg = stack.querySelector('.variant-image[data-variant="as-restored"]');
             if (!restoredImg || !restoredImg.dataset.src) return;
+            const handle = controls.querySelector('.variant-handle');
+            if (!handle) return;
             const restoredSrc = restoredImg.dataset.src;
 
-            const updateAriaHidden = () => {
-                stack.querySelectorAll('.variant-image').forEach((img) => {
-                    img.setAttribute('aria-hidden',
-                        String(img.dataset.variant !== stack.dataset.active));
-                });
+            const setSliderPos = (pct) => {
+                const clamped = Math.max(0, Math.min(100, pct));
+                stack.style.setProperty('--slider-pos', clamped + '%');
+                handle.setAttribute('aria-valuenow', String(Math.round(clamped)));
             };
 
-            // Probe — only wire up the toggle if the secondary variant loads.
+            const getSliderPos = () =>
+                parseFloat(stack.style.getPropertyValue('--slider-pos')) || 50;
+
             const probe = new Image();
             probe.onload = () => {
                 restoredImg.src = restoredSrc;
                 restoredImg.alt = 'The Settlement Cook Book (as restored)';
                 controls.hidden = false;
-                updateAriaHidden();
             };
-            probe.onerror = () => {
-                restoredImg.remove();
-            };
+            probe.onerror = () => { restoredImg.remove(); };
             probe.src = restoredSrc;
 
-            controls.addEventListener('click', (e) => {
-                const btn = e.target.closest('.variant-btn');
-                if (!btn) return;
-                e.stopPropagation();  // don't flip the card
-                const variant = btn.dataset.variant;
-                if (stack.dataset.active === variant) return;
-                stack.dataset.active = variant;
-                controls.querySelectorAll('.variant-btn').forEach((b) => {
-                    b.setAttribute('aria-pressed',
-                        String(b.dataset.variant === variant));
-                });
-                updateAriaHidden();
-                trackEvent('variant_switch', {
-                    sku: 'RG-0011',
-                    variant: variant,
-                    timestamp: new Date().toISOString(),
-                });
+            let dragging = false;
+            let dragStart = 0;
+            const xToPct = (clientX) => {
+                const rect = stack.getBoundingClientRect();
+                if (rect.width === 0) return 50;
+                return ((clientX - rect.left) / rect.width) * 100;
+            };
+            handle.addEventListener('pointerdown', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                dragging = true;
+                dragStart = getSliderPos();
+                if (handle.setPointerCapture) {
+                    try { handle.setPointerCapture(e.pointerId); } catch (_) {}
+                }
+                setSliderPos(xToPct(e.clientX));
+            });
+            handle.addEventListener('pointermove', (e) => {
+                if (!dragging) return;
+                e.stopPropagation();
+                setSliderPos(xToPct(e.clientX));
+            });
+            const endDrag = (e) => {
+                if (!dragging) return;
+                e.stopPropagation();
+                dragging = false;
+                if (handle.releasePointerCapture) {
+                    try { handle.releasePointerCapture(e.pointerId); } catch (_) {}
+                }
+                const finalPos = getSliderPos();
+                if (Math.abs(finalPos - dragStart) > 1) {
+                    trackEvent('variant_slider_drag', {
+                        sku: 'RG-0011',
+                        from: Math.round(dragStart),
+                        to: Math.round(finalPos),
+                        timestamp: new Date().toISOString(),
+                    });
+                }
+            };
+            handle.addEventListener('pointerup', endDrag);
+            handle.addEventListener('pointercancel', endDrag);
+            handle.addEventListener('click', (e) => e.stopPropagation());
+
+            const sliderKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
+                                'Home', 'End', 'PageUp', 'PageDown'];
+            handle.addEventListener('keydown', (e) => {
+                if (sliderKeys.includes(e.key)) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const current = getSliderPos();
+                    const step = e.shiftKey ? 10 : 5;
+                    let next = current;
+                    switch (e.key) {
+                        case 'ArrowLeft':  case 'ArrowDown': next = current - step; break;
+                        case 'ArrowRight': case 'ArrowUp':   next = current + step; break;
+                        case 'PageDown':                      next = current - 20;   break;
+                        case 'PageUp':                        next = current + 20;   break;
+                        case 'Home':                          next = 0;              break;
+                        case 'End':                           next = 100;            break;
+                    }
+                    setSliderPos(next);
+                    trackEvent('variant_slider_key', {
+                        sku: 'RG-0011',
+                        position: Math.round(Math.max(0, Math.min(100, next))),
+                        key: e.key,
+                        timestamp: new Date().toISOString(),
+                    });
+                } else if (e.key === ' ' || e.key === 'Enter') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
             });
         })();
     </script>
