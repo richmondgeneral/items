@@ -102,8 +102,28 @@ RG-XXXX/
 ├── detail.{jpeg|png}  # Close-up or alternate view
 ├── mark.png           # Maker's mark, signature, or stamp
 ├── label.png          # Original labels, tags, or certificates
+├── restored.jpg       # AI-restored "as restored" variant (see below)
 └── [custom].{jpeg|png} # Other specific images (e.g., titlepage.jpeg)
 ```
+
+### `restored.jpg` — As Found / As Restored variant (conservation pattern)
+
+When [`refresh_item_image.py --both`](../skills/square-image-upload/scripts/refresh_item_image.py) runs against an item, it produces two cleanup variants — one preserving visible damage (truthful condition documentation) and one with damage repaired (restored look). The preserved variant is what goes to Square as the storefront primary; the restored variant is saved here as `restored.jpg`.
+
+The item card template detects `restored.jpg` at page load and reveals a small "As Found / As Restored" pill toggle over the hero image. Items without `restored.jpg` look identical to the pre-toggle layout. Defaults to "As Found" (honest condition snapshot).
+
+This is intentional: Richmond General is part-storefront, part-museum. Customers see actual condition first; the restored view is opt-in context, not the default sales image. Especially important for books, where collectors specifically want to see wear, foxing, missing dust jackets, etc.
+
+**Producing `restored.jpg`** is automatic when you run:
+
+```bash
+python3 ../skills/square-image-upload/scripts/refresh_item_image.py \
+    --item-id <ITEM_ID> --both
+```
+
+The script uploads the preserved variant to Square in-place and copies the restored variant into `items/RG-XXXX/restored.jpg`. No manual HTML editing required when starting from the current template.
+
+Future-proofing note: the template's `.variant-stack` data model is shared with a planned **drag-to-reveal slider** (Phase 2). When that lands, the pill toggle is swapped for a slider handle and the rest of the wiring stays identical — no per-item migration beyond the template edit.
 
 ### Naming Conventions
 
