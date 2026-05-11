@@ -191,7 +191,7 @@ cp RG-XXXX-hero-converted.jpeg RG-XXXX/hero.jpeg
 - Files organized in `RG-XXXX/` folder
 
 **Requirements:**
-- `SQUARE_ACCESS_TOKEN` set in environment
+- `SQUARE_ACCESS_TOKEN` resolved via shell env (auto-exported by `~/.zshrc` from macOS Keychain), with project `.env` as fallback. See `richmondgeneral/.env.example` for setup.
 - `REMOVEBG_API_KEY` set in environment (get at remove.bg/api)
 
 ### Manual Workflow (Alternative)

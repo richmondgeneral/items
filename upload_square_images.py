@@ -5,8 +5,10 @@ Uploads hero and detail images to Square catalog items via the Catalog API.
 
 Usage:
   1. Put all images in the same folder as this script (or update paths below)
-  2. Set your access token:
-     export SQUARE_ACCESS_TOKEN="your_token_here"
+  2. Square token is auto-loaded from the shell env (`~/.zshrc` pulls it from
+     macOS Keychain entry `SQUARE_ACCESS_TOKEN`). Fallback: project `.env`.
+     To set the Keychain entry:
+       security add-generic-password -U -a "$USER" -s SQUARE_ACCESS_TOKEN -w '<token>' -A
   3. Run: python3 upload_square_images.py
 
 Note: RG-0004 (Chase Japan Plaques) needs a hero image - only the maker's mark photo exists.
@@ -212,10 +214,14 @@ def main():
         print("❌ ERROR: SQUARE_ACCESS_TOKEN not set!")
         print("=" * 60)
         print()
-        print("Set it with:")
-        print('  export SQUARE_ACCESS_TOKEN="<YOUR_PRODUCTION_TOKEN>"')
+        print("Resolution order: shell env (~/.zshrc → Keychain) → project .env.")
         print()
-        print("Then run this script again.")
+        print("To add to Keychain (once):")
+        print("  security add-generic-password -U -a \"$USER\" \\")
+        print("      -s SQUARE_ACCESS_TOKEN -w '<token>' -A \\")
+        print("      -j 'Richmond General Square API production token'")
+        print()
+        print("Or open a new shell so ~/.zshrc re-exports the existing Keychain entry.")
         return
     
     print("=" * 60)
