@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Orphan Annie 1926 Comic Strips — Iridescent V2 | Richmond General</title>
+<meta name="robots" content="noindex" />
+
+<!--
+  iridescent-v2 — paper-feel-first revision of ./iridescent.html
+
+  Lesson from v1: the foil-over-photo treatment competed with the
+  product photograph; the cursor-reactive layering had no place to
+  land where it didn't fight the image. The flip mechanism — the
+  whole point of these cards — was also stripped in v1, which was
+  the actual deal-breaker.
+
+  V2 priorities:
+    1. Flip stays. Click anywhere or press Enter/Space; same behavior
+       as RG-0007/index.html, untouched inside the wrapper.
+    2. Subtle cursor-driven tilt on the WHOLE assembly (~5°). Wraps
+       the flip-card so the tilt and flip compose cleanly.
+    3. Texture per face: specular spotlight, edge sheen, film grain.
+       Cursor-reactive on whichever face is currently showing.
+    4. Foil sheen masked to the CARD-STOCK regions only:
+         - Front: the .front-info block (white card with gold border)
+         - Back:  the .back-header banner (charcoal letterhead)
+       NEVER over the product photo, never over the story text.
+    5. Page backdrop matches the canonical card (cream gradient), not
+       v1's charcoal vignette — that was theatre that made the foil
+       pop in unrealistic ways.
+
+  Dropped from v1:
+    - Conic diffraction sweep (.iri-2) — was motion-decoration; the
+      flip + tilt provide motion already
+    - Rainbow / multi-color foil — paper feel matters more than glaze
+    - Outer glow halo behind card — read as hologram, not paper
+    - Charcoal page backdrop — see (5) above
+
+  ← back to canonical: ./index.html
+  ← back to v1 (foil over everything, no flip): ./iridescent.html
+-->
+
+<!-- SEO meta tags omitted — this is a test, noindex'd -->
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --rg-gold: #C9A961;
+    --rg-cream: #F5F1E8;
+    --rg-charcoal: #2C2C2C;
+    --rg-brown: #6B4423;
+    --rg-shadow: rgba(44, 44, 44, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background: linear-gradient(135deg, #F5F1E8 0%, #E8E2D5 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  /* ── tilt wrapper: outer perspective frame for cursor lean ────────── */
+  .card-container {
+    perspective: 1500px;
+    width: 100%;
+    max-width: 420px;
+  }
+  /* The tilt wrapper is what cursor-tracking rotates. The flip-card
+     lives INSIDE it and does its own rotateY(180) on click; the two
+     transforms compose without interfering (each on its own element). */
+  .card-tilt {
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform .08s linear;
+    will-change: transform;
+  }
+
+  /* ── flip-card: unchanged behavior from RG-0007/index.html ────────── */
+  .flip-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 5 / 7;
+    min-height: 550px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .flip-card.flipped { transform: rotateY(180deg); }
+  .flip-card:focus { outline: 3px solid var(--rg-gold); outline-offset: 4px; }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px var(--rg-shadow), 0 8px 25px var(--rg-shadow);
+    overflow: hidden;
+    background: white;
+  }
+
+  /* ── FRONT (mirrors index.html) ───────────────────────────────────── */
+  .card-front { display: flex; flex-direction: column; }
+
+  .item-image-container {
+    flex: 1 1 0;
+    min-height: 0;
+    background: var(--rg-cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    position: relative;
+  }
+  .item-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .sku-badge {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: var(--rg-charcoal);
+    color: white;
+    font-size: 0.7rem; font-weight: 600;
+    padding: 0.3rem 0.6rem; border-radius: 4px;
+    letter-spacing: 0.5px;
+    z-index: 2;
+  }
+
+  .front-info {
+    flex-shrink: 0;
+    padding: 1.25rem 1.5rem;
+    background: white;
+    border-top: 3px solid var(--rg-gold);
+    position: relative;
+    /* Foil sheen sits inside .front-info via ::after. See foil rules below. */
+  }
+  .item-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 600;
+    color: var(--rg-charcoal);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+  .item-era {
+    font-size: 0.85rem;
+    color: var(--rg-brown);
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+  .front-footer {
+    flex-shrink: 0;
+    height: 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .item-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--rg-charcoal);
+  }
+  .flip-hint {
+    font-size: 0.75rem;
+    color: #888;
+    display: flex; align-items: center; gap: 0.3rem;
+    line-height: 1;
+  }
+  .flip-icon { width: 16px; height: 16px; }
+
+  /* ── BACK (mirrors index.html) ────────────────────────────────────── */
+  .card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    background: white;
+  }
+  .back-header {
+    background: var(--rg-charcoal);
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    /* Foil sheen sits inside .back-header via ::after. See foil rules below. */
+  }
+  .back-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 600;
+    position: relative; z-index: 1;
+  }
+  .back-sku {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    position: relative; z-index: 1;
+  }
+  .story-section {
+    flex: 1;
+    padding: 1.25rem 1.5rem;
+    overflow-y: auto;
+  }
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--rg-gold);
+    margin-bottom: 0.5rem;
+  }
+  .story-text { font-size: 0.9rem; line-height: 1.7; color: #444; margin-bottom: 1rem; }
+  .story-text p { margin-bottom: 0.75rem; }
+  .details-grid { display: grid; grid-template-columns: 1fr; gap: 0.5rem; margin-bottom: 1rem; }
+  .detail-item {
+    display: flex; justify-content: space-between;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.85rem;
+  }
+  .detail-label { color: #888; }
+  .detail-value { font-weight: 500; color: var(--rg-charcoal); }
+  .buy-button {
+    background: var(--rg-gold);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 6px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.85rem; font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .buy-button:hover { background: #B8963A; transform: translateY(-1px); }
+  .back-footer {
+    flex-shrink: 0;
+    padding: 1rem 1.5rem;
+    background: var(--rg-cream);
+    border-top: 1px solid #ddd;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .qr-section { display: flex; align-items: center; gap: 0.75rem; }
+  .qr-code { width: 60px; height: 60px; background: white; padding: 4px; border-radius: 4px; }
+  .qr-code img { width: 100%; height: 100%; }
+  .qr-text { font-size: 0.7rem; color: #666; line-height: 1.4; }
+  .qr-text strong { display: block; color: var(--rg-charcoal); font-size: 0.8rem; }
+  .brand-strip {
+    flex-shrink: 0;
+    text-align: center;
+    padding: 0.6rem;
+    background: var(--rg-charcoal);
+    color: white;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+  .brand-strip a { color: var(--rg-gold); text-decoration: none; }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     EFFECT LAYERS — applied per face, cursor-reactive, pointer-events:none.
+     Each face hosts a .face-fx wrapper carrying the three texture layers.
+  ───────────────────────────────────────────────────────────────────── */
+
+  .face-fx {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    overflow: hidden;
+  }
+
+  /* specular spotlight — pure white bloom following the cursor */
+  .face-fx .spec {
+    position: absolute; inset: 0;
+    background: radial-gradient(
+      55% 55% at var(--mx, 50%) var(--my, 50%),
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.25) 14%,
+      rgba(255, 255, 255, 0.08) 32%,
+      rgba(255, 255, 255, 0) 62%
+    );
+    mix-blend-mode: soft-light;
+    opacity: calc(0.45 + var(--hov, 0) * 0.35);
+  }
+
+  /* film grain — static SVG fractal noise, subtle */
+  .face-fx .grain {
+    position: absolute; inset: -4%;
+    opacity: 0.10;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.0 -.3'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size: 220px 220px;
+  }
+
+  /* edge sheen — angled bright strip on the card rim, follows cursor X.
+     Masked to the border ring only via dual-mask trick. */
+  .face-fx .edge {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(calc((var(--mxr, 0.5) - 0.5) * 180deg + 90deg),
+        rgba(255, 255, 255, 0) 35%,
+        rgba(255, 255, 255, 0.32) 50%,
+        rgba(255, 255, 255, 0) 65%);
+    -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    mix-blend-mode: screen;
+    opacity: calc(0.25 + var(--hov, 0) * 0.5);
+  }
+
+  /* Foil-on-stock — gold gradient masked to the .front-info and
+     .back-header areas. The gradient angle shifts subtly with cursor X
+     so it reads as a real foil catching light, not a static decoration. */
+  .front-info::after,
+  .back-header::after {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        calc(95deg + (var(--mxr, 0.5) - 0.5) * 30deg),
+        rgba(201, 169, 97, 0)      30%,
+        rgba(212, 185, 120, 0.32)  50%,
+        rgba(201, 169, 97, 0)      70%
+      );
+    mix-blend-mode: overlay;
+    opacity: calc(0.55 + var(--hov, 0) * 0.45);
+    transition: opacity .25s ease;
+  }
+  /* On the dark .back-header, soft-light reads truer than overlay. */
+  .back-header::after { mix-blend-mode: soft-light; }
+
+  /* Print: same posture as the canonical card. No effects, flat layout. */
+  @media print {
+    body { background: white; padding: 0; }
+    .card-container { max-width: 100%; }
+    .card-tilt { transform: none !important; }
+    .flip-card { transform: none !important; cursor: default; }
+    .card-face { box-shadow: none; position: relative; }
+    .card-back { transform: none; display: block; margin-top: 1rem; }
+    .face-fx { display: none; }
+    .front-info::after, .back-header::after { display: none; }
+  }
+  @media (max-width: 480px) {
+    body { padding: 1rem; }
+    .card-container { max-width: 360px; }
+  }
+  /* Reduced motion: drop the tilt entirely, keep flip + static texture. */
+  @media (prefers-reduced-motion: reduce) {
+    .card-tilt { transform: none !important; }
+    .face-fx .spec, .face-fx .edge { opacity: 0; }
+  }
+</style>
+</head>
+<body>
+  <div class="card-container">
+    <div class="card-tilt" id="cardTilt">
+      <div class="flip-card" id="card" tabindex="0" role="button"
+           aria-label="Item info card. Press Enter or click to flip.">
+
+        <!-- FRONT -->
+        <div class="card-face card-front">
+          <div class="item-image-container">
+            <div class="sku-badge">RG-0007</div>
+            <img src="hero.jpeg" alt="Little Orphan Annie 1926 Comic Strips" class="item-image">
+          </div>
+          <div class="front-info">
+            <!-- ::after on .front-info paints the foil sheen over this area -->
+            <h1 class="item-title">Little Orphan Annie: 86 Original Strips (1926 Era)</h1>
+            <p class="item-era">1926 Americana • 1979 Dover Reprint</p>
+            <div class="front-footer">
+              <span class="item-price">$15</span>
+              <span class="flip-hint">
+                Tap to learn more
+                <svg class="flip-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+          <!-- Texture layers ride above the card-front content. -->
+          <div class="face-fx" aria-hidden="true">
+            <div class="spec"></div>
+            <div class="grain"></div>
+            <div class="edge"></div>
+          </div>
+        </div>
+
+        <!-- BACK -->
+        <div class="card-face card-back">
+          <div class="back-header">
+            <!-- ::after on .back-header paints the foil sheen over this banner -->
+            <h2 class="back-title">The Story</h2>
+            <span class="back-sku">RG-0007</span>
+          </div>
+          <div class="story-section">
+            <div class="section-label">Description</div>
+            <div class="story-text">
+              <p>A Dover Publications reprint featuring 86 original comic strips from 1926 — the earliest years of America's beloved curly-haired orphan.</p>
+              <p>This collection captures Annie's adventures in "Cosmic City" where she and Sandy search for a new home while Daddy Warbucks is away. Features the classic storyline of tight-fisted Mr. Pinchpenny trying to foreclose on the kind-hearted Futile family.</p>
+            </div>
+            <div class="section-label">Details</div>
+            <div class="details-grid">
+              <div class="detail-item"><span class="detail-label">Publisher</span><span class="detail-value">Dover (1979)</span></div>
+              <div class="detail-item"><span class="detail-label">ISBN</span><span class="detail-value">0-486-24420-2</span></div>
+              <div class="detail-item"><span class="detail-label">Format</span><span class="detail-value">Trade Paperback, 58 pages</span></div>
+              <div class="detail-item"><span class="detail-label">Size</span><span class="detail-value">6½" × 10½"</span></div>
+              <div class="detail-item"><span class="detail-label">Content</span><span class="detail-value">86 strips from 1926</span></div>
+              <div class="detail-item"><span class="detail-label">Condition</span><span class="detail-value">Good</span></div>
+            </div>
+          </div>
+          <div class="back-footer">
+            <div class="qr-section">
+              <div class="qr-code"><img src="qr-code.png" alt="Scan to purchase"></div>
+              <div class="qr-text">
+                <strong>Scan to Buy</strong>
+                Quick checkout
+              </div>
+            </div>
+            <a href="https://square.link/u/TVz9VBP9" class="buy-button" target="_blank" rel="noopener">Buy Now</a>
+          </div>
+          <div class="brand-strip">
+            RICHMOND GENERAL · <a href="https://www.richmondgeneral.com">richmondgeneral.com</a>
+          </div>
+          <!-- Texture layers ride above the card-back content. -->
+          <div class="face-fx" aria-hidden="true">
+            <div class="spec"></div>
+            <div class="grain"></div>
+            <div class="edge"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── flip behavior — identical to RG-0007/index.html ────────────────
+    const card = document.getElementById('card');
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.classList.toggle('flipped');
+      }
+    });
+  </script>
+
+  <script>
+    // ── cursor-driven tilt + effect controller ─────────────────────────
+    //
+    // Writes --mx, --my, --mxr, --myr, --hov, --rx, --ry on .card-tilt;
+    // those custom props cascade down to the effect layers per face.
+    // The tilt is gentler than v1 (5° max vs. 12°) so the card reads as
+    // good cardstock leaning, not a hologram performing.
+    (function () {
+      const wrap = document.getElementById('cardTilt');
+      if (!wrap) return;
+
+      const TILT_DEG = 5;        // subtle paper lean
+      const EASE     = 0.14;
+      const EASE_HOV = 0.08;
+
+      const target  = { x: 0.5, y: 0.5, hov: 0 };
+      const current = { x: 0.5, y: 0.5, hov: 0 };
+
+      const reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const ease    = reduceMotion ? 1 : EASE;
+      const easeHov = reduceMotion ? 1 : EASE_HOV;
+
+      function onMove(e) {
+        const r = wrap.getBoundingClientRect();
+        target.x = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+        target.y = Math.max(0, Math.min(1, (e.clientY - r.top)  / r.height));
+      }
+      function onEnter() { target.hov = 1; }
+      function onLeave() {
+        target.hov = 0;
+        target.x = 0.5;
+        target.y = 0.5;
+      }
+      function onTouchMove(e) {
+        if (!e.touches || !e.touches[0]) return;
+        const t = e.touches[0];
+        const r = wrap.getBoundingClientRect();
+        target.x = Math.max(0, Math.min(1, (t.clientX - r.left) / r.width));
+        target.y = Math.max(0, Math.min(1, (t.clientY - r.top)  / r.height));
+        target.hov = 1;
+      }
+      function onTouchEnd() { onLeave(); }
+
+      wrap.addEventListener('mousemove',  onMove,      { passive: true });
+      wrap.addEventListener('mouseenter', onEnter,     { passive: true });
+      wrap.addEventListener('mouseleave', onLeave,     { passive: true });
+      wrap.addEventListener('touchstart', onTouchMove, { passive: true });
+      wrap.addEventListener('touchmove',  onTouchMove, { passive: true });
+      wrap.addEventListener('touchend',   onTouchEnd,  { passive: true });
+
+      function tick() {
+        current.x   += (target.x   - current.x)   * ease;
+        current.y   += (target.y   - current.y)   * ease;
+        current.hov += (target.hov - current.hov) * easeHov;
+
+        const x = current.x, y = current.y, h = current.hov;
+        const rx = (0.5 - y) * TILT_DEG * h * 2;
+        const ry = (x - 0.5) * TILT_DEG * h * 2;
+
+        wrap.style.setProperty('--mx',  (x * 100).toFixed(2) + '%');
+        wrap.style.setProperty('--my',  (y * 100).toFixed(2) + '%');
+        wrap.style.setProperty('--mxr', x.toFixed(4));
+        wrap.style.setProperty('--myr', y.toFixed(4));
+        wrap.style.setProperty('--hov', h.toFixed(4));
+        wrap.style.setProperty('--rx',  rx.toFixed(2) + 'deg');
+        wrap.style.setProperty('--ry',  ry.toFixed(2) + 'deg');
+
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
+  </script>
+
+  <!-- PRICE_DISPLAY_FORMATTER: visual-only strip of trailing .00 -->
+  <script>
+    (() => {
+      const moneyPattern = /\$([0-9]+)\.00\b/g;
+      const formatMoneyText = (text) => text.replace(moneyPattern, '$$$1');
+      const targets = document.querySelectorAll('.item-price, .sold-meta');
+      targets.forEach((el) => {
+        if (!el || !el.textContent) return;
+        const updated = formatMoneyText(el.textContent);
+        if (updated !== el.textContent) el.textContent = updated;
+      });
+    })();
+  </script>
+</body>
+</html>
