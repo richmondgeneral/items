@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>RG-0007 · Iridescent test | Richmond General</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="noindex" />
+
+<!--
+  Sibling experiment to ./index.html — applies the brand iridescent
+  treatment from ../../brand/iridescent-card.html to a real RG item card
+  (RG-0007 hero + title + era + price) so we can see how the effects
+  read on an actual product photograph instead of the prototype's
+  abstract art.
+
+  Effects layered (all six, all on, default brand-restricted intensities):
+    - 3D pointer-tilt
+    - Iridescent foil (gold band only, no rainbow)
+    - Secondary diffraction band
+    - Specular spotlight
+    - Outer gold glow
+    - Edge sheen
+    - Film grain
+
+  Differs from the canonical RG-0007/index.html:
+    - No flip-card / back face — front-only test
+    - Cursor-reactive instead of click-flip
+    - Reduced motion / touch: handled inline; effects degrade to static
+
+  If this reads "right," the win condition for the brushstroke is met
+  and we can promote one or more effect layers into the real flip card.
+  If it reads weird, we throw this file away.
+
+  ← back to canonical card: ./index.html
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* Richmond General brand palette */
+    --rg-gold:       #C9A961;
+    --rg-gold-light: #D4B978;
+    --rg-cream:      #F5F1E8;
+    --rg-cream-dark: #E8E2D5;
+    --rg-charcoal:   #2C2C2C;
+    --rg-brown:      #6B4423;
+    --rg-shadow:     rgba(44, 44, 44, 0.12);
+
+    /* Stage: charcoal so the foil reads as foil. To compare on a cream
+       backdrop (more storefront-like), swap to --rg-cream/--rg-cream-dark. */
+    --bg-a: #1d1d1f;
+    --bg-b: #2c2c2c;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: radial-gradient(120% 80% at 50% 40%, var(--bg-b), var(--bg-a) 70%);
+    color: var(--rg-cream);
+    font-family: 'Source Sans Pro', sans-serif;
+    overflow: hidden;
+  }
+  body { display: grid; place-items: center; }
+
+  /* ── ambient page chrome (matches brand iridescent demo) ───────────── */
+  .meta {
+    position: fixed; left: 24px; top: 22px;
+    font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(245, 241, 232, 0.5);
+    font-weight: 300;
+  }
+  .meta b { color: var(--rg-gold); font-weight: 600; letter-spacing: .22em; }
+  .hint {
+    position: fixed; right: 24px; bottom: 18px;
+    font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(245, 241, 232, 0.4);
+    font-weight: 300;
+  }
+  .back-to-card {
+    position: fixed; left: 24px; bottom: 18px;
+    font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(245, 241, 232, 0.55);
+    font-weight: 300;
+    text-decoration: none;
+  }
+  .back-to-card:hover { color: var(--rg-gold); }
+
+  /* ── stage + card ──────────────────────────────────────────────────── */
+  .stage {
+    width: 100%; height: 100%;
+    display: grid; place-items: center;
+    perspective: 1400px;
+    perspective-origin: 50% 50%;
+  }
+
+  /* 5:7 aspect, matches existing RG flip card; min-height matches index.html */
+  .card-wrap {
+    position: relative;
+    width: 360px; height: 504px;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  .card {
+    position: relative;
+    width: 100%; height: 100%;
+    border-radius: 12px;
+    transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transform-style: preserve-3d;
+    transition: transform .08s linear;
+  }
+
+  /* ── card body (mirrors RG-0007/index.html .card-front layout) ─────── */
+  .card-inner {
+    position: absolute; inset: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow:
+      0 30px 60px -20px rgba(0, 0, 0, 0.55),
+      0 12px 24px -8px rgba(0, 0, 0, 0.45),
+      0 1px 0 rgba(255, 255, 255, 0.35) inset,
+      0 0 0 0.5px rgba(0, 0, 0, 0.4);
+    transform: translateZ(0);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .item-image-container {
+    flex: 1 1 0;
+    min-height: 0;
+    background: var(--rg-cream);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.5rem;
+    position: relative;
+  }
+  .item-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    /* Important: image must sit BELOW the iridescent layers in stacking,
+       which is the natural source-order outcome (img is in card-inner,
+       effect divs come after). No z-index gymnastics needed. */
+  }
+  .sku-badge {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: var(--rg-charcoal);
+    color: white;
+    font-size: 0.7rem; font-weight: 600;
+    padding: 0.3rem 0.6rem; border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .front-info {
+    flex-shrink: 0;
+    padding: 1.25rem 1.5rem;
+    background: white;
+    border-top: 3px solid var(--rg-gold);
+    display: flex; flex-direction: column; gap: 0.35rem;
+  }
+  .item-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 600;
+    color: var(--rg-charcoal);
+    line-height: 1.3;
+  }
+  .item-era {
+    font-size: 0.85rem;
+    color: var(--rg-brown);
+    font-weight: 400;
+  }
+  .front-footer {
+    flex-shrink: 0;
+    padding: 0 1.5rem 1.25rem;
+    background: white;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .item-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--rg-charcoal);
+  }
+  .test-tag {
+    font-size: 0.7rem;
+    color: rgba(0,0,0,0.4);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     Effect layers (gold-band restricted, from brand/iridescent-card.html)
+  ───────────────────────────────────────────────────────────────────── */
+
+  /* outer gold glow halo — behind the card, tracks pointer */
+  .glow {
+    position: absolute;
+    inset: -40px;
+    border-radius: 22px;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(var(--glow-size, 90px) at var(--mx, 50%) var(--my, 50%),
+        hsl(var(--hue, 42) 60% 62% / calc(var(--hov, 0) * 0.7))  0%,
+        hsl(calc(var(--hue, 42) - 12) 55% 50% / calc(var(--hov, 0) * 0.4)) 40%,
+        transparent 75%);
+    filter: blur(22px) saturate(125%);
+    transition: opacity .25s ease;
+  }
+
+  /* iridescent foil layer 1: radial gold gradient, narrow band */
+  .iri {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+      radial-gradient(120% 90% at var(--mx, 50%) var(--my, 50%),
+        hsl(48 75% 82% / calc(var(--iri, .95) * 0.55)) 0%,
+        hsl(42 60% 65% / calc(var(--iri, .95) * 0.48)) 22%,
+        hsl(36 55% 48% / calc(var(--iri, .95) * 0.42)) 45%,
+        hsl(30 45% 35% / calc(var(--iri, .95) * 0.32)) 70%,
+        hsl(48 70% 78% / calc(var(--iri, .95) * 0.28)) 100%
+      ),
+      repeating-linear-gradient(
+        calc(70deg + (var(--mxr, 0.5) - 0.5) * 60deg),
+        hsl(48 75% 82% / calc(var(--iri, .95) * 0.16))  0px,
+        hsl(42 60% 60% / calc(var(--iri, .95) * 0.16))  6px,
+        hsl(36 55% 45% / calc(var(--iri, .95) * 0.16)) 12px,
+        hsl(30 40% 32% / calc(var(--iri, .95) * 0.16)) 18px,
+        hsl(42 60% 60% / calc(var(--iri, .95) * 0.16)) 24px,
+        hsl(48 75% 82% / calc(var(--iri, .95) * 0.16)) 30px
+      );
+    mix-blend-mode: soft-light;
+    filter: contrast(var(--iri-contrast, 1.2)) saturate(1.15);
+    opacity: calc(0.18 + var(--hov, 0) * 0.55);
+    transition: opacity .25s ease;
+  }
+  /* layer 2: secondary conic diffraction sweep */
+  .iri.iri-2 {
+    background:
+      conic-gradient(from calc(var(--mxr, 0.5) * 360deg - 90deg) at var(--mx, 50%) var(--my, 50%),
+        hsl(48 70% 78% / calc(var(--iri, .95) * 0.20)),
+        hsl(42 60% 60% / calc(var(--iri, .95) * 0.20)),
+        hsl(36 55% 45% / calc(var(--iri, .95) * 0.20)),
+        hsl(30 45% 35% / calc(var(--iri, .95) * 0.20)),
+        hsl(42 60% 60% / calc(var(--iri, .95) * 0.20)),
+        hsl(48 70% 78% / calc(var(--iri, .95) * 0.20))
+      );
+    mix-blend-mode: overlay;
+    opacity: calc(0.10 + var(--hov, 0) * 0.4);
+    filter: blur(2px) saturate(1.15);
+  }
+
+  /* specular spotlight */
+  .spec {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: radial-gradient(
+      var(--spec-size, 55%) var(--spec-size, 55%) at var(--mx, 50%) var(--my, 50%),
+      rgba(255, 255, 255, calc(var(--spec, .85) * 0.85)) 0%,
+      rgba(255, 255, 255, calc(var(--spec, .85) * 0.45)) 12%,
+      rgba(255, 255, 255, calc(var(--spec, .85) * 0.15)) 30%,
+      rgba(255, 255, 255, 0) var(--spec-sharp, 62%)
+    );
+    mix-blend-mode: soft-light;
+    opacity: calc(0.45 + var(--hov, 0) * 0.4);
+  }
+
+  /* film grain (SVG fractal noise) */
+  .grain {
+    position: absolute; inset: -4%;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: var(--noise, 0.18);
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.3 -.2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size: 220px 220px;
+  }
+
+  /* edge sheen (angled bright strip on rim, follows cursor X) */
+  .edge {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+      linear-gradient(calc((var(--mxr, 0.5) - 0.5) * 180deg + 90deg),
+        rgba(255, 255, 255, 0) 35%,
+        rgba(255, 255, 255, calc(var(--edge, .5) * 0.55)) 50%,
+        rgba(255, 255, 255, 0) 65%);
+    -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    mix-blend-mode: screen;
+    opacity: calc(0.3 + var(--hov, 0) * 0.5);
+  }
+
+  /* crisp inner stroke for material edge */
+  .stroke {
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow:
+      0 0 0 0.5px rgba(0, 0, 0, 0.45) inset,
+      0 0 0 1.5px rgba(255, 255, 255, 0.14) inset;
+  }
+</style>
+</head>
+<body>
+
+<div class="meta"><b>Specimen · RG-0007</b> &nbsp;·&nbsp; Iridescent test (all six layers, brand-restricted)</div>
+<div class="hint">Move the cursor over the card</div>
+<a class="back-to-card" href="./index.html">← back to canonical card</a>
+
+<div class="stage">
+  <div class="card-wrap" id="cardWrap">
+    <div class="card" id="card">
+
+      <!-- outer glow sits behind everything (z-index: -1) -->
+      <div class="glow" aria-hidden="true"></div>
+
+      <div class="card-inner">
+        <div class="item-image-container">
+          <span class="sku-badge">RG-0007</span>
+          <img class="item-image" src="hero.jpeg"
+               alt="Little Orphan Annie 1926 Comic Strips — Dover reprint cover">
+        </div>
+
+        <div class="front-info">
+          <div class="item-title">Little Orphan Annie: 86 Original Strips</div>
+          <div class="item-era">1926 Americana · 1979 Dover Reprint · Harold Gray</div>
+        </div>
+
+        <div class="front-footer">
+          <div class="item-price">$15.00</div>
+          <div class="test-tag">Iridescent test</div>
+        </div>
+
+        <!-- Effect layers, in stacking order. All have pointer-events:none. -->
+        <div class="iri"   aria-hidden="true"></div>
+        <div class="iri iri-2" aria-hidden="true"></div>
+        <div class="spec"  aria-hidden="true"></div>
+        <div class="grain" aria-hidden="true"></div>
+        <div class="edge"  aria-hidden="true"></div>
+        <div class="stroke" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Cursor-driven effect controller — same shape as the brand demo's
+  // controller, minus React. Pointer position drives all six effect
+  // layers via CSS custom properties on .card. Honors reduced-motion
+  // and falls through to touch (tap-and-hold sweeps the effect).
+
+  (function () {
+    const wrap = document.getElementById('cardWrap');
+    const card = document.getElementById('card');
+    if (!wrap || !card) return;
+
+    // Tuned per brand demo — less aggressive than the original prototype.
+    // The card should read as a printed object, not a hologram.
+    const TILT_DEG       = 12;
+    const HUE_BASE       = 42;   // brand gold
+    const HUE_SPREAD     = 22;   // narrow band only
+    const GLOW_SIZE_PX   = 90;
+    const SPEC_SIZE_PCT  = 55;
+    const SPEC_SHARP_PCT = 62;
+    const NOISE_OPACITY  = 0.18;
+    const EDGE_INTENSITY = 0.5;
+    const IRI_INTENSITY  = 0.95;
+    const IRI_CONTRAST   = 1.2;
+    const EASE           = 0.14;
+    const EASE_HOV       = 0.08;
+
+    const target  = { x: 0.5, y: 0.5, hov: 0 };
+    const current = { x: 0.5, y: 0.5, hov: 0 };
+
+    const reducedMotion = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const ease    = reducedMotion ? 1 : EASE;
+    const easeHov = reducedMotion ? 1 : EASE_HOV;
+
+    function onMove(e) {
+      const r = wrap.getBoundingClientRect();
+      target.x = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+      target.y = Math.max(0, Math.min(1, (e.clientY - r.top)  / r.height));
+    }
+    function onEnter() { target.hov = 1; }
+    function onLeave() {
+      target.hov = 0;
+      target.x = 0.5;
+      target.y = 0.5;
+    }
+    function onTouchMove(e) {
+      if (!e.touches || !e.touches[0]) return;
+      const t = e.touches[0];
+      const r = wrap.getBoundingClientRect();
+      target.x = Math.max(0, Math.min(1, (t.clientX - r.left) / r.width));
+      target.y = Math.max(0, Math.min(1, (t.clientY - r.top)  / r.height));
+      target.hov = 1;
+    }
+    function onTouchEnd() { onLeave(); }
+
+    wrap.addEventListener('mousemove',  onMove,     { passive: true });
+    wrap.addEventListener('mouseenter', onEnter,    { passive: true });
+    wrap.addEventListener('mouseleave', onLeave,    { passive: true });
+    wrap.addEventListener('touchstart', onTouchMove,{ passive: true });
+    wrap.addEventListener('touchmove',  onTouchMove,{ passive: true });
+    wrap.addEventListener('touchend',   onTouchEnd, { passive: true });
+
+    // write static defaults once
+    card.style.setProperty('--iri',          IRI_INTENSITY);
+    card.style.setProperty('--iri-contrast', IRI_CONTRAST);
+    card.style.setProperty('--spec',         0.85);
+    card.style.setProperty('--spec-size',    SPEC_SIZE_PCT + '%');
+    card.style.setProperty('--spec-sharp',   SPEC_SHARP_PCT + '%');
+    card.style.setProperty('--noise',        NOISE_OPACITY);
+    card.style.setProperty('--glow',         0.7);
+    card.style.setProperty('--glow-size',    GLOW_SIZE_PX + 'px');
+    card.style.setProperty('--edge',         EDGE_INTENSITY);
+
+    function tick() {
+      current.x   += (target.x   - current.x)   * ease;
+      current.y   += (target.y   - current.y)   * ease;
+      current.hov += (target.hov - current.hov) * easeHov;
+
+      const x = current.x, y = current.y, h = current.hov;
+      const rx = (0.5 - y) * TILT_DEG * h * 2;
+      const ry = (x - 0.5) * TILT_DEG * h * 2;
+      const hue = HUE_BASE + (x - 0.5) * HUE_SPREAD;
+
+      card.style.setProperty('--mx',  (x * 100).toFixed(2) + '%');
+      card.style.setProperty('--my',  (y * 100).toFixed(2) + '%');
+      card.style.setProperty('--mxr', x.toFixed(4));
+      card.style.setProperty('--myr', y.toFixed(4));
+      card.style.setProperty('--hov', h.toFixed(4));
+      card.style.setProperty('--rx',  rx.toFixed(2) + 'deg');
+      card.style.setProperty('--ry',  ry.toFixed(2) + 'deg');
+      card.style.setProperty('--hue', hue.toFixed(2));
+
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  })();
+</script>
+
+</body>
+</html>
