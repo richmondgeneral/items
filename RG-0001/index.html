@@ -19,7 +19,11 @@
     <style>
         :root {
             --rg-gold: #C9A961;
+            --rg-gold-light: #D4B978;
             --rg-cream: #F5F1E8;
+            --rg-wall: #EFE6D2;
+            --rg-wall-edge: #E5DBC0;
+            --rg-cream-dark: #E8E2D5;
             --rg-charcoal: #2C2C2C;
             --rg-brown: #6B4423;
             --rg-shadow: rgba(44, 44, 44, 0.15);
@@ -33,7 +37,7 @@
         
         body {
             font-family: 'Source Sans Pro', sans-serif;
-            background: linear-gradient(135deg, #F5F1E8 0%, #E8E2D5 100%);
+            background: linear-gradient(135deg, var(--rg-wall) 0%, var(--rg-wall-edge) 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -76,6 +80,20 @@
         .card-front {
             display: flex;
             flex-direction: column;
+            /* iridescent tilt (composes inside .flip-card's flip rotation) */
+            transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+            transition: transform .08s linear;
+            transform-style: preserve-3d;
+            /* hue-tracked gold halo via box-shadow so it isn't clipped by
+               .card-face's overflow:hidden. Halo scales with --hov so the
+               idle card has only its normal drop-shadow. */
+            box-shadow:
+                0 20px 60px var(--rg-shadow),
+                0 8px 25px var(--rg-shadow),
+                0 0 calc(36px * var(--hov, 0)) calc(2px * var(--hov, 0))
+                    hsla(var(--hue, 42), 60%, 62%, calc(var(--hov, 0) * 0.45)),
+                0 0 calc(64px * var(--hov, 0)) calc(4px * var(--hov, 0))
+                    hsla(var(--hue, 42), 55%, 55%, calc(var(--hov, 0) * 0.25));
         }
         
         .item-image-container {
@@ -167,10 +185,28 @@
         
         /* BACK SIDE */
         .card-back {
-            transform: rotateY(180deg);
+            /* rotateY(180deg) flips the face. The tilt vars compose AFTER,
+               with --ry negated so a left/right twist looks the same on the
+               back as on the front (Y axis is mirrored once flipped, but
+               the X axis is preserved, so --rx stays positive). */
+            transform: rotateY(180deg)
+                       rotateX(var(--rx, 0deg))
+                       rotateY(calc(var(--ry, 0deg) * -1));
+            transition: transform .08s linear;
+            transform-style: preserve-3d;
             display: flex;
             flex-direction: column;
             background: white;
+            /* Same hue-tracked gold halo as the front. The drop-shadow stack
+               at the top reproduces what .card-face provides, then the two
+               --hov-scaled layers below paint the active glow. */
+            box-shadow:
+                0 20px 60px var(--rg-shadow),
+                0 8px 25px var(--rg-shadow),
+                0 0 calc(36px * var(--hov, 0)) calc(2px * var(--hov, 0))
+                    hsla(var(--hue, 42), 60%, 62%, calc(var(--hov, 0) * 0.45)),
+                0 0 calc(64px * var(--hov, 0)) calc(4px * var(--hov, 0))
+                    hsla(var(--hue, 42), 55%, 55%, calc(var(--hov, 0) * 0.25));
         }
         
         .back-header {
@@ -321,6 +357,126 @@
             line-height: inherit;
         }
         
+        /* ───────────────────────────────────────────────────────────
+           IRIDESCENT FOIL FINISH (premium-item treatment)
+           Adapted from the brand demo at /brand/iridescent-card.html.
+           Layers sit inside .card-front; all are pointer-events:none
+           and aria-hidden so they don't interfere with click-to-flip
+           or screen readers. Hue band is narrowed to brand gold —
+           no rainbow. Tilt + animation are gated to hover via JS so
+           idle cards burn zero CPU. Disabled in print and for users
+           with prefers-reduced-motion (see media queries below + JS).
+           ─────────────────────────────────────────────────────────── */
+
+        .iri-foil,
+        .iri-foil-2,
+        .iri-spec,
+        .iri-grain,
+        .iri-edge {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        /* iridescent foil — gold/amber/bronze stops, narrow hue band */
+        .iri-foil {
+            background:
+              radial-gradient(120% 90% at var(--mx, 50%) var(--my, 50%),
+                hsl(48 75% 82% / 0.50)  0%,
+                hsl(42 60% 65% / 0.44) 22%,
+                hsl(36 55% 48% / 0.38) 45%,
+                hsl(30 45% 35% / 0.28) 70%,
+                hsl(48 70% 78% / 0.24) 100%
+              ),
+              repeating-linear-gradient(
+                calc(70deg + (var(--mxr, 0.5) - 0.5) * 60deg),
+                hsl(48 75% 82% / 0.14)  0px,
+                hsl(42 60% 60% / 0.14)  6px,
+                hsl(36 55% 45% / 0.14) 12px,
+                hsl(30 40% 32% / 0.14) 18px,
+                hsl(42 60% 60% / 0.14) 24px,
+                hsl(48 75% 82% / 0.14) 30px
+              );
+            mix-blend-mode: soft-light;
+            filter: contrast(1.15) saturate(1.1);
+            opacity: calc(0.16 + var(--hov, 0) * 0.5);
+            transition: opacity .25s ease;
+        }
+
+        /* secondary conic diffraction sweep, slower */
+        .iri-foil-2 {
+            background:
+              conic-gradient(from calc(var(--mxr, 0.5) * 360deg - 90deg) at var(--mx, 50%) var(--my, 50%),
+                hsl(48 70% 78% / 0.18),
+                hsl(42 60% 60% / 0.18),
+                hsl(36 55% 45% / 0.18),
+                hsl(30 45% 35% / 0.18),
+                hsl(42 60% 60% / 0.18),
+                hsl(48 70% 78% / 0.18)
+              );
+            mix-blend-mode: overlay;
+            opacity: calc(0.08 + var(--hov, 0) * 0.35);
+            filter: blur(2px) saturate(1.1);
+        }
+
+        /* specular white spotlight */
+        .iri-spec {
+            background: radial-gradient(
+              55% 55% at var(--mx, 50%) var(--my, 50%),
+              rgba(255, 255, 255, 0.72) 0%,
+              rgba(255, 255, 255, 0.38) 12%,
+              rgba(255, 255, 255, 0.12) 30%,
+              rgba(255, 255, 255, 0) 62%
+            );
+            mix-blend-mode: soft-light;
+            opacity: calc(0.4 + var(--hov, 0) * 0.4);
+        }
+
+        /* SVG fractal noise grain */
+        .iri-grain {
+            inset: -4%;
+            opacity: calc(0.16 * var(--hov, 0));
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.3 -.2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+            background-size: 220px 220px;
+        }
+
+        /* edge sheen strip on rim */
+        .iri-edge {
+            background:
+              linear-gradient(calc((var(--mxr, 0.5) - 0.5) * 180deg + 90deg),
+                rgba(255, 255, 255, 0) 35%,
+                rgba(255, 255, 255, 0.28) 50%,
+                rgba(255, 255, 255, 0) 65%);
+            -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+            -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+            mix-blend-mode: screen;
+            opacity: calc(0.25 + var(--hov, 0) * 0.4);
+        }
+
+        /* respect reduced motion: hide the dynamic layers entirely
+           (the gold border + cream backdrop still read as on-brand) */
+        @media (prefers-reduced-motion: reduce) {
+            .iri-foil, .iri-foil-2, .iri-spec, .iri-grain, .iri-edge {
+                display: none;
+            }
+            .card-front {
+                transform: none !important;
+                transition: none !important;
+                box-shadow: 0 20px 60px var(--rg-shadow),
+                            0 8px 25px var(--rg-shadow) !important;
+            }
+            /* back keeps its 180° flip orientation but drops tilt + halo */
+            .card-back {
+                transform: rotateY(180deg) !important;
+                transition: none !important;
+                box-shadow: 0 20px 60px var(--rg-shadow),
+                            0 8px 25px var(--rg-shadow) !important;
+            }
+        }
+
         /* PRINT STYLES - For 4x6 or 5x7 card stock */
         @media print {
             @page {
@@ -354,10 +510,19 @@
 
             .card-front {
                 margin-bottom: 0.5in;
+                transform: none !important;
+                transition: none !important;
+            }
+
+            .iri-foil, .iri-foil-2,
+            .iri-spec, .iri-grain, .iri-edge {
+                display: none !important;
             }
 
             .card-back {
                 transform: rotateY(0) !important;
+                transition: none !important;
+                box-shadow: none !important;
                 page-break-before: always;
             }
             
@@ -496,7 +661,7 @@
         <div class="flip-card" tabindex="0" role="button" aria-expanded="false" aria-describedby="flip-instructions" aria-label="Little Orphan Annie info card">
             
             <!-- FRONT SIDE -->
-            <div class="card-face card-front">
+            <div class="card-face card-front" data-finish="iridescent">
                 <div class="item-image-container">
                     <span class="sku-badge">RG-0001</span>
                     <img src="./hero.jpeg" alt="Little Orphan Annie 1931 Daily Strips book" class="item-image">
@@ -517,6 +682,13 @@
                         </span>
                     </div>
                 </div>
+
+                <!-- foil-finish overlays, in stacking order (all pointer-events:none) -->
+                <div class="iri-foil"   aria-hidden="true"></div>
+                <div class="iri-foil-2" aria-hidden="true"></div>
+                <div class="iri-spec"   aria-hidden="true"></div>
+                <div class="iri-grain"  aria-hidden="true"></div>
+                <div class="iri-edge"   aria-hidden="true"></div>
             </div>
             
             <!-- BACK SIDE -->
@@ -629,6 +801,110 @@
             });
         });
     </script>
+    <!-- IRIDESCENT FOIL CONTROLLER: on-demand rAF, hover-gated -->
+    <script>
+        (function () {
+            const cardContainer = document.querySelector('.card-container');
+            const flipCard      = document.querySelector('.flip-card');
+            const cardFront     = document.querySelector('.card-front[data-finish="iridescent"]');
+            if (!cardContainer || !flipCard || !cardFront) return;
+
+            // Skip the dynamic effect entirely for users who prefer
+            // reduced motion. The CSS @media block already hides the
+            // visual layers; we just don't bother wiring listeners.
+            if (window.matchMedia &&
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+
+            // ── tuning constants (match brand demo) ─────────────────
+            const TILT_DEG   = 12;
+            const HUE_BASE   = 42;   // brand gold
+            const HUE_SPREAD = 22;   // ±11° around base
+            const EASE       = 0.14;
+            const EASE_HOV   = 0.10;
+            const REST_EPS   = 0.001;
+
+            // target = where the values WANT to go, current = where they are
+            const target  = { x: 0.5, y: 0.5, hov: 0 };
+            const current = { x: 0.5, y: 0.5, hov: 0 };
+            let rafId = 0;
+
+            function writeProps() {
+                const x = current.x, y = current.y, h = current.hov;
+                const rx  = (0.5 - y) * TILT_DEG * h * 2;
+                const ry  = (x - 0.5) * TILT_DEG * h * 2;
+                const hue = HUE_BASE + (x - 0.5) * HUE_SPREAD;
+                // Variables go on .flip-card (the shared ancestor) so BOTH
+                // .card-front and .card-back inherit them. The back uses
+                // --rx/--ry/--hov/--hue for tilt + halo only; the front
+                // additionally uses --mx/--my/--mxr for the foil/spec
+                // overlays via the inheritance chain.
+                const s = flipCard.style;
+                s.setProperty('--mx',  (x * 100).toFixed(2) + '%');
+                s.setProperty('--my',  (y * 100).toFixed(2) + '%');
+                s.setProperty('--mxr', x.toFixed(4));
+                s.setProperty('--hov', h.toFixed(4));
+                s.setProperty('--rx',  rx.toFixed(2) + 'deg');
+                s.setProperty('--ry',  ry.toFixed(2) + 'deg');
+                s.setProperty('--hue', hue.toFixed(2));
+            }
+
+            function tick() {
+                current.x   += (target.x   - current.x)   * EASE;
+                current.y   += (target.y   - current.y)   * EASE;
+                current.hov += (target.hov - current.hov) * EASE_HOV;
+                writeProps();
+
+                // settled at idle? stop the loop entirely — no idle CPU.
+                const settled =
+                    target.hov === 0 &&
+                    current.hov < REST_EPS &&
+                    Math.abs(current.x - 0.5) < REST_EPS &&
+                    Math.abs(current.y - 0.5) < REST_EPS;
+
+                if (settled) {
+                    current.hov = 0; current.x = 0.5; current.y = 0.5;
+                    writeProps();
+                    rafId = 0;
+                    return;
+                }
+                rafId = requestAnimationFrame(tick);
+            }
+
+            function startTick() {
+                if (!rafId) rafId = requestAnimationFrame(tick);
+            }
+
+            // Listeners go on .flip-card (the stable hover area) and we
+            // read coordinates against .card-container — which has NO
+            // transform applied to it ever, so its rect is rock-solid
+            // through both the iridescent tilt AND the .8s flip animation.
+            // The effect tracks on both faces (no isFlipped() guard) so
+            // the tilt and the gold halo persist across a flip — the card
+            // feels like a single physical object that you've turned over.
+
+            flipCard.addEventListener('mousemove', (e) => {
+                const r = cardContainer.getBoundingClientRect();
+                target.x = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+                target.y = Math.max(0, Math.min(1, (e.clientY - r.top)  / r.height));
+                // hov=1 inside mousemove (not only mouseenter) so the
+                // effect re-engages on the first cursor twitch in any
+                // scenario where mouseenter wouldn't refire — e.g. after
+                // a keyboard-triggered flip.
+                target.hov = 1;
+                startTick();
+            }, { passive: true });
+
+            flipCard.addEventListener('mouseleave', () => {
+                target.hov = 0;
+                target.x = 0.5;
+                target.y = 0.5;
+                startTick();   // wake the loop so it can smooth back to idle
+            }, { passive: true });
+        })();
+    </script>
+
     <!-- PRICE_DISPLAY_FORMATTER: visual-only strip of trailing .00 -->
     <script>
         (() => {
