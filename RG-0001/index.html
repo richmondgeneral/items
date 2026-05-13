@@ -366,6 +366,21 @@
            no rainbow. Tilt + animation are gated to hover via JS so
            idle cards burn zero CPU. Disabled in print and for users
            with prefers-reduced-motion (see media queries below + JS).
+
+           TODO (refactor at 3rd foil card): this CSS block plus the
+           matching JS controller below are duplicated verbatim on
+           every iridescent card (~180 lines combined). At card 3,
+           extract to template/iridescent-finish.css and
+           template/iridescent-controller.js, included by every card
+           and gated at runtime on data-finish="iridescent". Until
+           then, the inline cost is bearable and the pattern stays
+           visible per-card.
+
+           Foil-after-sale policy: foil is set EDITORIALLY at intake
+           and PERSISTS through sale. The brand stance is "this was
+           always a curated rarity, regardless of sold status" — a
+           museum doesn't strip the gold leaf after deaccession. See
+           brand/docs/plans/2026-05-13-iridescent-treatment.md.
            ─────────────────────────────────────────────────────────── */
 
         .iri-foil,
