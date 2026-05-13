@@ -58,13 +58,25 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   /* ─────────────────────────────────────────────────────────────────────
-     Wall variants. body[data-wall="..."] toggles the page background +
-     text color. Picker UI bottom-right writes the data-wall and the URL
-     hash so reloads and sharing preserve the choice.
+     Page wall — aged paper.
+
+     Chosen after the 5-wall brainstorm (cream / bone / aged paper / sage /
+     charcoal). Eliminations:
+       - cream:    card-on-wall tone collision, card stops reading as object
+       - bone:     too gallery, not heritage enough for RG voice
+       - charcoal: rounded card corners halo against hard dark wall
+       - sage:     subtle green cast read as sickly, not "heritage with intention"
+
+     Aged paper sits warmer than cream, pulls the neutral toward gold so the
+     palette reads harmoniously, and keeps clear tonal separation between the
+     WHITE cards and the WARM TAN wall.
+
+     Sage is preserved as a backup variant — append `#wall=sage` to the URL
+     to flip the page to sage for comparison without redeploying.
   ───────────────────────────────────────────────────────────────────── */
   body {
-    --wall-from: #F5F1E8;          /* cream (default — matches canonical) */
-    --wall-to:   #E8E2D5;
+    --wall-from: #EFE6D2;          /* aged paper — chosen */
+    --wall-to:   #E3DAC0;
     --wall-text: var(--rg-charcoal);
 
     font-family: 'Source Sans Pro', sans-serif;
@@ -77,68 +89,9 @@
     padding: 2rem;
     transition: background 0.4s ease, color 0.4s ease;
   }
-  /* Option A1 — bone. Cooler, more gallery-white. */
-  body[data-wall="bone"]       { --wall-from: #FBF9F4; --wall-to: #F0EDE6; }
-  /* Option A2 — aged paper. Warmer, more apothecary. */
-  body[data-wall="aged-paper"] { --wall-from: #EFE6D2; --wall-to: #E3DAC0; }
-  /* Option A3 — sage-tinted neutral. Heritage with intention. */
-  body[data-wall="sage"]       { --wall-from: #E8E8DC; --wall-to: #DBDCCB; }
-  /* Option B — charcoal. Dark museum wall, cards as cream paper. */
-  body[data-wall="charcoal"]   {
-    --wall-from: #2C2C2C;
-    --wall-to:   #1A1A1A;
-    --wall-text: var(--rg-cream);
-  }
-
-  /* Wall picker — tiny floating control, top-left. Click to switch walls.
-     Active wall gets a gold underline. */
-  .wall-picker {
-    position: fixed;
-    top: 16px; left: 16px;
-    z-index: 100;
-    display: flex; gap: 4px; align-items: center;
-    padding: 6px 8px;
-    background: rgba(255, 255, 255, 0.72);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-            backdrop-filter: blur(20px) saturate(160%);
-    border: 0.5px solid rgba(0, 0, 0, 0.08);
-    border-radius: 10px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 10.5px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(44, 44, 44, 0.7);
-  }
-  .wall-picker .wp-label { padding-right: 6px; opacity: 0.55; }
-  .wall-picker button {
-    appearance: none;
-    border: none;
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    padding: 4px 8px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.15s, color 0.15s;
-  }
-  .wall-picker button:hover { background: rgba(0, 0, 0, 0.05); color: #2C2C2C; }
-  .wall-picker button[aria-pressed="true"] {
-    background: rgba(201, 169, 97, 0.18);
-    color: #2C2C2C;
-    box-shadow: inset 0 -2px 0 var(--rg-gold);
-  }
-  /* On charcoal, swap picker chrome to dark-glass. */
-  body[data-wall="charcoal"] .wall-picker {
-    background: rgba(40, 40, 40, 0.7);
-    border-color: rgba(255, 255, 255, 0.1);
-    color: rgba(245, 241, 232, 0.65);
-  }
-  body[data-wall="charcoal"] .wall-picker button:hover { background: rgba(255, 255, 255, 0.06); color: #F5F1E8; }
-  body[data-wall="charcoal"] .wall-picker button[aria-pressed="true"] {
-    background: rgba(201, 169, 97, 0.22);
-    color: #F5F1E8;
-  }
+  /* Backup wall — sage-tinted neutral, accessible via #wall=sage. Kept in
+     code so we can flip back without re-deriving the color. */
+  body[data-wall="sage"] { --wall-from: #E8E8DC; --wall-to: #DBDCCB; }
 
   /* ── tilt wrapper: outer perspective frame for cursor lean ────────── */
   .card-container {
@@ -436,17 +389,6 @@
 </style>
 </head>
 <body>
-  <!-- Wall picker — switches the page background between brainstorm options.
-       Active wall persists via URL hash so reloads keep the choice. -->
-  <nav class="wall-picker" aria-label="Wall variant picker">
-    <span class="wp-label">Wall</span>
-    <button type="button" data-wall="cream"       aria-pressed="true">Cream</button>
-    <button type="button" data-wall="bone"        aria-pressed="false">Bone</button>
-    <button type="button" data-wall="aged-paper"  aria-pressed="false">Aged paper</button>
-    <button type="button" data-wall="sage"        aria-pressed="false">Sage</button>
-    <button type="button" data-wall="charcoal"    aria-pressed="false">Charcoal</button>
-  </nav>
-
   <div class="card-container">
     <div class="card-tilt" id="cardTilt">
       <div class="flip-card" id="card" tabindex="0" role="button"
@@ -529,30 +471,12 @@
   </div>
 
   <script>
-    // ── wall picker — toggles body[data-wall] + URL hash for shareable preview
+    // Optional wall override: `#wall=sage` in the URL flips to the backup
+    // wall. Anything else (or empty hash) leaves the default aged-paper wall
+    // baked into body's styles.
     (function () {
-      const VALID = ['cream', 'bone', 'aged-paper', 'sage', 'charcoal'];
-      const buttons = document.querySelectorAll('.wall-picker button[data-wall]');
-
-      function applyWall(wall) {
-        if (!VALID.includes(wall)) wall = 'cream';
-        if (wall === 'cream') document.body.removeAttribute('data-wall');
-        else document.body.setAttribute('data-wall', wall);
-        buttons.forEach((b) => {
-          b.setAttribute('aria-pressed', b.dataset.wall === wall ? 'true' : 'false');
-        });
-        // Update hash without scrolling. Empty for default so the URL stays clean.
-        const newHash = wall === 'cream' ? '' : '#wall=' + wall;
-        if (newHash !== location.hash) history.replaceState(null, '', location.pathname + location.search + newHash);
-      }
-
-      // Read initial from hash (#wall=charcoal → charcoal).
       const m = location.hash.match(/wall=([\w-]+)/);
-      applyWall(m ? m[1] : 'cream');
-
-      buttons.forEach((b) => {
-        b.addEventListener('click', () => applyWall(b.dataset.wall));
-      });
+      if (m && m[1] === 'sage') document.body.setAttribute('data-wall', 'sage');
     })();
   </script>
 
