@@ -364,6 +364,107 @@
             clip: rect(0, 0, 0, 0);
             border: 0;
         }
+
+        /* Mobile: card switches from fixed 5:7 aspect to a flexible
+           height so the back-side content can scroll without clipping. */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+                align-items: flex-start;
+            }
+
+            .card-container {
+                margin-bottom: 2rem;
+            }
+
+            .flip-card {
+                min-height: max(650px, 85vh);
+                aspect-ratio: auto;
+                height: auto;
+            }
+
+            .card-face {
+                position: absolute;
+                height: auto;
+                min-height: 100%;
+            }
+
+            .card-front {
+                display: flex;
+                flex-direction: column;
+                min-height: max(650px, 85vh);
+            }
+
+            .card-back {
+                position: absolute;
+                min-height: max(650px, 85vh);
+                overflow-y: auto;
+            }
+
+            .story-section {
+                padding: 1rem 1.25rem;
+            }
+
+            .item-title {
+                font-size: 1.05rem;
+            }
+
+            .story-text {
+                font-size: 0.82rem;
+                line-height: 1.5;
+                margin-bottom: 1rem;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .detail-item {
+                padding: 0.5rem 0.7rem;
+            }
+
+            .back-footer {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: stretch;
+            }
+
+            .qr-section {
+                justify-content: center;
+            }
+
+            .qr-code {
+                width: 50px;
+                height: 50px;
+            }
+
+            .qr-text {
+                font-size: 0.65rem;
+            }
+
+            .buy-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .flip-card,
+            .card-front,
+            .card-back {
+                min-height: max(600px, 90vh);
+            }
+
+            .back-header {
+                padding: 0.85rem 1.25rem;
+            }
+
+            .back-title {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
