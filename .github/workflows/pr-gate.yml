@@ -1,0 +1,111 @@
+name: PR Gate
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  # ── Job 1: item validation + hero size gate ──────────────────────────────
+  validate:
+    name: Validate items & hero sizes
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect item folders to validate
+        id: scope
+        run: |
+          BASE=${{ github.event.pull_request.base.sha }}
+
+          # Files changed in this PR
+          CHANGED=$(git diff --name-only "$BASE"...HEAD)
+
+          # If any shared files changed, validate every item
+          SHARED=$(echo "$CHANGED" | grep -E '^(index\.html|template/|validate-item\.sh|audit-items\.sh)' || true)
+          if [ -n "$SHARED" ]; then
+            ITEMS=$(ls -d RG-* 2>/dev/null | tr '\n' ' ')
+            echo "Shared files changed — validating all items"
+          else
+            ITEMS=$(echo "$CHANGED" | grep -oP '^RG-\d{4}' | sort -u | tr '\n' ' ')
+          fi
+
+          echo "items=${ITEMS}" >> "$GITHUB_OUTPUT"
+          echo "Scope: ${ITEMS:-none}"
+
+      - name: Run validate-item.sh
+        if: steps.scope.outputs.items != ''
+        run: |
+          FAILED=0
+          for item in ${{ steps.scope.outputs.items }}; do
+            [ -d "$item" ] || continue
+            echo "──────────────── $item ────────────────"
+            ./validate-item.sh "$item" || FAILED=1
+          done
+          exit $FAILED
+
+      - name: Audit all items (informational)
+        run: ./audit-items.sh || true
+
+      - name: Check hero image sizes (1 MB policy)
+        run: |
+          # Only gate on heroes that are NEW or CHANGED in this PR.
+          # Existing violations are tracked in GitHub issue #14.
+          BASE=${{ github.event.pull_request.base.sha }}
+          CHANGED_HEROES=$(git diff --name-only "$BASE"...HEAD | grep -E '^RG-[0-9]+/hero\.(jpeg|jpg|png)$' || true)
+
+          FAILED=0
+          LIMIT=$((1024 * 1024))
+          for hero in $CHANGED_HEROES; do
+            [ -f "$hero" ] || continue
+            SIZE=$(stat -c%s "$hero")
+            if [ "$SIZE" -gt "$LIMIT" ]; then
+              MB=$(awk "BEGIN {printf \"%.2f\", $SIZE/1048576}")
+              echo "::error file=$hero::${hero} is ${MB} MB — exceeds 1 MB policy (CLAUDE.md)"
+              FAILED=1
+            fi
+          done
+          if [ "$FAILED" -eq 1 ]; then
+            echo ""
+            echo "Re-compress the listed hero images to under 1 MB before merging."
+            echo "Tip: ImageOptim, TinyPNG, or 'convert -quality 80' (ImageMagick) work well."
+          fi
+          exit $FAILED
+
+  # ── Job 2: Playwright UI tests ───────────────────────────────────────────
+  playwright:
+    name: Playwright UI tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Playwright browsers
+        run: npx playwright install chromium --with-deps
+
+      - name: Run UI tests
+        run: npm run ui:test
+
+      - name: Upload artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts
+          path: qa-artifacts/
+          retention-days: 7

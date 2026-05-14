@@ -290,6 +290,7 @@
         .brand-strip a { color: var(--rg-gold); text-decoration: none; }
 
         .flip-card:focus { outline: 3px solid var(--rg-gold); outline-offset: 4px; }
+        .flip-card:focus:not(:focus-visible) { outline: none; }
 
         @media print {
             body { background: white; padding: 0; }
