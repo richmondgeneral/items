@@ -42,6 +42,11 @@ qa-artifacts/
 playwright-report/
 test-results/
 .playwright-cli/
+.playwright-mcp/
+output/
+
+# Claude Code session artifacts (worktrees + transcripts)
+.claude/
 
 # Working Images (use /assets/ or item folders instead)
 /*-converted.jpeg
