@@ -94,6 +94,7 @@
             cursor: pointer;
             transform-style: preserve-3d;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
         }
         
         .flip-card.flipped {
@@ -109,6 +110,7 @@
             box-shadow: 0 20px 60px var(--rg-shadow), 0 8px 25px var(--rg-shadow);
             overflow: hidden;
             background: white;
+            pointer-events: auto;
         }
         
         /* FRONT SIDE */
