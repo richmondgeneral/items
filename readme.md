@@ -121,6 +121,7 @@ Financial tracking (lot costs, ROI, margin analysis) lives in the private ops re
 ## Item Card Features
 
 - **Flip interaction** - Tap/click to flip between front (image/price) and back (story/details)
+- **Iridescent foil finish** - Optional premium treatment (`data-finish="iridescent"` on `.card-front`). Gold/amber foil layers, pointer-tracked tilt, hue-shifting halo. Hover-gated (zero idle CPU). Respects `prefers-reduced-motion` and hides in print. Currently on RG-0001 and RG-0003; at the 3rd foil card, CSS+JS extract to shared template files.
 - **QR code** - Links to Square payment for instant checkout
 - **Print-ready** - Cards render correctly for 4x6 or 5x7 card stock
 - **WCAG 2.1 AA accessible** - Keyboard navigation, screen reader support
@@ -139,7 +140,8 @@ When an item sells:
 
 **Colors:**
 - Gold: `#C9A961`
-- Cream: `#F5F1E8`
+- Cream (card paper): `#F5F1E8`
+- Aged Paper Wall: `#EFE6D2` → `#E5DBC0` (gradient)
 - Charcoal: `#2C2C2C`
 - Brown: `#6B4423`
 
