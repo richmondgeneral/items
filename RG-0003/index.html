@@ -158,13 +158,13 @@
         .flip-hint { font-size: 0.7rem; color: #888; display: flex; align-items: center; gap: 0.25rem; }
         .flip-icon { width: 14px; height: 14px; }
 
-        /* BACK SIDE — same tilt + halo as front, but --ry negated so a
-           left/right twist looks the same on both faces (Y axis is mirrored
-           once flipped). */
+        /* BACK SIDE — same tilt + halo as front. The baked-in rotateY(180deg)
+           cancels with .flip-card.flipped's own rotateY(180deg) when this face
+           is visible, so --rx and --ry compose the same as on the front. */
         .card-back {
             transform: rotateY(180deg)
                        rotateX(var(--rx, 0deg))
-                       rotateY(calc(var(--ry, 0deg) * -1));
+                       rotateY(var(--ry, 0deg));
             transition: transform .08s linear;
             transform-style: preserve-3d;
             display: flex;

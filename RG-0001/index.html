@@ -185,13 +185,12 @@
         
         /* BACK SIDE */
         .card-back {
-            /* rotateY(180deg) flips the face. The tilt vars compose AFTER,
-               with --ry negated so a left/right twist looks the same on the
-               back as on the front (Y axis is mirrored once flipped, but
-               the X axis is preserved, so --rx stays positive). */
+            /* The baked-in rotateY(180deg) cancels with .flip-card.flipped's
+               own rotateY(180deg) when this face is visible, so --rx and --ry
+               compose the same as on the front — same sign for both. */
             transform: rotateY(180deg)
                        rotateX(var(--rx, 0deg))
-                       rotateY(calc(var(--ry, 0deg) * -1));
+                       rotateY(var(--ry, 0deg));
             transition: transform .08s linear;
             transform-style: preserve-3d;
             display: flex;
