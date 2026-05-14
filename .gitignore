@@ -41,6 +41,7 @@ node_modules/
 qa-artifacts/
 playwright-report/
 test-results/
+.playwright-cli/
 
 # Working Images (use /assets/ or item folders instead)
 /*-converted.jpeg
