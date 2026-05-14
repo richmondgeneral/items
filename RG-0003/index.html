@@ -4,31 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pressed-Back Oak Swivel Bar Stool - Antique 1900s | Richmond General</title>
-    
+
     <!-- SEO Meta Tags -->
     <meta name="description" content="Sold archive: Antique American pressed-back oak bar stool from the early 1900s. Features carved scrollwork backrest, turned spindle supports, and swivel seat.">
     <meta property="og:title" content="Pressed-Back Oak Swivel Bar Stool - Antique 1900s | Richmond General">
     <meta property="og:description" content="Antique American oak bar stool with carved scrollwork and swivel seat. Classic Victorian craftsmanship.">
-    <meta property="og:image" content="https://richmondgeneral.github.io/items/RG-0003/hero.jpg">
+    <meta property="og:image" content="https://richmondgeneral.github.io/items/RG-0003/hero.jpeg">
     <meta property="og:url" content="https://richmondgeneral.github.io/items/RG-0003/">
     <meta property="og:type" content="product">
-    
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --rg-gold: #C9A961;
+            --rg-gold-light: #D4B978;
             --rg-cream: #F5F1E8;
             --rg-wall: #EFE6D2;
             --rg-wall-edge: #E5DBC0;
+            --rg-cream-dark: #E8E2D5;
             --rg-charcoal: #2C2C2C;
             --rg-brown: #6B4423;
             --rg-shadow: rgba(44, 44, 44, 0.15);
         }
-        
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: 'Source Sans Pro', sans-serif;
             background: linear-gradient(135deg, var(--rg-wall) 0%, var(--rg-wall-edge) 100%);
@@ -38,20 +40,21 @@
             align-items: center;
             padding: 2rem;
         }
-        
+
         .card-container { perspective: 1500px; width: 100%; max-width: 420px; }
-        
+
         .flip-card {
             position: relative;
             width: 100%;
             aspect-ratio: 5 / 7;
+            min-height: 550px;
             cursor: pointer;
             transform-style: preserve-3d;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         .flip-card.flipped { transform: rotateY(180deg); }
-        
+
         .card-face {
             position: absolute;
             width: 100%;
@@ -62,13 +65,28 @@
             overflow: hidden;
             background: white;
         }
-        
-        .card-front { 
-            display: flex; 
-            flex-direction: column; 
+
+        /* FRONT SIDE — iridescent tilt + hue-tracked halo composed inside the
+           flip rotation. Same pattern as RG-0001/index.html — tilt vars
+           (--rx/--ry) and halo vars (--hue/--hov) come from the cursor
+           controller below. The halo lives on box-shadow so it isn't clipped
+           by .card-face's overflow:hidden. */
+        .card-front {
+            display: flex;
+            flex-direction: column;
             height: 100%;
+            transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+            transition: transform .08s linear;
+            transform-style: preserve-3d;
+            box-shadow:
+                0 20px 60px var(--rg-shadow),
+                0 8px 25px var(--rg-shadow),
+                0 0 calc(36px * var(--hov, 0)) calc(2px * var(--hov, 0))
+                    hsla(var(--hue, 42), 60%, 62%, calc(var(--hov, 0) * 0.45)),
+                0 0 calc(64px * var(--hov, 0)) calc(4px * var(--hov, 0))
+                    hsla(var(--hue, 42), 55%, 55%, calc(var(--hov, 0) * 0.25));
         }
-        
+
         .item-image-container {
             flex: 1;
             min-height: 0;
@@ -80,9 +98,17 @@
             position: relative;
             overflow: hidden;
         }
-        
-        .item-image { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; }
-        
+
+        .item-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
+            /* lifts the product photo off the cream backdrop so it reads as
+               an object on paper, not a flat image — matches RG-0001 */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
         .sku-badge {
             position: absolute;
             top: 0.75rem;
@@ -95,7 +121,7 @@
             border-radius: 4px;
             letter-spacing: 0.5px;
         }
-        
+
         .front-info {
             flex-shrink: 0;
             padding: 1rem 1.25rem;
@@ -103,7 +129,7 @@
             border-top: 3px solid var(--rg-gold);
             min-height: 120px;
         }
-        
+
         .item-title {
             font-family: 'Playfair Display', serif;
             font-size: 1rem;
@@ -112,33 +138,47 @@
             line-height: 1.25;
             margin-bottom: 0.35rem;
         }
-        
+
         .item-era {
             font-size: 0.75rem;
             color: var(--rg-brown);
             font-weight: 400;
             margin-bottom: 0.5rem;
         }
-        
+
         .front-footer { display: flex; justify-content: space-between; align-items: center; }
-        
+
         .item-price {
             font-family: 'Playfair Display', serif;
             font-size: 1.25rem;
             font-weight: 700;
             color: var(--rg-charcoal);
         }
-        
+
         .flip-hint { font-size: 0.7rem; color: #888; display: flex; align-items: center; gap: 0.25rem; }
         .flip-icon { width: 14px; height: 14px; }
-        
+
+        /* BACK SIDE — same tilt + halo as front, but --ry negated so a
+           left/right twist looks the same on both faces (Y axis is mirrored
+           once flipped). */
         .card-back {
-            transform: rotateY(180deg);
+            transform: rotateY(180deg)
+                       rotateX(var(--rx, 0deg))
+                       rotateY(calc(var(--ry, 0deg) * -1));
+            transition: transform .08s linear;
+            transform-style: preserve-3d;
             display: flex;
             flex-direction: column;
             background: white;
+            box-shadow:
+                0 20px 60px var(--rg-shadow),
+                0 8px 25px var(--rg-shadow),
+                0 0 calc(36px * var(--hov, 0)) calc(2px * var(--hov, 0))
+                    hsla(var(--hue, 42), 60%, 62%, calc(var(--hov, 0) * 0.45)),
+                0 0 calc(64px * var(--hov, 0)) calc(4px * var(--hov, 0))
+                    hsla(var(--hue, 42), 55%, 55%, calc(var(--hov, 0) * 0.25));
         }
-        
+
         .back-header {
             background: var(--rg-charcoal);
             color: white;
@@ -147,12 +187,12 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .back-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; }
         .back-sku { font-size: 0.75rem; opacity: 0.8; }
-        
+
         .story-section { flex: 1; padding: 1.25rem 1.5rem; overflow-y: auto; }
-        
+
         .section-label {
             font-size: 0.65rem;
             font-weight: 600;
@@ -161,25 +201,25 @@
             color: var(--rg-gold);
             margin-bottom: 0.5rem;
         }
-        
+
         .story-text {
             font-size: 0.85rem;
             line-height: 1.6;
             color: var(--rg-charcoal);
             margin-bottom: 1.25rem;
         }
-        
+
         .details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0.75rem;
             margin-bottom: 1.25rem;
         }
-        
+
         .detail-item { background: var(--rg-cream); padding: 0.6rem 0.8rem; border-radius: 6px; }
         .detail-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px; color: #666; margin-bottom: 0.15rem; }
         .detail-value { font-size: 0.85rem; font-weight: 600; color: var(--rg-charcoal); }
-        
+
         .back-footer {
             padding: 1rem 1.5rem;
             background: var(--rg-cream);
@@ -188,33 +228,8 @@
             justify-content: space-between;
             align-items: center;
         }
-        
-        .qr-section { display: flex; align-items: center; gap: 0.75rem; }
-        .qr-code { width: 60px; height: 60px; background: white; padding: 4px; border-radius: 4px; }
-        .qr-code img { width: 100%; height: 100%; }
-        .qr-text { font-size: 0.7rem; color: #666; line-height: 1.4; }
-        .qr-text strong { display: block; color: var(--rg-charcoal); font-size: 0.8rem; }
-        
-        .buy-button {
-            background: var(--rg-gold);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.25rem;
-            border-radius: 6px;
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background 0.2s, transform 0.2s;
-        }
-        
-        .buy-button:hover { background: #B8963A; transform: translateY(-1px); }
 
-        .sku-badge.sold-badge {
-            background: #8A5A3B;
-        }
-
+        .sku-badge.sold-badge { background: #8A5A3B; }
         .item-price.sold-price {
             font-size: 1.05rem;
             color: #8A5A3B;
@@ -227,19 +242,13 @@
             gap: 0.35rem;
             width: 100%;
         }
-
         .sold-status {
             font-size: 0.8rem;
             font-weight: 700;
             color: var(--rg-charcoal);
             letter-spacing: 0.3px;
         }
-
-        .sold-meta {
-            font-size: 0.72rem;
-            color: #666;
-        }
-
+        .sold-meta { font-size: 0.72rem; color: #666; }
         .archive-link {
             display: inline-flex;
             width: fit-content;
@@ -249,11 +258,8 @@
             color: var(--rg-brown);
             text-decoration: none;
         }
+        .archive-link:hover { text-decoration: underline; }
 
-        .archive-link:hover {
-            text-decoration: underline;
-        }
-        
         .brand-strip {
             text-align: center;
             padding: 0.6rem;
@@ -262,9 +268,141 @@
             font-size: 0.7rem;
             letter-spacing: 1px;
         }
-        
+
         .brand-strip a { color: var(--rg-gold); text-decoration: none; }
-        
+
+        /* ───────────────────────────────────────────────────────────
+           IRIDESCENT FOIL FINISH (premium-item treatment)
+           Trigger: data-finish="iridescent" on .card-front. Layers
+           are inserted in markup only when the trigger is present;
+           the cursor controller below also bails out if it doesn't
+           find a .card-front[data-finish="iridescent"]. Matches the
+           pattern established in RG-0001/index.html.
+
+           TODO (refactor at 3rd foil card): this CSS block plus the
+           matching JS controller below are duplicated verbatim on
+           every iridescent card (~180 lines combined). At card 3,
+           extract to template/iridescent-finish.css and
+           template/iridescent-controller.js, included by every card
+           and gated at runtime on data-finish="iridescent". Until
+           then, the inline cost is bearable and the pattern stays
+           visible per-card.
+
+           Foil-after-sale policy: foil is set EDITORIALLY at intake
+           and PERSISTS through sale. The brand stance is "this was
+           always a curated rarity, regardless of sold status" — a
+           museum doesn't strip the gold leaf after deaccession. See
+           brand/docs/plans/2026-05-13-iridescent-treatment.md.
+           ─────────────────────────────────────────────────────────── */
+
+        .iri-foil,
+        .iri-foil-2,
+        .iri-spec,
+        .iri-grain,
+        .iri-edge {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        /* iridescent foil — gold/amber/bronze stops, narrow hue band */
+        .iri-foil {
+            background:
+              radial-gradient(120% 90% at var(--mx, 50%) var(--my, 50%),
+                hsl(48 75% 82% / 0.50)  0%,
+                hsl(42 60% 65% / 0.44) 22%,
+                hsl(36 55% 48% / 0.38) 45%,
+                hsl(30 45% 35% / 0.28) 70%,
+                hsl(48 70% 78% / 0.24) 100%
+              ),
+              repeating-linear-gradient(
+                calc(70deg + (var(--mxr, 0.5) - 0.5) * 60deg),
+                hsl(48 75% 82% / 0.14)  0px,
+                hsl(42 60% 60% / 0.14)  6px,
+                hsl(36 55% 45% / 0.14) 12px,
+                hsl(30 40% 32% / 0.14) 18px,
+                hsl(42 60% 60% / 0.14) 24px,
+                hsl(48 75% 82% / 0.14) 30px
+              );
+            mix-blend-mode: soft-light;
+            filter: contrast(1.15) saturate(1.1);
+            opacity: calc(0.16 + var(--hov, 0) * 0.5);
+            transition: opacity .25s ease;
+        }
+
+        /* secondary conic diffraction sweep, slower */
+        .iri-foil-2 {
+            background:
+              conic-gradient(from calc(var(--mxr, 0.5) * 360deg - 90deg) at var(--mx, 50%) var(--my, 50%),
+                hsl(48 70% 78% / 0.18),
+                hsl(42 60% 60% / 0.18),
+                hsl(36 55% 45% / 0.18),
+                hsl(30 45% 35% / 0.18),
+                hsl(42 60% 60% / 0.18),
+                hsl(48 70% 78% / 0.18)
+              );
+            mix-blend-mode: overlay;
+            opacity: calc(0.08 + var(--hov, 0) * 0.35);
+            filter: blur(2px) saturate(1.1);
+        }
+
+        /* specular white spotlight */
+        .iri-spec {
+            background: radial-gradient(
+              55% 55% at var(--mx, 50%) var(--my, 50%),
+              rgba(255, 255, 255, 0.72) 0%,
+              rgba(255, 255, 255, 0.38) 12%,
+              rgba(255, 255, 255, 0.12) 30%,
+              rgba(255, 255, 255, 0) 62%
+            );
+            mix-blend-mode: soft-light;
+            opacity: calc(0.4 + var(--hov, 0) * 0.4);
+        }
+
+        /* SVG fractal noise grain */
+        .iri-grain {
+            inset: -4%;
+            opacity: calc(0.16 * var(--hov, 0));
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.3 -.2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+            background-size: 220px 220px;
+        }
+
+        /* edge sheen strip on rim */
+        .iri-edge {
+            background:
+              linear-gradient(calc((var(--mxr, 0.5) - 0.5) * 180deg + 90deg),
+                rgba(255, 255, 255, 0) 35%,
+                rgba(255, 255, 255, 0.28) 50%,
+                rgba(255, 255, 255, 0) 65%);
+            -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+            -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+            mix-blend-mode: screen;
+            opacity: calc(0.25 + var(--hov, 0) * 0.4);
+        }
+
+        /* respect reduced motion: hide the dynamic layers entirely
+           (the gold border + cream backdrop still read as on-brand) */
+        @media (prefers-reduced-motion: reduce) {
+            .iri-foil, .iri-foil-2, .iri-spec, .iri-grain, .iri-edge {
+                display: none;
+            }
+            .card-front {
+                transform: none !important;
+                transition: none !important;
+                box-shadow: 0 20px 60px var(--rg-shadow),
+                            0 8px 25px var(--rg-shadow) !important;
+            }
+            .card-back {
+                transform: rotateY(180deg) !important;
+                transition: none !important;
+                box-shadow: 0 20px 60px var(--rg-shadow),
+                            0 8px 25px var(--rg-shadow) !important;
+            }
+        }
+
         .flip-card:focus { outline: 3px solid var(--rg-gold); outline-offset: 4px; }
 
         .sr-only {
@@ -283,18 +421,79 @@
             .card-container { max-width: 4in; }
             .flip-card { transform: none !important; }
             .card-face { position: relative; box-shadow: none; }
-            .card-front { margin-bottom: 0.5in; }
+            .card-front {
+                margin-bottom: 0.5in;
+                transform: none !important;
+                transition: none !important;
+                box-shadow: 0 20px 60px var(--rg-shadow),
+                            0 8px 25px var(--rg-shadow) !important;
+            }
             .card-back { transform: rotateY(0) !important; page-break-before: always; }
+            .iri-foil, .iri-foil-2, .iri-spec, .iri-grain, .iri-edge { display: none !important; }
             .flip-hint, .buy-button { display: none; }
+        }
+
+        /* Mobile: card switches from fixed 5:7 aspect to a flexible
+           height so the back-side content (story + details + sold
+           panel) can scroll without clipping. Adapted from RG-0001's
+           mobile block; .qr-* and .buy-button rules omitted because
+           sold items use .sold-status-panel instead. */
+        @media (max-width: 600px) {
+            body { padding: 1rem; align-items: flex-start; }
+            .card-container { margin-bottom: 2rem; }
+            .flip-card {
+                min-height: max(650px, 85vh);
+                aspect-ratio: auto;
+                height: auto;
+            }
+            .card-face {
+                position: absolute;
+                height: auto;
+                min-height: 100%;
+            }
+            .card-front {
+                display: flex;
+                flex-direction: column;
+                min-height: max(650px, 85vh);
+            }
+            .card-back {
+                position: absolute;
+                min-height: max(650px, 85vh);
+                overflow-y: auto;
+            }
+            .story-section { padding: 1rem 1.25rem; }
+            .item-title { font-size: 1.05rem; }
+            .story-text { font-size: 0.82rem; line-height: 1.5; margin-bottom: 1rem; }
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+            }
+            .detail-item { padding: 0.5rem 0.7rem; }
+            .back-footer {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: stretch;
+            }
+        }
+        @media (max-width: 480px) {
+            .flip-card,
+            .card-front,
+            .card-back {
+                min-height: max(600px, 90vh);
+            }
+            .back-header { padding: 0.85rem 1.25rem; }
+            .back-title { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
     <div class="card-container">
         <div class="flip-card" tabindex="0" role="button" aria-expanded="false" aria-describedby="flip-instructions" aria-label="Pressed-Back Oak Swivel Bar Stool info card (sold)">
-            
-            <!-- FRONT SIDE -->
-            <div class="card-face card-front">
+
+            <!-- FRONT SIDE — iridescent finish active. The data-finish attribute
+                 is the editorial trigger that the cursor controller looks for. -->
+            <div class="card-face card-front" data-finish="iridescent">
                 <div class="item-image-container">
                     <span class="sku-badge sold-badge">RG-0003 · SOLD</span>
                     <img src="hero.jpeg" alt="Pressed-Back Oak Swivel Bar Stool - Antique 1900s" class="item-image">
@@ -313,19 +512,26 @@
                         </span>
                     </div>
                 </div>
+
+                <!-- foil-finish overlays, in stacking order (all pointer-events:none) -->
+                <div class="iri-foil"   aria-hidden="true"></div>
+                <div class="iri-foil-2" aria-hidden="true"></div>
+                <div class="iri-spec"   aria-hidden="true"></div>
+                <div class="iri-grain"  aria-hidden="true"></div>
+                <div class="iri-edge"   aria-hidden="true"></div>
             </div>
-            
+
             <!-- BACK SIDE -->
             <div class="card-face card-back">
                 <div class="back-header">
                     <span class="back-title">The Story</span>
                     <span class="back-sku">RG-0003</span>
                 </div>
-                
+
                 <div class="story-section">
                     <p class="section-label">History & Craftsmanship</p>
                     <p class="story-text">This classic American pressed-back bar stool showcases the fine craftsmanship of the early 1900s. The ornate scrollwork on the backrest was created using a steam-press technique popular during the Victorian and Edwardian eras. Turned spindle supports and a swivel seat made these stools favorites in ice cream parlors, soda fountains, and home bars across America.</p>
-                    
+
                     <div class="details-grid">
                         <div class="detail-item">
                             <p class="detail-label">Era</p>
@@ -345,7 +551,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="back-footer">
                     <div class="sold-status-panel">
                         <span class="sold-status">Sold on December 6, 2025</span>
@@ -353,7 +559,7 @@
                         <a href="../" class="archive-link">Browse available items</a>
                     </div>
                 </div>
-                
+
                 <div class="brand-strip">
                     RICHMOND GENERAL · <a href="https://www.richmondgeneral.com">richmondgeneral.com</a>
                 </div>
@@ -364,6 +570,7 @@
     </div>
 
     <script>
+        // Flip card interaction
         const flipCard = document.querySelector('.flip-card');
 
         const updateAriaState = () => {
@@ -402,11 +609,94 @@
             }
         });
 
-        document.querySelector('.buy-button')?.addEventListener('click', (e) => {
-            e.stopPropagation();
-            trackEvent('buy_button_click', { sku: 'RG-0003', price: 25.00 });
-        });
+        // (No .buy-button on sold items; the click handler that lived
+        // here was a port artifact from the active-listing template and
+        // never had anything to bind to.)
     </script>
+
+    <!-- IRIDESCENT FOIL CONTROLLER: on-demand rAF, hover-gated.
+         Bails early if no .card-front[data-finish="iridescent"] is found —
+         which is how the editorial trigger gates the effect at runtime. -->
+    <script>
+        (function () {
+            const cardContainer = document.querySelector('.card-container');
+            const flipCard      = document.querySelector('.flip-card');
+            const cardFront     = document.querySelector('.card-front[data-finish="iridescent"]');
+            if (!cardContainer || !flipCard || !cardFront) return;
+
+            if (window.matchMedia &&
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+
+            const TILT_DEG   = 12;
+            const HUE_BASE   = 42;
+            const HUE_SPREAD = 22;
+            const EASE       = 0.14;
+            const EASE_HOV   = 0.10;
+            const REST_EPS   = 0.001;
+
+            const target  = { x: 0.5, y: 0.5, hov: 0 };
+            const current = { x: 0.5, y: 0.5, hov: 0 };
+            let rafId = 0;
+
+            function writeProps() {
+                const x = current.x, y = current.y, h = current.hov;
+                const rx  = (0.5 - y) * TILT_DEG * h * 2;
+                const ry  = (x - 0.5) * TILT_DEG * h * 2;
+                const hue = HUE_BASE + (x - 0.5) * HUE_SPREAD;
+                const s = flipCard.style;
+                s.setProperty('--mx',  (x * 100).toFixed(2) + '%');
+                s.setProperty('--my',  (y * 100).toFixed(2) + '%');
+                s.setProperty('--mxr', x.toFixed(4));
+                s.setProperty('--hov', h.toFixed(4));
+                s.setProperty('--rx',  rx.toFixed(2) + 'deg');
+                s.setProperty('--ry',  ry.toFixed(2) + 'deg');
+                s.setProperty('--hue', hue.toFixed(2));
+            }
+
+            function tick() {
+                current.x   += (target.x   - current.x)   * EASE;
+                current.y   += (target.y   - current.y)   * EASE;
+                current.hov += (target.hov - current.hov) * EASE_HOV;
+                writeProps();
+
+                const settled =
+                    target.hov === 0 &&
+                    current.hov < REST_EPS &&
+                    Math.abs(current.x - 0.5) < REST_EPS &&
+                    Math.abs(current.y - 0.5) < REST_EPS;
+
+                if (settled) {
+                    current.hov = 0; current.x = 0.5; current.y = 0.5;
+                    writeProps();
+                    rafId = 0;
+                    return;
+                }
+                rafId = requestAnimationFrame(tick);
+            }
+
+            function startTick() {
+                if (!rafId) rafId = requestAnimationFrame(tick);
+            }
+
+            flipCard.addEventListener('mousemove', (e) => {
+                const r = cardContainer.getBoundingClientRect();
+                target.x = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+                target.y = Math.max(0, Math.min(1, (e.clientY - r.top)  / r.height));
+                target.hov = 1;
+                startTick();
+            }, { passive: true });
+
+            flipCard.addEventListener('mouseleave', () => {
+                target.hov = 0;
+                target.x = 0.5;
+                target.y = 0.5;
+                startTick();
+            }, { passive: true });
+        })();
+    </script>
+
     <!-- PRICE_DISPLAY_FORMATTER: visual-only strip of trailing .00 -->
     <script>
         (() => {
