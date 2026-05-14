@@ -397,6 +397,15 @@
             outline: 3px solid var(--rg-gold);
             outline-offset: 4px;
         }
+
+        /* :focus-visible suppresses the outline for mouse-click focus
+           (which collides visually with the iridescent tilt because the
+           outline can't transform with the card). Belt-and-suspenders:
+           older browsers that don't understand :focus-visible keep the
+           original :focus behavior — a11y preserved. */
+        .flip-card:focus:not(:focus-visible) {
+            outline: none;
+        }
         
         .sr-only {
             position: absolute;
