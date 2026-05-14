@@ -542,7 +542,7 @@ All operational skills are maintained in:
 
 ### Available Skills
 
-- **rg-full-auto**: End-to-end item onboarding (appraisal → catalog → payment → publishing)
+- **rg-full-auto** (v6.0, autonomous default): End-to-end item onboarding (appraisal → catalog → payment → publishing). Use `--interactive` for the legacy supervised flow.
 - **rg-item-update**: Quick edits to existing catalog items (price, description, images, categories)
 - **image-processor**: Unified image processing with background removal and generation
 - **square-image-upload**: Upload/manage images in Square Catalog via API
