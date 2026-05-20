@@ -6,9 +6,9 @@
     <title>Kings of the Forest - 1892 Victorian Natural History | Richmond General</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Rare 1892 antique book with 235 wood engravings of wild animals. W.A. Foster, Charles Foster Publishing Philadelphia. Fair condition, includes free digital copy from Library of Congress.">
+    <meta name="description" content="Sold archive: Rare 1892 antique book with 235 wood engravings of wild animals. W.A. Foster, Charles Foster Publishing Philadelphia.">
     <meta property="og:title" content="Kings of the Forest - 1892 Victorian Natural History | Richmond General">
-    <meta property="og:description" content="Rare 1892 antique book with 235 wood engravings. Victorian treasure from Philadelphia.">
+    <meta property="og:description" content="Sold archive: 1892 antique book with 235 wood engravings. Victorian treasure from Philadelphia.">
     <meta property="og:image" content="https://richmondgeneral.github.io/items/RG-0002/hero.jpeg">
     <meta property="og:url" content="https://richmondgeneral.github.io/items/RG-0002/">
     <meta property="og:type" content="product">
@@ -221,7 +221,51 @@
         }
         
         .buy-button:hover { background: #B8963A; transform: translateY(-1px); }
-        
+
+        /* SOLD STATE */
+        .sku-badge.sold-badge {
+            background: #8A5A3B;
+        }
+
+        .item-price.sold-price {
+            font-size: 1.05rem;
+            color: #8A5A3B;
+            font-weight: 700;
+        }
+
+        .sold-status-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            width: 100%;
+        }
+
+        .sold-status {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--rg-charcoal);
+            letter-spacing: 0.3px;
+        }
+
+        .sold-meta {
+            font-size: 0.72rem;
+            color: #666;
+        }
+
+        .archive-link {
+            display: inline-flex;
+            width: fit-content;
+            margin-top: 0.15rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--rg-brown);
+            text-decoration: none;
+        }
+
+        .archive-link:hover {
+            text-decoration: underline;
+        }
+
         .brand-strip {
             text-align: center;
             padding: 0.6rem;
@@ -385,19 +429,19 @@
 </head>
 <body>
     <div class="card-container">
-        <div class="flip-card" tabindex="0" role="button" aria-expanded="false" aria-describedby="flip-instructions" aria-label="Kings of the Forest info card">
-            
+        <div class="flip-card" tabindex="0" role="button" aria-expanded="false" aria-describedby="flip-instructions" aria-label="Kings of the Forest info card (sold)">
+
             <!-- FRONT SIDE -->
             <div class="card-face card-front">
                 <div class="item-image-container">
-                    <span class="sku-badge">RG-0002</span>
+                    <span class="sku-badge sold-badge">RG-0002 · SOLD</span>
                     <img src="hero.jpeg" alt="Kings of the Forest - 1892 Antique Book" class="item-image">
                 </div>
                 <div class="front-info">
                     <h1 class="item-title">Kings of the Forest and Their Kindred Tribes</h1>
                     <p class="item-era">1892 • Victorian Natural History • 235 Wood Engravings</p>
                     <div class="front-footer">
-                        <span class="item-price">$35</span>
+                        <span class="item-price sold-price">Sold · $35.00</span>
                         <span class="flip-hint">
                             <svg class="flip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
@@ -445,16 +489,11 @@
                 </div>
                 
                 <div class="back-footer">
-                    <div class="qr-section">
-                        <div class="qr-code">
-                            <img src="qr-code.png" alt="Scan to purchase">
-                        </div>
-                        <div class="qr-text">
-                            <strong>Scan to Buy</strong>
-                            Quick checkout
-                        </div>
+                    <div class="sold-status-panel">
+                        <span class="sold-status">Sold on May 20, 2026</span>
+                        <span class="sold-meta">Final sale price: $35.00</span>
+                        <a href="../" class="archive-link">Browse available items</a>
                     </div>
-                    <a href="https://square.link/u/aug0H4mL" class="buy-button">Buy Now</a>
                 </div>
                 
                 <div class="brand-strip">
@@ -506,15 +545,6 @@
                     timestamp: new Date().toISOString()
                 });
             }
-        });
-
-        // Track payment link clicks (stop propagation to prevent card flip)
-        document.querySelector('.buy-button')?.addEventListener('click', (e) => {
-            e.stopPropagation();
-            trackEvent('buy_button_click', {
-                sku: 'RG-0002',
-                price: 35
-            });
         });
     </script>
     <!-- PRICE_DISPLAY_FORMATTER: visual-only strip of trailing .00 -->

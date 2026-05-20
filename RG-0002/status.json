@@ -1,0 +1,9 @@
+{
+  "sku": "RG-0002",
+  "status": "sold",
+  "listed_price": 35.0,
+  "sold_price": 35.0,
+  "sold_currency": "USD",
+  "sold_at": "2026-05-20",
+  "notes": "Sold via Square checkout. Square payment link deactivated post-sale."
+}
