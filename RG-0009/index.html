@@ -8,12 +8,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gustel Wied German Collector Doll | Richmond General</title>
+    <title>Gustel Wied "Ulrike" German Collector Doll | Richmond General</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Vintage Gustel Wied collector doll by Eva Maria Reick, 1980s West Germany. Original box, red calico dress, vinyl and cloth construction. Richmond General, IL.">
-    <meta property="og:title" content="Gustel Wied German Collector Doll | Richmond General">
-    <meta property="og:description" content="Vintage Gustel Wied collector doll by Eva Maria Reick, 1980s West Germany. Original box, red calico dress, vinyl and cloth construction. Richmond General, IL.">
+    <meta name="description" content="Gustel Wied "Ulrike" collector doll by Eva-Maria Reick, 1985 West Germany. Limited edition #468 of 5000, mint in original sealed box with signed Certificate of Authenticity. Vinyl and cloth. Richmond General, IL.">
+    <meta property="og:title" content="Gustel Wied "Ulrike" German Collector Doll | Richmond General">
+    <meta property="og:description" content="Gustel Wied "Ulrike" collector doll by Eva-Maria Reick, 1985 West Germany. Limited edition #468 of 5000, mint in original sealed box with signed Certificate of Authenticity. Vinyl and cloth. Richmond General, IL.">
     <meta property="og:image" content="./hero.png">
     <meta property="og:url" content="https://richmondgeneral.github.io/items/RG-0009/">
     <meta property="og:type" content="product">
@@ -225,6 +225,22 @@
             grid-template-columns: 1fr 1fr;
             gap: 0.75rem;
             margin-bottom: 1.25rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .gallery img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 6px;
+            background: var(--rg-cream);
+            border: 1px solid #e0d8c4;
         }
         
         .detail-item {
@@ -491,13 +507,13 @@
             <div class="card-face card-front">
                 <div class="item-image-container">
                     <span class="sku-badge">RG-0009</span>
-                    <img src="./hero.png" alt="Gustel Wied German Collector Doll" class="item-image">
+                    <img src="./hero.png" alt="Gustel Wied Ulrike doll, mint in original box" class="item-image">
                 </div>
                 <div class="front-info">
-                    <h1 class="item-title">Gustel Wied German Collector Doll</h1>
-                    <p class="item-era">1980s West Germany • Eva Maria Reick Design</p>
+                    <h1 class="item-title">Gustel Wied "Ulrike" German Collector Doll</h1>
+                    <p class="item-era">1985 West Germany • Eva-Maria Reick • Ltd. Ed. #468/5000</p>
                     <div class="front-footer">
-                        <span class="item-price">$45</span>
+                        <span class="item-price">$95</span>
                         <span class="flip-hint">
                             <svg class="flip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M17 1l4 4-4 4"/>
@@ -520,16 +536,20 @@
                 
                 <div class="story-section">
                     <p class="section-label">History & Provenance</p>
-                    <p class="story-text">From the golden age of German doll making, this Gustel Wied creation represents the artistry of designer Eva Maria Reick. Produced by German Toys & Crafts (GTC) in West Germany during the 1980s, these dolls were prized for their quality vinyl heads and limbs paired with soft cloth bodies—a construction that gave them both durability and a lifelike feel. This brunette beauty wears her original red calico dress with delicate white lace collar and grey knee socks. Still sealed in her original display box, she's waited decades for a new home.</p>
-                    
+                    <p class="story-text">From the golden age of German doll making, "Ulrike" is the work of designer Eva-Maria Reick, produced by Gustel Wied / German Toys & Crafts (GTC) in West Germany. Hand-finished with a vinyl head and limbs on a soft cloth body, she carries real Kanekalon hair and wears her original red calico dress with a white lace collar, knee socks, and buckle shoes. She is number <strong>468 of a limited edition of 5,000</strong>, and arrives the way she left the workshop in 1985 — sealed in her original display box with the factory cellophane intact, accompanied by her signed Certificate of Authenticity and Kanekalon hair-care booklet. Decades on the shelf, never out of the box.</p>
+
                     <div class="details-grid">
                         <div class="detail-item">
                             <p class="detail-label">Era</p>
-                            <p class="detail-value">1980s</p>
+                            <p class="detail-value">1985</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="detail-label">Edition</p>
+                            <p class="detail-value">#468 / 5000</p>
                         </div>
                         <div class="detail-item">
                             <p class="detail-label">Condition</p>
-                            <p class="detail-value">Excellent</p>
+                            <p class="detail-value">Mint in Box</p>
                         </div>
                         <div class="detail-item">
                             <p class="detail-label">Maker</p>
@@ -539,6 +559,20 @@
                             <p class="detail-label">Origin</p>
                             <p class="detail-value">West Germany</p>
                         </div>
+                        <div class="detail-item">
+                            <p class="detail-label">Includes</p>
+                            <p class="detail-value">COA + hair booklet</p>
+                        </div>
+                    </div>
+
+                    <p class="section-label">Gallery</p>
+                    <div class="gallery">
+                        <img src="./in-box.png" alt="Doll in original sealed box">
+                        <img src="./detail-face.png" alt="Face detail through cellophane">
+                        <img src="./detail-angled.png" alt="Full doll, angled view in box">
+                        <img src="./coa-cover.png" alt="Certificate of Authenticity cover">
+                        <img src="./coa-interior.png" alt="Certificate interior: No. 468 of 5000, dated 1985, signed">
+                        <img src="./hair-booklet.png" alt="Kanekalon hair-care booklet">
                     </div>
                 </div>
                 
