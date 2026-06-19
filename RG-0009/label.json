@@ -16,9 +16,10 @@
       "url": "https://richmondgeneral.github.io/items/RG-0009/"
     },
     "square": {
-      "status": "listed",
-      "object_id": null,
-      "buy_link": "https://square.link/u/bkRGJZGH"
+      "status": "listed_stale",
+      "object_id": "BI2SHVFHMJLW27HWWECUHFBE",
+      "buy_link": "https://square.link/u/bkRGJZGH",
+      "note": "live Square is stale: $45 + old name; upsert to $95 + 'Ulrike #468/5000' + New Arrivals tier"
     },
     "ebay": {
       "status": "not_listed",
