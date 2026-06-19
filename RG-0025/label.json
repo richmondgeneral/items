@@ -1,9 +1,9 @@
 {
   "sku": "RG-0025",
-  "product_name": "Atari 1050 Disk Drive (5.25\")",
-  "attributes": "1983 • Atari 8-Bit • Powers On / Untested",
-  "price": "45.00",
-  "condition": "Powers On — Untested",
-  "condition_notes": "Serial 7VDFF 36939. Powers on and spindle spins; read/write untested. A 'Happy 1050' upgrade reference came with the lot — UNCONFIRMED whether the board is installed; verify before pricing up (Happy-upgraded 1050s sell far higher). Cables not included.",
+  "product_name": "Atari 1050 Disk Drive — Happy Upgrade",
+  "attributes": "1983 • Atari 8-Bit • Happy 1050 Installed",
+  "price": "150.00",
+  "condition": "Happy installed; powers on",
+  "condition_notes": "Serial 7VDFF 36939. Happy 1050 upgrade installed — control switches present on the side (owner-confirmed). Powers on and spindle spins; read/write not bench-tested, so priced below a fully verified Happy drive. Cables not included.",
   "qr_code_url": "https://richmondgeneral.github.io/items/RG-0025/"
 }
