@@ -22,9 +22,11 @@
       "buy_link": "https://square.link/u/YNNugT4i"
     },
     "ebay": {
-      "status": "not_listed",
-      "item_id": null,
-      "url": null
+      "status": "listed",
+      "item_id": "298423074213",
+      "url": "https://www.ebay.com/itm/298423074213",
+      "listed_start": "30.00",
+      "note": "active eBay listing"
     },
     "whatnot": {
       "status": "not_listed"

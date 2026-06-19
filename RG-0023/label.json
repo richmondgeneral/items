@@ -22,9 +22,11 @@
       "buy_link": "https://square.link/u/vW6zCKZF"
     },
     "ebay": {
-      "status": "not_listed",
-      "item_id": null,
-      "url": null
+      "status": "listed",
+      "item_id": "298422759040",
+      "url": "https://www.ebay.com/itm/298422759040",
+      "listed_start": "55.00",
+      "note": "active; Weiss Floral Sunburst Brooch"
     },
     "whatnot": {
       "status": "not_listed"

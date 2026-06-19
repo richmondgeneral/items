@@ -22,9 +22,11 @@
       "buy_link": "https://square.link/u/WAWih84b"
     },
     "ebay": {
-      "status": "not_listed",
-      "item_id": null,
-      "url": null
+      "status": "listed",
+      "item_id": "298424378687",
+      "url": "https://www.ebay.com/itm/298424378687",
+      "listed_start": "185.00",
+      "note": "active; title says 'Tested' — confirm vs our 'read/write untested'"
     },
     "whatnot": {
       "status": "not_listed"

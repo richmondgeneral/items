@@ -22,9 +22,11 @@
       "buy_link": "https://square.link/u/C2FgvaqT"
     },
     "ebay": {
-      "status": "not_listed",
-      "item_id": null,
-      "url": null
+      "status": "listed",
+      "item_id": "298422721749",
+      "url": "https://www.ebay.com/itm/298422721749",
+      "listed_start": "55.00",
+      "note": "active; Jeongmin bomber jacket"
     },
     "whatnot": {
       "status": "not_listed"
