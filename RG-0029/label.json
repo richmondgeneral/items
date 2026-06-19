@@ -39,9 +39,9 @@
       "use": "price tag — scan for item card / more info"
     },
     "buy": {
-      "url": null,
+      "url": "https://www.ebay.com/itm/298432005656",
       "file": "qr-buy.png",
-      "use": "Square checkout — scan to buy (local pickup arrangement)"
+      "use": "scan to buy — eBay listing (local pickup)"
     }
   },
   "photos": {
