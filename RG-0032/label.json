@@ -1,0 +1,69 @@
+{
+  "sku": "RG-0032",
+  "product_name": "The Little Book of Famous Insults — Peter Pauper Press (1964)",
+  "attributes": "1964 • Peter Pauper Press • 1st Edition • Ed. Betty Jo Ramsey • Ill. Fritz Kredel • Decorated Boards",
+  "price": "14.00",
+  "condition": "Very Good (Used Vintage)",
+  "condition_notes": "Hardcover gift book, The Little Book of Famous Insults, Peter Pauper Press (Mount Vernon, NY), copyright 1964; edited by Betty Jo Ramsey, illustrated by Fritz Kredel. Decorated paper-covered boards in a brown thorn/branch motif with a green spine-label panel. Condition Very Good: boards bright and clean, binding firm and square, text unmarked. Retains its original Rockford College bookstore price ticket tucked inside the front ('ROCKFORD COLLEGE / F66 / NO REFUND IF TICKET REMOVED / 12.5') — left in place as provenance. No dust jacket (as issued / none present). Ships easily via USPS Media Mail.",
+  "state": "In Intake",
+  "fulfillment": "ship_or_pickup",
+  "pickup_location": "Richmond, IL 60071",
+  "target_channels": [
+    "ebay",
+    "square"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "built_local",
+      "url": "https://richmondgeneral.github.io/items/RG-0032/",
+      "note": "Flip-card index.html built locally; NOT yet committed/pushed (awaiting owner sign-off before publish)."
+    },
+    "square": {
+      "status": "pending",
+      "price": "14.00",
+      "categories": ["Books & Paper (reporting)", "New Arrivals"],
+      "note": "Square catalog entry + inventory + payment link NOT yet created (gated for sign-off)."
+    },
+    "ebay": {
+      "status": "pending",
+      "price": "14.00",
+      "format": "Buy It Now + Best Offer",
+      "note": "Listing not yet created. Shippable USPS Media Mail (~8 oz, small hardcover). Books & Paper."
+    },
+    "marketplace": {
+      "status": "not_target"
+    }
+  },
+  "qr_codes": {
+    "info": {
+      "url": "https://richmondgeneral.github.io/items/RG-0032/",
+      "file": "qr-info.png",
+      "use": "price tag — scan for item card / more info"
+    },
+    "buy": {
+      "url": null,
+      "file": "qr-buy.png",
+      "status": "pending",
+      "use": "scan to buy — generated once the Square checkout link exists (sign-off step)"
+    }
+  },
+  "photos": {
+    "hero": "hero.png",
+    "details": [
+      "detail-back.png",
+      "detail-title.png",
+      "detail-copyright.png",
+      "detail-ticket.png",
+      "detail-interior.png"
+    ],
+    "photo_gaps": "Have: front cover (hero), back cover, title page, copyright page, Rockford College ticket, interior. Still NEEDED for full definition-of-done: spine shot and a scale reference.",
+    "source_photos": "Photos IMG_0963 (hero/front cover), IMG_0968 (back cover), IMG_0965 (title page), IMG_0964 (copyright 1964), IMG_0967 (ticket close-up), IMG_0966 (interior w/ ticket)"
+  },
+  "pricing_report": "ops/pricing/RG-0032-pricing.md",
+  "shipping": {
+    "local_pickup_only": false,
+    "shippable": true,
+    "method": "USPS Media Mail",
+    "notes": "Light small hardcover; Media Mail. Local pickup (Richmond IL 60071) also available."
+  }
+}
