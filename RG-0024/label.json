@@ -5,5 +5,33 @@
   "price": "55.00",
   "condition": "Very Good",
   "condition_notes": "Labeled F&M Fashion \"Jeongmin\", 100% polyester; Korean maker + all-poly + older-style label date it to the 1980s (Korea was the era's garment-export hub before China). No size tag — size by measurement. Ribbed collar, cuffs, hem; sequins intact. Sold as found.",
+  "state": "Priced",
+  "target_channels": [
+    "square_online",
+    "ebay"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "live",
+      "url": "https://richmondgeneral.github.io/items/RG-0024/"
+    },
+    "square": {
+      "status": "pending",
+      "object_id": null,
+      "buy_link": null
+    },
+    "ebay": {
+      "status": "not_listed",
+      "item_id": null,
+      "url": null
+    },
+    "whatnot": {
+      "status": "not_listed"
+    },
+    "marketplace": {
+      "status": "not_listed",
+      "url": null
+    }
+  },
   "qr_code_url": "https://richmondgeneral.github.io/items/RG-0024/"
 }

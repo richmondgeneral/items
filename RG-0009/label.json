@@ -5,5 +5,33 @@
   "price": "95.00",
   "condition": "Mint in Box",
   "condition_notes": "New old stock – doll sealed in original display box with factory cellophane intact. Includes signed Certificate of Authenticity (No. 468 of 5000, dated 1985) and Kanekalon hair-care booklet. Box shows minor shelf wear.",
+  "state": "Listed",
+  "target_channels": [
+    "ebay",
+    "square_online"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "live",
+      "url": "https://richmondgeneral.github.io/items/RG-0009/"
+    },
+    "square": {
+      "status": "listed",
+      "object_id": null,
+      "buy_link": "https://square.link/u/bkRGJZGH"
+    },
+    "ebay": {
+      "status": "not_listed",
+      "item_id": null,
+      "url": null
+    },
+    "whatnot": {
+      "status": "not_listed"
+    },
+    "marketplace": {
+      "status": "listed",
+      "url": "https://www.facebook.com/marketplace/item/879329561888951"
+    }
+  },
   "qr_code_url": "https://richmondgeneral.github.io/items/RG-0009/"
 }

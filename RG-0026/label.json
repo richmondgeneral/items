@@ -5,5 +5,33 @@
   "price": "95.00",
   "condition": "New in Box (unopened)",
   "condition_notes": "Original box, unopened by us. Box states it includes the AtariArtist graphics cartridge; contents NOT verified (not opened) — sold as a sealed/unopened box. Box shows light shelf wear.",
+  "state": "Priced",
+  "target_channels": [
+    "ebay",
+    "square_online"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "live",
+      "url": "https://richmondgeneral.github.io/items/RG-0026/"
+    },
+    "square": {
+      "status": "pending",
+      "object_id": null,
+      "buy_link": null
+    },
+    "ebay": {
+      "status": "not_listed",
+      "item_id": null,
+      "url": null
+    },
+    "whatnot": {
+      "status": "not_listed"
+    },
+    "marketplace": {
+      "status": "not_listed",
+      "url": null
+    }
+  },
   "qr_code_url": "https://richmondgeneral.github.io/items/RG-0026/"
 }

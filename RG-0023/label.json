@@ -5,5 +5,33 @@
   "price": "60.00",
   "condition": "Excellent",
   "condition_notes": "Two-tier starburst of orange and tomato-red navette glass cabochons around a domed cranberry cabochon center, prong-set in gold-tone. Reverse signed Weiss in an oval cartouche (confirmed; photographed). All stones present, none chipped; secure pin and clasp.",
+  "state": "Priced",
+  "target_channels": [
+    "ebay",
+    "square_online"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "live",
+      "url": "https://richmondgeneral.github.io/items/RG-0023/"
+    },
+    "square": {
+      "status": "pending",
+      "object_id": null,
+      "buy_link": null
+    },
+    "ebay": {
+      "status": "not_listed",
+      "item_id": null,
+      "url": null
+    },
+    "whatnot": {
+      "status": "not_listed"
+    },
+    "marketplace": {
+      "status": "not_listed",
+      "url": null
+    }
+  },
   "qr_code_url": "https://richmondgeneral.github.io/items/RG-0023/"
 }

@@ -5,5 +5,33 @@
   "price": "150.00",
   "condition": "Happy installed; powers on",
   "condition_notes": "Serial 7VDFF 36939. Happy 1050 upgrade installed — control switches present on the side (owner-confirmed). Powers on and spindle spins; read/write not bench-tested, so priced below a fully verified Happy drive. Cables not included.",
+  "state": "Priced",
+  "target_channels": [
+    "ebay",
+    "square_online"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "live",
+      "url": "https://richmondgeneral.github.io/items/RG-0025/"
+    },
+    "square": {
+      "status": "pending",
+      "object_id": null,
+      "buy_link": null
+    },
+    "ebay": {
+      "status": "not_listed",
+      "item_id": null,
+      "url": null
+    },
+    "whatnot": {
+      "status": "not_listed"
+    },
+    "marketplace": {
+      "status": "not_listed",
+      "url": null
+    }
+  },
   "qr_code_url": "https://richmondgeneral.github.io/items/RG-0025/"
 }

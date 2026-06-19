@@ -1,9 +1,37 @@
 {
   "sku": "RG-0027",
-  "product_name": "Demon Attack Cartridge \u2014 Imagic (Atari 8-Bit)",
-  "attributes": "1982 \u2022 Imagic \u2022 Atari 400/800",
+  "product_name": "Demon Attack Cartridge — Imagic (Atari 8-Bit)",
+  "attributes": "1982 • Imagic • Atari 400/800",
   "price": "18.00",
   "condition": "Untested",
   "condition_notes": "",
+  "state": "Priced",
+  "target_channels": [
+    "whatnot",
+    "ebay"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "live",
+      "url": "https://richmondgeneral.github.io/items/RG-0027/"
+    },
+    "square": {
+      "status": "pending",
+      "object_id": null,
+      "buy_link": null
+    },
+    "ebay": {
+      "status": "not_listed",
+      "item_id": null,
+      "url": null
+    },
+    "whatnot": {
+      "status": "not_listed"
+    },
+    "marketplace": {
+      "status": "not_listed",
+      "url": null
+    }
+  },
   "qr_code_url": "https://richmondgeneral.github.io/items/RG-0027/"
 }

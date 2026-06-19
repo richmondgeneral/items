@@ -5,5 +5,33 @@
   "price": "30.00",
   "condition": "Good (as-is)",
   "condition_notes": "Cobalt is deep and clear, portrait decals bright. TWO condition issues, both pictured: (1) bowl has a large rim chip; (2) mug handle has a large chip at the top. Pitcher is sound. Sold as a 3-piece set, as-is. Pieces shown with a tape measure for scale.",
+  "state": "Listed",
+  "target_channels": [
+    "ebay",
+    "square_online"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "live",
+      "url": "https://richmondgeneral.github.io/items/RG-0021/"
+    },
+    "square": {
+      "status": "pending",
+      "object_id": null,
+      "buy_link": null
+    },
+    "ebay": {
+      "status": "not_listed",
+      "item_id": null,
+      "url": null
+    },
+    "whatnot": {
+      "status": "not_listed"
+    },
+    "marketplace": {
+      "status": "listed",
+      "url": "https://www.facebook.com/marketplace/item/1536784648068566"
+    }
+  },
   "qr_code_url": "https://richmondgeneral.github.io/items/RG-0021/"
 }
