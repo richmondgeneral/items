@@ -2,7 +2,7 @@
   "sku": "RG-0022",
   "product_name": "Gold Figural Double-Fish Brooch",
   "attributes": "Mid-Century • Figural Costume Jewelry • Unsigned",
-  "price": "45.00",
+  "price": "32.00",
   "condition": "Very Good",
   "condition_notes": "Unsigned — no maker's mark on the reverse. Textured gold-tone with cabochon turquoise and clear rhinestone accents; pin and clasp intact.",
   "state": "Listed",
@@ -27,10 +27,12 @@
       "item_id": "298422745547",
       "url": "https://www.ebay.com/itm/298422745547",
       "listed_start": "2.20",
-      "note": "auction — starting bid $2.20"
+      "format": "auction",
+      "note": "Live 7-day auction, $2.20 start, 0 bids/8 watchers as of 2026-06-19, ends ~Tue. Per owner: let it ride (not relisted as BIN). Catalog/BIN asking elsewhere = $32."
     },
     "whatnot": {
-      "status": "not_listed"
+      "status": "listed",
+      "note": "Listed on Whatnot marketplace 2026-06-19 (Buy It Now $32 + Accept Offers; Reserve-for-Live off). Category Vintage & Antique Jewelry > Brooch, Condition Pre-owned - Good, Ship 4-7 oz. 3 photos (hero + front-angle + back). Custom label RG-0022."
     },
     "marketplace": {
       "status": "not_listed",
