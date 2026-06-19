@@ -14,11 +14,16 @@
   ],
   "channels": {
     "github_page": {
-      "status": "pending",
+      "status": "live",
       "url": "https://richmondgeneral.github.io/items/RG-0029/"
     },
     "square": {
-      "status": "pending"
+      "status": "listed",
+      "object_id": "Y4X3VEQJ6JA6MYJZWSCOLT5G",
+      "variation_id": "WFK2YYW53CCWZPTP4LTGD34V",
+      "price": "60.00",
+      "categories": ["Pottery & Ceramics (reporting)", "New Arrivals"],
+      "note": "Catalog inventory entry (local-pickup item; sold via eBay/Marketplace, not Square Online)."
     },
     "ebay": {
       "status": "listed",
