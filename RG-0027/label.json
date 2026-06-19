@@ -46,5 +46,18 @@
       "file": "qr-buy.png",
       "use": "Square checkout — scan to buy"
     }
+  },
+  "shipping": {
+    "weight_oz": 6,
+    "box_in": [
+      6,
+      4,
+      2
+    ],
+    "packaging": "Bubble mailer",
+    "fragile": false,
+    "carrier": "USPS First-Class/Ground",
+    "notes": "Cartridge only.",
+    "est": true
   }
 }

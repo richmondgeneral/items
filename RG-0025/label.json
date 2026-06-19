@@ -46,5 +46,18 @@
       "file": "qr-buy.png",
       "use": "Square checkout — scan to buy"
     }
+  },
+  "shipping": {
+    "weight_oz": 128,
+    "box_in": [
+      16,
+      12,
+      8
+    ],
+    "packaging": "Double-box with foam; drive ~5 lb",
+    "fragile": true,
+    "carrier": "UPS/USPS Ground",
+    "notes": "Heavy electronics; immobilize, protect Happy switches.",
+    "est": true
   }
 }

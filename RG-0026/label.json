@@ -46,5 +46,18 @@
       "file": "qr-buy.png",
       "use": "Square checkout — scan to buy"
     }
+  },
+  "shipping": {
+    "weight_oz": 48,
+    "box_in": [
+      15,
+      12,
+      5
+    ],
+    "packaging": "Box around the retail box, full padding",
+    "fragile": true,
+    "carrier": "USPS Ground/UPS",
+    "notes": "NIB — protect the original box corners; do not open.",
+    "est": true
   }
 }

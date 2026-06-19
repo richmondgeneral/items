@@ -46,5 +46,18 @@
       "file": "qr-buy.png",
       "use": "Square checkout — scan to buy"
     }
+  },
+  "shipping": {
+    "weight_oz": 80,
+    "box_in": [
+      14,
+      12,
+      8
+    ],
+    "packaging": "Double-box; wrap each piece, peanuts/air pillows",
+    "fragile": true,
+    "carrier": "USPS Ground/UPS",
+    "notes": "3-pc Depression glass — pack each piece separately; chips already disclosed.",
+    "est": true
   }
 }

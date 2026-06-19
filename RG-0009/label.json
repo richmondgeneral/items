@@ -46,5 +46,18 @@
       "file": "qr-buy.png",
       "use": "Square checkout — scan to buy"
     }
+  },
+  "shipping": {
+    "weight_oz": 48,
+    "box_in": [
+      18,
+      11,
+      7
+    ],
+    "packaging": "Box around the doll's display box, padded",
+    "fragile": true,
+    "carrier": "USPS Ground/UPS",
+    "notes": "Tall doll box; protect the sealed window.",
+    "est": true
   }
 }

@@ -47,5 +47,18 @@
       "file": "qr-buy.png",
       "use": "Square checkout — scan to buy"
     }
+  },
+  "shipping": {
+    "weight_oz": 5,
+    "box_in": [
+      6,
+      5,
+      3
+    ],
+    "packaging": "Jewelry box in a bubble mailer/small box",
+    "fragile": false,
+    "carrier": "USPS First-Class/Ground",
+    "notes": "Small brooch.",
+    "est": true
   }
 }

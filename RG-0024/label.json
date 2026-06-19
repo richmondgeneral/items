@@ -46,5 +46,18 @@
       "file": "qr-buy.png",
       "use": "Square checkout — scan to buy"
     }
+  },
+  "shipping": {
+    "weight_oz": 32,
+    "box_in": [
+      12,
+      10,
+      4
+    ],
+    "packaging": "Folded in a poly mailer or small box",
+    "fragile": false,
+    "carrier": "USPS Ground/UPS",
+    "notes": "Sequin jacket; tissue to protect sequins.",
+    "est": true
   }
 }
