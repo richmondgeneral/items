@@ -5,6 +5,25 @@
   "price": "95.00",
   "condition": "New Old Stock (boxed)",
   "condition_notes": "New old stock — doll is still in its original plastic, unplayed and pristine. Includes signed Certificate of Authenticity (No. 468 of 5000, dated 1985) and Kanekalon hair-care booklet. Box note: the display box's clear window has separated from the box at one corner; otherwise light box/shelf wear (not factory-sealed/mint box).",
+  "eye_color": "Brown",
+  "measurements_in": {
+    "boxed": [
+      26,
+      12,
+      7
+    ],
+    "weight_lb": 3,
+    "note": "Boxed/package dimensions; longest side 26 in exceeds the 24 in oversize threshold (dimensional-weight / large-package surcharge applies)."
+  },
+  "buyer_questions": [
+    {
+      "date": "2026-06-19",
+      "channel": "ebay",
+      "q": "What color are the doll's eyes?",
+      "a": "Brown.",
+      "posted_to": "Recorded in GitHub page + Square + Facebook descriptions. eBay has no public Q&A section (0 messages); eBay eye-color wording handled by owner."
+    }
+  ],
   "state": "Listed",
   "target_channels": [
     "ebay",
@@ -19,14 +38,19 @@
       "status": "listed",
       "object_id": "BI2SHVFHMJLW27HWWECUHFBE",
       "variation_id": "WJ7RJI2ECDTRAJW7J6WH7PTQ",
-      "buy_link": "https://square.link/u/bkRGJZGH"
+      "buy_link": "https://square.link/u/bkRGJZGH",
+      "image_ids": ["3SB2E54JFYLZLORAB2X7YCJD", "KLC3EPPLP5DMIF225FT3YJOS"],
+      "note": "2026-06-19: description updated with brown eyes + 26x12x7 oversize note (sparse update, price/variation unchanged); added eye-macro image KLC3EPPLP5DMIF225FT3YJOS (non-primary)."
     },
     "ebay": {
       "status": "listed",
       "item_id": "298431095225",
       "url": "https://www.ebay.com/itm/298431095225",
       "listed_price": "95.00",
-      "note": "Buy It Now + Best Offer; calculated ship + international; 7 photos incl COA. Dolls category, Condition New (sealed NOS), Type Artist Doll, Brand Gustel Wied, Artist Eva-Maria Reick, Country Germany. Custom label RG-0009."
+      "package_in": [26, 12, 7],
+      "package_weight_lb": 3,
+      "irregular_package": true,
+      "note": "Buy It Now + Best Offer; calculated ship + international; 7 photos incl COA. Dolls category, Condition New (sealed NOS), Type Artist Doll, Brand Gustel Wied, Artist Eva-Maria Reick, Country Germany. Custom label RG-0009. 2026-06-19: package dims 26x12x7, 3 lb, irregular-package flag ON (already set by owner — drives oversize shipping). PENDING (owner handling): eye-color wording in description + add eye-macro photo — eBay revise form hung the browser tooling this session."
     },
     "whatnot": {
       "status": "not_listed"
@@ -35,7 +59,8 @@
       "status": "listed",
       "url": "https://www.facebook.com/marketplace/item/879329561888951",
       "price": "95.00",
-      "price_verified": true
+      "price_verified": true,
+      "note": "2026-06-19: description updated — 'warm brown eyes' added to features + boxed-size 26x12x7 oversize bullet; added 2 photos (eye macro + full front in box)."
     }
   },
   "qr_code_url": "https://richmondgeneral.github.io/items/RG-0009/",
@@ -54,14 +79,15 @@
   "shipping": {
     "weight_oz": 48,
     "box_in": [
-      18,
-      11,
+      26,
+      12,
       7
     ],
     "packaging": "Box around the doll's display box, padded",
     "fragile": true,
+    "oversize": true,
     "carrier": "USPS Ground/UPS",
-    "notes": "Tall doll box; protect the sealed window.",
-    "est": true
+    "notes": "Tall doll box; 26 in length exceeds the 24 in oversize threshold — expect dimensional-weight / large-package surcharge. eBay package set to 26x12x7 in, 3 lb, irregular-package flag on. Protect the sealed window.",
+    "est": false
   }
 }
