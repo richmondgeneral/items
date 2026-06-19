@@ -13,7 +13,7 @@
   ],
   "channels": {
     "github_page": {
-      "status": "pending",
+      "status": "listed",
       "url": "https://richmondgeneral.github.io/items/RG-0030/"
     },
     "square": {
@@ -21,7 +21,8 @@
       "object_id": "VBCJ2774FUCKO5GO6AIV46FG",
       "variation_id": "BSFBGPKT7ZLDNVVIS33PTT2J",
       "buy_link": "https://square.link/u/otFRBWtU",
-      "note": "Pre-existing Square item (orig SKU 890135R), reassigned to RG-0030 on 2026-06-19. Price $45. Measurements added to description same day."
+      "primary_image_id": "CMDYZTDGFPN3RGE3WFJCR4RT",
+      "note": "Pre-existing Square item (orig SKU 890135R), reassigned to RG-0030 on 2026-06-19. Price $45. Measurements added to description same day. De-stickered in-situ hero set as primary 2026-06-19 (prior top-view images retained as secondary)."
     },
     "marketplace": {
       "status": "not_listed",
@@ -45,9 +46,9 @@
     "hero": "hero.png",
     "details": [],
     "needed": [
-      "de-stickered hero (IMG_0943) — pending Gemini 429 clear; remove the $25 sticker, keep the in-situ setting",
       "back/legs angle, condition close-up, scale reference, signature close-up"
-    ]
+    ],
+    "hero_note": "De-stickered in-situ hero produced 2026-06-19 via image-processor edit.py (gemini-3.1-flash-image); $25 sticker removed, outdoor setting kept. Paint under the sticker is AI-reconstructed."
   },
   "shipping": {
     "local_pickup_only": true,
