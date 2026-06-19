@@ -1,0 +1,59 @@
+{
+  "sku": "RG-0029",
+  "product_name": "Vintage Green Ivy China Dinnerware Set (Service for ~8)",
+  "attributes": "1951 • Made in U.S.A. • Green Ivy Motif • Gold Trim • Coupe Shape",
+  "price": "60.00",
+  "condition": "Good (Used Vintage)",
+  "condition_notes": "Large vintage green-ivy china set, ~40 pieces / service for about 8 with generous serving pieces: dinner plates, salad plates, coupe bowls & saucers, cups, creamer, gravy boat, covered sugar, covered casserole/serving dishes, a large vegetable bowl, and an oval platter. Cream/white coupe shape with green ivy leaves on tan vines and a gold/platinum rim. Backstamp: round 'Made in U.S.A.' crest, date code M-51 (1951). Condition: mostly clean; at least one serving piece (gravy/creamer) has a brown age-stain and light crazing — disclosed, see photos. Sold as a complete lot. LOCAL PICKUP ONLY — too heavy/fragile to ship economically.",
+  "state": "In Intake",
+  "fulfillment": "local_pickup_only",
+  "pickup_location": "Richmond, IL 60071",
+  "target_channels": [
+    "marketplace",
+    "ebay"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "pending",
+      "url": "https://richmondgeneral.github.io/items/RG-0029/"
+    },
+    "square": {
+      "status": "pending"
+    },
+    "ebay": {
+      "status": "not_listed",
+      "note": "To list LOCAL PICKUP ONLY (no shipping), Richmond IL 60071, $60 + Best Offer."
+    },
+    "marketplace": {
+      "status": "not_listed",
+      "note": "To list local pickup, Richmond IL, $60."
+    }
+  },
+  "qr_codes": {
+    "info": {
+      "url": "https://richmondgeneral.github.io/items/RG-0029/",
+      "file": "qr-info.png",
+      "use": "price tag — scan for item card / more info"
+    },
+    "buy": {
+      "url": null,
+      "file": "qr-buy.png",
+      "use": "Square checkout — scan to buy (local pickup arrangement)"
+    }
+  },
+  "photos": {
+    "hero": "hero.png",
+    "details": [
+      "detail-platter.png",
+      "detail-serving.png",
+      "detail-boxed.png"
+    ],
+    "needed": [
+      "backstamp (Made in USA / M-51 / 1951) — frame in Photos library to add"
+    ]
+  },
+  "shipping": {
+    "local_pickup_only": true,
+    "notes": "Full dinnerware set — local pickup only; not shipped."
+  }
+}

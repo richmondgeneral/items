@@ -1,0 +1,59 @@
+{
+  "sku": "RG-0028",
+  "product_name": "Vintage Wheat-Pattern China Dinnerware Set (Service for ~8)",
+  "attributes": "1959 • Marked 'Royal' • Hand-Decorated 23K Gold • Wheat Motif • Platinum Trim",
+  "price": "45.00",
+  "condition": "Good (Used Vintage)",
+  "condition_notes": "Large vintage wheat-pattern china set, ~40+ pieces / service for about 8: dinner plates, salad/bread plates, coupe soup bowls, a round vegetable bowl, cups & saucers, and a gravy boat with underplate. Cream/white coupe shape with gold wheat-stalk motif and a platinum rim line. Backstamp: crown over 'Royal', 'Hand Decorated with 23K Gold, Ovenproof', date code 59 (1959). Condition: several pieces (notably bowls) show crazing to the glaze; light use wear. Sold as a complete lot. LOCAL PICKUP ONLY — too heavy/fragile to ship economically.",
+  "state": "In Intake",
+  "fulfillment": "local_pickup_only",
+  "pickup_location": "Richmond, IL 60071",
+  "target_channels": [
+    "marketplace",
+    "ebay"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "pending",
+      "url": "https://richmondgeneral.github.io/items/RG-0028/"
+    },
+    "square": {
+      "status": "pending"
+    },
+    "ebay": {
+      "status": "not_listed",
+      "note": "To list LOCAL PICKUP ONLY (no shipping), Richmond IL 60071, $45 + Best Offer."
+    },
+    "marketplace": {
+      "status": "not_listed",
+      "note": "To list local pickup, Richmond IL, $45."
+    }
+  },
+  "qr_codes": {
+    "info": {
+      "url": "https://richmondgeneral.github.io/items/RG-0028/",
+      "file": "qr-info.png",
+      "use": "price tag — scan for item card / more info"
+    },
+    "buy": {
+      "url": null,
+      "file": "qr-buy.png",
+      "use": "Square checkout — scan to buy (local pickup arrangement)"
+    }
+  },
+  "photos": {
+    "hero": "hero.png",
+    "details": [
+      "detail-layout.png",
+      "detail-group2.png",
+      "detail-crazing.png"
+    ],
+    "needed": [
+      "backstamp (Royal / 23K gold / 1959) — frame in Photos library to add"
+    ]
+  },
+  "shipping": {
+    "local_pickup_only": true,
+    "notes": "Full dinnerware set — local pickup only; not shipped."
+  }
+}
