@@ -34,5 +34,17 @@
       "url": null
     }
   },
-  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0027/"
+  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0027/",
+  "qr_codes": {
+    "info": {
+      "url": "https://richmondgeneral.github.io/items/RG-0027/",
+      "file": "qr-info.png",
+      "use": "price tag — scan for item card / more info"
+    },
+    "buy": {
+      "url": "https://square.link/u/ZYt4z589",
+      "file": "qr-buy.png",
+      "use": "Square checkout — scan to buy"
+    }
+  }
 }
