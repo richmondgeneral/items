@@ -47,13 +47,12 @@
   "photos": {
     "hero": "hero.png",
     "details": [
+      "detail-backstamp.png",
       "detail-layout.png",
       "detail-group2.png",
       "detail-crazing.png"
     ],
-    "needed": [
-      "backstamp (Royal / 23K gold / 1959) — frame in Photos library to add"
-    ]
+    "backstamp_source": "Photos IMG_0911 — crown over 'Royal', Hand Decorated with 23K Gold, Ovenproof, date code 59 W (1959)"
   },
   "shipping": {
     "local_pickup_only": true,
