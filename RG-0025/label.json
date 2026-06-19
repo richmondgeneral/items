@@ -1,11 +1,13 @@
 {
   "sku": "RG-0025",
-  "product_name": "Atari 1050 Disk Drive — Happy Upgrade",
-  "attributes": "1983 • Atari 8-Bit • Happy 1050 Installed",
-  "price": "150.00",
-  "condition": "Happy installed; powers on",
-  "condition_notes": "Serial 7VDFF 36939. Happy 1050 upgrade installed — control switches present on the side (owner-confirmed). Powers on and spindle spins; read/write not bench-tested, so priced below a fully verified Happy drive. Cables not included.",
+  "product_name": "Atari 1050 Disk Drive — Happy Upgrade, Tested, w/ PSU & Cable",
+  "attributes": "1983 • Atari 8-Bit • Happy 1050 • Tested + PSU & SIO Cable",
+  "price": "185.00",
+  "condition": "Tested, Working",
+  "condition_notes": "Bench-tested — reads and writes working. Happy 1050 upgrade installed (side switches). Includes original power supply + SIO connection cable. Serial 7VDFF 36939. PSU + cable not yet pictured (photo pending).",
   "state": "Listed",
+  "needs_photo": "Power supply + SIO connection cable (not yet pictured)",
+  "lot_ref": "SKU corresponds to the Atari-lot label/item number; a second Atari 1050 is incoming as its own SKU (existing eBay draft held for it).",
   "target_channels": [
     "ebay",
     "square_online"
@@ -19,14 +21,15 @@
       "status": "listed",
       "object_id": "2CDQZRF6JV2YP5UCITJNGSX3",
       "variation_id": "7TCQXJ4IR6ZKKVW6MPRKRRM3",
-      "buy_link": "https://square.link/u/WAWih84b"
+      "buy_link": "https://square.link/u/jRUzIFgp",
+      "price": "185.00"
     },
     "ebay": {
       "status": "listed",
       "item_id": "298424378687",
       "url": "https://www.ebay.com/itm/298424378687",
-      "listed_start": "185.00",
-      "note": "active; title says 'Tested' — confirm vs our 'read/write untested'"
+      "listed_price": "185.00",
+      "note": "Owner-listed (Buy It Now). Source of the tested status — synced DOWN to this record."
     },
     "whatnot": {
       "status": "not_listed"
@@ -44,22 +47,22 @@
       "use": "price tag — scan for item card / more info"
     },
     "buy": {
-      "url": "https://square.link/u/WAWih84b",
+      "url": "https://square.link/u/jRUzIFgp",
       "file": "qr-buy.png",
       "use": "Square checkout — scan to buy"
     }
   },
   "shipping": {
-    "weight_oz": 128,
+    "weight_oz": 160,
     "box_in": [
       16,
-      12,
+      14,
       8
     ],
-    "packaging": "Double-box with foam; drive ~5 lb",
+    "packaging": "Double-box with foam; drive + power supply + SIO cable",
     "fragile": true,
     "carrier": "UPS/USPS Ground",
-    "notes": "Heavy electronics; immobilize, protect Happy switches.",
+    "notes": "Now includes PSU + SIO cable — ~10 lb shipped (heavier than drive alone). Update eBay listing weight to match.",
     "est": true
   }
 }
