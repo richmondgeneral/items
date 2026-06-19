@@ -9,7 +9,8 @@
   "fulfillment": "local_pickup_only",
   "pickup_location": "Richmond, IL 60071",
   "target_channels": [
-    "square_online"
+    "square_online",
+    "marketplace"
   ],
   "channels": {
     "github_page": {
