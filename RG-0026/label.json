@@ -4,7 +4,7 @@
   "attributes": "1980s • New in Box (unopened) • Atari 8-Bit",
   "price": "95.00",
   "condition": "New in Box (unopened)",
-  "condition_notes": "Original box, unopened by us. Box states it includes the AtariArtist graphics cartridge; contents NOT verified (not opened) — sold as a sealed/unopened box. Box shows light shelf wear.",
+  "condition_notes": "Original box, unopened by us; NOT factory shrink-wrapped. Box states it includes the AtariArtist graphics cartridge; contents NOT verified (not opened) — sold as an unopened box. Box shows light shelf wear (corner/edge).",
   "state": "Listed",
   "target_channels": [
     "ebay",
@@ -22,9 +22,11 @@
       "buy_link": "https://square.link/u/ttpX14se"
     },
     "ebay": {
-      "status": "not_listed",
-      "item_id": null,
-      "url": null
+      "status": "listed",
+      "item_id": "298430896872",
+      "url": "https://www.ebay.com/itm/298430896872",
+      "listed_price": "95.00",
+      "note": "Buy It Now + Best Offer; calculated ship + international. Custom label RG-0026."
     },
     "whatnot": {
       "status": "not_listed"
