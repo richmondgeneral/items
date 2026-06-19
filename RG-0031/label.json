@@ -21,6 +21,9 @@
       "object_id": "P5VGYRNNVGLGALPIX4C6OSJT",
       "variation_id": "LKYJGKFRZZ5DBQPIKRLJ67OG",
       "price": "8.00",
+      "buy_link": "https://square.link/u/RypQGyNw",
+      "payment_link_id": "EEQU4TJ5SLCIYCQM",
+      "buy_link_note": "Square checkout link created 2026-06-19: $8 book + $5 USPS Media Mail shipping ($13 total), asks for shipping address.",
       "categories": ["Books & Paper (reporting)", "New Arrivals"]
     },
     "ebay": {
@@ -38,9 +41,9 @@
       "use": "price tag — scan for item card / more info"
     },
     "buy": {
-      "url": null,
+      "url": "https://square.link/u/RypQGyNw",
       "file": "qr-buy.png",
-      "use": "scan to buy — eBay listing (set after listing)"
+      "use": "Square checkout — scan to buy (ships USPS Media Mail)"
     }
   },
   "photos": {
