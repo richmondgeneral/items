@@ -5,7 +5,7 @@
   "price": "60.00",
   "condition": "Good (Used Vintage)",
   "condition_notes": "Large vintage green-ivy china set, ~40 pieces / service for about 8 with generous serving pieces: dinner plates, salad plates, coupe bowls & saucers, cups, creamer, gravy boat, covered sugar, covered casserole/serving dishes, a large vegetable bowl, and an oval platter. Cream/white coupe shape with green ivy leaves on tan vines and a gold/platinum rim. Backstamp: round 'Made in U.S.A.' crest, date code M-51 (1951). Condition: mostly clean; at least one serving piece (gravy/creamer) has a brown age-stain and light crazing — disclosed, see photos. Sold as a complete lot. LOCAL PICKUP ONLY — too heavy/fragile to ship economically.",
-  "state": "In Intake",
+  "state": "Listed",
   "fulfillment": "local_pickup_only",
   "pickup_location": "Richmond, IL 60071",
   "target_channels": [
@@ -21,8 +21,11 @@
       "status": "pending"
     },
     "ebay": {
-      "status": "not_listed",
-      "note": "To list LOCAL PICKUP ONLY (no shipping), Richmond IL 60071, $60 + Best Offer."
+      "status": "listed",
+      "item_id": "298432005656",
+      "url": "https://www.ebay.com/itm/298432005656",
+      "listed_price": "60.00",
+      "note": "Listed 2026-06-19. Buy It Now $60 + Best Offer. Shipping policy = Local Pickup Only (free local pickup from 60071); No Returns. Category Pottery & Glass > Dinner Sets. Custom label RG-0029. Validated live."
     },
     "marketplace": {
       "status": "not_listed",
