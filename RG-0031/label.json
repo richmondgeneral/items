@@ -1,0 +1,66 @@
+{
+  "sku": "RG-0031",
+  "product_name": "Sands of Mars — Arthur C. Clarke (Pocket Books #989, 1954)",
+  "attributes": "1954 • Pocket Books #989 • 1st Paperback Printing • Cover Art by Robert Schulz",
+  "price": "8.00",
+  "condition": "Good (worn reading copy)",
+  "condition_notes": "Vintage science-fiction paperback: Arthur C. Clarke, 'The Sands of Mars,' Pocket Books #989, 25-cent edition. Per the copyright page: Pocket Book edition published April 1954, 1st printing February 1954 (the first US paperback printing; follows the 1951 Sidgwick & Jackson UK edition, 1952 Gnome Press hardcover, and 1953 Science Fiction Book Club edition). Cover painting by Robert Schulz. Condition: worn reading copy — a vertical crease/split runs through the front cover, the top-right corner has some loss, with edge/corner wear, soiling, and age-tanned pages; complete and readable, binding intact. Sold as-is.",
+  "state": "In Intake",
+  "fulfillment": "ship_or_pickup",
+  "target_channels": [
+    "ebay",
+    "square"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "pending",
+      "url": "https://richmondgeneral.github.io/items/RG-0031/"
+    },
+    "square": {
+      "status": "listed",
+      "object_id": "P5VGYRNNVGLGALPIX4C6OSJT",
+      "variation_id": "LKYJGKFRZZ5DBQPIKRLJ67OG",
+      "price": "8.00",
+      "categories": ["Books & Paper (reporting)", "New Arrivals"]
+    },
+    "ebay": {
+      "status": "not_listed",
+      "note": "To list $8 + Best Offer; ships USPS Media Mail (~6 oz). Category Books & Magazines > Fiction & Literature (vintage SF paperback). Custom label RG-0031."
+    },
+    "marketplace": {
+      "status": "not_target"
+    }
+  },
+  "qr_codes": {
+    "info": {
+      "url": "https://richmondgeneral.github.io/items/RG-0031/",
+      "file": "qr-info.png",
+      "use": "price tag — scan for item card / more info"
+    },
+    "buy": {
+      "url": null,
+      "file": "qr-buy.png",
+      "use": "scan to buy — eBay listing (set after listing)"
+    }
+  },
+  "photos": {
+    "hero": "hero.png",
+    "details": [
+      "detail-copyright.png",
+      "detail-back.png"
+    ]
+  },
+  "shipping": {
+    "weight_oz": 6,
+    "box_in": [
+      8,
+      6,
+      1
+    ],
+    "packaging": "Bubble mailer",
+    "fragile": false,
+    "carrier": "USPS Media Mail",
+    "notes": "Lightweight paperback; Media Mail eligible.",
+    "est": true
+  }
+}
