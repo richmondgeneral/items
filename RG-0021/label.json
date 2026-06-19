@@ -31,7 +31,9 @@
     },
     "marketplace": {
       "status": "listed",
-      "url": "https://www.facebook.com/marketplace/item/1536784648068566"
+      "url": "https://www.facebook.com/marketplace/item/1536784648068566",
+      "price": "30.00",
+      "price_verified": true
     }
   },
   "qr_code_url": "https://richmondgeneral.github.io/items/RG-0021/",
