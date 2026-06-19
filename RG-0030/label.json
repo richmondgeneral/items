@@ -1,0 +1,56 @@
+{
+  "sku": "RG-0030",
+  "product_name": "Hand-Painted Folk-Art Bar Stool — Grape & Vine",
+  "attributes": "Late 20th c. • Folk-Art Hand-Painted • Grape & Vine Motif • Hardwood • 24\" H",
+  "price": "45.00",
+  "condition": "Good",
+  "condition_notes": "Decorative hardwood stool with a hand-painted folk-art grape-and-vine motif on a red ground; appears artist-signed on the top (signature partly legible). Late twentieth-century country/craft piece (folk-art revival, the sort common in American gift shops c. 1970s–1990s). Light oak legs with a single stretcher box. Distressed paint and surface wear consistent with decorative use; holds about 200 lbs. Measures approximately 24\" H × 12\" W × 12\" D (seat). LOCAL PICKUP ONLY — too bulky to ship economically. Sold as found.",
+  "state": "Listed",
+  "fulfillment": "local_pickup_only",
+  "pickup_location": "Richmond, IL 60071",
+  "target_channels": [
+    "square_online"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "pending",
+      "url": "https://richmondgeneral.github.io/items/RG-0030/"
+    },
+    "square": {
+      "status": "listed",
+      "object_id": "VBCJ2774FUCKO5GO6AIV46FG",
+      "variation_id": "BSFBGPKT7ZLDNVVIS33PTT2J",
+      "buy_link": "https://square.link/u/otFRBWtU",
+      "note": "Pre-existing Square item (orig SKU 890135R), reassigned to RG-0030 on 2026-06-19. Price $45. Measurements added to description same day."
+    },
+    "marketplace": {
+      "status": "not_listed",
+      "url": null
+    }
+  },
+  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0030/",
+  "qr_codes": {
+    "info": {
+      "url": "https://richmondgeneral.github.io/items/RG-0030/",
+      "file": "qr-info.png",
+      "use": "price tag — scan for item card / more info"
+    },
+    "buy": {
+      "url": "https://square.link/u/otFRBWtU",
+      "file": "qr-buy.png",
+      "use": "Square checkout — scan to buy (local pickup arrangement)"
+    }
+  },
+  "photos": {
+    "hero": "hero.png",
+    "details": [],
+    "needed": [
+      "de-stickered hero (IMG_0943) — pending Gemini 429 clear; remove the $25 sticker, keep the in-situ setting",
+      "back/legs angle, condition close-up, scale reference, signature close-up"
+    ]
+  },
+  "shipping": {
+    "local_pickup_only": true,
+    "notes": "Bulky furniture — local pickup only; not shipped."
+  }
+}
