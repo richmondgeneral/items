@@ -10,9 +10,9 @@
     <title>Silver Sequin Bomber Jacket | Richmond General</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Silver metallic sequin bomber jacket, ribbed trim. Statement vintage-style apparel from Richmond General, IL.">
+    <meta name="description" content="Silver metallic sequin bomber jacket, ribbed trim, labeled Jeongmin (F&M Fashion), 100% polyester. Statement layer from Richmond General, IL.">
     <meta property="og:title" content="Silver Sequin Bomber Jacket | Richmond General">
-    <meta property="og:description" content="Silver metallic sequin bomber jacket, ribbed trim. Statement vintage-style apparel from Richmond General, IL.">
+    <meta property="og:description" content="Silver metallic sequin bomber jacket, ribbed trim, labeled Jeongmin (F&M Fashion), 100% polyester. Statement layer from Richmond General, IL.">
     <meta property="og:image" content="./hero.png">
     <meta property="og:url" content="https://richmondgeneral.github.io/items/RG-0024/">
     <meta property="og:type" content="product">
@@ -381,6 +381,22 @@
             gap: 0.75rem;
             margin-bottom: 1.25rem;
         }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .gallery img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 6px;
+            background: var(--rg-cream);
+            border: 1px solid #e0d8c4;
+        }
         
         .detail-item {
             background: var(--rg-cream);
@@ -694,7 +710,7 @@
                 </div>
                 <div class="front-info">
                     <h1 class="item-title">Silver Sequin Bomber Jacket</h1>
-                    <p class="item-era">Metallic Sequin • Bomber Cut</p>
+                    <p class="item-era">Metallic Sequin • Bomber Cut • Jeongmin</p>
                     <div class="front-footer">
                         <span class="item-price">$40.00</span>
                         <span class="flip-hint">
@@ -719,20 +735,26 @@
                 
                 <div class="story-section">
                     <p class="section-label">History & Provenance</p>
-                    <p class="story-text">A bomber cut in dense silver sequins with a ribbed collar, cuffs, and hem — a little disco, a little now, metallic under any light. In very good condition; we are confirming the brand and size from the interior tag. A statement layer, sold as found.</p>
+                    <p class="story-text">A bomber cut in dense silver sequins with a ribbed collar, cuffs, and hem — metallic under any light, a little disco and a little now. Labeled F&M Fashion "Jeongmin," 100% polyester — a fun statement layer rather than a designer name. In very good condition, sold as found.</p>
                     
+                    <p class="section-label">Detail</p>
+                    <div class="gallery">
+                        <img src="./hero.png" alt="Silver sequin bomber jacket, front">
+                        <img src="./detail-tag.png" alt="Brand label: F&M Fashion Jeongmin, 100% polyester">
+                    </div>
+
                     <div class="details-grid">
                         <div class="detail-item">
                             <p class="detail-label">Era</p>
-                            <p class="detail-value">Modern vintage</p>
+                            <p class="detail-value">Modern</p>
                         </div>
                         <div class="detail-item">
                             <p class="detail-label">Condition</p>
-                            <p class="detail-value">Very Good (verifying tag)</p>
+                            <p class="detail-value">Very Good</p>
                         </div>
                         <div class="detail-item">
                             <p class="detail-label">Maker</p>
-                            <p class="detail-value">Brand TBD (verifying)</p>
+                            <p class="detail-value">Jeongmin (F&M Fashion)</p>
                         </div>
                         <div class="detail-item">
                             <p class="detail-label">Origin</p>

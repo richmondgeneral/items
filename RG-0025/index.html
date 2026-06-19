@@ -10,9 +10,9 @@
     <title>Atari 1050 Disk Drive (5.25") | Richmond General</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Atari 1050 5.25-inch floppy disk drive, 8-bit 400/800/XL. Powers on, untested further. Richmond General, IL.">
+    <meta name="description" content="Atari 1050 5.25-inch floppy disk drive for 8-bit 400/800/XL/XE. Powers on, untested further; possible Happy upgrade (unconfirmed). Richmond General, IL.">
     <meta property="og:title" content="Atari 1050 Disk Drive (5.25") | Richmond General">
-    <meta property="og:description" content="Atari 1050 5.25-inch floppy disk drive, 8-bit 400/800/XL. Powers on, untested further. Richmond General, IL.">
+    <meta property="og:description" content="Atari 1050 5.25-inch floppy disk drive for 8-bit 400/800/XL/XE. Powers on, untested further; possible Happy upgrade (unconfirmed). Richmond General, IL.">
     <meta property="og:image" content="./hero.png">
     <meta property="og:url" content="https://richmondgeneral.github.io/items/RG-0025/">
     <meta property="og:type" content="product">
@@ -381,6 +381,22 @@
             gap: 0.75rem;
             margin-bottom: 1.25rem;
         }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .gallery img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 6px;
+            background: var(--rg-cream);
+            border: 1px solid #e0d8c4;
+        }
         
         .detail-item {
             background: var(--rg-cream);
@@ -694,7 +710,7 @@
                 </div>
                 <div class="front-info">
                     <h1 class="item-title">Atari 1050 Disk Drive (5.25")</h1>
-                    <p class="item-era">1983 • Atari 8-Bit Computing</p>
+                    <p class="item-era">1983 • Atari 8-Bit • Powers On / Untested</p>
                     <div class="front-footer">
                         <span class="item-price">$45.00</span>
                         <span class="flip-hint">
@@ -719,8 +735,15 @@
                 
                 <div class="story-section">
                     <p class="section-label">History & Provenance</p>
-                    <p class="story-text">The disk drive that gave the Atari 8-bit line its double-density storage, introduced in 1983 to pair with the 400/800 and XL machines. This unit powers on and the spindle spins; reading and writing have not been tested, so it is offered honestly as powers-on / untested-further — a solid candidate for a collector with disks to try. Cables not included unless noted.</p>
+                    <p class="story-text">The double-density 5.25" disk drive for Atari's 8-bit line (400/800/XL/XE), introduced in 1983. This unit (serial 7VDFF 36939) powers on and the spindle spins; reading and writing have not been tested, so it is offered honestly as powers-on / untested-further. A "Happy 1050" upgrade reference came with the lot — if that performance board is actually installed the drive is worth considerably more; treated here as unconfirmed pending inspection. Cables not included unless noted.</p>
                     
+                    <p class="section-label">Detail (back · serial · base)</p>
+                    <div class="gallery">
+                        <img src="./detail-back.png" alt="Atari 1050 rear I/O ports">
+                        <img src="./detail-serial.png" alt="Serial label: Atari 1050, 7VDFF 36939">
+                        <img src="./detail-bottom.png" alt="Atari 1050 underside">
+                    </div>
+
                     <div class="details-grid">
                         <div class="detail-item">
                             <p class="detail-label">Era</p>
@@ -728,7 +751,7 @@
                         </div>
                         <div class="detail-item">
                             <p class="detail-label">Condition</p>
-                            <p class="detail-value">Powers On — Untested Further</p>
+                            <p class="detail-value">Powers On — Untested</p>
                         </div>
                         <div class="detail-item">
                             <p class="detail-label">Maker</p>
