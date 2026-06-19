@@ -5,7 +5,7 @@
   "price": "18.00",
   "condition": "Untested",
   "condition_notes": "",
-  "state": "Priced",
+  "state": "Listed",
   "target_channels": [
     "whatnot",
     "ebay"
@@ -16,9 +16,10 @@
       "url": "https://richmondgeneral.github.io/items/RG-0027/"
     },
     "square": {
-      "status": "pending",
-      "object_id": null,
-      "buy_link": null
+      "status": "listed",
+      "object_id": "6SG7EVQ4MRLWECQ6UEHERCFN",
+      "variation_id": "QA7W63UAOTTQTT6XJU27SICB",
+      "buy_link": "https://square.link/u/ZYt4z589"
     },
     "ebay": {
       "status": "not_listed",

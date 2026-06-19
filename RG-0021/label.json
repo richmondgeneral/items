@@ -16,9 +16,10 @@
       "url": "https://richmondgeneral.github.io/items/RG-0021/"
     },
     "square": {
-      "status": "pending",
-      "object_id": null,
-      "buy_link": null
+      "status": "listed",
+      "object_id": "5BKIRTKQPXCU4TB54UMTRMEZ",
+      "variation_id": "53TSEOGRWHZG3JRAHESDZ3AT",
+      "buy_link": "https://square.link/u/YNNugT4i"
     },
     "ebay": {
       "status": "not_listed",

@@ -5,7 +5,7 @@
   "price": "45.00",
   "condition": "Very Good",
   "condition_notes": "Unsigned — no maker's mark on the reverse. Textured gold-tone with cabochon turquoise and clear rhinestone accents; pin and clasp intact.",
-  "state": "Priced",
+  "state": "Listed",
   "target_channels": [
     "ebay",
     "whatnot",
@@ -17,9 +17,10 @@
       "url": "https://richmondgeneral.github.io/items/RG-0022/"
     },
     "square": {
-      "status": "pending",
-      "object_id": null,
-      "buy_link": null
+      "status": "listed",
+      "object_id": "ZRNBZ3GCLOQU2CZUJUGMOXZN",
+      "variation_id": "3TFS5FSIDS2ZZUVKFOWE6KWU",
+      "buy_link": "https://square.link/u/kZUaSVhv"
     },
     "ebay": {
       "status": "not_listed",
