@@ -25,8 +25,8 @@
       "note": "Pre-existing Square item (orig SKU 890135R), reassigned to RG-0030 on 2026-06-19. Price $45. Measurements added to description same day. De-stickered in-situ hero set as primary 2026-06-19 (prior top-view images retained as secondary). Shadow-free in-situ hero (image-processor edit.py) uploaded + set as primary 2026-06-19 (image_id OZA76O3D24Q2PETDXDVGN3BB); prior de-stickered shot CMDYZTDGFPN3RGE3WFJCR4RT retained as secondary."
     },
     "marketplace": {
-      "status": "not_listed",
-      "url": null
+      "status": "listed",
+      "url": "https://www.facebook.com/marketplace/item/4502111926737963/"
     }
   },
   "qr_code_url": "https://richmondgeneral.github.io/items/RG-0030/",
