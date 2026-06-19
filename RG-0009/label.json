@@ -22,9 +22,11 @@
       "buy_link": "https://square.link/u/bkRGJZGH"
     },
     "ebay": {
-      "status": "not_listed",
-      "item_id": null,
-      "url": null
+      "status": "listed",
+      "item_id": "298431095225",
+      "url": "https://www.ebay.com/itm/298431095225",
+      "listed_price": "95.00",
+      "note": "Buy It Now + Best Offer; calculated ship + international; 7 photos incl COA. Dolls category, Condition New (sealed NOS), Type Artist Doll, Brand Gustel Wied, Artist Eva-Maria Reick, Country Germany. Custom label RG-0009."
     },
     "whatnot": {
       "status": "not_listed"
