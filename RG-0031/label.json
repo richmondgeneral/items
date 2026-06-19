@@ -5,7 +5,7 @@
   "price": "8.00",
   "condition": "Good (worn reading copy)",
   "condition_notes": "Vintage science-fiction paperback: Arthur C. Clarke, 'The Sands of Mars,' Pocket Books #989, 25-cent edition. Per the copyright page: Pocket Book edition published April 1954, 1st printing February 1954 (the first US paperback printing; follows the 1951 Sidgwick & Jackson UK edition, 1952 Gnome Press hardcover, and 1953 Science Fiction Book Club edition). Cover painting by Robert Schulz. Condition: worn reading copy — a vertical crease/split runs through the front cover, the top-right corner has some loss, with edge/corner wear, soiling, and age-tanned pages; complete and readable, binding intact. Sold as-is.",
-  "state": "In Intake",
+  "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "target_channels": [
     "ebay",
@@ -13,7 +13,7 @@
   ],
   "channels": {
     "github_page": {
-      "status": "pending",
+      "status": "listed",
       "url": "https://richmondgeneral.github.io/items/RG-0031/"
     },
     "square": {
@@ -24,11 +24,16 @@
       "buy_link": "https://square.link/u/RypQGyNw",
       "payment_link_id": "EEQU4TJ5SLCIYCQM",
       "buy_link_note": "Square checkout link created 2026-06-19: $8 book + $5 USPS Media Mail shipping ($13 total), asks for shipping address.",
+      "primary_image_id": "TE6XMNP4LZMKA5FH5VDNZL2V",
       "categories": ["Books & Paper (reporting)", "New Arrivals"]
     },
     "ebay": {
-      "status": "not_listed",
-      "note": "To list $8 + Best Offer; ships USPS Media Mail (~6 oz). Category Books & Magazines > Fiction & Literature (vintage SF paperback). Custom label RG-0031."
+      "status": "draft",
+      "draft_id": "5109966602302",
+      "draft_url": "https://www.ebay.com/lstng?draftId=5109966602302&mode=AddItem",
+      "price": "8.00",
+      "format": "Buy It Now + Best Offer",
+      "note": "Draft started 2026-06-19 via Chrome: 3 photos uploaded (front cover = Main, copyright page, back), title set, custom label RG-0031, condition=Good. eBay listing form froze the browser (known document_idle hang) before item specifics/price/shipping could be entered. Owner to finish from the draft and publish — see ops/RG-0031-ebay-listing-pack.md. Remaining: item specifics, description, BIN $8 + Best Offer, USPS Media Mail (6 oz, 8x6x1 bubble mailer), publish."
     },
     "marketplace": {
       "status": "not_target"
