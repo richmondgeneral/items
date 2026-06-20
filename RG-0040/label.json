@@ -1,0 +1,86 @@
+{
+  "sku": "RG-0040",
+  "product_name": "Atari Logo Cartridge (Atari 8-Bit Computer, RX8032)",
+  "attributes": "1983 \u2022 Logo Computer Systems \u2022 RX8032 \u2022 Keyboard \u2022 Atari 8-Bit",
+  "price": "18.00",
+  "condition": "Used \u2014 Loose, Untested",
+  "condition_notes": "Not a game but a language \u2014 the turtle that taught a generation to think in code. Atari Logo (RX8032, 1983), developed by Logo Computer Systems of Montreal, runs from the console keyboard. A niche and quietly collected cartridge. Loose, used, untested; single-owner estate.. Loose cartridge (no box/manual); Atari 8-bit COMPUTER version, NOT the 2600 cart. Used and untested \u2014 sold as-is. PHOTO SET INCOMPLETE: front label only; back/contacts, condition close-up, and a scale shot still needed.",
+  "state": "Listed",
+  "fulfillment": "ship_or_pickup",
+  "pickup_location": "Richmond, IL 60071",
+  "target_channels": [
+    "square",
+    "ebay",
+    "whatnot",
+    "marketplace"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "live",
+      "url": "https://richmondgeneral.github.io/items/RG-0040/",
+      "note": "Flip-card item page built 2026-06-19 (Atari 8-bit batch RG-0036\u20130051)."
+    },
+    "square": {
+      "status": "listed",
+      "object_id": "37L2PLJI2YLW5IDVO5WRVRIB",
+      "variation_id": "P5WLPLCOBGFP5JC774NBNG6R",
+      "price": "18.00",
+      "inventory_qty": 1,
+      "categories": [
+        "The Vintage Compute Room (reporting)",
+        "New Arrivals"
+      ],
+      "buy_link": "https://square.link/u/PIRSc9FZ",
+      "note": "Created 2026-06-20 via batchInsertObjects; stocked 1 IN_STOCK; hero image uploaded (primary); shippable buy link live (asks for shipping address).",
+      "payment_link_id": "YWGVSWVL4II25FIJ"
+    },
+    "ebay": {
+      "status": "pending",
+      "price": "18.00",
+      "format": "Buy It Now + Best Offer",
+      "note": "Listing pack to prepare; attempt draft, hand publish to owner if the create-listing form hangs (known document_idle issue)."
+    },
+    "whatnot": {
+      "status": "pending",
+      "price": "18.00",
+      "note": "Queue for Whatnot CSV import (Retro Games / Atari 400, Loose)."
+    },
+    "marketplace": {
+      "status": "pending",
+      "note": "Facebook Marketplace listing to add (local pickup Richmond IL)."
+    }
+  },
+  "qr_codes": {
+    "info": {
+      "url": "https://richmondgeneral.github.io/items/RG-0040/",
+      "file": "qr-info.png",
+      "use": "price tag \u2014 scan for item card / more info"
+    },
+    "buy": {
+      "url": "https://square.link/u/PIRSc9FZ",
+      "file": "qr-buy.png",
+      "status": "live",
+      "use": "scan to buy \u2014 Square checkout"
+    }
+  },
+  "photos": {
+    "hero": "hero.png",
+    "details": [],
+    "photo_gaps": "Have: front label (hero) only. NEEDED for definition-of-done: back/contacts, condition close-up, scale reference.",
+    "source_photo": "IMG_0867"
+  },
+  "pricing_report": "ops/pricing/RG-0040-pricing.md",
+  "shipping": {
+    "weight_oz": 5,
+    "box_in": [
+      6,
+      4,
+      2
+    ],
+    "packaging": "Bubble mailer",
+    "fragile": false,
+    "carrier": "USPS Ground Advantage",
+    "notes": "Cartridge only.",
+    "est": true
+  }
+}
