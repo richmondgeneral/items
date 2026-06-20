@@ -1,23 +1,23 @@
 {
   "sku": "RG-0034",
-  "product_name": "Carton Stereo Microscope — 15X / 30XW / 45X (Japan, Boxed)",
-  "attributes": "Carton Optical (Japan) • Turret Stereo 15X/30XW/45X • Original Box + Foam + Eyepieces • Spiegel Ticket",
-  "price": "68.00",
-  "condition": "Excellent (boxed, complete on inspection)",
-  "condition_notes": "Carton Optical (Japan) turret stereo binocular microscope giving three fixed powers — 15X, 30XW (wide-field), 45X — via a rotating drum. Body marked 'Carton STEREO 15X 30XW 45X'; stage plate marked 'JAPAN'. Includes original box with molded foam, bagged eyepieces, and a spare illuminator/tube. Optics appear clear; mechanically functional on inspection (not lab-calibrated). Retains original Spiegel retail ticket (reg $99.98, marked $59.95) as provenance. Vintage, likely 1970s-80s.",
+  "product_name": "Carton Stereo Microscope — 15X / 30X / 45X (Japan, New in Box)",
+  "attributes": "Carton Optical (Japan) • Stereo 15X/30X/45X • NEW IN BOX (NOS) • 6 Eyepieces (15X/30X/45X pairs) • Spiegel Ticket",
+  "price": "80.00",
+  "condition": "New (old stock, unopened in original box)",
+  "condition_notes": "Carton Optical (Japan) stereo binocular microscope, 15X / 30X / 45X. NEW OLD STOCK — unopened/unused in its original box, complete with all SIX eyepieces (matched pairs of 15X, 30X, and 45X). Body marked 'Carton STEREO 15X 30XW 45X'; stage plate marked 'JAPAN'. Original molded-foam box with a spare illuminator/tube; retains the Spiegel retail ticket (reg $99.98). Optics clean throughout. As unopened stock it is untested by definition but presents factory-fresh. Vintage, likely 1970s-80s.",
   "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "pickup_location": "Richmond, IL 60071",
   "target_channels": ["ebay", "square"],
   "channels": {
     "github_page": { "status": "live", "url": "https://richmondgeneral.github.io/items/RG-0034/" },
-    "square": { "status": "listed", "object_id": "HRC5FMJH2KGMK5SAQ443RQQ3", "variation_id": "B2QQQJTK6BYUQBS3WY3JB66H", "price": "68.00", "buy_link": "https://square.link/u/lBIjqBgw", "payment_link_id": "JETVID7JAAR7FOFS", "buy_link_note": "Square checkout 2026-06-19: $68 + $18 flat shipping (fragile pack) = $86; asks for shipping address.", "categories": ["Collectibles (reporting)", "New Arrivals"], "primary_image_uploaded": true },
-    "ebay": { "status": "pending", "price": "68.00", "format": "Buy It Now + Best Offer", "note": "Draft to be created; ships fragile (pack with foam insert)." },
+    "square": { "status": "listed", "object_id": "HRC5FMJH2KGMK5SAQ443RQQ3", "variation_id": "B2QQQJTK6BYUQBS3WY3JB66H", "price": "80.00", "buy_link": "https://square.link/u/FUE47srT", "payment_link_id": "ZDYJ55O3V4OBMOR2", "buy_link_note": "Square checkout 2026-06-19: $80 + $18 flat shipping (fragile pack) = $98; asks for shipping address. Repriced 68->80 after owner confirmed new-in-box + full 6-eyepiece set; old link JETVID7JAAR7FOFS deleted.", "categories": ["Collectibles (reporting)", "New Arrivals"], "primary_image_uploaded": true },
+    "ebay": { "status": "pending", "price": "80.00", "format": "Buy It Now + Best Offer", "note": "Draft to be created. NEW IN BOX, 6 eyepieces. Ships fragile (pack with foam insert)." },
     "marketplace": { "status": "not_target" }
   },
   "qr_codes": {
     "info": { "url": "https://richmondgeneral.github.io/items/RG-0034/", "file": "qr-info.png", "status": "generated", "use": "price tag — scan for item card" },
-    "buy": { "url": "https://square.link/u/lBIjqBgw", "file": "qr-buy.png", "status": "generated", "use": "Square checkout — scan to buy" }
+    "buy": { "url": "https://square.link/u/FUE47srT", "file": "qr-buy.png", "status": "generated", "use": "Square checkout — scan to buy" }
   },
   "photos": {
     "hero": "hero.png",
