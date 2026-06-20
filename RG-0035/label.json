@@ -1,29 +1,29 @@
 {
   "sku": "RG-0035",
   "product_name": "Orion Aluminum Case w/ Telescope Eyepieces & 1.25\" Color-Filter Set",
-  "attributes": "Orion • Aluminum Hard Case + Key • 1.25\" Eyepieces (bagged) • Color Planetary Filter Set • Like-New",
-  "price": "65.00",
-  "condition": "Like-new (accessories factory-bagged)",
-  "condition_notes": "Orion (Orion Telescopes & Binoculars) silver aluminum hard case — foam egg-crate lid, fitted lower tray, latches and key. Contents: several 1.25\" telescope eyepieces (factory-bagged; focal lengths not yet recorded) and an Orion 1.25\" color planetary filter set in hinged cases (incl. #12 Yellow). Accessories appear unused/like-new. Sold as one lot. Compare ~$180 to assemble new piecemeal (case ~$40 + 4-color filter set $50 + eyepieces).",
+  "attributes": "Orion • Aluminum Hard Case + Key • 6-Filter Color/ND Set (#12 Yellow, #23 Orange, #25 Red, #58 Green, #80A Blue, 0.9 ND) • 1.25\" Eyepieces (bagged) • Like-New",
+  "price": "85.00",
+  "condition": "Like-new (accessories factory-bagged/cased)",
+  "condition_notes": "Orion (Orion Telescopes & Binoculars) silver aluminum hard case — foam egg-crate lid, fitted lower tray, latches and key. Contents (confirmed from 2026-06-20 detail photos): a full 1.25\" filter set in individual snap cases — #12 Yellow, #23 Orange, #25 Red, #58 Green, #80A Blue, and a 0.9 Neutral Density — plus several 1.25\" telescope eyepieces (factory-bagged; focal lengths not yet recorded). Accessories appear unused/like-new. Sold as one lot. The filter set alone is a premium 6-piece color/ND kit; assembling the lot new piecemeal runs well past $180.",
   "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "pickup_location": "Richmond, IL 60071",
   "target_channels": ["ebay", "square"],
   "channels": {
     "github_page": { "status": "live", "url": "https://richmondgeneral.github.io/items/RG-0035/" },
-    "square": { "status": "listed", "object_id": "T27WEHF7XE4WSNWIV6BW4VYX", "variation_id": "EYNUYIE2W5S7HD5BZCPDVZQF", "price": "65.00", "buy_link": "https://square.link/u/U9dhrezK", "payment_link_id": "DAF4FC4XIRRRVPWC", "buy_link_note": "Square checkout 2026-06-19: $65 + $16 flat shipping = $81; asks for shipping address.", "categories": ["Collectibles (reporting)", "New Arrivals"], "primary_image_uploaded": true },
-    "ebay": { "status": "pending", "price": "65.00", "format": "Buy It Now + Best Offer", "note": "Draft to be created. Read eyepiece focal lengths + exact filter #s before publish (move top of range)." },
+    "square": { "status": "listed", "object_id": "T27WEHF7XE4WSNWIV6BW4VYX", "variation_id": "EYNUYIE2W5S7HD5BZCPDVZQF", "price": "85.00", "buy_link": "https://square.link/u/SR9niwZt", "payment_link_id": "EDNAFLKPDI674DHG", "buy_link_note": "Square checkout 2026-06-20: $85 + $16 flat shipping = $101; asks for shipping address. Repriced 65->85 after the 6/20 detail pics documented a full 6-piece color/ND filter set; old link DAF4FC4XIRRRVPWC deleted. Added a filters detail image to the catalog item.", "categories": ["Collectibles (reporting)", "New Arrivals"], "primary_image_uploaded": true },
+    "ebay": { "status": "pending", "price": "85.00", "format": "Buy It Now + Best Offer", "note": "Draft to be created. Filter set documented (6pc color/ND). Still read eyepiece focal lengths before publish to move the top of range." },
     "marketplace": { "status": "not_target" }
   },
   "qr_codes": {
     "info": { "url": "https://richmondgeneral.github.io/items/RG-0035/", "file": "qr-info.png", "status": "generated", "use": "price tag — scan for item card" },
-    "buy": { "url": "https://square.link/u/U9dhrezK", "file": "qr-buy.png", "status": "generated", "use": "Square checkout — scan to buy" }
+    "buy": { "url": "https://square.link/u/SR9niwZt", "file": "qr-buy.png", "status": "generated", "use": "Square checkout — scan to buy" }
   },
   "photos": {
     "hero": "hero.png",
-    "details": ["detail-open.png", "detail-accessories.png"],
-    "photo_gaps": "Have: closed case (Orion logo), open case w/ accessories, accessories close-up. Still NEEDED: eyepiece focal-length labels, exact filter #s, confirm fitted tray complete, case dims/weight.",
-    "source_photos": "IMG_0957 (closed case hero), IMG_0958 (open case), IMG_0959 (accessories)"
+    "details": ["detail-open.png", "detail-accessories.png", "detail-filters.png", "detail-contents.png", "detail-filterset.png"],
+    "photo_gaps": "Have: closed case (hero), open case, accessories, full filter set laid out (colors + ND), filter snap-cases, case contents. Filter #s now documented (#12/#23/#25/#58/#80A + 0.9 ND). Still NEEDED: eyepiece focal-length labels (still bagged), confirm tray complete, case dims/weight.",
+    "source_photos": "6/19: IMG_0957-0959 (case/accessories). 6/20 reconcile detail: IMG_1018/1019/1021/1022/1023/1025 (filter set + ND, laid out)."
   },
   "pricing_report": "ops/pricing/RG-0035-pricing.md",
   "shipping": {
