@@ -154,12 +154,22 @@
         }
         
         .flip-hint {
-            font-size: 0.75rem;
-            color: #888;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 0.3rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--rg-brown);
+            background: var(--rg-cream);
+            border: 1px solid rgba(107, 68, 35, 0.18);
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
             line-height: 1;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .flip-icon { animation: flip-nudge 1.4s ease 0.9s 2; transform-origin: center; }
+            @keyframes flip-nudge { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.18); } }
         }
         
         .flip-icon {
@@ -301,6 +311,7 @@
             .flip-card { transform: none !important; cursor: default; }
             .card-face { box-shadow: none; position: relative; }
             .card-back { transform: none; display: block; margin-top: 1rem; }
+            .flip-hint, .buy-button { display: none; }
         }
 
         @media (max-width: 480px) {
@@ -430,7 +441,7 @@
                     <div class="front-footer">
                         <span class="item-price">$15</span>
                         <span class="flip-hint">
-                            Tap to learn more
+                            Tap for Story
                             <svg class="flip-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                             </svg>

@@ -394,7 +394,9 @@ python3 scripts/ui/build_agent_review_pack.py --sku RG-0007
 - SKU badge (top-right)
 - Item title and era line
 - Price
-- "Tap to learn more" hint
+- "Tap for Story" flip hint (chip, in the front-footer next to the price; hidden in print)
+
+**Flip affordance (canonical).** Single item pages show one flip hint: a calm chip in the front-footer — flip icon + **"Tap for Story"** (title case) — with a one-time `.flip-icon` nudge gated by `prefers-reduced-motion`. It is hidden in `@media print`. The gallery grid (`index.html`) uses `View Story →` instead (navigation, not a flip). Spec + rationale: `docs/plans/2026-06-20-tap-affordance-design.md`. Sweep-check with `python3 scripts/ui/verify_flip_hint.py`.
 
 ### Back Side
 - Story/provenance section
@@ -413,6 +415,15 @@ python3 scripts/ui/build_agent_review_pack.py --sku RG-0007
 - CSS `@media print` styles for 4x6 or 5x7 card stock
 - Front and back pages print separately
 - Museum-quality card output for in-store displays
+
+## Living-test items
+
+Some items run **live experiments**. During site-wide sweeps (style/template changes), **update styles only — never change their functionality.** Known living tests:
+
+- **RG-0001** — touch/motion ("TILT") experiment.
+- **RG-0011** — As-Found / AI-restored drag-to-compare slider (`variant-stack`, `data-mode`, `data-variant`).
+
+They still receive standard style/wording updates (e.g., the flip-hint chip), but their experimental markup/JS must be preserved. When in doubt, `git diff` the file before committing and confirm only style/text lines changed.
 
 ## Square Integration
 

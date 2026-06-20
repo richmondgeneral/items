@@ -115,20 +115,27 @@
         }
         
         .flip-hint {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            background: white;
-            color: var(--rg-charcoal);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 0.3rem;
-            box-shadow: 0 2px 8px var(--rg-shadow);
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--rg-brown);
+            background: var(--rg-cream);
+            border: 1px solid rgba(107, 68, 35, 0.18);
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            line-height: 1;
         }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .flip-icon { animation: flip-nudge 1.4s ease 0.9s 2; transform-origin: center; }
+            @keyframes flip-nudge { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.18); } }
+        }
+
+        .flip-icon { width: 14px; height: 14px; }
+
+        .front-footer { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
         
         .front-info {
             padding: 1.25rem 1.5rem 1.5rem;
@@ -476,20 +483,20 @@
                 <div class="item-image-container">
                     <span class="sku-badge sold-badge">RG-0014 · SOLD</span>
                     <img src="./hero.png" alt="1969 Chicago Cubs Cub Power LP Record Album Cover" class="item-image">
-                    <div class="flip-hint">
-                        <span>Tap for details</span>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 1l4 4-4 4"/>
-                            <path d="M3 11V9a4 4 0 014-4h14"/>
-                            <path d="M7 23l-4-4 4-4"/>
-                            <path d="M21 13v2a4 4 0 01-4 4H3"/>
-                        </svg>
-                    </div>
                 </div>
                 <div class="front-info">
                     <h1 class="item-title">1969 Chicago Cubs "Cub Power" LP Record</h1>
                     <p class="item-era">1969 • Quill Records • Verified Playable</p>
-                    <p class="item-price sold-price">Sold · $20.00</p>
+                    <div class="front-footer">
+                        <span class="item-price sold-price">Sold · $20.00</span>
+                        <span class="flip-hint">
+                            <svg class="flip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+                                <path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+                            </svg>
+                            Tap for Story
+                        </span>
+                    </div>
                 </div>
             </div>
             

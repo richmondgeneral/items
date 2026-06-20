@@ -134,8 +134,29 @@
             color: var(--rg-charcoal);
         }
         
-        .flip-hint { font-size: 0.7rem; color: #888; display: flex; align-items: center; gap: 0.25rem; }
+        .flip-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--rg-brown);
+            background: var(--rg-cream);
+            border: 1px solid rgba(107, 68, 35, 0.18);
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            line-height: 1;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .flip-icon { animation: flip-nudge 1.4s ease 0.9s 2; transform-origin: center; }
+            @keyframes flip-nudge { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.18); } }
+        }
         .flip-icon { width: 14px; height: 14px; }
+
+        @media print {
+            .flip-hint, .buy-button { display: none; }
+        }
         
         .card-back { display: flex; flex-direction: column; background: white; }
         
@@ -400,7 +421,7 @@
                                 <path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
                                 <path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
                             </svg>
-                            Tap for story
+                            Tap for Story
                         </span>
                     </div>
                 </div>
