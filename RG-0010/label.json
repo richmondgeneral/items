@@ -1,9 +1,45 @@
 {
   "sku": "RG-0010",
   "product_name": "Goebel Hummel Figural Wine Goblet Set (9pc)",
-  "attributes": "1960s-70s \u2022 West Germany \u2022 14K Gold Trim",
+  "attributes": "1960s-70s • West Germany • Goebel figural stems / Bockling bowls • 14K Gold Trim",
   "price": "180.00",
   "condition": "Excellent",
-  "condition_notes": "No chips, cracks, or gold wear",
-  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0010/"
+  "condition_notes": "Set of nine Goebel figural wine goblets, West Germany c.1960s-70s: hand-painted porcelain figurine stems (Bavarian/seasonal characters) in gold-rimmed amber bowls (Bockling) with 14K-gold grape-vine etching. Re-confirmed complete and excellent from new 2026-06-20 photos — gold bright, figurines crisp, no chips/cracks/gold wear.",
+  "state": "Listed",
+  "fulfillment": "ship_or_pickup",
+  "pickup_location": "Richmond, IL 60071",
+  "target_channels": ["square"],
+  "channels": {
+    "github_page": { "status": "live", "url": "https://richmondgeneral.github.io/items/RG-0010/" },
+    "square": {
+      "status": "listed",
+      "object_id": "JKPHYS5ZY6SBBJ5HMXWJRO2F",
+      "variation_id": "LQVR73GMXBDETD7PTGKME6XB",
+      "price": "180.00",
+      "primary_image_id": "LOJEM57R33KNIC6HYIKRBK7F",
+      "categories": ["Pottery & Ceramics (reporting)", "Whimsical Gifts", "Gifts", "The Real Rarities"],
+      "note": "Reconcile 2026-06-20: refreshed primary hero image (new full-set upright shot). Price held $180. Prior primary image XBSJYDU4S5J7JEYDBPINT2O2 retained as secondary."
+    }
+  },
+  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0010/",
+  "photos": {
+    "hero": "hero.png",
+    "hero_source": "IMG_0999 (2026-06-20), rotated upright + cropped",
+    "details": [],
+    "photo_gaps": "Hero refreshed. Optional: per-figure close-ups, base/maker-mark shot, a count/condition macro."
+  },
+  "pricing_report": "ops/pricing/RG-0010-pricing.md",
+  "hero_qa": {
+    "status": "pass",
+    "checked_at": "2026-06-20T23:31:45.137562+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 0.0,
+      "full_face": true,
+      "bg_ok": true,
+      "defects_ok": true
+    },
+    "reasons": []
+  }
 }
