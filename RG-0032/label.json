@@ -5,30 +5,44 @@
   "price": "14.00",
   "condition": "Very Good (Used Vintage)",
   "condition_notes": "Hardcover gift book, The Little Book of Famous Insults, Peter Pauper Press (Mount Vernon, NY), copyright 1964; edited by Betty Jo Ramsey, illustrated by Fritz Kredel. Decorated paper-covered boards in a brown thorn/branch motif with a green spine-label panel. Condition Very Good: boards bright and clean, binding firm and square, text unmarked. Retains its original Rockford College bookstore price ticket tucked inside the front ('ROCKFORD COLLEGE / F66 / NO REFUND IF TICKET REMOVED / 12.5') — left in place as provenance. No dust jacket (as issued / none present). Ships easily via USPS Media Mail.",
-  "state": "In Intake",
+  "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "pickup_location": "Richmond, IL 60071",
   "target_channels": [
+    "square",
     "ebay",
-    "square"
+    "whatnot"
   ],
   "channels": {
     "github_page": {
-      "status": "built_local",
+      "status": "live",
       "url": "https://richmondgeneral.github.io/items/RG-0032/",
-      "note": "Flip-card index.html built locally; NOT yet committed/pushed (awaiting owner sign-off before publish)."
+      "note": "Flip-card item page published 2026-06-19 (items repo commit bf54ec8); gallery card added, count bumped to 22."
     },
     "square": {
-      "status": "pending",
+      "status": "listed",
+      "object_id": "2JO75V7DD2HL4HOFEXYUQIPQ",
+      "variation_id": "DBBIQSXTQUJ5K6XDAYJ3ZW5I",
       "price": "14.00",
+      "buy_link": "https://square.link/u/l6IFDX8y",
+      "payment_link_id": "LLJJ2U6KOSWEVINN",
+      "primary_image_id": "SBPV4NZNLXU74K667ICEKP4R",
       "categories": ["Books & Paper (reporting)", "New Arrivals"],
-      "note": "Square catalog entry + inventory + payment link NOT yet created (gated for sign-off)."
+      "note": "Created 2026-06-20: item + 1 IN_STOCK inventory + shippable checkout link (asks for shipping address) + hero image. Validated live."
     },
     "ebay": {
-      "status": "pending",
+      "status": "pack_ready",
       "price": "14.00",
       "format": "Buy It Now + Best Offer",
-      "note": "Listing not yet created. Shippable USPS Media Mail (~8 oz, small hardcover). Books & Paper."
+      "listing_pack": "ops/RG-0032-ebay-listing-pack.md",
+      "note": "eBay create-listing form hit the known document_idle hang under browser automation; listing pack prepared for owner to finish + publish (title, specifics, BIN $14 + Best Offer, USPS Media Mail ~8 oz 8x6x1, custom label RG-0032, Books & Magazines > Books). After publishing, set status=listed + add item_id/url."
+    },
+    "whatnot": {
+      "status": "csv_queued",
+      "price": "14.00",
+      "csv": "items/rg-inventory/whatnot-import.csv",
+      "category": "Rare & Vintage Books",
+      "note": "Import row appended 2026-06-20 (Buy it Now $14, 1-2 lbs profile, image = GitHub hero). Pending CSV upload via the Whatnot importer."
     },
     "marketplace": {
       "status": "not_target"
@@ -41,10 +55,10 @@
       "use": "price tag — scan for item card / more info"
     },
     "buy": {
-      "url": null,
+      "url": "https://square.link/u/l6IFDX8y",
       "file": "qr-buy.png",
-      "status": "pending",
-      "use": "scan to buy — generated once the Square checkout link exists (sign-off step)"
+      "status": "live",
+      "use": "scan to buy — Square checkout (ships Media Mail; local pickup available)"
     }
   },
   "photos": {
