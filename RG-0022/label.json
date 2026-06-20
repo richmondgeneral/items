@@ -20,7 +20,10 @@
       "status": "listed",
       "object_id": "ZRNBZ3GCLOQU2CZUJUGMOXZN",
       "variation_id": "3TFS5FSIDS2ZZUVKFOWE6KWU",
-      "buy_link": "https://square.link/u/kZUaSVhv"
+      "buy_link": "https://square.link/u/kZUaSVhv",
+      "primary_image_id": "NYASCRAE6VCW4OSK7MYBCYET",
+      "image_ids": ["NYASCRAE6VCW4OSK7MYBCYET", "C4GQC7ZYXTQOGW6HQVGNIGHE", "JNE6CDNDFR42I4GYMXZ2QTLW"],
+      "note": "Images uploaded to Square 2026-06-20: hero (primary) + back + front-angle. They had been live on Whatnot/eBay/GitHub but were never pushed to Square, so the .com storefront product page showed no photo."
     },
     "ebay": {
       "status": "listed",
