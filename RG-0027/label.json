@@ -13,6 +13,13 @@
     "method": "Best Offer accepted",
     "date": "2026-06-20"
   },
+  "experimental": {
+    "live": true,
+    "since": "2026-06-20",
+    "owner": "scottybe",
+    "purpose": "Live production testbed for the RG-controlled buy-redirect layer (items/RG-0027/buy/index.html, driven by status.json). First item to run the redirect pattern in production.",
+    "note": "Item is physically SOLD (state=Sold) but intentionally kept LIVE as an experiment. Do NOT archive it, delete buy/, or 'clean up' the experimental.* / qr_codes.buy fields without checking with the owner — this is the canary for rolling the redirect layer into rg-full-auto + rg-item-mark-sold."
+  },
   "lot_ref": "Atari MASTER lot catalog → ATARI-S57 (valuations tab, loose-cart series). eBay custom label = ATARI-S57.",
   "target_channels": [
     "whatnot",
