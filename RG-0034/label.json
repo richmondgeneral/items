@@ -1,0 +1,39 @@
+{
+  "sku": "RG-0034",
+  "product_name": "Carton Stereo Microscope — 15X / 30XW / 45X (Japan, Boxed)",
+  "attributes": "Carton Optical (Japan) • Turret Stereo 15X/30XW/45X • Original Box + Foam + Eyepieces • Spiegel Ticket",
+  "price": "68.00",
+  "condition": "Excellent (boxed, complete on inspection)",
+  "condition_notes": "Carton Optical (Japan) turret stereo binocular microscope giving three fixed powers — 15X, 30XW (wide-field), 45X — via a rotating drum. Body marked 'Carton STEREO 15X 30XW 45X'; stage plate marked 'JAPAN'. Includes original box with molded foam, bagged eyepieces, and a spare illuminator/tube. Optics appear clear; mechanically functional on inspection (not lab-calibrated). Retains original Spiegel retail ticket (reg $99.98, marked $59.95) as provenance. Vintage, likely 1970s-80s.",
+  "state": "Listed",
+  "fulfillment": "ship_or_pickup",
+  "pickup_location": "Richmond, IL 60071",
+  "target_channels": ["ebay", "square"],
+  "channels": {
+    "github_page": { "status": "live", "url": "https://richmondgeneral.github.io/items/RG-0034/" },
+    "square": { "status": "listed", "object_id": "HRC5FMJH2KGMK5SAQ443RQQ3", "variation_id": "B2QQQJTK6BYUQBS3WY3JB66H", "price": "68.00", "buy_link": "https://square.link/u/lBIjqBgw", "payment_link_id": "JETVID7JAAR7FOFS", "buy_link_note": "Square checkout 2026-06-19: $68 + $18 flat shipping (fragile pack) = $86; asks for shipping address.", "categories": ["Collectibles (reporting)", "New Arrivals"], "primary_image_uploaded": true },
+    "ebay": { "status": "pending", "price": "68.00", "format": "Buy It Now + Best Offer", "note": "Draft to be created; ships fragile (pack with foam insert)." },
+    "marketplace": { "status": "not_target" }
+  },
+  "qr_codes": {
+    "info": { "url": "https://richmondgeneral.github.io/items/RG-0034/", "file": "qr-info.png", "status": "generated", "use": "price tag — scan for item card" },
+    "buy": { "url": "https://square.link/u/lBIjqBgw", "file": "qr-buy.png", "status": "generated", "use": "Square checkout — scan to buy" }
+  },
+  "photos": {
+    "hero": "hero.png",
+    "details": ["detail-box.png", "detail-inbox.png", "detail-tag.png"],
+    "photo_gaps": "Have: instrument hero (Carton/15X-30XW-45X visible), box front, in-box w/ eyepieces, Spiegel price ticket. Still useful: eyepiece count close-up, objective/optics close-up, scale shot.",
+    "source_photos": "IMG_0954 (hero), IMG_0951 (box), IMG_0953 (in-box), IMG_0952 (Spiegel ticket)"
+  },
+  "pricing_report": "ops/pricing/RG-0034-pricing.md",
+  "shipping": {
+    "local_pickup_only": false,
+    "shippable": true,
+    "method": "USPS Priority / UPS Ground",
+    "fragile": true,
+    "weight_oz": 80,
+    "box_in": [12, 10, 9],
+    "est": true,
+    "notes": "Fragile optics — ship in original foam-fitted box inside an outer carton."
+  }
+}

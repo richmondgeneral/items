@@ -1,0 +1,39 @@
+{
+  "sku": "RG-0035",
+  "product_name": "Orion Aluminum Case w/ Telescope Eyepieces & 1.25\" Color-Filter Set",
+  "attributes": "Orion • Aluminum Hard Case + Key • 1.25\" Eyepieces (bagged) • Color Planetary Filter Set • Like-New",
+  "price": "65.00",
+  "condition": "Like-new (accessories factory-bagged)",
+  "condition_notes": "Orion (Orion Telescopes & Binoculars) silver aluminum hard case — foam egg-crate lid, fitted lower tray, latches and key. Contents: several 1.25\" telescope eyepieces (factory-bagged; focal lengths not yet recorded) and an Orion 1.25\" color planetary filter set in hinged cases (incl. #12 Yellow). Accessories appear unused/like-new. Sold as one lot. Compare ~$180 to assemble new piecemeal (case ~$40 + 4-color filter set $50 + eyepieces).",
+  "state": "Listed",
+  "fulfillment": "ship_or_pickup",
+  "pickup_location": "Richmond, IL 60071",
+  "target_channels": ["ebay", "square"],
+  "channels": {
+    "github_page": { "status": "live", "url": "https://richmondgeneral.github.io/items/RG-0035/" },
+    "square": { "status": "listed", "object_id": "T27WEHF7XE4WSNWIV6BW4VYX", "variation_id": "EYNUYIE2W5S7HD5BZCPDVZQF", "price": "65.00", "buy_link": "https://square.link/u/U9dhrezK", "payment_link_id": "DAF4FC4XIRRRVPWC", "buy_link_note": "Square checkout 2026-06-19: $65 + $16 flat shipping = $81; asks for shipping address.", "categories": ["Collectibles (reporting)", "New Arrivals"], "primary_image_uploaded": true },
+    "ebay": { "status": "pending", "price": "65.00", "format": "Buy It Now + Best Offer", "note": "Draft to be created. Read eyepiece focal lengths + exact filter #s before publish (move top of range)." },
+    "marketplace": { "status": "not_target" }
+  },
+  "qr_codes": {
+    "info": { "url": "https://richmondgeneral.github.io/items/RG-0035/", "file": "qr-info.png", "status": "generated", "use": "price tag — scan for item card" },
+    "buy": { "url": "https://square.link/u/U9dhrezK", "file": "qr-buy.png", "status": "generated", "use": "Square checkout — scan to buy" }
+  },
+  "photos": {
+    "hero": "hero.png",
+    "details": ["detail-open.png", "detail-accessories.png"],
+    "photo_gaps": "Have: closed case (Orion logo), open case w/ accessories, accessories close-up. Still NEEDED: eyepiece focal-length labels, exact filter #s, confirm fitted tray complete, case dims/weight.",
+    "source_photos": "IMG_0957 (closed case hero), IMG_0958 (open case), IMG_0959 (accessories)"
+  },
+  "pricing_report": "ops/pricing/RG-0035-pricing.md",
+  "shipping": {
+    "local_pickup_only": false,
+    "shippable": true,
+    "method": "USPS Priority / UPS Ground",
+    "fragile": true,
+    "weight_oz": 64,
+    "box_in": [14, 12, 6],
+    "est": true,
+    "notes": "Aluminum case protects contents; box with padding. Confirm weight in-hand."
+  }
+}
