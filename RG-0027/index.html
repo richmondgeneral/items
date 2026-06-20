@@ -480,6 +480,50 @@
             line-height: inherit;
         }
         
+        /* SOLD STATE */
+        .sold-ribbon {
+            position: absolute;
+            top: 1.4rem;
+            left: -2.6rem;
+            z-index: 3;
+            transform: rotate(-45deg);
+            background: var(--rg-charcoal);
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 0.35rem 3rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+        }
+
+        .sold-meta {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #8a8a8a;
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+        }
+        .sold-meta .sold-word { color: var(--rg-charcoal); }
+        .sold-meta .sold-price { font-size: 1.2rem; color: var(--rg-brown); }
+        .sold-meta .sold-strike {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #aaa;
+            text-decoration: line-through;
+        }
+
+        .buy-button.sold {
+            background: #c4c4c4;
+            color: #fff;
+            cursor: default;
+            pointer-events: none;
+        }
+        .buy-button.sold:hover { background: #c4c4c4; transform: none; }
+
         /* PRINT STYLES */
         @media print {
             body {
@@ -660,6 +704,7 @@
             <div class="card-face card-front">
                 <div class="item-image-container">
                     <span class="sku-badge">RG-0027</span>
+                    <span class="sold-ribbon">Sold</span>
                     <!-- Variant stack: 'as-found' is always present; 'as-restored'
                          is wired up by JS only if ./restored.jpg actually exists.
                          The data model (data-mode/data-variant) is mode-agnostic so
@@ -696,7 +741,7 @@
                     <h1 class="item-title">Demon Attack Cartridge — Imagic (Atari 8-Bit)</h1>
                     <p class="item-era">1982 • Imagic • Atari 400/800</p>
                     <div class="front-footer">
-                        <span class="item-price">$15.00</span>
+                        <span class="sold-meta"><span class="sold-word">Sold</span><span class="sold-price">&middot; $10.00</span><span class="sold-strike">$15.00</span></span>
                         <span class="flip-hint">
                             <svg class="flip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M17 1l4 4-4 4"/>
@@ -744,14 +789,14 @@
                 <div class="back-footer">
                     <div class="qr-section">
                         <div class="qr-code">
-                            <img src="./qr-buy.png" alt="Scan to purchase">
+                            <img src="./qr-info.png" alt="Scan for item details">
                         </div>
                         <div class="qr-text">
-                            <strong>Scan to Buy</strong>
-                            Quick checkout
+                            <strong>Sold</strong>
+                            Found a new home · June 2026
                         </div>
                     </div>
-                    <a href="https://square.link/u/R17OQbks" class="buy-button">Buy Now</a>
+                    <span class="buy-button sold" aria-disabled="true">Sold</span>
                 </div>
                 
                 <div class="brand-strip">

@@ -5,7 +5,14 @@
   "price": "15.00",
   "condition": "Untested",
   "condition_notes": "Loose cartridge (no box/manual). Untested — not verified on hardware; sold as-is. Atari 400/800 8-bit COMPUTER version (not the common 2600 cart). Label 720149-1A, clean with minor wear.",
-  "state": "Listed",
+  "state": "Sold",
+  "sold": {
+    "channel": "ebay",
+    "price": "10.00",
+    "list_price": "15.00",
+    "method": "Best Offer accepted",
+    "date": "2026-06-20"
+  },
   "lot_ref": "Atari MASTER lot catalog → ATARI-S57 (valuations tab, loose-cart series). eBay custom label = ATARI-S57.",
   "target_channels": [
     "whatnot",
@@ -17,21 +24,24 @@
       "url": "https://richmondgeneral.github.io/items/RG-0027/"
     },
     "square": {
-      "status": "listed",
+      "status": "delisted",
       "object_id": "6SG7EVQ4MRLWECQ6UEHERCFN",
       "variation_id": "QA7W63UAOTTQTT6XJU27SICB",
-      "buy_link": "https://square.link/u/R17OQbks"
+      "buy_link": "https://square.link/u/R17OQbks",
+      "note": "Inventory zeroed 2026-06-20 — item sold on eBay; removed from Square Online for-sale."
     },
     "ebay": {
-      "status": "listed",
+      "status": "sold",
       "item_id": "298430998196",
       "url": "https://www.ebay.com/itm/298430998196",
       "listed_price": "15.00",
-      "note": "Buy It Now + Best Offer; calculated ship + international. Custom label ATARI-S57. Cloned UK product fields corrected (Region NTSC-U/C, Country US)."
+      "sold_price": "10.00",
+      "sold_date": "2026-06-20",
+      "note": "SOLD 2026-06-20 via accepted Best Offer ($10). Buy It Now + Best Offer; calculated ship + international. Custom label ATARI-S57. Cloned UK product fields corrected (Region NTSC-U/C, Country US)."
     },
     "whatnot": {
-      "status": "listed",
-      "note": "Listed on Whatnot marketplace 2026-06-19 (Buy It Now $15 + Accept Offers; Reserve-for-Live off). Category Retro Games, Condition Loose, Platform Atari 400, Ship 4-7 oz. Custom label RG-0027."
+      "status": "ended",
+      "note": "Listing ended 2026-06-20 — item sold on eBay. Was: Buy It Now $15 + Accept Offers; Category Retro Games, Condition Loose, Platform Atari 400. Custom label RG-0027."
     },
     "marketplace": {
       "status": "not_listed",
