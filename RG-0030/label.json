@@ -23,6 +23,15 @@
       "variation_id": "BSFBGPKT7ZLDNVVIS33PTT2J",
       "buy_link": "https://square.link/u/otFRBWtU",
       "primary_image_id": "OZA76O3D24Q2PETDXDVGN3BB",
+      "retired_payment_links": [
+        {
+          "id": "NU42C2HNVFDAQT2M",
+          "slug": "iYoaeBAs",
+          "order_id": "bDKIbFP9RfzKCIDvNKIdV1TcdCAZY",
+          "deleted_at": "2026-06-20",
+          "reason": "Orphan checkout link ($45 DRAFT order, never paid) whose Square order was mislabeled 'RG-0028'; it actually belonged to this item (Folk-Art Bar Stool). Superseded by current buy_link otFRBWtU; deleted via API during the 2026-06-20 orphan-link audit."
+        }
+      ],
       "note": "Pre-existing Square item (orig SKU 890135R), reassigned to RG-0030 on 2026-06-19. Price $45. Measurements added to description same day. De-stickered in-situ hero set as primary 2026-06-19 (prior top-view images retained as secondary). Shadow-free in-situ hero (image-processor edit.py) uploaded + set as primary 2026-06-19 (image_id OZA76O3D24Q2PETDXDVGN3BB); prior de-stickered shot CMDYZTDGFPN3RGE3WFJCR4RT retained as secondary."
     },
     "marketplace": {

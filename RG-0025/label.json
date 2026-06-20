@@ -22,7 +22,16 @@
       "object_id": "2CDQZRF6JV2YP5UCITJNGSX3",
       "variation_id": "7TCQXJ4IR6ZKKVW6MPRKRRM3",
       "buy_link": "https://square.link/u/jRUzIFgp",
-      "price": "185.00"
+      "price": "185.00",
+      "retired_payment_links": [
+        {
+          "id": "B4IO373W3ROOZLJY",
+          "slug": "WAWih84b",
+          "order_id": "xYttACyrohpbsXdWREVZctQNemOZY",
+          "deleted_at": "2026-06-20",
+          "reason": "Stale duplicate checkout link ($150 DRAFT order, never paid). Superseded by current buy_link jRUzIFgp; deleted via API during the 2026-06-20 orphan-link audit so it can no longer take a payment."
+        }
+      ]
     },
     "ebay": {
       "status": "listed",

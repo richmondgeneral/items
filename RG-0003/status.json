@@ -5,5 +5,5 @@
   "sold_price": 25.0,
   "sold_currency": "USD",
   "sold_at": "2025-12-06",
-  "notes": "Sold via Facebook Marketplace; follow-up with buyer is still needed."
+  "notes": "Sold via Facebook Marketplace; follow-up with buyer is still needed. AUDIT 2026-06-20: a live Square payment link (square.link/u/u3fWQWnE, id 3UKOFPUPC6IKMYFK, order jPOOqluYj64GkRrspjfGSECVm5SZY, created 2025-11-27 at the $55 listed price) was still active for this sold item — a phantom-charge risk found via delete_payment_link.py --audit (null metadata, so invisible to a SKU search) — and was deleted via API (cancelled_order_id jPOOqluYj64GkRrspjfGSECVm5SZY)."
 }
