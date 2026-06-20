@@ -422,6 +422,7 @@ Some items run **live experiments**. During site-wide sweeps (style/template cha
 
 - **RG-0001** — touch/motion ("TILT") experiment.
 - **RG-0011** — As-Found / AI-restored drag-to-compare slider (`variant-stack`, `data-mode`, `data-variant`).
+- **RG-0027** — RG-controlled **buy-redirect layer** (`RG-0027/buy/index.html`). The `qr-buy` should encode the RG `/buy/` URL, not the raw `square.link`; the page reads `status.json` and forwards to Square checkout while for sale, or shows a graceful "sold" page once sold. Item is physically Sold but kept live as the production canary. Preserve `buy/` and the `experimental.*` / `qr_codes.buy` fields in `label.json`. Rollout target: bake into `rg-full-auto` (generate at intake) + `rg-item-mark-sold` (already writes the driving `status.json`).
 
 They still receive standard style/wording updates (e.g., the flip-hint chip), but their experimental markup/JS must be preserved. When in doubt, `git diff` the file before committing and confirm only style/text lines changed.
 
