@@ -28,7 +28,8 @@
       "object_id": "6SG7EVQ4MRLWECQ6UEHERCFN",
       "variation_id": "QA7W63UAOTTQTT6XJU27SICB",
       "buy_link": "https://square.link/u/R17OQbks",
-      "note": "Inventory zeroed 2026-06-20 — item sold on eBay; removed from Square Online for-sale."
+      "buy_link_status": "deleted",
+      "note": "2026-06-20 — item sold on eBay. Catalog item archived + ecom_visibility UNAVAILABLE (removed from Square Online for-sale). Payment link HUGDW3BCT346TBMZ deleted via API (cancelled_order_id 73qlKBCA5wsOiyA794bmkNqbaTUZY) so the printed qr-buy.png / square.link/u/R17OQbks can no longer charge."
     },
     "ebay": {
       "status": "sold",

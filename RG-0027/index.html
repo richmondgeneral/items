@@ -10,9 +10,9 @@
     <title>Demon Attack Cartridge — Imagic (Atari 8-Bit) | Richmond General</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Imagic Demon Attack cartridge for Atari 400/800 8-bit computers. Untested. Richmond General, IL.">
+    <meta name="description" content="Sold archive: Imagic Demon Attack cartridge for Atari 400/800 8-bit computers. Untested. Richmond General, IL.">
     <meta property="og:title" content="Demon Attack Cartridge — Imagic (Atari 8-Bit) | Richmond General">
-    <meta property="og:description" content="Imagic Demon Attack cartridge for Atari 400/800 8-bit computers. Untested. Richmond General, IL.">
+    <meta property="og:description" content="Sold archive: Imagic Demon Attack cartridge for Atari 400/800 8-bit computers. Untested. Richmond General, IL.">
     <meta property="og:image" content="./hero.png">
     <meta property="og:url" content="https://richmondgeneral.github.io/items/RG-0027/">
     <meta property="og:type" content="product">
@@ -481,48 +481,41 @@
         }
         
         /* SOLD STATE */
-        .sold-ribbon {
-            position: absolute;
-            top: 1.4rem;
-            left: -2.6rem;
-            z-index: 3;
-            transform: rotate(-45deg);
-            background: var(--rg-charcoal);
-            color: #fff;
-            font-family: 'Playfair Display', serif;
+        .sku-badge.sold-badge { background: #8A5A3B; }
+
+        .item-price.sold-price {
+            font-size: 1.05rem;
+            color: #8A5A3B;
             font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            padding: 0.35rem 3rem;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
         }
 
-        .sold-meta {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #8a8a8a;
+        .sold-status-panel {
             display: flex;
-            align-items: baseline;
-            gap: 0.6rem;
-        }
-        .sold-meta .sold-word { color: var(--rg-charcoal); }
-        .sold-meta .sold-price { font-size: 1.2rem; color: var(--rg-brown); }
-        .sold-meta .sold-strike {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #aaa;
-            text-decoration: line-through;
+            flex-direction: column;
+            gap: 0.35rem;
+            width: 100%;
         }
 
-        .buy-button.sold {
-            background: #c4c4c4;
-            color: #fff;
-            cursor: default;
-            pointer-events: none;
+        .sold-status {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--rg-charcoal);
+            letter-spacing: 0.3px;
         }
-        .buy-button.sold:hover { background: #c4c4c4; transform: none; }
+
+        .sold-meta { font-size: 0.72rem; color: #666; }
+
+        .archive-link {
+            display: inline-flex;
+            width: fit-content;
+            margin-top: 0.15rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--rg-brown);
+            text-decoration: none;
+        }
+
+        .archive-link:hover { text-decoration: underline; }
 
         /* PRINT STYLES */
         @media print {
@@ -698,13 +691,12 @@
 </head>
 <body>
     <div class="card-container">
-        <div class="flip-card" tabindex="0" role="button" aria-expanded="false" aria-describedby="flip-instructions" aria-label="Demon Attack Cartridge — Imagic (Atari 8-Bit) info card">
+        <div class="flip-card" tabindex="0" role="button" aria-expanded="false" aria-describedby="flip-instructions" aria-label="Demon Attack Cartridge — Imagic (Atari 8-Bit) info card (sold)">
             
             <!-- FRONT SIDE -->
             <div class="card-face card-front">
                 <div class="item-image-container">
-                    <span class="sku-badge">RG-0027</span>
-                    <span class="sold-ribbon">Sold</span>
+                    <span class="sku-badge sold-badge">RG-0027 · SOLD</span>
                     <!-- Variant stack: 'as-found' is always present; 'as-restored'
                          is wired up by JS only if ./restored.jpg actually exists.
                          The data model (data-mode/data-variant) is mode-agnostic so
@@ -741,7 +733,7 @@
                     <h1 class="item-title">Demon Attack Cartridge — Imagic (Atari 8-Bit)</h1>
                     <p class="item-era">1982 • Imagic • Atari 400/800</p>
                     <div class="front-footer">
-                        <span class="sold-meta"><span class="sold-word">Sold</span><span class="sold-price">&middot; $10.00</span><span class="sold-strike">$15.00</span></span>
+                        <span class="item-price sold-price">Sold · $10.00</span>
                         <span class="flip-hint">
                             <svg class="flip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M17 1l4 4-4 4"/>
@@ -787,16 +779,11 @@
                 </div>
                 
                 <div class="back-footer">
-                    <div class="qr-section">
-                        <div class="qr-code">
-                            <img src="./qr-info.png" alt="Scan for item details">
-                        </div>
-                        <div class="qr-text">
-                            <strong>Sold</strong>
-                            Found a new home · June 2026
-                        </div>
+                    <div class="sold-status-panel">
+                        <span class="sold-status">Sold on June 20, 2026</span>
+                        <span class="sold-meta">Final sale price: $10.00</span>
+                        <a href="../" class="archive-link">Browse available items</a>
                     </div>
-                    <span class="buy-button sold" aria-disabled="true">Sold</span>
                 </div>
                 
                 <div class="brand-strip">
@@ -856,11 +843,6 @@
             });
         });
         
-        // Track payment link clicks (stop propagation to prevent card flip)
-        document.querySelector('.buy-button')?.addEventListener('click', (e) => {
-            e.stopPropagation();
-            trackEvent('buy_button_click', { sku: 'RG-0027' });
-        });
 
         // ─── Conservation variant slider (Phase 2) ─────────────────────────
         // Reveals a drag-to-compare slider only when ./restored.jpg actually
