@@ -4,7 +4,7 @@
   "attributes": "1982 \u2022 Atari / Taito \u2022 CXL4027 \u2022 Joystick \u2022 Atari 8-Bit",
   "price": "10.00",
   "condition": "Used \u2014 Loose, Untested",
-  "condition_notes": "One of the stranger and more beautiful arcade ideas \u2014 claim the field while the Qix coils and lashes. Taito's puzzler on Atari's CXL4027 (1982), among the more sought-after of the 8-bit computer carts. Loose, used, untested; from a single-owner estate.. Loose cartridge (no box/manual); Atari 8-bit COMPUTER version, NOT the 2600 cart. Used and untested \u2014 sold as-is. PHOTO SET INCOMPLETE: front label only; back/contacts, condition close-up, and a scale shot still needed.",
+  "condition_notes": "One of the stranger and more beautiful arcade ideas \u2014 claim the field while the Qix coils and lashes. Taito's puzzler on Atari's CXL4027 (1982), among the more sought-after of the 8-bit computer carts. Loose, used, untested; from a single-owner estate. Loose cartridge (no box/manual); Atari 8-bit COMPUTER version, NOT the 2600 cart. Used and untested \u2014 sold as-is.",
   "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "pickup_location": "Richmond, IL 60071",
@@ -35,10 +35,12 @@
       "payment_link_id": "VHAB4DIE4CJCQ32T"
     },
     "ebay": {
-      "status": "pending",
-      "price": "10.00",
+      "status": "listed",
+      "item_id": "298436180181",
+      "url": "https://www.ebay.com/itm/298436180181",
+      "listed_price": "10.00",
       "format": "Buy It Now + Best Offer",
-      "note": "Listing pack to prepare; attempt draft, hand publish to owner if the create-listing form hangs (known document_idle issue)."
+      "note": "published via seller-agent 2026-06-20"
     },
     "whatnot": {
       "status": "pending",
