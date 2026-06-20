@@ -57,9 +57,11 @@
       "use": "price tag — scan for item card / more info"
     },
     "buy": {
-      "url": "https://square.link/u/R17OQbks",
+      "url": "https://richmondgeneral.github.io/items/RG-0027/buy/",
+      "square_checkout_url": "https://square.link/u/R17OQbks",
       "file": "qr-buy.png",
-      "use": "Square checkout — scan to buy"
+      "use": "Scan to buy — RG-controlled redirect layer (buy/index.html) that forwards to Square checkout while for sale and shows a graceful 'sold' page once sold, driven by status.json.",
+      "note": "PROTOTYPE 2026-06-20: buy/ redirect page added; the qr-buy.png PNG still encodes the old square.link URL and must be REGENERATED to encode this RG url for full adoption (rollout step). square_checkout_url is deleted (item sold) — kept for reference only."
     }
   },
   "shipping": {

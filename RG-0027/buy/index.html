@@ -1,0 +1,174 @@
+<!--
+    RICHMOND GENERAL — RG-0027 · BUY REDIRECT LAYER (prototype)
+
+    Why this file exists:
+    The `qr-buy` QR code should encode THIS page's URL
+    (https://richmondgeneral.github.io/items/RG-0027/buy/), NOT the raw
+    Square checkout URL. That keeps the buy QR under Richmond General's
+    control so it can degrade gracefully forever:
+
+      • While the item is FOR SALE  → forward to the live Square checkout.
+      • Once the item is SOLD       → show a friendly "found a new home"
+                                       page (no Square dead-link screen).
+
+    Single source of truth = ../status.json (written by the rg-item-mark-sold
+    skill). Selling an item flips this page's behavior automatically — no edit
+    here required. BUY_URL below is the live Square checkout, set at intake.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Richmond General — Demon Attack Cartridge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rg-gold: #C9A961;
+            --rg-cream: #F5F1E8;
+            --rg-wall: #E8E8DC;
+            --rg-wall-edge: #D8D8C5;
+            --rg-charcoal: #2C2C2C;
+            --rg-brown: #6B4423;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: linear-gradient(135deg, var(--rg-wall) 0%, var(--rg-wall-edge) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: var(--rg-charcoal);
+        }
+        .panel {
+            background: #fff;
+            max-width: 420px;
+            width: 100%;
+            border-radius: 12px;
+            border-top: 4px solid var(--rg-gold);
+            box-shadow: 0 20px 60px rgba(44,44,44,0.15);
+            padding: 2.25rem 2rem;
+            text-align: center;
+        }
+        .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--rg-gold);
+            margin-bottom: 0.75rem;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+        }
+        p { font-size: 0.95rem; line-height: 1.6; color: #555; margin-bottom: 1.5rem; }
+        .actions { display: flex; flex-direction: column; gap: 0.6rem; }
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.25rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-primary { background: var(--rg-gold); color: #fff; }
+        .btn-primary:hover { background: #B8963A; transform: translateY(-1px); }
+        .btn-secondary { background: var(--rg-cream); color: var(--rg-brown); }
+        .btn-secondary:hover { background: #ece5d4; }
+        .brand-strip {
+            margin-top: 1.75rem;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: #999;
+        }
+        .brand-strip a { color: var(--rg-brown); text-decoration: none; }
+        #state-loading p { color: #888; }
+        [hidden] { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <!-- Default view while we check status.json -->
+        <div id="state-loading">
+            <p class="eyebrow">Richmond General</p>
+            <h1>One moment…</h1>
+            <p>Taking you to checkout.</p>
+        </div>
+
+        <!-- Shown only if the item has sold -->
+        <div id="state-sold" hidden>
+            <p class="eyebrow">Richmond General</p>
+            <h1>This piece has found a new home.</h1>
+            <p>The Imagic Demon Attack cartridge (RG-0027) has sold. Its story stays in our archive — and there's plenty more on the shelves.</p>
+            <div class="actions">
+                <a class="btn btn-primary" href="../../">Browse available items</a>
+                <a class="btn btn-secondary" href="../">View this item's archive page</a>
+            </div>
+        </div>
+
+        <!-- Fallback if both the redirect and status check fail -->
+        <div id="state-error" hidden>
+            <p class="eyebrow">Richmond General</p>
+            <h1>Demon Attack Cartridge</h1>
+            <p>We couldn't open checkout automatically.</p>
+            <div class="actions">
+                <a class="btn btn-primary" href="../">View item page</a>
+                <a class="btn btn-secondary" href="../../">Browse the shop</a>
+            </div>
+        </div>
+
+        <div class="brand-strip">RICHMOND GENERAL · <a href="https://www.richmondgeneral.com">richmondgeneral.com</a></div>
+    </div>
+
+    <noscript>
+        <!-- JS-disabled fallback: never auto-charge; send to the item page. -->
+        <div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#fff;text-align:center;padding:2rem;">
+            <div>
+                <p>Continue to the item page to purchase:</p>
+                <p><a href="../">Demon Attack Cartridge — RG-0027</a></p>
+            </div>
+        </div>
+    </noscript>
+
+    <script>
+        // Live Square checkout for this item, set at intake. When the item is
+        // for sale, scanners of the buy-QR land here and are forwarded on.
+        // (RG-0027 is sold, so status.json short-circuits before this is used.)
+        const BUY_URL = "https://square.link/u/R17OQbks";
+
+        const show = (id) => {
+            ["state-loading", "state-sold", "state-error"].forEach((s) => {
+                document.getElementById(s).hidden = (s !== id);
+            });
+        };
+
+        // status.json is the single source of truth. Terminal states (sold /
+        // archived) never forward to checkout — they show the graceful page.
+        const TERMINAL = ["sold", "archived"];
+
+        fetch("../status.json", { cache: "no-store" })
+            .then((r) => (r.ok ? r.json() : null))
+            .then((s) => {
+                if (s && TERMINAL.includes((s.status || "").toLowerCase())) {
+                    show("state-sold");
+                } else {
+                    // Available (or no status file yet) → go to checkout.
+                    window.location.replace(BUY_URL);
+                }
+            })
+            .catch(() => {
+                // If the status check itself fails, fail safe to the item page
+                // rather than risk sending a buyer to a dead/charging link.
+                show("state-error");
+            });
+    </script>
+</body>
+</html>
