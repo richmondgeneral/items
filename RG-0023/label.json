@@ -1,7 +1,7 @@
 {
   "sku": "RG-0023",
   "product_name": "Signed Glass Cabochon Starburst Brooch",
-  "attributes": "Mid-Century • Signed (Weiss) • Orange/Red Glass Cabochons",
+  "attributes": "Mid-Century \u2022 Signed (Weiss) \u2022 Orange/Red Glass Cabochons",
   "price": "75.00",
   "condition": "Excellent",
   "condition_notes": "Two-tier starburst of orange and tomato-red navette glass cabochons around a domed cranberry cabochon center, prong-set in gold-tone. Reverse signed Weiss in an oval cartouche (confirmed; photographed). All stones present, none chipped; secure pin and clasp.",
@@ -26,7 +26,7 @@
       "item_id": "298422759040",
       "url": "https://www.ebay.com/itm/298422759040",
       "listed_start": "75.00",
-      "note": "active BIN + Best Offer; Weiss Floral Sunburst Brooch. Repriced 55→75 on 2026-06-19 (realized signed-Weiss comps, BPO §2/§4); reconciled to catalog $75."
+      "note": "active BIN + Best Offer; Weiss Floral Sunburst Brooch. Repriced 55\u219275 on 2026-06-19 (realized signed-Weiss comps, BPO \u00a72/\u00a74); reconciled to catalog $75."
     },
     "whatnot": {
       "status": "not_listed"
@@ -41,12 +41,12 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0023/",
       "file": "qr-info.png",
-      "use": "price tag — scan for item card / more info"
+      "use": "price tag \u2014 scan for item card / more info"
     },
     "buy": {
       "url": "https://square.link/u/vW6zCKZF",
       "file": "qr-buy.png",
-      "use": "Square checkout — scan to buy"
+      "use": "Square checkout \u2014 scan to buy"
     }
   },
   "shipping": {
@@ -59,7 +59,25 @@
     "packaging": "Jewelry box in a bubble mailer/small box",
     "fragile": false,
     "carrier": "USPS First-Class/Ground",
-    "notes": "Glass cabochons — light padding.",
+    "notes": "Glass cabochons \u2014 light padding.",
     "est": true
+  },
+  "hero_qa": {
+    "status": "fail",
+    "checked_at": "2026-06-20T23:42:52.553767+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 41.634,
+      "full_face": true,
+      "bg_ok": true,
+      "defects_ok": true
+    },
+    "reasons": [
+      "tilt 41.6\u00b0 > 1.5\u00b0"
+    ]
+  },
+  "photo_overrides": {
+    "status": "needs_manual"
   }
 }

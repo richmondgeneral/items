@@ -5,5 +5,18 @@
   "price": "25.00",
   "condition": "Good",
   "condition_notes": "Some wear to seat finish stable",
-  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0003/"
+  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0003/",
+  "hero_qa": {
+    "status": "pass",
+    "checked_at": "2026-06-20T23:42:33.643226+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 0.0,
+      "full_face": true,
+      "bg_ok": true,
+      "defects_ok": true
+    },
+    "reasons": []
+  }
 }

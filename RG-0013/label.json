@@ -5,5 +5,23 @@
   "price": "13.00",
   "condition": "Good",
   "condition_notes": "Tight binding, typical vintage wear",
-  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0013/"
+  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0013/",
+  "hero_qa": {
+    "status": "fail",
+    "checked_at": "2026-06-20T23:42:39.081488+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 0.0,
+      "full_face": true,
+      "bg_ok": false,
+      "defects_ok": true
+    },
+    "reasons": [
+      "flat-goods hero must be opaque full-bleed, not a cutout"
+    ]
+  },
+  "photo_overrides": {
+    "status": "needs_manual"
+  }
 }

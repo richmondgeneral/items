@@ -1,12 +1,12 @@
 {
   "sku": "RG-0026",
   "product_name": "Atari Touch Tablet (CX77) w/ AtariArtist",
-  "attributes": "1980s • New in Box (unopened) • Atari 8-Bit",
+  "attributes": "1980s \u2022 New in Box (unopened) \u2022 Atari 8-Bit",
   "price": "125.00",
   "condition": "New in Box (unopened)",
-  "condition_notes": "Original box, unopened by us; NOT factory shrink-wrapped. Box states it includes the AtariArtist graphics cartridge; contents NOT verified (not opened) — sold as an unopened box. Box shows light shelf wear (corner/edge).",
+  "condition_notes": "Original box, unopened by us; NOT factory shrink-wrapped. Box states it includes the AtariArtist graphics cartridge; contents NOT verified (not opened) \u2014 sold as an unopened box. Box shows light shelf wear (corner/edge).",
   "state": "Listed",
-  "lot_ref": "Atari MASTER lot catalog → ATARI-40 (CX77 / sticker #40). eBay custom label = ATARI-40.",
+  "lot_ref": "Atari MASTER lot catalog \u2192 ATARI-40 (CX77 / sticker #40). eBay custom label = ATARI-40.",
   "target_channels": [
     "ebay",
     "square_online"
@@ -51,12 +51,12 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0026/",
       "file": "qr-info.png",
-      "use": "price tag — scan for item card / more info"
+      "use": "price tag \u2014 scan for item card / more info"
     },
     "buy": {
       "url": "https://square.link/u/Zat5h2qy",
       "file": "qr-buy.png",
-      "use": "Square checkout — scan to buy"
+      "use": "Square checkout \u2014 scan to buy"
     }
   },
   "shipping": {
@@ -69,7 +69,20 @@
     "packaging": "Box around the retail box, full padding",
     "fragile": true,
     "carrier": "USPS Ground/UPS",
-    "notes": "NIB — protect the original box corners; do not open.",
+    "notes": "NIB \u2014 protect the original box corners; do not open.",
     "est": true
+  },
+  "hero_qa": {
+    "status": "pass",
+    "checked_at": "2026-06-20T23:42:56.292957+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 0.0,
+      "full_face": true,
+      "bg_ok": true,
+      "defects_ok": true
+    },
+    "reasons": []
   }
 }

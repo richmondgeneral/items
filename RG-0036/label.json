@@ -84,5 +84,18 @@
     "carrier": "USPS Ground Advantage",
     "notes": "Cartridge only.",
     "est": true
+  },
+  "hero_qa": {
+    "status": "pass",
+    "checked_at": "2026-06-20T23:43:03.655997+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 0.0,
+      "full_face": true,
+      "bg_ok": true,
+      "defects_ok": true
+    },
+    "reasons": []
   }
 }

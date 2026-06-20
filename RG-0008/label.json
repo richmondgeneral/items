@@ -5,5 +5,23 @@
   "price": "30.00",
   "condition": "Excellent",
   "condition_notes": "No damage, all original clothing",
-  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0008/"
+  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0008/",
+  "hero_qa": {
+    "status": "fail",
+    "checked_at": "2026-06-20T23:42:37.760494+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 4.797,
+      "full_face": false,
+      "bg_ok": true,
+      "defects_ok": true
+    },
+    "reasons": [
+      "subject clipped at frame edge"
+    ]
+  },
+  "photo_overrides": {
+    "status": "needs_manual"
+  }
 }

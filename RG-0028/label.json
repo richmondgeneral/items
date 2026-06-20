@@ -1,10 +1,10 @@
 {
   "sku": "RG-0028",
   "product_name": "Vintage Wheat-Pattern China Dinnerware Set (Service for ~8)",
-  "attributes": "1959 • Marked 'Royal' • Hand-Decorated 23K Gold • Wheat Motif • Platinum Trim",
+  "attributes": "1959 \u2022 Marked 'Royal' \u2022 Hand-Decorated 23K Gold \u2022 Wheat Motif \u2022 Platinum Trim",
   "price": "45.00",
   "condition": "Good (Used Vintage)",
-  "condition_notes": "Large vintage wheat-pattern china set, ~40+ pieces / service for about 8: dinner plates, salad/bread plates, coupe soup bowls, a round vegetable bowl, cups & saucers, and a gravy boat with underplate. Cream/white coupe shape with gold wheat-stalk motif and a platinum rim line. Backstamp: crown over 'Royal', 'Hand Decorated with 23K Gold, Ovenproof', date code 59 (1959). Condition: several pieces (notably bowls) show crazing to the glaze; light use wear. Sold as a complete lot. LOCAL PICKUP ONLY — too heavy/fragile to ship economically.",
+  "condition_notes": "Large vintage wheat-pattern china set, ~40+ pieces / service for about 8: dinner plates, salad/bread plates, coupe soup bowls, a round vegetable bowl, cups & saucers, and a gravy boat with underplate. Cream/white coupe shape with gold wheat-stalk motif and a platinum rim line. Backstamp: crown over 'Royal', 'Hand Decorated with 23K Gold, Ovenproof', date code 59 (1959). Condition: several pieces (notably bowls) show crazing to the glaze; light use wear. Sold as a complete lot. LOCAL PICKUP ONLY \u2014 too heavy/fragile to ship economically.",
   "state": "Listed",
   "fulfillment": "local_pickup_only",
   "pickup_location": "Richmond, IL 60071",
@@ -22,7 +22,10 @@
       "object_id": "WMP3UMR6VEXV5D23HL5ISC72",
       "variation_id": "NQIZVTHGVCRTEPMYWSPRUURM",
       "price": "45.00",
-      "categories": ["Pottery & Ceramics (reporting)", "New Arrivals"],
+      "categories": [
+        "Pottery & Ceramics (reporting)",
+        "New Arrivals"
+      ],
       "note": "Catalog inventory entry (local-pickup item; sold via eBay/Marketplace, not Square Online)."
     },
     "ebay": {
@@ -43,12 +46,12 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0028/",
       "file": "qr-info.png",
-      "use": "price tag — scan for item card / more info"
+      "use": "price tag \u2014 scan for item card / more info"
     },
     "buy": {
       "url": "https://www.ebay.com/itm/298431971732",
       "file": "qr-buy.png",
-      "use": "scan to buy — eBay listing (local pickup)"
+      "use": "scan to buy \u2014 eBay listing (local pickup)"
     }
   },
   "photos": {
@@ -59,10 +62,23 @@
       "detail-group2.png",
       "detail-crazing.png"
     ],
-    "backstamp_source": "Photos IMG_0911 — crown over 'Royal', Hand Decorated with 23K Gold, Ovenproof, date code 59 W (1959)"
+    "backstamp_source": "Photos IMG_0911 \u2014 crown over 'Royal', Hand Decorated with 23K Gold, Ovenproof, date code 59 W (1959)"
   },
   "shipping": {
     "local_pickup_only": true,
-    "notes": "Full dinnerware set — local pickup only; not shipped."
+    "notes": "Full dinnerware set \u2014 local pickup only; not shipped."
+  },
+  "hero_qa": {
+    "status": "pass",
+    "checked_at": "2026-06-20T23:42:57.232342+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 0.0,
+      "full_face": true,
+      "bg_ok": true,
+      "defects_ok": true
+    },
+    "reasons": []
   }
 }

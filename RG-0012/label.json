@@ -5,5 +5,23 @@
   "price": "27.00",
   "condition": "New",
   "condition_notes": "NIB - minor box wear",
-  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0012/"
+  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0012/",
+  "hero_qa": {
+    "status": "fail",
+    "checked_at": "2026-06-20T23:42:38.953660+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 1.085,
+      "full_face": false,
+      "bg_ok": true,
+      "defects_ok": true
+    },
+    "reasons": [
+      "subject clipped at frame edge"
+    ]
+  },
+  "photo_overrides": {
+    "status": "needs_manual"
+  }
 }

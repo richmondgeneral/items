@@ -5,5 +5,18 @@
   "price": "35.00",
   "condition": "Fair",
   "condition_notes": "Cover worn spine frayed pages intact",
-  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0002/"
+  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0002/",
+  "hero_qa": {
+    "status": "pass",
+    "checked_at": "2026-06-20T23:42:33.573746+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 0.0,
+      "full_face": true,
+      "bg_ok": true,
+      "defects_ok": true
+    },
+    "reasons": []
+  }
 }

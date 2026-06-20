@@ -5,5 +5,18 @@
   "price": "80.00",
   "condition": "Like New",
   "condition_notes": "No chips or cracks",
-  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0004/"
+  "qr_code_url": "https://richmondgeneral.github.io/items/RG-0004/",
+  "hero_qa": {
+    "status": "pass",
+    "checked_at": "2026-06-20T23:42:35.484351+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 0.0,
+      "full_face": true,
+      "bg_ok": true,
+      "defects_ok": true
+    },
+    "reasons": []
+  }
 }

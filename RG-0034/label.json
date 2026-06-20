@@ -1,27 +1,67 @@
 {
   "sku": "RG-0034",
-  "product_name": "Carton Stereo Microscope — 15X / 30X / 45X (Japan, New in Box)",
-  "attributes": "Carton Optical (Japan) • Stereo 15X/30X/45X • NEW IN BOX (NOS) • 6 Eyepieces (15X/30X/45X pairs) • Spiegel Ticket",
+  "product_name": "Carton Stereo Microscope \u2014 15X / 30X / 45X (Japan, New in Box)",
+  "attributes": "Carton Optical (Japan) \u2022 Stereo 15X/30X/45X \u2022 NEW IN BOX (NOS) \u2022 6 Eyepieces (15X/30X/45X pairs) \u2022 Spiegel Ticket",
   "price": "80.00",
   "condition": "New (old stock, unopened in original box)",
-  "condition_notes": "Carton Optical (Japan) stereo binocular microscope, 15X / 30X / 45X. NEW OLD STOCK — unopened/unused in its original box, complete with all SIX eyepieces (matched pairs of 15X, 30X, and 45X). Body marked 'Carton STEREO 15X 30XW 45X'; stage plate marked 'JAPAN'. Original molded-foam box with a spare illuminator/tube; retains the Spiegel retail ticket (reg $99.98). Optics clean throughout. As unopened stock it is untested by definition but presents factory-fresh. Vintage, likely 1970s-80s.",
+  "condition_notes": "Carton Optical (Japan) stereo binocular microscope, 15X / 30X / 45X. NEW OLD STOCK \u2014 unopened/unused in its original box, complete with all SIX eyepieces (matched pairs of 15X, 30X, and 45X). Body marked 'Carton STEREO 15X 30XW 45X'; stage plate marked 'JAPAN'. Original molded-foam box with a spare illuminator/tube; retains the Spiegel retail ticket (reg $99.98). Optics clean throughout. As unopened stock it is untested by definition but presents factory-fresh. Vintage, likely 1970s-80s.",
   "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "pickup_location": "Richmond, IL 60071",
-  "target_channels": ["ebay", "square"],
+  "target_channels": [
+    "ebay",
+    "square"
+  ],
   "channels": {
-    "github_page": { "status": "live", "url": "https://richmondgeneral.github.io/items/RG-0034/" },
-    "square": { "status": "listed", "object_id": "HRC5FMJH2KGMK5SAQ443RQQ3", "variation_id": "B2QQQJTK6BYUQBS3WY3JB66H", "price": "80.00", "buy_link": "https://square.link/u/FUE47srT", "payment_link_id": "ZDYJ55O3V4OBMOR2", "buy_link_note": "Square checkout 2026-06-19: $80 + $18 flat shipping (fragile pack) = $98; asks for shipping address. Repriced 68->80 after owner confirmed new-in-box + full 6-eyepiece set; old link JETVID7JAAR7FOFS deleted.", "categories": ["Collectibles (reporting)", "New Arrivals"], "primary_image_uploaded": true },
-    "ebay": { "status": "pending", "price": "80.00", "format": "Buy It Now + Best Offer", "note": "Draft to be created. NEW IN BOX, 6 eyepieces. Ships fragile (pack with foam insert)." },
-    "marketplace": { "status": "not_target" }
+    "github_page": {
+      "status": "live",
+      "url": "https://richmondgeneral.github.io/items/RG-0034/"
+    },
+    "square": {
+      "status": "listed",
+      "object_id": "HRC5FMJH2KGMK5SAQ443RQQ3",
+      "variation_id": "B2QQQJTK6BYUQBS3WY3JB66H",
+      "price": "80.00",
+      "buy_link": "https://square.link/u/FUE47srT",
+      "payment_link_id": "ZDYJ55O3V4OBMOR2",
+      "buy_link_note": "Square checkout 2026-06-19: $80 + $18 flat shipping (fragile pack) = $98; asks for shipping address. Repriced 68->80 after owner confirmed new-in-box + full 6-eyepiece set; old link JETVID7JAAR7FOFS deleted.",
+      "categories": [
+        "Collectibles (reporting)",
+        "New Arrivals"
+      ],
+      "primary_image_uploaded": true
+    },
+    "ebay": {
+      "status": "pending",
+      "price": "80.00",
+      "format": "Buy It Now + Best Offer",
+      "note": "Draft to be created. NEW IN BOX, 6 eyepieces. Ships fragile (pack with foam insert)."
+    },
+    "marketplace": {
+      "status": "not_target"
+    }
   },
   "qr_codes": {
-    "info": { "url": "https://richmondgeneral.github.io/items/RG-0034/", "file": "qr-info.png", "status": "generated", "use": "price tag — scan for item card" },
-    "buy": { "url": "https://square.link/u/FUE47srT", "file": "qr-buy.png", "status": "generated", "use": "Square checkout — scan to buy" }
+    "info": {
+      "url": "https://richmondgeneral.github.io/items/RG-0034/",
+      "file": "qr-info.png",
+      "status": "generated",
+      "use": "price tag \u2014 scan for item card"
+    },
+    "buy": {
+      "url": "https://square.link/u/FUE47srT",
+      "file": "qr-buy.png",
+      "status": "generated",
+      "use": "Square checkout \u2014 scan to buy"
+    }
   },
   "photos": {
     "hero": "hero.png",
-    "details": ["detail-box.png", "detail-inbox.png", "detail-tag.png"],
+    "details": [
+      "detail-box.png",
+      "detail-inbox.png",
+      "detail-tag.png"
+    ],
     "photo_gaps": "Have: instrument hero (Carton/15X-30XW-45X visible), box front, in-box w/ eyepieces, Spiegel price ticket. Still useful: eyepiece count close-up, objective/optics close-up, scale shot.",
     "source_photos": "IMG_0954 (hero), IMG_0951 (box), IMG_0953 (in-box), IMG_0952 (Spiegel ticket)"
   },
@@ -32,8 +72,25 @@
     "method": "USPS Priority / UPS Ground",
     "fragile": true,
     "weight_oz": 80,
-    "box_in": [12, 10, 9],
+    "box_in": [
+      12,
+      10,
+      9
+    ],
     "est": true,
-    "notes": "Fragile optics — ship in original foam-fitted box inside an outer carton."
+    "notes": "Fragile optics \u2014 ship in original foam-fitted box inside an outer carton."
+  },
+  "hero_qa": {
+    "status": "pass",
+    "checked_at": "2026-06-20T23:43:02.338329+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 7.535,
+      "full_face": true,
+      "bg_ok": true,
+      "defects_ok": true
+    },
+    "reasons": []
   }
 }
