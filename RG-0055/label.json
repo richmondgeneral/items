@@ -1,0 +1,101 @@
+{
+  "sku": "RG-0055",
+  "product_name": "Kreamer Tinned-Steel Covered Pail — Size 50 (Antique, Bail Handle & Lid)",
+  "attributes": "Kreamer (Brooklyn, NY tinware) • Tapered tinned/japanned steel covered pail • Hinged flat lid with folding swing-handle • Side wire bail handle • Size '50' stamped on lid • Oval 'KREAMER' maker's mark on the bottom • Heavy honest patina",
+  "price": "45.00",
+  "price_status": "preliminary — pending firm eBay sold-comps pull",
+  "condition": "Antique — honest as-found; heavy patina, surface rust/oxidation, scratches; complete with lid + bail handle",
+  "condition_notes": "Antique Kreamer tinned/japanned-steel covered pail, size '50'. Tapered cylindrical body (wider at the lidded top, tapering to a narrower base) with a hinged flat lid carrying a folding swing-handle, plus a side wire bail handle. Maker confirmed: an oval 'KREAMER' cartouche stamped into the bottom (reads in reverse from the inside because it was struck from the outside underside; faintly legible right-reading on the rusty exterior bottom), with a '50' size stamp on the lid. Condition is honest as-found / primitive: the dark japanned/tinned finish is worn with heavy patina, surface rust and oxidation, and scratches throughout; the interior tinned surface is scratched and lightly rusted. Lid present and seats; hinge and bail handle intact. No major dents observed in the supplied photos. Sold as an antique storage/decor piece. Kreamer operated in Brooklyn, NY until c.1940.",
+  "state": "In Intake",
+  "fulfillment": "ship_or_pickup",
+  "pickup_location": "Richmond, IL 60071",
+  "target_channels": [
+    "square",
+    "ebay"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "pending",
+      "url": "https://richmondgeneral.github.io/items/RG-0055/"
+    },
+    "square": { "status": "pending" },
+    "ebay": { "status": "pending", "note": "Collector/decor tinware; ships or local pickup." },
+    "marketplace": { "status": "not_target" }
+  },
+  "identity": {
+    "maker": "Kreamer",
+    "maker_location": "Brooklyn, NY",
+    "maker_basis": "oval 'KREAMER' bottom stamp (reverse-reads inside) + '50' size stamp on lid; form matches documented Kreamer numbered tin pails",
+    "type": "tinned/japanned-steel covered pail (storage/utility tin)",
+    "size_mark": "50",
+    "confidence": "high (maker); medium (specific original use)"
+  },
+  "estimates": {
+    "_note": "Refine-as-we-learn. Tighten each field as evidence arrives; keep the basis + confidence with every value. est=true means inferred, not measured/proven.",
+    "circa": {
+      "value": "c. 1900–1935",
+      "best_guess_year": null,
+      "est": true,
+      "confidence": "medium-low",
+      "basis": "Kreamer operated Brooklyn NY ~1890s–1940; tapered japanned tin covered-pail form with bail handle + numbered size is consistent with early-to-mid Kreamer production. No patent date or datable catalog match yet.",
+      "refine_with": "a dated Kreamer catalog/ad showing the size-50 pail, any patent date, decal/label style, or a serial/date code"
+    },
+    "dimensions_in": {
+      "height": 14,
+      "top_diameter": 11.5,
+      "base_diameter": 9.5,
+      "est": true,
+      "confidence": "low",
+      "basis": "scaled from photos against ~5.5in deck boards and hand/foot references — NO tape measurement provided",
+      "refine_with": "a tape-measure shot (height + top & base diameter)"
+    },
+    "weight_lb": {
+      "value": 4.0,
+      "est": true,
+      "confidence": "low",
+      "basis": "typical mass of a tinned/japanned-steel covered pail of this size with lid + bail handle",
+      "refine_with": "a scale reading"
+    },
+    "refinement_log": [
+      { "date": "2026-06-21", "note": "Initial estimates from intake photos; maker confirmed (KREAMER + 50). Dims/weight inferred, not measured." }
+    ]
+  },
+  "photos": {
+    "hero": "hero.jpeg",
+    "cutout": "cutout.png",
+    "square": "square.png",
+    "card": "card.png",
+    "details": [
+      "detail-profile.jpeg",
+      "detail-profile2.jpeg",
+      "detail-side.jpeg",
+      "detail-lid.jpeg",
+      "detail-lid-fit.jpeg",
+      "detail-interior.jpeg",
+      "detail-interior2.jpeg",
+      "detail-maker-mark.jpeg",
+      "detail-stamp.jpeg",
+      "detail-ext-mark.jpeg",
+      "detail-bottom.jpeg"
+    ],
+    "photo_gaps": "Have: upright full profile (hero), two more profiles, lid top, lid-fit, two interiors, interior oval KREAMER mark, '50' lid stamp/cartouche, exterior mark, outside bottom. Still useful: a tape-measure scale shot; a cleaner right-reading shot of the exterior bottom KREAMER stamp; any base/foot detail."
+  },
+  "pricing_report": "ops/pricing/RG-0055-pricing.md",
+  "shipping": {
+    "local_pickup_only": false,
+    "shippable": true,
+    "fragile": false,
+    "weight_lb_est": 4.0,
+    "box_in": [16, 16, 18],
+    "est": true,
+    "notes": "Metal pail; sturdy but bulky — box with the lid secured. All dims/weight are estimates pending a tape measure + scale."
+  },
+  "reporting_category_note": "Collectibles",
+  "added_at": "2026-06-21",
+  "matte": {
+    "model": "birefnet-general",
+    "tool": "image-processor/matte.py (BiRefNet/rembg)",
+    "non_generative": true,
+    "outputs": ["cutout.png", "square.png", "card.png"]
+  }
+}
