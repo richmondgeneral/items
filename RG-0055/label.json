@@ -2,16 +2,17 @@
   "sku": "RG-0055",
   "product_name": "Kreamer Tinned-Steel Covered Pail — Size 50 (Antique, Bail Handle & Lid)",
   "attributes": "Kreamer (Brooklyn, NY tinware) • Tapered tinned/japanned steel covered pail • Hinged flat lid with folding swing-handle • Side wire bail handle • Size '50' stamped on lid • Oval 'KREAMER' maker's mark on the bottom • Heavy honest patina",
-  "price": "45.00",
-  "price_status": "final — $45 (2026-06-21); eBay-Sold pull returned no clean organic comps (uncommon item), so category + Kreamer-maker anchored",
+  "price": "65.00",
+  "price_status": "final — $65 (2026-06-21, repriced from $45 after measured size + cross-site research); large 18in Kreamer pail is uncommon (documented Kreamers are small 1–2qt), smaller Kreamer tea canister asks $89; range $55–85, local pickup only. Thin sold comps (WorthPoint paywalled).",
   "condition": "Antique — honest as-found; heavy patina, surface rust/oxidation, scratches; complete with lid + bail handle",
   "condition_notes": "Antique Kreamer tinned/japanned-steel covered pail, size '50'. Tapered cylindrical body (wider at the lidded top, tapering to a narrower base) with a hinged flat lid carrying a folding swing-handle, plus a side wire bail handle. Maker confirmed: an oval 'KREAMER' cartouche stamped into the bottom (reads in reverse from the inside because it was struck from the outside underside; faintly legible right-reading on the rusty exterior bottom), with a '50' size stamp on the lid. Condition is honest as-found / primitive: the dark japanned/tinned finish is worn with heavy patina, surface rust and oxidation, and scratches throughout; the interior tinned surface is scratched and lightly rusted. Lid present and seats; hinge and bail handle intact. No major dents observed in the supplied photos. Sold as an antique storage/decor piece. Kreamer operated in Brooklyn, NY until c.1940.",
   "state": "Listed",
-  "fulfillment": "ship_or_pickup",
+  "fulfillment": "local_pickup_only",
   "pickup_location": "Richmond, IL 60071",
   "target_channels": [
     "square",
-    "ebay"
+    "ebay",
+    "marketplace"
   ],
   "channels": {
     "github_page": { "status": "live", "url": "https://richmondgeneral.github.io/items/RG-0055/" },
@@ -19,19 +20,19 @@
       "status": "listed",
       "object_id": "42Y5VFQUE3SLTLCTUV7MG2JU",
       "variation_id": "VCNPTU4YLPTDMJZIUL2ZZNCJ",
-      "price": "45.00",
-      "buy_link": "https://square.link/u/gVSkr65d",
-      "payment_link_id": "AIUJEVDEGXFOIRYK",
-      "order_id": "p6E59egDoBosn29lo8IWXcVRQOXZY",
+      "price": "65.00",
+      "buy_link": "https://square.link/u/qhpAeEXd",
+      "payment_link_id": "P6EFWBWPOVVH35SI",
+      "order_id": "5wdoY8UKG7I8eCgqYQxFiVuZfS9YY",
       "categories": ["Collectibles (reporting)", "New Arrivals"],
-      "note": "Listed 2026-06-21. Primary image = square.png (transparent cutout). Ships or local pickup."
+      "note": "Listed 2026-06-21; repriced $45->$65 + desc/dims updated 2026-06-21. Old $45 payment link (AIUJEVDEGXFOIRYK) DELETED. Primary image = square.png (transparent cutout). LOCAL PICKUP ONLY."
     },
-    "ebay": { "status": "pending", "note": "Manual listing pack to follow — ebay-lister API not yet active (acct pending approval). Collector/decor tinware; ships or local pickup." },
-    "marketplace": { "status": "not_target" }
+    "ebay": { "status": "pending", "note": "List via ebay-chrome (Claude-in-Chrome); ebay-lister API not yet active. LOCAL PICKUP ONLY." },
+    "marketplace": { "status": "pending", "note": "List via ops/seller-agent publish_item.py (Facebook). LOCAL PICKUP ONLY, Richmond IL 60071." }
   },
   "qr_codes": {
     "info": { "url": "https://richmondgeneral.github.io/items/RG-0055/", "file": "qr-info.png", "use": "price tag — scan for item card" },
-    "buy": { "url": "https://square.link/u/gVSkr65d", "file": "qr-buy.png", "use": "Square checkout — scan to buy" }
+    "buy": { "url": "https://square.link/u/qhpAeEXd", "file": "qr-buy.png", "use": "Square checkout — scan to buy" }
   },
   "identity": {
     "maker": "Kreamer",
@@ -39,26 +40,27 @@
     "maker_basis": "oval 'KREAMER' bottom stamp (reverse-reads inside) + '50' size stamp on lid; form matches documented Kreamer numbered tin pails",
     "type": "tinned/japanned-steel covered pail (storage/utility tin)",
     "size_mark": "50",
-    "confidence": "high (maker); medium (specific original use)"
+    "size_mark_meaning": "Most likely a Kreamer SIZE/STOCK number (the 50/51/53 family of size codes), NOT a 50-quart capacity — internal volume is only ~30–38 qt. Do not assert a quart capacity. (Inference from the documented 51/53 size pattern; no catalog citation, so est:true.)",
+    "confidence": "high (maker); medium (size-number meaning)"
   },
   "estimates": {
     "_note": "Refine-as-we-learn. Tighten each field as evidence arrives; keep the basis + confidence with every value. est=true means inferred, not measured/proven.",
     "circa": {
-      "value": "c. 1900–1935",
+      "value": "c. 1936–1945",
       "best_guess_year": null,
       "est": true,
-      "confidence": "medium-low",
-      "basis": "Kreamer operated Brooklyn NY ~1890s–1940; tapered japanned tin covered-pail form with bail handle + numbered size is consistent with early-to-mid Kreamer production. No patent date or datable catalog match yet.",
-      "refine_with": "a dated Kreamer catalog/ad showing the size-50 pail, any patent date, decal/label style, or a serial/date code"
+      "confidence": "medium",
+      "basis": "The related Kreamer numbered line carries US design patent D102704 (applied 1936, granted Jan 1937); the '50' lid stamp is in that 50/51/53 size-number family, pointing to mid-1930s–1940s production (Kreamer operated to ~1940). No date stamp on the pail itself, so not a single year.",
+      "refine_with": "a patent/date stamp on the pail, or a dated Kreamer catalog mapping the size-50 pail"
     },
     "dimensions_in": {
-      "height": 14,
-      "top_diameter": 11.5,
-      "base_diameter": 9.5,
-      "est": true,
-      "confidence": "low",
-      "basis": "scaled from photos against ~5.5in deck boards and hand/foot references — NO tape measurement provided",
-      "refine_with": "a tape-measure shot (height + top & base diameter)"
+      "height": 18,
+      "diameter": 12.5,
+      "est": false,
+      "confidence": "high",
+      "basis": "owner-measured 2026-06-21 (18 in H x 12.5 in dia)",
+      "measured_at": "2026-06-21",
+      "note": "LARGE tin — approx volume ~2200 cu in (~30–38 qt with taper). The '50' lid stamp may be a nominal capacity/size mark; under investigation."
     },
     "weight_lb": {
       "value": 4.0,
@@ -68,7 +70,9 @@
       "refine_with": "a scale reading"
     },
     "refinement_log": [
-      { "date": "2026-06-21", "note": "Initial estimates from intake photos; maker confirmed (KREAMER + 50). Dims/weight inferred, not measured." }
+      { "date": "2026-06-21", "note": "Initial estimates from intake photos; maker confirmed (KREAMER + 50). Dims/weight inferred, not measured." },
+      { "date": "2026-06-21", "note": "Owner MEASURED: 18 in H x 12.5 in dia (dims now est:false, high confidence). Large storage tin. '50' may be a capacity/size mark — comp + cross-site research pass underway." },
+      { "date": "2026-06-21", "note": "Cross-site research (subagent): '50' = Kreamer SIZE/STOCK number (50/51/53 family), not 50 qt. Circa tightened to c.1936–1945 via related-line patent D102704 (1936). Repriced $45 -> $65 on the large-size premium (18in uncommon vs documented small 1–2qt Kreamers; smaller Kreamer tea canister asks $89). Thin sold comps." }
     ]
   },
   "photos": {
@@ -93,13 +97,14 @@
   },
   "pricing_report": "ops/pricing/RG-0055-pricing.md",
   "shipping": {
-    "local_pickup_only": false,
-    "shippable": true,
+    "local_pickup_only": true,
+    "shippable": false,
+    "method": "Local pickup only — Richmond, IL 60071",
     "fragile": false,
     "weight_lb_est": 4.0,
     "box_in": [16, 16, 18],
     "est": true,
-    "notes": "Metal pail; sturdy but bulky — box with the lid secured. All dims/weight are estimates pending a tape measure + scale."
+    "notes": "LOCAL PICKUP ONLY (owner directive 2026-06-21). Bulky antique tin; not shipped. Dims/weight estimates pending tape measure + scale."
   },
   "reporting_category_note": "Collectibles",
   "added_at": "2026-06-21",
