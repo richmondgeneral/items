@@ -103,6 +103,9 @@ def card_fields(sku: str, label: dict) -> dict:
     segs = [s.strip() for s in re.split(r"[•·]", attrs) if s.strip()]
     era = " • ".join(segs[:3]) if segs else repcat
     hero = label.get("photos", {}).get("hero") or "hero.png"
+    # Prefer the uniform transparent card.png (matte.py output) when present;
+    # fall back to the raw hero so un-matted items still render.
+    image = "card.png" if os.path.isfile(os.path.join(ROOT, sku, "card.png")) else hero
     price = str(label.get("price", "")).strip()
     if price and not price.startswith("$"):
         price = "$" + price
@@ -113,6 +116,8 @@ def card_fields(sku: str, label: dict) -> dict:
         "title": title,
         "era": era,
         "hero": hero,
+        "image": image,
+        "transparent": image == "card.png",
         "price": price or "$0",
         "alt": attr_escape(product),
         "sold": is_sold(label),
@@ -131,13 +136,14 @@ def render_card(f: dict) -> str:
         badge = '<span class="item-badge">New</span>'
         price = f'<span class="item-price">{f["price"]}</span>'
         cta = "View Story"
+    img_attr = ' data-img="card"' if f.get("transparent") else ""
     return (
         f'            <!-- {f["sku"]}: {f["title"]} -->\n'
-        f'            <a href="./{f["sku"]}/" class="item-card" data-category="{f["slug"]}"{status_attr}>\n'
+        f'            <a href="./{f["sku"]}/" class="item-card" data-category="{f["slug"]}"{status_attr}{img_attr}>\n'
         f'                <div class="item-image">\n'
         f'                    {badge}\n'
         f'                    <span class="item-sku">{f["sku"]}</span>\n'
-        f'                    <img src="./{f["sku"]}/{f["hero"]}" alt="{f["alt"]}" style="max-width: 100%; max-height: 200px; object-fit: contain; border-radius: 4px;">\n'
+        f'                    <img src="./{f["sku"]}/{f["image"]}" alt="{f["alt"]}" style="max-width: 100%; max-height: 200px; object-fit: contain; border-radius: 4px;">\n'
         f'                </div>\n'
         f'                <div class="item-info">\n'
         f'                    <p class="item-category">{f["category"]}</p>\n'
@@ -228,16 +234,51 @@ def reconcile(text: str, items: dict):
     return text, inserted, skipped, missing
 
 
+def relink_cards(text: str):
+    """Opt-in: switch EXISTING cards to card.png where the file now exists.
+
+    Not part of the insert-only default — run explicitly after matte.py has
+    generated card.png for items. Adds data-img="card" so CSS can color behind.
+    """
+    changed = []
+    for sku in sorted(carded_skus(text)):
+        if not os.path.isfile(os.path.join(ROOT, sku, "card.png")):
+            continue
+        if re.search(rf'src="\./{sku}/card\.png"', text):
+            continue  # already linked
+        text = re.sub(rf'(src="\./{sku}/)[^"]+\.(?:png|jpe?g|jpg)"',
+                      r'\1card.png"', text, count=1)
+
+        def _add_attr(m):
+            tag = m.group(0)
+            return tag if "data-img=" in tag else tag[:-1] + ' data-img="card">'
+        text = re.sub(rf'<a href="\./{sku}/" class="item-card"[^>]*>', _add_attr, text, count=1)
+        changed.append(sku)
+    return text, changed
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Idempotent gallery reconciler for items/index.html")
     g = ap.add_mutually_exclusive_group()
     g.add_argument("--apply", action="store_true", help="insert missing cards and write (default)")
     g.add_argument("--check", action="store_true", help="exit 1 if any Listed/Sold item lacks a card")
     g.add_argument("--dry-run", action="store_true", help="show changes, write nothing")
+    g.add_argument("--relink-cards", action="store_true",
+                   help="switch existing cards to card.png where present (opt-in)")
     args = ap.parse_args()
 
     text = open(INDEX, encoding="utf-8").read()
     items = load_items()
+
+    if args.relink_cards:
+        new_text, changed = relink_cards(text)
+        if not changed:
+            print("No cards to relink (no card.png present for existing cards).")
+            return 0
+        with open(INDEX, "w", encoding="utf-8") as fh:
+            fh.write(new_text)
+        print(f"Relinked {len(changed)} card(s) to card.png: {', '.join(changed)}")
+        return 0
 
     if args.check:
         existing = set(carded_skus(text))
