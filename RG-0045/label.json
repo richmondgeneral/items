@@ -1,10 +1,10 @@
 {
   "sku": "RG-0045",
   "product_name": "E.T. Phone Home! Cartridge (Atari 8-Bit Computer, RX8030)",
-  "attributes": "1983 \u2022 Atari / Universal \u2022 RX8030 \u2022 Joystick \u2022 Atari 8-Bit",
+  "attributes": "1983 • Atari / Universal • RX8030 • Joystick • Atari 8-Bit",
   "price": "10.00",
-  "condition": "Used \u2014 Loose, Untested",
-  "condition_notes": "The computer-line E.T., distinct from its infamous 2600 cousin \u2014 E.T. Phone Home! on Atari's RX8030 (1983). The label has gone dark and worn with age, and it is priced accordingly. Loose, used, untested; from a single-owner estate. Loose cartridge (no box/manual); Atari 8-bit COMPUTER version, NOT the 2600 cart. Used and untested \u2014 sold as-is.",
+  "condition": "Used — Loose, Untested",
+  "condition_notes": "The computer-line E.T., distinct from its infamous 2600 cousin — E.T. Phone Home! on Atari's RX8030 (1983). The label has gone dark and worn with age, and it is priced accordingly. Loose, used, untested; from a single-owner estate. Loose cartridge (no box/manual); Atari 8-bit COMPUTER version, NOT the 2600 cart. Used and untested — sold as-is.",
   "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "pickup_location": "Richmond, IL 60071",
@@ -18,7 +18,7 @@
     "github_page": {
       "status": "live",
       "url": "https://richmondgeneral.github.io/items/RG-0045/",
-      "note": "Flip-card item page built 2026-06-19 (Atari 8-bit batch RG-0036\u20130051)."
+      "note": "Flip-card item page built 2026-06-19 (Atari 8-bit batch RG-0036–0051)."
     },
     "square": {
       "status": "listed",
@@ -32,7 +32,9 @@
       ],
       "buy_link": "https://square.link/u/LiqNJVos",
       "note": "Created 2026-06-20 via batchInsertObjects; stocked 1 IN_STOCK; hero image uploaded (primary); shippable buy link live (asks for shipping address).",
-      "payment_link_id": "WEXNGZTOSVIUNHHM"
+      "payment_link_id": "WEXNGZTOSVIUNHHM",
+      "primary_image_id": "DBWQMY6REMHURY54PPUZ22VJ",
+      "image_note": "Primary swapped to deskewed straight hero 2026-06-21; prior crooked image retained as secondary."
     },
     "ebay": {
       "status": "pending",
@@ -57,13 +59,13 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0045/",
       "file": "qr-info.png",
-      "use": "price tag \u2014 scan for item card / more info"
+      "use": "price tag — scan for item card / more info"
     },
     "buy": {
       "url": "https://square.link/u/LiqNJVos",
       "file": "qr-buy.png",
       "status": "live",
-      "use": "scan to buy \u2014 Square checkout"
+      "use": "scan to buy — Square checkout"
     }
   },
   "photos": {

@@ -1,10 +1,10 @@
 {
   "sku": "RG-0038",
   "product_name": "Qix Cartridge (Atari 8-Bit Computer, CXL4027)",
-  "attributes": "1982 \u2022 Atari / Taito \u2022 CXL4027 \u2022 Joystick \u2022 Atari 8-Bit",
+  "attributes": "1982 • Atari / Taito • CXL4027 • Joystick • Atari 8-Bit",
   "price": "10.00",
-  "condition": "Used \u2014 Loose, Untested",
-  "condition_notes": "One of the stranger and more beautiful arcade ideas \u2014 claim the field while the Qix coils and lashes. Taito's puzzler on Atari's CXL4027 (1982), among the more sought-after of the 8-bit computer carts. Loose, used, untested; from a single-owner estate. Loose cartridge (no box/manual); Atari 8-bit COMPUTER version, NOT the 2600 cart. Used and untested \u2014 sold as-is.",
+  "condition": "Used — Loose, Untested",
+  "condition_notes": "One of the stranger and more beautiful arcade ideas — claim the field while the Qix coils and lashes. Taito's puzzler on Atari's CXL4027 (1982), among the more sought-after of the 8-bit computer carts. Loose, used, untested; from a single-owner estate. Loose cartridge (no box/manual); Atari 8-bit COMPUTER version, NOT the 2600 cart. Used and untested — sold as-is.",
   "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "pickup_location": "Richmond, IL 60071",
@@ -18,7 +18,7 @@
     "github_page": {
       "status": "live",
       "url": "https://richmondgeneral.github.io/items/RG-0038/",
-      "note": "Flip-card item page built 2026-06-19 (Atari 8-bit batch RG-0036\u20130051)."
+      "note": "Flip-card item page built 2026-06-19 (Atari 8-bit batch RG-0036–0051)."
     },
     "square": {
       "status": "listed",
@@ -32,7 +32,9 @@
       ],
       "buy_link": "https://square.link/u/YfPsBwRA",
       "note": "Created 2026-06-20 via batchInsertObjects; stocked 1 IN_STOCK; hero image uploaded (primary); shippable buy link live (asks for shipping address).",
-      "payment_link_id": "VHAB4DIE4CJCQ32T"
+      "payment_link_id": "VHAB4DIE4CJCQ32T",
+      "primary_image_id": "YPSYCPMTMCPHXEZJJCU7YXVI",
+      "image_note": "Primary swapped to deskewed straight hero 2026-06-21; prior crooked image retained as secondary."
     },
     "ebay": {
       "status": "listed",
@@ -59,13 +61,13 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0038/",
       "file": "qr-info.png",
-      "use": "price tag \u2014 scan for item card / more info"
+      "use": "price tag — scan for item card / more info"
     },
     "buy": {
       "url": "https://square.link/u/YfPsBwRA",
       "file": "qr-buy.png",
       "status": "live",
-      "use": "scan to buy \u2014 Square checkout"
+      "use": "scan to buy — Square checkout"
     }
   },
   "photos": {
