@@ -43,9 +43,12 @@
       "note": "published via seller-agent 2026-06-20"
     },
     "whatnot": {
-      "status": "pending",
-      "price": "8.00",
-      "note": "Queue for Whatnot CSV import (Retro Games / Atari 400, Loose)."
+      "status": "listed",
+      "price": "8",
+      "quantity": 2,
+      "category": "Retro Games (Whatnot)",
+      "condition": "Loose",
+      "note": "Published live on Whatnot 2026-06-20 via Seller Hub CSV bulk import + Activate. Buy It Now + Accept Offers, shipping 4-7 oz. (Per-listing URL in Whatnot Seller Hub > Active.)"
     },
     "marketplace": {
       "status": "pending",
