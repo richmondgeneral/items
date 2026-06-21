@@ -5,6 +5,7 @@
   "price": "65.00",
   "condition": "Antique \u2014 honest used/weathered; sold as a cabinet & treadle base (no sewing-machine head)",
   "condition_notes": "Antique Singer treadle sewing-machine cabinet with the ornate cast-iron treadle base ('SINGER' cast into the right pedal standard) and a quarter-sawn oak folding-top case with four drawers (two per side). IMPORTANT: the sewing-machine HEAD is ABSENT \u2014 the hinged well in the cabinet top is empty (only the drop-in mounting plate / lift mechanism remains), so this sells as a cabinet-and-base / repurpose furniture piece, not a working machine. Honest condition: oak shows age-darkened finish, surface wear, ring/scuff marks and some debris on the top leaves; cast iron is solid with light-to-moderate surface rust and intact scrollwork; treadle pedal grate and pitman present. No serial number or model badge was legible in the supplied photos (the head, which normally carries the serial, is not present), so the exact model/date is undetermined. Drawers run; belt/attachments not confirmed present. Untested as furniture is structurally sound; buyer to inspect. Vintage / antique era (typical of early-to-mid 20th-century Singer treadle production).",
+  "head_status": "Confirmed ABSENT by owner (thescottybe) 2026-06-21 — the machine head is gone; item is sold as the oak cabinet + cast-iron treadle base only. Listing copy already reflects this.",
   "state": "Listed",
   "fulfillment": "pickup_only",
   "pickup_location": "Richmond, IL 60071",
@@ -62,7 +63,7 @@
       "detail-machine-well.png",
       "detail-cabinet-open.png"
     ],
-    "photo_gaps": "Have: full cabinet (closed, upright, SINGER base visible) hero; cast-iron 'SINGER' treadle base close-up; empty machine well (documents head absent); full cabinet with top open. Still useful: drawer close-up (front + interior), any maker's mark / model plate on cabinet hardware, condition close-ups of rust and veneer/finish wear, a tape-measure scale shot for the furniture footprint, and back-of-cabinet. Confirm/deny: belt, treadle attachments, whether the head exists separately.",
+    "photo_gaps": "Have: full cabinet (closed, upright, SINGER base visible) hero; cast-iron 'SINGER' treadle base close-up; empty machine well (documents head absent); full cabinet with top open. Still useful: drawer close-up (front + interior), any maker's mark / model plate on cabinet hardware, condition close-ups of rust and veneer/finish wear, a tape-measure scale shot for the furniture footprint, and back-of-cabinet. Confirm/deny: belt, treadle attachments. (Head confirmed ABSENT by owner 2026-06-21.)",
     "source_photos": "8 in _src/: 532439C0 (hero \u2014 closed cabinet), A7F5B00C (top open / well + cabinet-open detail), B6AA3642 (treadle base detail), AE2E92A9 (treadle base alt), 92F2773E/7F335E94/62796BC2/2197293B (drawers open w/ stored notions \u2014 oblique, not used)"
   },
   "pricing_report": "ops/pricing/RG-0052-pricing.md",
