@@ -23,5 +23,8 @@
   },
   "photo_overrides": {
     "status": "needs_manual"
+  },
+  "photos": {
+    "card": "card.png"
   }
 }
