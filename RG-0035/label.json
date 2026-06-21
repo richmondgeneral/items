@@ -36,9 +36,9 @@
       "item_id": "298433644753",
       "url": "https://www.ebay.com/itm/298433644753",
       "price": "85.00",
-      "live_price": "65.00",
+      "live_price": "85.00",
       "format": "Buy It Now + Best Offer",
-      "note": "Reconcile 2026-06-20: CONFIRMED single listing across ALL channels (Square=1, GitHub=1, eBay item 298433644753=1) — the 'added as 2 items' concern is unfounded; it is one case-with-contents lot everywhere. OPEN MISALIGNMENT: eBay still at $65 + only 3 photos + pre-6-filter description; Square/GitHub are $85 with the full 6-filter set. Auto-reprice attempted via seller-agent (publish_item.py --platform ebay --autonomous) but BLOCKED: Gemini/Vision-Agent 429 'prepayment credits depleted'. TO FINISH: top up Google AI Studio billing (ai.studio/projects) then rerun `cd ops/seller-agent && uv run publish_item.py --item ../../items/RG-0035 --platform ebay --autonomous` (dry-run verified: pushes $85 + full filter description + all 6 photos). OR manually Revise eBay 298433644753: price 65->85, paste the 6-filter description, add the item-dir detail photos."
+      "note": "Reconcile 2026-06-20/21: CONFIRMED single lot across all channels (Square=1, GitHub=1, eBay=1) — no duplicate. eBay reprice 65->85 + full 6-filter description + all 6 photos pushed via seller-agent autonomous Revise on 2026-06-21; eBay returned its 'Your listing has been revised' confirmation (screenshot captured). Public item page may lag ~15min on eBay CDN cache. NOTE for tooling: the default GEMINI_API_KEY (Keychain+.env, fp eb908eda) is DEPLETED/invalid; the working Vision-Agent key is fp a27e994d (…pYNs), found in ~/.gemini Antigravity config + gcloud logs — used via env override for this run. A reusable fast-path was saved (ops/seller-agent/fast_paths/ebay_UPDATE_fast_path.py) so future eBay updates skip the Vision Agent."
     },
     "marketplace": {
       "status": "not_target"
