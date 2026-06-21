@@ -27,8 +27,8 @@
       "categories": ["Collectibles (reporting)", "New Arrivals"],
       "note": "Listed 2026-06-21; repriced $45->$65 + desc/dims updated 2026-06-21. Old $45 payment link (AIUJEVDEGXFOIRYK) DELETED. Primary image = square.png (transparent cutout). LOCAL PICKUP ONLY."
     },
-    "ebay": { "status": "pending", "note": "List via ebay-chrome (Claude-in-Chrome); ebay-lister API not yet active. LOCAL PICKUP ONLY." },
-    "marketplace": { "status": "pending", "note": "List via ops/seller-agent publish_item.py (Facebook). LOCAL PICKUP ONLY, Richmond IL 60071." }
+    "ebay": { "status": "pending", "note": "Ready pack: ops/RG-0055-ebay-listing-pack.md. ebay-lister API pending acct approval; ebay-chrome only revises existing listings. LOCAL PICKUP ONLY." },
+    "marketplace": { "status": "pending", "note": "Ready pack: ops/RG-0055-marketplace-listing-pack.md. Seller-agent auto-publish BLOCKED while owner's main Chrome is open (macOS won't start a 2nd Chrome.app instance). To auto-publish: quit all Chrome, then publish_item.py --yes-publish. LOCAL PICKUP ONLY." }
   },
   "qr_codes": {
     "info": { "url": "https://richmondgeneral.github.io/items/RG-0055/", "file": "qr-info.png", "use": "price tag — scan for item card" },
