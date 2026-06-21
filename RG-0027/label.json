@@ -1,10 +1,10 @@
 {
   "sku": "RG-0027",
-  "product_name": "Demon Attack Cartridge \u2014 Imagic (Atari 8-Bit)",
-  "attributes": "1982 \u2022 Imagic \u2022 Atari 400/800",
+  "product_name": "Demon Attack Cartridge — Imagic (Atari 8-Bit)",
+  "attributes": "1982 • Imagic • Atari 400/800",
   "price": "15.00",
   "condition": "Untested",
-  "condition_notes": "Loose cartridge (no box/manual). Untested \u2014 not verified on hardware; sold as-is. Atari 400/800 8-bit COMPUTER version (not the common 2600 cart). Label 720149-1A, clean with minor wear.",
+  "condition_notes": "Loose cartridge (no box/manual). Untested — not verified on hardware; sold as-is. Atari 400/800 8-bit COMPUTER version (not the common 2600 cart). Label 720149-1A, clean with minor wear.",
   "state": "Sold",
   "sold": {
     "channel": "ebay",
@@ -18,9 +18,9 @@
     "since": "2026-06-20",
     "owner": "scottybe",
     "purpose": "Live production testbed for the RG-controlled buy-redirect layer (items/RG-0027/buy/index.html, driven by status.json). First item to run the redirect pattern in production.",
-    "note": "Item is physically SOLD (state=Sold) but intentionally kept LIVE as an experiment. Do NOT archive it, delete buy/, or 'clean up' the experimental.* / qr_codes.buy fields without checking with the owner \u2014 this is the canary for rolling the redirect layer into rg-full-auto + rg-item-mark-sold."
+    "note": "Item is physically SOLD (state=Sold) but intentionally kept LIVE as an experiment. Do NOT archive it, delete buy/, or 'clean up' the experimental.* / qr_codes.buy fields without checking with the owner — this is the canary for rolling the redirect layer into rg-full-auto + rg-item-mark-sold."
   },
-  "lot_ref": "Atari MASTER lot catalog \u2192 ATARI-S57 (valuations tab, loose-cart series). eBay custom label = ATARI-S57.",
+  "lot_ref": "Atari MASTER lot catalog → ATARI-S57 (valuations tab, loose-cart series). eBay custom label = ATARI-S57.",
   "target_channels": [
     "whatnot",
     "ebay"
@@ -36,7 +36,7 @@
       "variation_id": "QA7W63UAOTTQTT6XJU27SICB",
       "buy_link": "https://square.link/u/R17OQbks",
       "buy_link_status": "deleted",
-      "note": "2026-06-20 \u2014 item sold on eBay. Catalog item archived + ecom_visibility UNAVAILABLE (removed from Square Online for-sale). Payment link HUGDW3BCT346TBMZ deleted via API (cancelled_order_id 73qlKBCA5wsOiyA794bmkNqbaTUZY) so the printed qr-buy.png / square.link/u/R17OQbks can no longer charge."
+      "note": "2026-06-20 — item sold on eBay. Catalog item archived + ecom_visibility UNAVAILABLE (removed from Square Online for-sale). Payment link HUGDW3BCT346TBMZ deleted via API (cancelled_order_id 73qlKBCA5wsOiyA794bmkNqbaTUZY) so the printed qr-buy.png / square.link/u/R17OQbks can no longer charge."
     },
     "ebay": {
       "status": "sold",
@@ -49,7 +49,7 @@
     },
     "whatnot": {
       "status": "inactive",
-      "note": "Confirmed 2026-06-20 in Whatnot Seller Hub: listing sits in the Inactive tab (not live for sale) \u2014 no live listing to end after the eBay sale. Was: Buy It Now $15, Category Retro Games, Condition Loose, Platform Atari 400. Custom label RG-0027."
+      "note": "Confirmed 2026-06-20 in Whatnot Seller Hub: listing sits in the Inactive tab (not live for sale) — no live listing to end after the eBay sale. Was: Buy It Now $15, Category Retro Games, Condition Loose, Platform Atari 400. Custom label RG-0027."
     },
     "marketplace": {
       "status": "not_listed",
@@ -61,14 +61,14 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0027/",
       "file": "qr-info.png",
-      "use": "price tag \u2014 scan for item card / more info"
+      "use": "price tag — scan for item card / more info"
     },
     "buy": {
       "url": "https://richmondgeneral.github.io/items/RG-0027/buy/",
       "square_checkout_url": "https://square.link/u/R17OQbks",
       "file": "qr-buy.png",
-      "use": "Scan to buy \u2014 RG-controlled redirect layer (buy/index.html) that forwards to Square checkout while for sale and shows a graceful 'sold' page once sold, driven by status.json.",
-      "note": "PROTOTYPE 2026-06-20: buy/ redirect page added; the qr-buy.png PNG still encodes the old square.link URL and must be REGENERATED to encode this RG url for full adoption (rollout step). square_checkout_url is deleted (item sold) \u2014 kept for reference only."
+      "use": "Scan to buy — RG-controlled redirect layer (buy/index.html) that forwards to Square checkout while for sale and shows a graceful 'sold' page once sold, driven by status.json.",
+      "note": "PROTOTYPE 2026-06-20: buy/ redirect page added; the qr-buy.png PNG still encodes the old square.link URL and must be REGENERATED to encode this RG url for full adoption (rollout step). square_checkout_url is deleted (item sold) — kept for reference only."
     }
   },
   "shipping": {
@@ -96,5 +96,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2026-06-18"
 }

@@ -1,10 +1,10 @@
 {
   "sku": "RG-0009",
   "product_name": "Gustel Wied \"Ulrike\" German Collector Doll",
-  "attributes": "1985 West Germany \u2022 Eva-Maria Reick Design \u2022 Ltd. Ed. #468/5000 \u2022 Vinyl & Cloth",
+  "attributes": "1985 West Germany • Eva-Maria Reick Design • Ltd. Ed. #468/5000 • Vinyl & Cloth",
   "price": "95.00",
   "condition": "New Old Stock (boxed)",
-  "condition_notes": "New old stock \u2014 doll is still in its original plastic, unplayed and pristine. Includes signed Certificate of Authenticity (No. 468 of 5000, dated 1985) and Kanekalon hair-care booklet. Box note: the display box's clear window has separated from the box at one corner; otherwise light box/shelf wear (not factory-sealed/mint box).",
+  "condition_notes": "New old stock — doll is still in its original plastic, unplayed and pristine. Includes signed Certificate of Authenticity (No. 468 of 5000, dated 1985) and Kanekalon hair-care booklet. Box note: the display box's clear window has separated from the box at one corner; otherwise light box/shelf wear (not factory-sealed/mint box).",
   "eye_color": "Brown",
   "measurements_in": {
     "boxed": [
@@ -57,7 +57,7 @@
       ],
       "package_weight_lb": 3,
       "irregular_package": true,
-      "note": "Buy It Now + Best Offer; calculated ship + international; 7 photos incl COA. Dolls category, Condition New (sealed NOS), Type Artist Doll, Brand Gustel Wied, Artist Eva-Maria Reick, Country Germany. Custom label RG-0009. 2026-06-19: package dims 26x12x7, 3 lb, irregular-package flag ON (already set by owner \u2014 drives oversize shipping). PENDING (owner handling): eye-color wording in description + add eye-macro photo \u2014 eBay revise form hung the browser tooling this session."
+      "note": "Buy It Now + Best Offer; calculated ship + international; 7 photos incl COA. Dolls category, Condition New (sealed NOS), Type Artist Doll, Brand Gustel Wied, Artist Eva-Maria Reick, Country Germany. Custom label RG-0009. 2026-06-19: package dims 26x12x7, 3 lb, irregular-package flag ON (already set by owner — drives oversize shipping). PENDING (owner handling): eye-color wording in description + add eye-macro photo — eBay revise form hung the browser tooling this session."
     },
     "whatnot": {
       "status": "not_listed"
@@ -67,7 +67,7 @@
       "url": "https://www.facebook.com/marketplace/item/879329561888951",
       "price": "95.00",
       "price_verified": true,
-      "note": "2026-06-19: description updated \u2014 'warm brown eyes' added to features + boxed-size 26x12x7 oversize bullet; added 2 photos (eye macro + full front in box)."
+      "note": "2026-06-19: description updated — 'warm brown eyes' added to features + boxed-size 26x12x7 oversize bullet; added 2 photos (eye macro + full front in box)."
     }
   },
   "qr_code_url": "https://richmondgeneral.github.io/items/RG-0009/",
@@ -75,12 +75,12 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0009/",
       "file": "qr-info.png",
-      "use": "price tag \u2014 scan for item card / more info"
+      "use": "price tag — scan for item card / more info"
     },
     "buy": {
       "url": "https://square.link/u/bkRGJZGH",
       "file": "qr-buy.png",
-      "use": "Square checkout \u2014 scan to buy"
+      "use": "Square checkout — scan to buy"
     }
   },
   "shipping": {
@@ -94,7 +94,7 @@
     "fragile": true,
     "oversize": true,
     "carrier": "USPS Ground/UPS",
-    "notes": "Tall doll box; 26 in length exceeds the 24 in oversize threshold \u2014 expect dimensional-weight / large-package surcharge. eBay package set to 26x12x7 in, 3 lb, irregular-package flag on. Protect the sealed window.",
+    "notes": "Tall doll box; 26 in length exceeds the 24 in oversize threshold — expect dimensional-weight / large-package surcharge. eBay package set to 26x12x7 in, 3 lb, irregular-package flag on. Protect the sealed window.",
     "est": false
   },
   "hero_qa": {
@@ -109,5 +109,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2025-12-20"
 }

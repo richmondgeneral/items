@@ -1,7 +1,7 @@
 {
   "sku": "RG-0004",
   "product_name": "Chase Japan Four Seasons Plaques (4pc)",
-  "attributes": "MCM Ceramic \u2022 Hand Painted \u2022 1950s",
+  "attributes": "MCM Ceramic • Hand Painted • 1950s",
   "price": "80.00",
   "condition": "Like New",
   "condition_notes": "No chips or cracks",
@@ -18,5 +18,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2025-11-26"
 }

@@ -1,10 +1,10 @@
 {
   "sku": "RG-0040",
   "product_name": "Atari Logo Cartridge (Atari 8-Bit Computer, RX8032)",
-  "attributes": "1983 \u2022 Logo Computer Systems \u2022 RX8032 \u2022 Keyboard \u2022 Atari 8-Bit",
+  "attributes": "1983 • Logo Computer Systems • RX8032 • Keyboard • Atari 8-Bit",
   "price": "18.00",
-  "condition": "Used \u2014 Loose, Untested",
-  "condition_notes": "Not a game but a language \u2014 the turtle that taught a generation to think in code. Atari Logo (RX8032, 1983), developed by Logo Computer Systems of Montreal, runs from the console keyboard. A niche and quietly collected cartridge. Loose, used, untested; single-owner estate. Loose cartridge (no box/manual); Atari 8-bit COMPUTER version, NOT the 2600 cart. Used and untested \u2014 sold as-is.",
+  "condition": "Used — Loose, Untested",
+  "condition_notes": "Not a game but a language — the turtle that taught a generation to think in code. Atari Logo (RX8032, 1983), developed by Logo Computer Systems of Montreal, runs from the console keyboard. A niche and quietly collected cartridge. Loose, used, untested; single-owner estate. Loose cartridge (no box/manual); Atari 8-bit COMPUTER version, NOT the 2600 cart. Used and untested — sold as-is.",
   "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "pickup_location": "Richmond, IL 60071",
@@ -18,7 +18,7 @@
     "github_page": {
       "status": "live",
       "url": "https://richmondgeneral.github.io/items/RG-0040/",
-      "note": "Flip-card item page built 2026-06-19 (Atari 8-bit batch RG-0036\u20130051)."
+      "note": "Flip-card item page built 2026-06-19 (Atari 8-bit batch RG-0036–0051)."
     },
     "square": {
       "status": "listed",
@@ -59,13 +59,13 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0040/",
       "file": "qr-info.png",
-      "use": "price tag \u2014 scan for item card / more info"
+      "use": "price tag — scan for item card / more info"
     },
     "buy": {
       "url": "https://square.link/u/PIRSc9FZ",
       "file": "qr-buy.png",
       "status": "live",
-      "use": "scan to buy \u2014 Square checkout"
+      "use": "scan to buy — Square checkout"
     }
   },
   "photos": {
@@ -100,5 +100,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2026-06-19"
 }

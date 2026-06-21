@@ -1,7 +1,7 @@
 {
   "sku": "RG-0001",
   "product_name": "Little Orphan Annie Comic Strip Book",
-  "attributes": "Vintage Book \u2022 Harold Gray \u2022 1930s",
+  "attributes": "Vintage Book • Harold Gray • 1930s",
   "price": "19.50",
   "condition": "VG",
   "condition_notes": "Light wear spine intact",
@@ -18,5 +18,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2025-11-26"
 }

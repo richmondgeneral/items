@@ -1,10 +1,10 @@
 {
   "sku": "RG-0034",
-  "product_name": "Carton Stereo Microscope \u2014 15X / 30X / 45X (Japan, New in Box)",
-  "attributes": "Carton Optical (Japan) \u2022 Stereo 15X/30X/45X \u2022 NEW IN BOX (NOS) \u2022 6 Eyepieces (15X/30X/45X pairs) \u2022 Spiegel Ticket",
+  "product_name": "Carton Stereo Microscope — 15X / 30X / 45X (Japan, New in Box)",
+  "attributes": "Carton Optical (Japan) • Stereo 15X/30X/45X • NEW IN BOX (NOS) • 6 Eyepieces (15X/30X/45X pairs) • Spiegel Ticket",
   "price": "80.00",
   "condition": "New (old stock, unopened in original box)",
-  "condition_notes": "Carton Optical (Japan) stereo binocular microscope, 15X / 30X / 45X. NEW OLD STOCK \u2014 unopened/unused in its original box, complete with all SIX eyepieces (matched pairs of 15X, 30X, and 45X). Body marked 'Carton STEREO 15X 30XW 45X'; stage plate marked 'JAPAN'. Original molded-foam box with a spare illuminator/tube; retains the Spiegel retail ticket (reg $99.98). Optics clean throughout. As unopened stock it is untested by definition but presents factory-fresh. Vintage, likely 1970s-80s.",
+  "condition_notes": "Carton Optical (Japan) stereo binocular microscope, 15X / 30X / 45X. NEW OLD STOCK — unopened/unused in its original box, complete with all SIX eyepieces (matched pairs of 15X, 30X, and 45X). Body marked 'Carton STEREO 15X 30XW 45X'; stage plate marked 'JAPAN'. Original molded-foam box with a spare illuminator/tube; retains the Spiegel retail ticket (reg $99.98). Optics clean throughout. As unopened stock it is untested by definition but presents factory-fresh. Vintage, likely 1970s-80s.",
   "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "pickup_location": "Richmond, IL 60071",
@@ -46,13 +46,13 @@
       "url": "https://richmondgeneral.github.io/items/RG-0034/",
       "file": "qr-info.png",
       "status": "generated",
-      "use": "price tag \u2014 scan for item card"
+      "use": "price tag — scan for item card"
     },
     "buy": {
       "url": "https://square.link/u/FUE47srT",
       "file": "qr-buy.png",
       "status": "generated",
-      "use": "Square checkout \u2014 scan to buy"
+      "use": "Square checkout — scan to buy"
     }
   },
   "photos": {
@@ -78,7 +78,7 @@
       9
     ],
     "est": true,
-    "notes": "Fragile optics \u2014 ship in original foam-fitted box inside an outer carton."
+    "notes": "Fragile optics — ship in original foam-fitted box inside an outer carton."
   },
   "hero_qa": {
     "status": "pass",
@@ -92,5 +92,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2026-06-19"
 }

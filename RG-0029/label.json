@@ -1,10 +1,10 @@
 {
   "sku": "RG-0029",
   "product_name": "Vintage Green Ivy China Dinnerware Set (Service for ~8)",
-  "attributes": "1951 \u2022 Paden City Pottery Co. (USA) \u2022 Green Ivy Motif \u2022 Gold Trim \u2022 Coupe Shape",
+  "attributes": "1951 • Paden City Pottery Co. (USA) • Green Ivy Motif • Gold Trim • Coupe Shape",
   "price": "60.00",
   "condition": "Good (Used Vintage)",
-  "condition_notes": "Large vintage green-ivy china set, ~40 pieces / service for about 8 with generous serving pieces: dinner plates, salad plates, coupe bowls & saucers, cups, creamer, gravy boat, covered sugar, covered casserole/serving dishes, a large vegetable bowl, and an oval platter. Cream/white coupe shape with green ivy leaves on tan vines and a gold/platinum rim. Backstamp: 'The Paden City Pottery Co., Made in U.S.A.' lighthouse mark, date code M-51 (1951) \u2014 confirmed maker, photographed (detail-backstamp.png). Condition: mostly clean; at least one serving piece (gravy/creamer) has a brown age-stain and light crazing \u2014 disclosed, see photos. Sold as a complete lot. LOCAL PICKUP ONLY \u2014 too heavy/fragile to ship economically.",
+  "condition_notes": "Large vintage green-ivy china set, ~40 pieces / service for about 8 with generous serving pieces: dinner plates, salad plates, coupe bowls & saucers, cups, creamer, gravy boat, covered sugar, covered casserole/serving dishes, a large vegetable bowl, and an oval platter. Cream/white coupe shape with green ivy leaves on tan vines and a gold/platinum rim. Backstamp: 'The Paden City Pottery Co., Made in U.S.A.' lighthouse mark, date code M-51 (1951) — confirmed maker, photographed (detail-backstamp.png). Condition: mostly clean; at least one serving piece (gravy/creamer) has a brown age-stain and light crazing — disclosed, see photos. Sold as a complete lot. LOCAL PICKUP ONLY — too heavy/fragile to ship economically.",
   "state": "Listed",
   "fulfillment": "local_pickup_only",
   "pickup_location": "Richmond, IL 60071",
@@ -46,12 +46,12 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0029/",
       "file": "qr-info.png",
-      "use": "price tag \u2014 scan for item card / more info"
+      "use": "price tag — scan for item card / more info"
     },
     "buy": {
       "url": "https://www.ebay.com/itm/298432005656",
       "file": "qr-buy.png",
-      "use": "scan to buy \u2014 eBay listing (local pickup)"
+      "use": "scan to buy — eBay listing (local pickup)"
     }
   },
   "photos": {
@@ -62,11 +62,11 @@
       "detail-serving.png",
       "detail-boxed.png"
     ],
-    "backstamp_source": "Photos IMG_0898 \u2014 Paden City Pottery Co., Made in USA, M-51 (1951)"
+    "backstamp_source": "Photos IMG_0898 — Paden City Pottery Co., Made in USA, M-51 (1951)"
   },
   "shipping": {
     "local_pickup_only": true,
-    "notes": "Full dinnerware set \u2014 local pickup only; not shipped."
+    "notes": "Full dinnerware set — local pickup only; not shipped."
   },
   "hero_qa": {
     "status": "pass",
@@ -80,5 +80,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2026-06-19"
 }

@@ -1,10 +1,10 @@
 {
   "sku": "RG-0047",
   "product_name": "Zaxxon Cartridge (Atari 8-Bit Computer, Sega)",
-  "attributes": "1984 \u2022 Sega \u2022 Atari 8-Bit \u2022 Joystick",
+  "attributes": "1984 • Sega • Atari 8-Bit • Joystick",
   "price": "26.00",
-  "condition": "Used \u2014 Loose, Untested",
-  "condition_notes": "Sega's isometric leap \u2014 bank over the fortress walls and through the force field. Zaxxon for the Atari 8-bit (1984), full-color label, a desirable Sega title. Loose, used, untested; from a single-owner estate. Loose cartridge (no box/manual); Atari 8-bit COMPUTER version, NOT the 2600 cart. Used and untested \u2014 sold as-is.",
+  "condition": "Used — Loose, Untested",
+  "condition_notes": "Sega's isometric leap — bank over the fortress walls and through the force field. Zaxxon for the Atari 8-bit (1984), full-color label, a desirable Sega title. Loose, used, untested; from a single-owner estate. Loose cartridge (no box/manual); Atari 8-bit COMPUTER version, NOT the 2600 cart. Used and untested — sold as-is.",
   "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "pickup_location": "Richmond, IL 60071",
@@ -18,7 +18,7 @@
     "github_page": {
       "status": "live",
       "url": "https://richmondgeneral.github.io/items/RG-0047/",
-      "note": "Flip-card item page built 2026-06-19 (Atari 8-bit batch RG-0036\u20130051)."
+      "note": "Flip-card item page built 2026-06-19 (Atari 8-bit batch RG-0036–0051)."
     },
     "square": {
       "status": "listed",
@@ -57,13 +57,13 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0047/",
       "file": "qr-info.png",
-      "use": "price tag \u2014 scan for item card / more info"
+      "use": "price tag — scan for item card / more info"
     },
     "buy": {
       "url": "https://square.link/u/FgCRmw5K",
       "file": "qr-buy.png",
       "status": "live",
-      "use": "scan to buy \u2014 Square checkout"
+      "use": "scan to buy — Square checkout"
     }
   },
   "photos": {
@@ -98,10 +98,11 @@
       "defects_ok": true
     },
     "reasons": [
-      "tilt 3.1\u00b0 > 1.5\u00b0"
+      "tilt 3.1° > 1.5°"
     ]
   },
   "photo_overrides": {
     "status": "needs_manual"
-  }
+  },
+  "added_at": "2026-06-19"
 }

@@ -1,7 +1,7 @@
 {
   "sku": "RG-0005",
   "product_name": "Chicago Bears 1985 Button",
-  "attributes": "Sports Memorabilia \u2022 NFL \u2022 Super Bowl XX",
+  "attributes": "Sports Memorabilia • NFL • Super Bowl XX",
   "price": "13.00",
   "condition": "Good",
   "condition_notes": "Button excellent card has edge wear",
@@ -18,10 +18,11 @@
       "defects_ok": true
     },
     "reasons": [
-      "tilt 2.2\u00b0 > 1.5\u00b0"
+      "tilt 2.2° > 1.5°"
     ]
   },
   "photo_overrides": {
     "status": "needs_manual"
-  }
+  },
+  "added_at": "2025-11-26"
 }

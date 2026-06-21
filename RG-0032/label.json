@@ -1,10 +1,10 @@
 {
   "sku": "RG-0032",
-  "product_name": "The Little Book of Famous Insults \u2014 Peter Pauper Press (1964)",
-  "attributes": "1964 \u2022 Peter Pauper Press \u2022 1st Edition \u2022 Ed. Betty Jo Ramsey \u2022 Ill. Fritz Kredel \u2022 Decorated Boards",
+  "product_name": "The Little Book of Famous Insults — Peter Pauper Press (1964)",
+  "attributes": "1964 • Peter Pauper Press • 1st Edition • Ed. Betty Jo Ramsey • Ill. Fritz Kredel • Decorated Boards",
   "price": "14.00",
   "condition": "Very Good (Used Vintage)",
-  "condition_notes": "Hardcover gift book, The Little Book of Famous Insults, Peter Pauper Press (Mount Vernon, NY), copyright 1964; edited by Betty Jo Ramsey, illustrated by Fritz Kredel. Decorated paper-covered boards in a brown thorn/branch motif with a green spine-label panel. Condition Very Good: boards bright and clean, binding firm and square, text unmarked. Retains its original Rockford College bookstore price ticket tucked inside the front ('ROCKFORD COLLEGE / F66 / NO REFUND IF TICKET REMOVED / 12.5') \u2014 left in place as provenance. No dust jacket (as issued / none present). Ships easily via USPS Media Mail.",
+  "condition_notes": "Hardcover gift book, The Little Book of Famous Insults, Peter Pauper Press (Mount Vernon, NY), copyright 1964; edited by Betty Jo Ramsey, illustrated by Fritz Kredel. Decorated paper-covered boards in a brown thorn/branch motif with a green spine-label panel. Condition Very Good: boards bright and clean, binding firm and square, text unmarked. Retains its original Rockford College bookstore price ticket tucked inside the front ('ROCKFORD COLLEGE / F66 / NO REFUND IF TICKET REMOVED / 12.5') — left in place as provenance. No dust jacket (as issued / none present). Ships easily via USPS Media Mail.",
   "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "pickup_location": "Richmond, IL 60071",
@@ -55,13 +55,13 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0032/",
       "file": "qr-info.png",
-      "use": "price tag \u2014 scan for item card / more info"
+      "use": "price tag — scan for item card / more info"
     },
     "buy": {
       "url": "https://square.link/u/l6IFDX8y",
       "file": "qr-buy.png",
       "status": "live",
-      "use": "scan to buy \u2014 Square checkout (ships Media Mail; local pickup available)"
+      "use": "scan to buy — Square checkout (ships Media Mail; local pickup available)"
     }
   },
   "photos": {
@@ -95,5 +95,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2026-06-19"
 }

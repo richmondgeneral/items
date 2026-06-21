@@ -1,10 +1,10 @@
 {
   "sku": "RG-0042",
   "product_name": "KoalaPainter Cartridge (Atari 8-Bit Computer, Koala 00315-001)",
-  "attributes": "1983 \u2022 Koala Technologies \u2022 00315-001 \u2022 KoalaPad software \u2022 Atari 8-Bit",
+  "attributes": "1983 • Koala Technologies • 00315-001 • KoalaPad software • Atari 8-Bit",
   "price": "18.00",
-  "condition": "Used \u2014 Loose, Untested",
-  "condition_notes": "The software that gave the KoalaPad its voice \u2014 turn the tablet and the Atari 8-bit into a sketchpad. KoalaPainter by Koala Technologies (00315-001, 1983), cartridge only. A natural companion to the KoalaPad hardware. Loose, used, untested; single-owner estate. Loose cartridge (no box/manual); Atari 8-bit COMPUTER version, NOT the 2600 cart. Used and untested \u2014 sold as-is.",
+  "condition": "Used — Loose, Untested",
+  "condition_notes": "The software that gave the KoalaPad its voice — turn the tablet and the Atari 8-bit into a sketchpad. KoalaPainter by Koala Technologies (00315-001, 1983), cartridge only. A natural companion to the KoalaPad hardware. Loose, used, untested; single-owner estate. Loose cartridge (no box/manual); Atari 8-bit COMPUTER version, NOT the 2600 cart. Used and untested — sold as-is.",
   "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "pickup_location": "Richmond, IL 60071",
@@ -18,7 +18,7 @@
     "github_page": {
       "status": "live",
       "url": "https://richmondgeneral.github.io/items/RG-0042/",
-      "note": "Flip-card item page built 2026-06-19 (Atari 8-bit batch RG-0036\u20130051)."
+      "note": "Flip-card item page built 2026-06-19 (Atari 8-bit batch RG-0036–0051)."
     },
     "square": {
       "status": "listed",
@@ -57,13 +57,13 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0042/",
       "file": "qr-info.png",
-      "use": "price tag \u2014 scan for item card / more info"
+      "use": "price tag — scan for item card / more info"
     },
     "buy": {
       "url": "https://square.link/u/BaJ52YQr",
       "file": "qr-buy.png",
       "status": "live",
-      "use": "scan to buy \u2014 Square checkout"
+      "use": "scan to buy — Square checkout"
     }
   },
   "photos": {
@@ -98,5 +98,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2026-06-19"
 }

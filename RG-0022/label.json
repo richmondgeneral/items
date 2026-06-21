@@ -1,10 +1,10 @@
 {
   "sku": "RG-0022",
   "product_name": "Gold Figural Double-Fish Brooch",
-  "attributes": "Mid-Century \u2022 Figural Costume Jewelry \u2022 Unsigned",
+  "attributes": "Mid-Century • Figural Costume Jewelry • Unsigned",
   "price": "32.00",
   "condition": "Very Good",
-  "condition_notes": "Unsigned \u2014 no maker's mark on the reverse. Textured gold-tone with cabochon turquoise and clear rhinestone accents; pin and clasp intact.",
+  "condition_notes": "Unsigned — no maker's mark on the reverse. Textured gold-tone with cabochon turquoise and clear rhinestone accents; pin and clasp intact.",
   "state": "Listed",
   "target_channels": [
     "ebay",
@@ -51,12 +51,12 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0022/",
       "file": "qr-info.png",
-      "use": "price tag \u2014 scan for item card / more info"
+      "use": "price tag — scan for item card / more info"
     },
     "buy": {
       "url": "https://square.link/u/kZUaSVhv",
       "file": "qr-buy.png",
-      "use": "Square checkout \u2014 scan to buy"
+      "use": "Square checkout — scan to buy"
     }
   },
   "shipping": {
@@ -84,5 +84,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2026-06-18"
 }

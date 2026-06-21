@@ -1,7 +1,7 @@
 {
   "sku": "RG-0008",
   "product_name": "Victorian Porcelain Collector Doll",
-  "attributes": "1990s \u2022 Green Velvet & Lace",
+  "attributes": "1990s • Green Velvet & Lace",
   "price": "30.00",
   "condition": "Excellent",
   "condition_notes": "No damage, all original clothing",
@@ -26,5 +26,6 @@
   },
   "photos": {
     "card": "card.png"
-  }
+  },
+  "added_at": "2025-12-20"
 }

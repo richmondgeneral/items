@@ -1,7 +1,7 @@
 {
   "sku": "RG-0013",
   "product_name": "The Story of Flight - Step-Up Books",
-  "attributes": "1967 \u2022 Random House \u2022 George Evans",
+  "attributes": "1967 • Random House • George Evans",
   "price": "13.00",
   "condition": "Good",
   "condition_notes": "Tight binding, typical vintage wear",
@@ -26,5 +26,6 @@
   },
   "photos": {
     "card": "card.png"
-  }
+  },
+  "added_at": "2025-12-21"
 }

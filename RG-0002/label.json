@@ -1,7 +1,7 @@
 {
   "sku": "RG-0002",
   "product_name": "Kings of the Forest - W.A. Foster",
-  "attributes": "Antique Book \u2022 1892 \u2022 235 Engravings",
+  "attributes": "Antique Book • 1892 • 235 Engravings",
   "price": "35.00",
   "condition": "Fair",
   "condition_notes": "Cover worn spine frayed pages intact",
@@ -18,5 +18,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2025-11-26"
 }

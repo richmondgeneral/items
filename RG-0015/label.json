@@ -1,7 +1,7 @@
 {
   "sku": "RG-0015",
   "product_name": "Dick Tracy: Art of Chester Gould (1978)",
-  "attributes": "1978 \u2022 Exhibition Catalogue \u2022 Museum of Cartoon Art",
+  "attributes": "1978 • Exhibition Catalogue • Museum of Cartoon Art",
   "price": "40.00",
   "condition": "Good",
   "condition_notes": "Edge wear, loosening binding, complete",
@@ -26,5 +26,6 @@
   },
   "photos": {
     "card": "card.png"
-  }
+  },
+  "added_at": "2026-02-14"
 }

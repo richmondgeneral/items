@@ -1,7 +1,7 @@
 {
   "sku": "RG-0003",
   "product_name": "Pressed-Back Oak Swivel Bar Stool",
-  "attributes": "Early 1900s \u2022 American Oak \u2022 Victorian",
+  "attributes": "Early 1900s • American Oak • Victorian",
   "price": "25.00",
   "condition": "Good",
   "condition_notes": "Some wear to seat finish stable",
@@ -18,5 +18,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2025-11-26"
 }

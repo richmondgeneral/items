@@ -1,7 +1,7 @@
 {
   "sku": "RG-0006",
   "product_name": "Disney Comics Cover May 1944 (Framed)",
-  "attributes": "WWII Era \u2022 Walt Kelly Art \u2022 Dell Comics",
+  "attributes": "WWII Era • Walt Kelly Art • Dell Comics",
   "price": "45.00",
   "condition": "Good",
   "condition_notes": "Cover only professionally framed",
@@ -18,5 +18,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2025-11-26"
 }

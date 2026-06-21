@@ -1,10 +1,10 @@
 {
   "sku": "RG-0024",
   "product_name": "Vintage 1980s Silver Sequin Bomber Jacket",
-  "attributes": "c. 1980s \u2022 Made in Korea \u2022 All-Over Sequin \u2022 100% Poly",
+  "attributes": "c. 1980s • Made in Korea • All-Over Sequin • 100% Poly",
   "price": "48.00",
   "condition": "Very Good",
-  "condition_notes": "Labeled F&M Fashion \"Jeongmin\", 100% polyester; Korean maker + all-poly + older-style label date it to the 1980s (Korea was the era's garment-export hub before China). No size tag \u2014 size by measurement. Ribbed collar, cuffs, hem; sequins intact. Sold as found.",
+  "condition_notes": "Labeled F&M Fashion \"Jeongmin\", 100% polyester; Korean maker + all-poly + older-style label date it to the 1980s (Korea was the era's garment-export hub before China). No size tag — size by measurement. Ribbed collar, cuffs, hem; sequins intact. Sold as found.",
   "state": "Listed",
   "target_channels": [
     "square_online",
@@ -20,7 +20,9 @@
       "object_id": "JXDPAG5ZJFUF2TXT5URG4KFM",
       "variation_id": "6T5QTDECV223S4W4AZDM3ESD",
       "buy_link": "https://square.link/u/C2FgvaqT",
-      "image_ids": ["D2AQK25S4RHO2MQHJOQ6RJM6"],
+      "image_ids": [
+        "D2AQK25S4RHO2MQHJOQ6RJM6"
+      ],
       "dedup_note": "2026-06-20: consolidated duplicate Square listing. The same physical jacket had a second Square item (RG-APPAREL-JEONGMIN, object IFS3NKQGBABCMP7CLIE3E3ND, $45, created 2026-06-17) minted before RG-0024 (2026-06-19) without a dedupe check. Moved that listing's photo (image D2AQK25S4RHO2MQHJOQ6RJM6) onto RG-0024 and archived the duplicate (is_archived=true, ecom_visibility=UNAVAILABLE). Canonical price reconciled to $48 (per 2026-06-19 reprice)."
     },
     "ebay": {
@@ -28,7 +30,7 @@
       "item_id": "298422721749",
       "url": "https://www.ebay.com/itm/298422721749",
       "listed_start": "48.00",
-      "note": "active; Jeongmin bomber jacket. Repriced 55\u219248 on 2026-06-19 (absorption-adjusted, BPO \u00a73)."
+      "note": "active; Jeongmin bomber jacket. Repriced 55→48 on 2026-06-19 (absorption-adjusted, BPO §3)."
     },
     "whatnot": {
       "status": "not_listed"
@@ -43,12 +45,12 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0024/",
       "file": "qr-info.png",
-      "use": "price tag \u2014 scan for item card / more info"
+      "use": "price tag — scan for item card / more info"
     },
     "buy": {
       "url": "https://square.link/u/C2FgvaqT",
       "file": "qr-buy.png",
-      "use": "Square checkout \u2014 scan to buy"
+      "use": "Square checkout — scan to buy"
     }
   },
   "shipping": {
@@ -76,5 +78,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2026-06-18"
 }

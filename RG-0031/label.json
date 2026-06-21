@@ -1,10 +1,10 @@
 {
   "sku": "RG-0031",
-  "product_name": "Sands of Mars \u2014 Arthur C. Clarke (Pocket Books #989, 1954)",
-  "attributes": "1954 \u2022 Pocket Books #989 \u2022 1st Paperback Printing \u2022 Cover Art by Robert Schulz",
+  "product_name": "Sands of Mars — Arthur C. Clarke (Pocket Books #989, 1954)",
+  "attributes": "1954 • Pocket Books #989 • 1st Paperback Printing • Cover Art by Robert Schulz",
   "price": "8.00",
   "condition": "Good (worn reading copy)",
-  "condition_notes": "Vintage science-fiction paperback: Arthur C. Clarke, 'The Sands of Mars,' Pocket Books #989, 25-cent edition. Per the copyright page: Pocket Book edition published April 1954, 1st printing February 1954 (the first US paperback printing; follows the 1951 Sidgwick & Jackson UK edition, 1952 Gnome Press hardcover, and 1953 Science Fiction Book Club edition). Cover painting by Robert Schulz. Condition: worn reading copy \u2014 a vertical crease/split runs through the front cover, the top-right corner has some loss, with edge/corner wear, soiling, and age-tanned pages; complete and readable, binding intact. Sold as-is.",
+  "condition_notes": "Vintage science-fiction paperback: Arthur C. Clarke, 'The Sands of Mars,' Pocket Books #989, 25-cent edition. Per the copyright page: Pocket Book edition published April 1954, 1st printing February 1954 (the first US paperback printing; follows the 1951 Sidgwick & Jackson UK edition, 1952 Gnome Press hardcover, and 1953 Science Fiction Book Club edition). Cover painting by Robert Schulz. Condition: worn reading copy — a vertical crease/split runs through the front cover, the top-right corner has some loss, with edge/corner wear, soiling, and age-tanned pages; complete and readable, binding intact. Sold as-is.",
   "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "target_channels": [
@@ -36,7 +36,7 @@
       "draft_url": "https://www.ebay.com/lstng?draftId=5109966602302&mode=AddItem",
       "price": "8.00",
       "format": "Buy It Now + Best Offer",
-      "note": "Draft started 2026-06-19 via Chrome: 3 photos uploaded (front cover = Main, copyright page, back), title set, custom label RG-0031, condition=Good. eBay listing form froze the browser (known document_idle hang) before item specifics/price/shipping could be entered. Owner to finish from the draft and publish \u2014 see ops/RG-0031-ebay-listing-pack.md. Remaining: item specifics, description, BIN $8 + Best Offer, USPS Media Mail (6 oz, 8x6x1 bubble mailer), publish. PHOTOS UPDATED 2026-06-20: hero re-done as a straight-on, perspective-corrected front-cover crop from the original photo (IMG_0960 / C64EC65D), replacing the earlier crooked subject-lift cutout; all condition defects preserved (crease/split, top-right corner loss, edge wear, tanning). New hero live on GitHub page and on Square (primary image_id TE6XMNP4LZMKA5FH5VDNZL2V replaced in place; 3-image set order unchanged). REPLACE the draft's original rough in-case photos with these before publishing."
+      "note": "Draft started 2026-06-19 via Chrome: 3 photos uploaded (front cover = Main, copyright page, back), title set, custom label RG-0031, condition=Good. eBay listing form froze the browser (known document_idle hang) before item specifics/price/shipping could be entered. Owner to finish from the draft and publish — see ops/RG-0031-ebay-listing-pack.md. Remaining: item specifics, description, BIN $8 + Best Offer, USPS Media Mail (6 oz, 8x6x1 bubble mailer), publish. PHOTOS UPDATED 2026-06-20: hero re-done as a straight-on, perspective-corrected front-cover crop from the original photo (IMG_0960 / C64EC65D), replacing the earlier crooked subject-lift cutout; all condition defects preserved (crease/split, top-right corner loss, edge wear, tanning). New hero live on GitHub page and on Square (primary image_id TE6XMNP4LZMKA5FH5VDNZL2V replaced in place; 3-image set order unchanged). REPLACE the draft's original rough in-case photos with these before publishing."
     },
     "marketplace": {
       "status": "not_target"
@@ -46,12 +46,12 @@
     "info": {
       "url": "https://richmondgeneral.github.io/items/RG-0031/",
       "file": "qr-info.png",
-      "use": "price tag \u2014 scan for item card / more info"
+      "use": "price tag — scan for item card / more info"
     },
     "buy": {
       "url": "https://square.link/u/RypQGyNw",
       "file": "qr-buy.png",
-      "use": "Square checkout \u2014 scan to buy (ships USPS Media Mail)"
+      "use": "Square checkout — scan to buy (ships USPS Media Mail)"
     }
   },
   "photos": {
@@ -86,5 +86,6 @@
       "defects_ok": true
     },
     "reasons": []
-  }
+  },
+  "added_at": "2026-06-19"
 }
