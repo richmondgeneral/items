@@ -1,0 +1,24 @@
+name: Gallery Gate
+
+# Asserts every Listed/Sold item has a card in the Shop gallery (index.html).
+# Runs on direct pushes to main (the normal RG flow) AND on PRs, so a live item
+# page that never got a gallery card turns the build red instead of drifting
+# silently (see the 2026-06-21 backfill of RG-0028/0029/0034/0052/0053/0054).
+#
+# No dependencies: build_gallery.py is pure stdlib and ubuntu-latest ships python3.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  gallery-gate:
+    name: Every Listed/Sold item has a gallery card
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: build_gallery.py --check
+        run: python3 scripts/build_gallery.py --check
