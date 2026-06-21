@@ -35,10 +35,12 @@
       "payment_link_id": "FEPYQJZAW3UHNMP3"
     },
     "ebay": {
-      "status": "pending",
-      "price": "12.00",
+      "status": "listed",
+      "item_id": "298436217004",
+      "url": "https://www.ebay.com/itm/298436217004",
+      "listed_price": "12.00",
       "format": "Buy It Now + Best Offer",
-      "note": "Listing pack to prepare; attempt draft, hand publish to owner if the create-listing form hangs (known document_idle issue)."
+      "note": "Live listing confirmed/revised 2026-06-21; removed public photo-gap sentence from seller description."
     },
     "whatnot": {
       "status": "listed",
