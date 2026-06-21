@@ -32,10 +32,14 @@
       "note": "Listed 2026-06-20 (+$12 ship). 2026-06-21: TESTED & WORKING (sings and dances) — repriced $20→$28. Still: ONLY 1 photo; remove price sticker + reshoot before final."
     },
     "ebay": {
-      "status": "pending",
+      "status": "draft_ready",
       "price": "28.00",
-      "format": "Buy It Now + Best Offer",
-      "note": "Draft to be created. TESTED & WORKING (sings and dances) — list as working, not as-is. Seasonal — demand peaks Feb–Apr; consider holding to next Easter or pricing to move now."
+      "format": "Fixed Price + Best Offer",
+      "condition": "USED_GOOD",
+      "title": "Gemmy 'Hip Hop' Animated Easter Bunny Singing Dancing Plush Denim Overalls Works",
+      "draft_prepared": "2026-06-21 — buyer-facing draft built via ebay-lister --dry-run (title 80/80; description cleaned of internal notes; item specifics + photos set). Preview: RG-0054-ebay-draft.md.",
+      "blocker": "Not publishable yet. ebay-lister needs (1) eBay app keys EBAY_CLIENT_ID/EBAY_CLIENT_SECRET/EBAY_RU_NAME in Keychain, (2) one-time owner OAuth -> EBAY_REFRESH_TOKEN, (3) EBAY_FULFILLMENT/PAYMENT/RETURN_POLICY_ID + EBAY_LOCATION_KEY + categoryId. Per SETUP.md the eBay developer-account approval was pending (2026-06-19); no keys in Keychain as of 2026-06-21. Owner action required at developer.ebay.com.",
+      "note": "TESTED & WORKING (sings and dances) — list as working, not as-is. Seasonal — demand peaks Feb–Apr; consider holding to next Easter or pricing to move now."
     },
     "marketplace": {
       "status": "not_target"
