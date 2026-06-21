@@ -261,14 +261,17 @@ def reconcile(text: str, items: dict):
     return text, inserted, skipped, missing
 
 
-def relink_cards(text: str):
+def relink_cards(text: str, only=None):
     """Opt-in: switch EXISTING cards to card.png where the file now exists.
 
     Not part of the insert-only default — run explicitly after matte.py has
     generated card.png for items. Adds data-img="card" so CSS can color behind.
+    `only` (a set of SKUs) limits the relink to those items.
     """
     changed = []
     for sku in sorted(carded_skus(text)):
+        if only and sku not in only:
+            continue
         if not os.path.isfile(os.path.join(ROOT, sku, "card.png")):
             continue
         if re.search(rf'src="\./{sku}/card\.png"', text):
@@ -319,13 +322,15 @@ def main() -> int:
                    help="switch existing cards to card.png where present (opt-in)")
     g.add_argument("--rebadge", action="store_true",
                    help="switch existing cards to the date-driven auto-expiring New badge (opt-in)")
+    ap.add_argument("--sku", nargs="*", default=None,
+                    help="limit --relink-cards to these SKUs (e.g. --sku RG-0002)")
     args = ap.parse_args()
 
     text = open(INDEX, encoding="utf-8").read()
     items = load_items()
 
     if args.relink_cards:
-        new_text, changed = relink_cards(text)
+        new_text, changed = relink_cards(text, only=set(args.sku) if args.sku else None)
         if not changed:
             print("No cards to relink (no card.png present for existing cards).")
             return 0
