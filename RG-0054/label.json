@@ -1,0 +1,94 @@
+{
+  "sku": "RG-0054",
+  "product_name": "\"Hip Hop\" Animated Easter Bunny \u2014 Singing/Dancing Plush in Denim Overalls (likely Gemmy, untested)",
+  "attributes": "Likely Gemmy Industries \u2022 \"Hip Hop\" animated Easter bunny \u2022 White plush, ~17\" \u2022 Yellow \"HIP HOP\" tee + denim overalls + red high-top sneakers \u2022 \"PRESS HERE\" tab (sings/dances) \u2022 FUNCTION UNTESTED \u2022 late 1990s\u20132000s",
+  "price": "20.00",
+  "condition": "Pre-owned, good display condition; mechanism UNTESTED",
+  "condition_notes": "Animated \"Hip Hop\" Easter bunny \u2014 a white plush rabbit dressed in a yellow \"HIP HOP\" t-shirt, denim overalls, and red high-top sneakers, with a red \"PRESS HERE\" tab on the right cuff (these activate a song-and-dance routine). Almost certainly Gemmy Industries, the maker of this animated-plush line (late 1990s\u2013early 2000s); no maker's tag has been photographed yet, so attribution is by line/styling, not a confirmed sewn-in label. FUNCTION IS UNTESTED \u2014 not yet powered/battery-checked, so song and motion are unverified from the single photo on hand. Plush is clean and bright with no obvious damage; a small handwritten retail price sticker is presently affixed to the shirt near the logo and should be removed before sale. Seasonal (Easter) item being prepped off-season (June).",
+  "state": "Listed",
+  "fulfillment": "ship_or_pickup",
+  "pickup_location": "Richmond, IL 60071",
+  "target_channels": [
+    "square",
+    "ebay"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "live",
+      "url": "https://richmondgeneral.github.io/items/RG-0054/"
+    },
+    "square": {
+      "status": "listed",
+      "object_id": "ELJ2WPYAYOLYBLOMZRE4JXEU",
+      "variation_id": "VJJZPD3FDYQ7TDXSEVZ6CJZK",
+      "price": "20.00",
+      "buy_link": "https://square.link/u/tlFNqKCJ",
+      "payment_link_id": "4SMUDBC54VNGGAGR",
+      "primary_image_id": "F3GSNS3ZRKT6J3IDRX5BHBTV",
+      "categories": [
+        "Collectibles (reporting)",
+        "New Arrivals"
+      ],
+      "note": "Listed 2026-06-20 (+$12 ship). UNTESTED; ONLY 1 photo; remove price sticker + reshoot before final."
+    },
+    "ebay": {
+      "status": "pending",
+      "price": "20.00",
+      "format": "Buy It Now + Best Offer",
+      "note": "Draft to be created. List as UNTESTED / sold as-is for display unless function confirmed. Seasonal \u2014 demand peaks Feb\u2013Apr; consider holding to next Easter or pricing to move now."
+    },
+    "marketplace": {
+      "status": "not_target"
+    }
+  },
+  "qr_codes": {
+    "info": {
+      "url": "https://richmondgeneral.github.io/items/RG-0054/",
+      "file": "qr-info.png",
+      "status": "generated",
+      "use": "price tag \u2014 scan for item card"
+    },
+    "buy": {
+      "url": "https://square.link/u/tlFNqKCJ",
+      "file": "qr-buy.png",
+      "status": "generated",
+      "use": "Square checkout \u2014 scan to buy"
+    }
+  },
+  "photos": {
+    "hero": "hero.png",
+    "details": [
+      "detail-shirt.png"
+    ],
+    "photo_gaps": "ONLY ONE source photo exists \u2014 hero.png and detail-shirt.png are both crops of the SAME single image. Before this is listing-complete we still need: (1) a back view and any sewn-in maker/care tag close-up to CONFIRM Gemmy + the model/year; (2) the battery compartment / underside; (3) a condition close-up of the price sticker on the shirt (and confirmation it removes cleanly); (4) a scale reference; and critically (5) a FUNCTION TEST \u2014 install batteries, verify it sings/dances, and record the result before claiming function.",
+    "source_photos": "9577DC6E.jpeg (single original; hero + detail-shirt both derived from it)"
+  },
+  "pricing_report": "ops/pricing/RG-0054-pricing.md",
+  "shipping": {
+    "local_pickup_only": false,
+    "shippable": true,
+    "method": "USPS Priority / Ground Advantage",
+    "fragile": false,
+    "weight_oz": 24,
+    "box_in": [
+      14,
+      12,
+      10
+    ],
+    "est": true,
+    "notes": "Light plush \u2014 boxed (not bagged) to protect the shape. Weight/dims are estimates (~1\u20131.5 lb packed); refine once weighed. Mechanism/battery box adds a little heft."
+  },
+  "hero_qa": {
+    "status": "pass",
+    "checked_at": "2026-06-21T00:12:07.568460+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 0.0,
+      "full_face": true,
+      "bg_ok": true,
+      "defects_ok": true
+    },
+    "reasons": []
+  }
+}

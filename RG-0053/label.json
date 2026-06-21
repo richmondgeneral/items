@@ -1,0 +1,98 @@
+{
+  "sku": "RG-0053",
+  "product_name": "Hoffman \"Easy Vision\" Table Television \u2014 Early 1950s (Amber Screen, As-Is)",
+  "attributes": "Hoffman Radio Corp. (Los Angeles) \u2022 Early-1950s table/portable TV \u2022 Amber-tinted \"Easy Vision\" safety glass over rounded CRT \u2022 Wood cabinet (repainted) \u2022 4 original knobs incl. lighted tuning dial \u2022 On period folding metal stand \u2022 UNTESTED / sold as-is",
+  "price": "85.00",
+  "condition": "Vintage \u2014 untested, as-is (cosmetic restoration / decor project)",
+  "condition_notes": "Early-1950s Hoffman table television (Hoffman Radio Corp., Los Angeles), with the brand's signature amber \"Easy Vision\" tinted safety glass over a rounded-rectangular CRT. Raised script 'Hoffman' badge on the woven grille cloth is intact and clear. All four front controls present \u2014 three maroon knobs plus a lighted/numbered tuning dial \u2014 on a brass control plate. The wood cabinet has been REPAINTED at some point: cream/off-white top, mint-green case sides; original wood-tone front fascia remains. Honest age wear throughout \u2014 paint chips and scuffs to the case, surface grime, light tarnish on the bezel, a small old sticker residue on top. Sits on a period folding tubular-metal stand (likely a later pairing, not confirmed original to the set). NO model or chassis number was legible in the available photos \u2014 model TBD; the back/chassis was not photographed clearly. UNTESTED: not powered up, function unknown \u2014 sold strictly AS-IS for display, decor, or a restoration project. Vintage tube electronics should be inspected/re-capped by a qualified tech before any attempt to power on.",
+  "state": "Listed",
+  "fulfillment": "ship_or_pickup",
+  "pickup_location": "Richmond, IL 60071",
+  "target_channels": [
+    "square",
+    "ebay"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "live",
+      "url": "https://richmondgeneral.github.io/items/RG-0053/"
+    },
+    "square": {
+      "status": "listed",
+      "object_id": "OWFTFRSVBMHBSTRHEKNAFPPW",
+      "variation_id": "7PW4S6R5CDGVJ34MFOOV2OVE",
+      "price": "85.00",
+      "buy_link": "https://square.link/u/sVyCCOZk",
+      "payment_link_id": "H7H7PJ6YYAPC23AH",
+      "primary_image_id": "C5TOICLJ5WILWLHO3OZLSRKX",
+      "categories": [
+        "Analog & Vintage Media (reporting)",
+        "New Arrivals"
+      ],
+      "note": "Listed 2026-06-20. Local pickup preferred (oversize fragile CRT). UNTESTED/as-is."
+    },
+    "ebay": {
+      "status": "pending",
+      "price": "85.00",
+      "format": "Buy It Now + Best Offer",
+      "note": "Draft to be created. Title: early-1950s Hoffman table TV, amber Easy Vision screen, UNTESTED/as-is, repainted cabinet. Heavy/fragile \u2014 calculated shipping or local pickup; flag oversize if longest side > 24 in."
+    },
+    "marketplace": {
+      "status": "not_target"
+    }
+  },
+  "qr_codes": {
+    "info": {
+      "url": "https://richmondgeneral.github.io/items/RG-0053/",
+      "file": "qr-info.png",
+      "status": "generated",
+      "use": "price tag \u2014 scan for item card"
+    },
+    "buy": {
+      "url": "https://square.link/u/sVyCCOZk",
+      "file": "qr-buy.png",
+      "status": "generated",
+      "use": "Square checkout \u2014 scan to buy"
+    }
+  },
+  "photos": {
+    "hero": "hero.png",
+    "details": [
+      "detail-label.png",
+      "detail-controls.png",
+      "detail-full.png",
+      "detail-back.png"
+    ],
+    "photo_gaps": "Have: front face (Hoffman badge + amber screen + knobs) as hero, nameplate macro, control-row close-up, full unit on stand, painted case back/top. STILL NEEDED: clear shot of the BACK/chassis with the model & chassis numbers (critical for exact model ID), cord/plug condition, any tube-deck view, and a scale reference. No 'powered on' photo \u2014 item is untested.",
+    "source_photos": "AC9E4E51 (hero/front + controls crop), 922BF940 (nameplate), 1B1AC03E (full on stand), 0D98ADE7 (back/top of case)"
+  },
+  "pricing_report": "ops/pricing/RG-0053-pricing.md",
+  "shipping": {
+    "local_pickup_only": false,
+    "shippable": true,
+    "method": "UPS Ground / freight-style boxing \u2014 fragile + heavy CRT",
+    "fragile": true,
+    "weight_oz": 480,
+    "box_in": [
+      24,
+      20,
+      20
+    ],
+    "est": true,
+    "oversize": true,
+    "notes": "FRAGILE vintage CRT television \u2014 heavy (est. ~25-30 lb without stand). Double-box with rigid foam around the picture tube/bezel; the glass CRT face is the main breakage risk. Estimated dims ~24x20x20 in put the longest side at/over the 24 in oversize threshold \u2014 expect an oversize surcharge; local pickup strongly preferred. Stand can ship separately/flat or be offered pickup-only. All weights/dims are estimates pending a scale + tape measure."
+  },
+  "hero_qa": {
+    "status": "pass",
+    "checked_at": "2026-06-21T00:12:06.716457+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 0.0,
+      "full_face": true,
+      "bg_ok": true,
+      "defects_ok": true
+    },
+    "reasons": []
+  }
+}

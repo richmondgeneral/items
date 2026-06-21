@@ -1,0 +1,97 @@
+{
+  "sku": "RG-0052",
+  "product_name": "Antique Singer Treadle Sewing Cabinet \u2014 Oak Case & Cast-Iron Base (Head Absent)",
+  "attributes": "Singer (treadle era) \u2022 Quarter-sawn oak folding-top cabinet \u2022 Ornate cast-iron 'SINGER' treadle base \u2022 4 drawers \u2022 Machine HEAD ABSENT \u2014 sold as cabinet + base / repurpose furniture \u2022 Local pickup only",
+  "price": "65.00",
+  "condition": "Antique \u2014 honest used/weathered; sold as a cabinet & treadle base (no sewing-machine head)",
+  "condition_notes": "Antique Singer treadle sewing-machine cabinet with the ornate cast-iron treadle base ('SINGER' cast into the right pedal standard) and a quarter-sawn oak folding-top case with four drawers (two per side). IMPORTANT: the sewing-machine HEAD is ABSENT \u2014 the hinged well in the cabinet top is empty (only the drop-in mounting plate / lift mechanism remains), so this sells as a cabinet-and-base / repurpose furniture piece, not a working machine. Honest condition: oak shows age-darkened finish, surface wear, ring/scuff marks and some debris on the top leaves; cast iron is solid with light-to-moderate surface rust and intact scrollwork; treadle pedal grate and pitman present. No serial number or model badge was legible in the supplied photos (the head, which normally carries the serial, is not present), so the exact model/date is undetermined. Drawers run; belt/attachments not confirmed present. Untested as furniture is structurally sound; buyer to inspect. Vintage / antique era (typical of early-to-mid 20th-century Singer treadle production).",
+  "state": "Listed",
+  "fulfillment": "pickup_only",
+  "pickup_location": "Richmond, IL 60071",
+  "target_channels": [
+    "square",
+    "marketplace"
+  ],
+  "channels": {
+    "github_page": {
+      "status": "live",
+      "url": "https://richmondgeneral.github.io/items/RG-0052/"
+    },
+    "square": {
+      "status": "listed",
+      "object_id": "224FLK3Q3KJ2JZKHX7TCPXKU",
+      "variation_id": "S4Z47XGSIX6RYH4EB5LSPQLP",
+      "price": "65.00",
+      "buy_link": "https://square.link/u/Rj8hX0cj",
+      "payment_link_id": "JEASBL7ZBFF4LCKT",
+      "primary_image_id": "LIHVGEEMPHUIZOAS2PTYCBYN",
+      "categories": [
+        "Furniture (reporting)",
+        "New Arrivals"
+      ],
+      "note": "Listed 2026-06-20. Local pickup only (heavy). HEAD ABSENT \u2014 sold as cabinet/base."
+    },
+    "ebay": {
+      "status": "not_target",
+      "note": "Not targeted \u2014 oversize/heavy furniture; freight impractical, local pickup only."
+    },
+    "marketplace": {
+      "status": "pending",
+      "format": "Local pickup \u2014 Facebook Marketplace",
+      "note": "Best channel for heavy local-pickup furniture. Draft to be created; route writes through ops/seller-agent (publish_item.py). Public-meetup / local pickup, Richmond IL 60071."
+    }
+  },
+  "qr_codes": {
+    "info": {
+      "url": "https://richmondgeneral.github.io/items/RG-0052/",
+      "file": "qr-info.png",
+      "status": "generated",
+      "use": "price tag \u2014 scan for item card"
+    },
+    "buy": {
+      "url": "https://square.link/u/Rj8hX0cj",
+      "file": "qr-buy.png",
+      "status": "generated",
+      "use": "Square checkout \u2014 scan to buy"
+    }
+  },
+  "photos": {
+    "hero": "hero.png",
+    "details": [
+      "detail-treadle.png",
+      "detail-machine-well.png",
+      "detail-cabinet-open.png"
+    ],
+    "photo_gaps": "Have: full cabinet (closed, upright, SINGER base visible) hero; cast-iron 'SINGER' treadle base close-up; empty machine well (documents head absent); full cabinet with top open. Still useful: drawer close-up (front + interior), any maker's mark / model plate on cabinet hardware, condition close-ups of rust and veneer/finish wear, a tape-measure scale shot for the furniture footprint, and back-of-cabinet. Confirm/deny: belt, treadle attachments, whether the head exists separately.",
+    "source_photos": "8 in _src/: 532439C0 (hero \u2014 closed cabinet), A7F5B00C (top open / well + cabinet-open detail), B6AA3642 (treadle base detail), AE2E92A9 (treadle base alt), 92F2773E/7F335E94/62796BC2/2197293B (drawers open w/ stored notions \u2014 oblique, not used)"
+  },
+  "pricing_report": "ops/pricing/RG-0052-pricing.md",
+  "shipping": {
+    "local_pickup_only": true,
+    "shippable": false,
+    "method": "Local pickup only \u2014 Richmond, IL 60071",
+    "fragile": false,
+    "weight_lb_est": 90,
+    "box_in": [
+      36,
+      18,
+      31
+    ],
+    "est": true,
+    "notes": "Large, heavy antique treadle cabinet (cast-iron base + oak case). Estimated ~80\u2013100 lb and ~36 in W x 18 in D x 30\u201332 in H (footprint estimated from photos \u2014 confirm with tape measure). Not shippable by parcel; freight impractical for the price. LOCAL PICKUP ONLY; buyer hauls (two-person lift)."
+  },
+  "reporting_category_note": "Furniture",
+  "hero_qa": {
+    "status": "pass",
+    "checked_at": "2026-06-21T00:12:06.301408+00:00",
+    "checker": "auto:hero_qa_gate v1",
+    "checks": {
+      "upright": true,
+      "level_deg": 0.0,
+      "full_face": true,
+      "bg_ok": true,
+      "defects_ok": true
+    },
+    "reasons": []
+  }
+}
