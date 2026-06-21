@@ -3,10 +3,10 @@
   "product_name": "Kreamer Tinned-Steel Covered Pail — Size 50 (Antique, Bail Handle & Lid)",
   "attributes": "Kreamer (Brooklyn, NY tinware) • Tapered tinned/japanned steel covered pail • Hinged flat lid with folding swing-handle • Side wire bail handle • Size '50' stamped on lid • Oval 'KREAMER' maker's mark on the bottom • Heavy honest patina",
   "price": "45.00",
-  "price_status": "preliminary — pending firm eBay sold-comps pull",
+  "price_status": "final — $45 (2026-06-21); eBay-Sold pull returned no clean organic comps (uncommon item), so category + Kreamer-maker anchored",
   "condition": "Antique — honest as-found; heavy patina, surface rust/oxidation, scratches; complete with lid + bail handle",
   "condition_notes": "Antique Kreamer tinned/japanned-steel covered pail, size '50'. Tapered cylindrical body (wider at the lidded top, tapering to a narrower base) with a hinged flat lid carrying a folding swing-handle, plus a side wire bail handle. Maker confirmed: an oval 'KREAMER' cartouche stamped into the bottom (reads in reverse from the inside because it was struck from the outside underside; faintly legible right-reading on the rusty exterior bottom), with a '50' size stamp on the lid. Condition is honest as-found / primitive: the dark japanned/tinned finish is worn with heavy patina, surface rust and oxidation, and scratches throughout; the interior tinned surface is scratched and lightly rusted. Lid present and seats; hinge and bail handle intact. No major dents observed in the supplied photos. Sold as an antique storage/decor piece. Kreamer operated in Brooklyn, NY until c.1940.",
-  "state": "In Intake",
+  "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "pickup_location": "Richmond, IL 60071",
   "target_channels": [
@@ -14,13 +14,24 @@
     "ebay"
   ],
   "channels": {
-    "github_page": {
-      "status": "pending",
-      "url": "https://richmondgeneral.github.io/items/RG-0055/"
+    "github_page": { "status": "live", "url": "https://richmondgeneral.github.io/items/RG-0055/" },
+    "square": {
+      "status": "listed",
+      "object_id": "42Y5VFQUE3SLTLCTUV7MG2JU",
+      "variation_id": "VCNPTU4YLPTDMJZIUL2ZZNCJ",
+      "price": "45.00",
+      "buy_link": "https://square.link/u/gVSkr65d",
+      "payment_link_id": "AIUJEVDEGXFOIRYK",
+      "order_id": "p6E59egDoBosn29lo8IWXcVRQOXZY",
+      "categories": ["Collectibles (reporting)", "New Arrivals"],
+      "note": "Listed 2026-06-21. Primary image = square.png (transparent cutout). Ships or local pickup."
     },
-    "square": { "status": "pending" },
-    "ebay": { "status": "pending", "note": "Collector/decor tinware; ships or local pickup." },
+    "ebay": { "status": "pending", "note": "Manual listing pack to follow — ebay-lister API not yet active (acct pending approval). Collector/decor tinware; ships or local pickup." },
     "marketplace": { "status": "not_target" }
+  },
+  "qr_codes": {
+    "info": { "url": "https://richmondgeneral.github.io/items/RG-0055/", "file": "qr-info.png", "use": "price tag — scan for item card" },
+    "buy": { "url": "https://square.link/u/gVSkr65d", "file": "qr-buy.png", "use": "Square checkout — scan to buy" }
   },
   "identity": {
     "maker": "Kreamer",
