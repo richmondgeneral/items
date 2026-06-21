@@ -89,21 +89,16 @@
     "est": true
   },
   "hero_qa": {
-    "status": "fail",
-    "checked_at": "2026-06-20T23:43:08.187596+00:00",
+    "status": "pass",
+    "checked_at": "2026-06-21T18:09:03.957194+00:00",
     "checker": "auto:hero_qa_gate v1",
     "checks": {
       "upright": true,
-      "level_deg": 2.821,
+      "level_deg": 0.0,
       "full_face": true,
       "bg_ok": true,
       "defects_ok": true
     },
-    "reasons": [
-      "tilt 2.8\u00b0 > 1.5\u00b0"
-    ]
-  },
-  "photo_overrides": {
-    "status": "needs_manual"
+    "reasons": []
   }
 }
