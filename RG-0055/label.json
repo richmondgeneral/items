@@ -1,11 +1,11 @@
 {
   "sku": "RG-0055",
-  "product_name": "Kreamer Tinned-Steel Covered Pail — Size 50 (Antique, Bail Handle & Lid)",
-  "attributes": "Kreamer (Brooklyn, NY tinware) • Tapered tinned/japanned steel covered pail • Hinged flat lid with folding swing-handle • Side wire bail handle • Size '50' stamped on lid • Oval 'KREAMER' maker's mark on the bottom • Heavy honest patina",
+  "product_name": "Large Antique Kreamer Covered Storage Tin — 18in Canister, Lid & Bail Handle (Size 50)",
+  "attributes": "Kreamer (Brooklyn, NY tinware) • LARGE tapered tinned/japanned-steel covered storage tin / canister • 18in tall × 12.5in dia • Hinged flat lid with folding swing-handle • Side wire bail handle • Size '50' (a Kreamer size/stock code, not a quart capacity) • Oval 'KREAMER' maker's mark on the bottom • c.1936–1945 • Heavy honest patina",
   "price": "65.00",
   "price_status": "final — $65 (2026-06-21, repriced from $45 after measured size + cross-site research); large 18in Kreamer pail is uncommon (documented Kreamers are small 1–2qt), smaller Kreamer tea canister asks $89; range $55–85, local pickup only. Thin sold comps (WorthPoint paywalled).",
   "condition": "Antique — honest as-found; heavy patina, surface rust/oxidation, scratches; complete with lid + bail handle",
-  "condition_notes": "Antique Kreamer tinned/japanned-steel covered pail, size '50'. Tapered cylindrical body (wider at the lidded top, tapering to a narrower base) with a hinged flat lid carrying a folding swing-handle, plus a side wire bail handle. Maker confirmed: an oval 'KREAMER' cartouche stamped into the bottom (reads in reverse from the inside because it was struck from the outside underside; faintly legible right-reading on the rusty exterior bottom), with a '50' size stamp on the lid. Condition is honest as-found / primitive: the dark japanned/tinned finish is worn with heavy patina, surface rust and oxidation, and scratches throughout; the interior tinned surface is scratched and lightly rusted. Lid present and seats; hinge and bail handle intact. No major dents observed in the supplied photos. Sold as an antique storage/decor piece. Kreamer operated in Brooklyn, NY until c.1940.",
+  "condition_notes": "Large antique Kreamer tinned/japanned-steel covered storage tin (canister), size '50' — a substantial vessel at 18 in tall by 12.5 in diameter. Tapered cylindrical body (wider at the lidded top, tapering to a narrower base) with a hinged flat lid carrying a folding swing-handle, plus a side wire bail handle. Maker confirmed: an oval 'KREAMER' cartouche stamped into the bottom (reads in reverse from the inside because it was struck from the outside underside; faintly legible right-reading on the rusty exterior bottom), with a '50' stamp on the lid — a Kreamer size/stock number (the 50/51/53 canister-size family), NOT a quart capacity. The related Kreamer numbered line carries US design patent D102704 (applied 1936), placing this c.1936–1945 (Kreamer operated in Brooklyn, NY until ~1940). Condition is honest as-found / primitive: the dark japanned/tinned finish is worn with heavy patina, surface rust and oxidation, and scratches throughout; the interior tinned surface is scratched and lightly rusted. Lid present and seats; hinge and bail handle intact; no major dents. A handsome large antique storage tin with great farmhouse/primitive presence — sold as found. LOCAL PICKUP ONLY (Richmond, IL).",
   "state": "Listed",
   "fulfillment": "local_pickup_only",
   "pickup_location": "Richmond, IL 60071",
@@ -38,7 +38,7 @@
     "maker": "Kreamer",
     "maker_location": "Brooklyn, NY",
     "maker_basis": "oval 'KREAMER' bottom stamp (reverse-reads inside) + '50' size stamp on lid; form matches documented Kreamer numbered tin pails",
-    "type": "tinned/japanned-steel covered pail (storage/utility tin)",
+    "type": "tinned/japanned-steel covered storage tin / canister (large, lidded, bail handle)",
     "size_mark": "50",
     "size_mark_meaning": "Most likely a Kreamer SIZE/STOCK number (the 50/51/53 family of size codes), NOT a 50-quart capacity — internal volume is only ~30–38 qt. Do not assert a quart capacity. (Inference from the documented 51/53 size pattern; no catalog citation, so est:true.)",
     "confidence": "high (maker); medium (size-number meaning)"
