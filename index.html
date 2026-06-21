@@ -235,7 +235,7 @@
         }
         
         .item-image {
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 1.618;
             background: var(--rg-cream);
             display: flex;
             align-items: center;
@@ -1834,6 +1834,20 @@
                 if (updated !== el.textContent) el.textContent = updated;
             });
         })();
+    </script>
+    <script>
+      // Prefer the golden-ratio card.png when an item has one; fall back to its hero on 404.
+      document.querySelectorAll('.item-image img').forEach(function (img) {
+        var hero = img.getAttribute('src');
+        var card = hero.replace(/hero\.(jpe?g|png|webp)$/i, 'card.png');
+        if (card !== hero) {
+          img.addEventListener('error', function onErr() {
+            img.removeEventListener('error', onErr);
+            img.src = hero;
+          });
+          img.src = card;
+        }
+      });
     </script>
 </body>
 </html>
