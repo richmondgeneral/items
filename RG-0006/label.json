@@ -19,5 +19,16 @@
     },
     "reasons": []
   },
-  "added_at": "2025-11-26"
+  "added_at": "2025-11-26",
+  "image_pipeline": [
+    {
+      "tool": "standardize.py",
+      "model": "flat-goods (deskew + perspective-correct + crop-to-face)",
+      "non_generative": true,
+      "src": "hero.jpeg",
+      "out": "hero.png",
+      "note": "framed flat art: keystone straightened, cropped to frame face, dark surround removed; NO cutout (the frame is the boundary)",
+      "timestamp": "2026-06-21T21:26:44.883393+00:00"
+    }
+  ]
 }
