@@ -32,12 +32,16 @@
       "note": "2026-06-21 reconcile: maker CORRECTED to Avon 'Hip Hop Harry' (2002, T.L. Toys TW) per sewn-in tag — was wrongly 'likely Gemmy'. Repriced $28 -> $18 (common Avon item; working comps ~$15 item + ~$13 ship). New matted hero + back + maker-tag + condition photos. Price sticker removed; faint shirt scuff noted."
     },
     "ebay": {
-      "status": "creating_via_browser",
+      "status": "listed",
+      "item_id": "298439625952",
+      "url": "https://www.ebay.com/itm/298439625952",
       "price": "18.00",
-      "format": "Fixed Price + Best Offer",
+      "format": "Fixed Price + Best Offer (min offer $12)",
       "condition": "USED_GOOD",
       "title": "Avon Hip Hop Harry 2002 Animated Easter Bunny Singing Jumping Plush Denim Works",
-      "note": "2026-06-21: creating live listing via Claude-in-Chrome (ebay-chrome skill). Maker confirmed Avon/T.L. Toys 2002. TESTED & WORKING (sings and jumps). Seasonal — Easter demand peaks Feb–Apr. Supersedes the earlier ebay-lister draft (blocked on pending API keys)."
+      "shipping_policy": "Local Pickup + Calculated Ship + International (eIS); pkg 1 lb 8 oz, 14x12x10 in",
+      "category": "Toys & Hobbies > Electronic, Battery & Wind-Up > Battery Operated > 1990-Now > Animals",
+      "note": "2026-06-21: LISTED live via Claude-in-Chrome (created fresh; eBay item 298439625952). Maker confirmed Avon/T.L. Toys 2002. TESTED & WORKING (sings and jumps). $18 BIN + Best Offer (auto-decline < $12). 4 photos: matted front hero, back (red cap), Avon maker tag, logo/shirt-scuff. Seasonal — Easter demand peaks Feb–Apr. Supersedes the earlier ebay-lister draft (blocked on pending API keys)."
     },
     "marketplace": {
       "status": "not_target"
