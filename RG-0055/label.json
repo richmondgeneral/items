@@ -28,7 +28,7 @@
       "note": "Listed 2026-06-21; repriced $45->$65 + desc/dims updated 2026-06-21. Old $45 payment link (AIUJEVDEGXFOIRYK) DELETED. Primary image = square.png (transparent cutout). LOCAL PICKUP ONLY."
     },
     "ebay": { "status": "pending", "note": "Ready pack: ops/RG-0055-ebay-listing-pack.md. ebay-lister API pending acct approval; ebay-chrome only revises existing listings. LOCAL PICKUP ONLY." },
-    "marketplace": { "status": "listed", "url": "https://www.facebook.com/marketplace/item/1940010410040332", "note": "Published 2026-06-21 via seller-agent Vision Agent ($65, Antiques & Collectibles, Used-Fair, public meetup/local pickup, SKU RG-0055). Duplicate from the clobbered run DELETED 2026-06-21; surviving listing URL recorded. ⚠️ TITLE/DESC still say 'pail' — needs a revise to the new 'Covered Storage Tin / Canister' noun + findings to match the other channels." }
+    "marketplace": { "status": "listed", "url": "https://www.facebook.com/marketplace/item/1940010410040332", "note": "Published 2026-06-21 via seller-agent ($65, Antiques & Collectibles, Used-Fair, public meetup/local pickup, SKU RG-0055). Duplicate from the clobbered run DELETED 2026-06-21. Title/desc REVISED to 'Covered Storage Tin / Canister' + findings via seller-agent UPDATE fast-path 2026-06-21; VERIFIED live via read_item (title_seen matches, $65, active, Richmond IL). All channels now consistent on the new noun." }
   },
   "qr_codes": {
     "info": { "url": "https://richmondgeneral.github.io/items/RG-0055/", "file": "qr-info.png", "use": "price tag — scan for item card" },
