@@ -1,6 +1,6 @@
 {
   "sku": "RG-0023",
-  "product_name": "Signed Glass Cabochon Starburst Brooch",
+  "product_name": "Signed Weiss Glass Cabochon Starburst Brooch",
   "attributes": "Mid-Century \u2022 Signed (Weiss) \u2022 Orange/Red Glass Cabochons",
   "price": "75.00",
   "condition": "Excellent",
@@ -78,6 +78,9 @@
     ]
   },
   "photo_overrides": {
-    "status": "needs_manual"
+    "status": "approved",
+    "reason": "hero_qa tilt=41.6° is a false positive: the brooch is a radially symmetric starburst with no straight edge for the tilt estimator to measure, so the angle is meaningless. Hero is visually upright, level, full-face, on a clean light background. Manually verified during 2026-06-20 reconcile and uploaded to Square as primary (image 54ALZDJWCUNUDYCBSGDGO5V2).",
+    "approved_by": "reconcile",
+    "approved_at": "2026-06-20"
   }
 }
