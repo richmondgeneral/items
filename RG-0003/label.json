@@ -19,5 +19,37 @@
     },
     "reasons": []
   },
-  "added_at": "2025-11-26"
+  "added_at": "2025-11-26",
+  "image_pipeline": [
+    {
+      "tool": "upres.py",
+      "model": "RealESRGAN_x4plus.pth",
+      "scale": 4,
+      "src": "hero.jpeg",
+      "out": "hero.png",
+      "src_w": 360,
+      "out_w": 1500,
+      "device": "mps",
+      "wall_s": 2.4,
+      "timestamp": "2026-06-21T20:12:10.850679+00:00",
+      "non_generative": true
+    }
+  ],
+  "photos": {
+    "cutout": "cutout.png",
+    "square": "square.png",
+    "card": "card.png"
+  },
+  "matte": {
+    "model": "birefnet-general",
+    "tool": "image-processor/matte.py (BiRefNet/rembg)",
+    "non_generative": true,
+    "generated_at": "2026-06-21T20:12:21.781240+00:00",
+    "outputs": [
+      "cutout.png",
+      "square.png",
+      "card.png"
+    ],
+    "orientation": "as-shot"
+  }
 }
