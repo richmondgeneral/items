@@ -125,6 +125,8 @@
         .item-image-container {
             flex: 1 1 0;
             min-height: 0;
+            aspect-ratio: 1.618;
+            width: 100%;
             background: var(--rg-cream);
             display: flex;
             align-items: center;
@@ -730,9 +732,12 @@
                          The data model (data-mode/data-variant) is mode-agnostic so
                          the same DOM supports toggle, slider, or future modes. -->
                     <div class="variant-stack" data-mode="slider" data-active="as-found">
-                        <img src="{{IMAGE_URL}}" alt="{{ITEM_TITLE}}"
+                        <img src="./card.png"
+                             onerror="this.onerror=null;this.src='{{IMAGE_URL}}';"
+                             alt="{{ITEM_TITLE}}"
                              class="item-image variant-image"
-                             data-variant="as-found">
+                             data-variant="as-found"
+                             data-card="./card.png" data-hero="{{IMAGE_URL}}">
                         <img class="item-image variant-image"
                              data-variant="as-restored"
                              data-src="./restored.jpg"
