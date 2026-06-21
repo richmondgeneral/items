@@ -1,10 +1,10 @@
 {
   "sku": "RG-0054",
-  "product_name": "\"Hip Hop\" Animated Easter Bunny — Singing/Dancing Plush in Denim Overalls (likely Gemmy, tested & working)",
-  "attributes": "Likely Gemmy Industries • \"Hip Hop\" animated Easter bunny • White plush, ~17\" • Yellow \"HIP HOP\" tee + denim overalls + red high-top sneakers • \"PRESS HERE\" tab (sings & dances) • FUNCTION TESTED & WORKING • late 1990s–2000s",
-  "price": "28.00",
+  "product_name": "Avon \"Hip Hop Harry\" Animated Easter Bunny — Singing & Jumping Plush in Denim Overalls (2002, tested & working)",
+  "attributes": "Avon \"Hip Hop Harry\" • made by T.L. Toys (Taiwan) for Avon • © Avon 2002 (Reg. No. PA-2346 TW) • white plush bunny, ~15\" • red cap + yellow \"HIP HOP\" sweatshirt + denim overalls + red high-top sneakers • red \"PRESS HERE\" tab on right cuff — sings & jumps (head moves) • 4 AA batteries • FUNCTION TESTED & WORKING",
+  "price": "18.00",
   "condition": "Pre-owned, good display condition; mechanism TESTED & WORKING",
-  "condition_notes": "Animated \"Hip Hop\" Easter bunny — a white plush rabbit dressed in a yellow \"HIP HOP\" t-shirt, denim overalls, and red high-top sneakers, with a red \"PRESS HERE\" tab on the right cuff. FUNCTION TESTED & WORKING — pressing the tab plays the full song-and-dance routine (sings and dances). Almost certainly Gemmy Industries, the maker of this animated-plush line (late 1990s–early 2000s); no maker's tag has been photographed yet, so attribution is by line/styling, not a confirmed sewn-in label. Plush is clean and bright with no obvious damage; a small handwritten retail price sticker is presently affixed to the shirt near the logo and should be removed before sale. Seasonal (Easter) item being prepped off-season (June).",
+  "condition_notes": "Avon \"Hip Hop Harry\" animated Easter bunny — a white plush rabbit in a red cap, yellow \"HIP HOP\" sweatshirt, denim overalls, and red high-top sneakers, with a red \"PRESS HERE\" tab on the right cuff. Maker CONFIRMED by the sewn-in tag: AVON Products, Inc., © Avon 2002, Reg. No. PA-2346(TW) — manufactured by T.L. Toys in Taiwan (NOT Gemmy; earlier attribution corrected). FUNCTION TESTED & WORKING — pressing the tab plays the song and the bunny jumps with its head moving. Runs on 4 AA batteries (not included). The handwritten retail price sticker that had been on the shirt has been REMOVED. One honest condition note: a faint dark scuff/smudge on the yellow shirt just below the logo (visible in the detail photo); the plush is otherwise clean and bright with no other obvious damage. Seasonal (Easter) item being prepped off-season (June).",
   "state": "Listed",
   "fulfillment": "ship_or_pickup",
   "pickup_location": "Richmond, IL 60071",
@@ -21,7 +21,7 @@
       "status": "listed",
       "object_id": "ELJ2WPYAYOLYBLOMZRE4JXEU",
       "variation_id": "VJJZPD3FDYQ7TDXSEVZ6CJZK",
-      "price": "28.00",
+      "price": "18.00",
       "buy_link": "https://square.link/u/tlFNqKCJ",
       "payment_link_id": "4SMUDBC54VNGGAGR",
       "primary_image_id": "F3GSNS3ZRKT6J3IDRX5BHBTV",
@@ -29,17 +29,15 @@
         "Collectibles (reporting)",
         "New Arrivals"
       ],
-      "note": "Listed 2026-06-20 (+$12 ship). 2026-06-21: TESTED & WORKING (sings and dances) — repriced $20→$28. Still: ONLY 1 photo; remove price sticker + reshoot before final."
+      "note": "2026-06-21 reconcile: maker CORRECTED to Avon 'Hip Hop Harry' (2002, T.L. Toys TW) per sewn-in tag — was wrongly 'likely Gemmy'. Repriced $28 -> $18 (common Avon item; working comps ~$15 item + ~$13 ship). New matted hero + back + maker-tag + condition photos. Price sticker removed; faint shirt scuff noted."
     },
     "ebay": {
-      "status": "draft_ready",
-      "price": "28.00",
+      "status": "creating_via_browser",
+      "price": "18.00",
       "format": "Fixed Price + Best Offer",
       "condition": "USED_GOOD",
-      "title": "Gemmy 'Hip Hop' Animated Easter Bunny Singing Dancing Plush Denim Overalls Works",
-      "draft_prepared": "2026-06-21 — buyer-facing draft built via ebay-lister --dry-run (title 80/80; description cleaned of internal notes; item specifics + photos set). Preview: RG-0054-ebay-draft.md.",
-      "blocker": "Not publishable yet. ebay-lister needs (1) eBay app keys EBAY_CLIENT_ID/EBAY_CLIENT_SECRET/EBAY_RU_NAME in Keychain, (2) one-time owner OAuth -> EBAY_REFRESH_TOKEN, (3) EBAY_FULFILLMENT/PAYMENT/RETURN_POLICY_ID + EBAY_LOCATION_KEY + categoryId. Per SETUP.md the eBay developer-account approval was pending (2026-06-19); no keys in Keychain as of 2026-06-21. Owner action required at developer.ebay.com.",
-      "note": "TESTED & WORKING (sings and dances) — list as working, not as-is. Seasonal — demand peaks Feb–Apr; consider holding to next Easter or pricing to move now."
+      "title": "Avon Hip Hop Harry 2002 Animated Easter Bunny Singing Jumping Plush Denim Works",
+      "note": "2026-06-21: creating live listing via Claude-in-Chrome (ebay-chrome skill). Maker confirmed Avon/T.L. Toys 2002. TESTED & WORKING (sings and jumps). Seasonal — Easter demand peaks Feb–Apr. Supersedes the earlier ebay-lister draft (blocked on pending API keys)."
     },
     "marketplace": {
       "status": "not_target"
@@ -62,10 +60,41 @@
   "photos": {
     "hero": "hero.png",
     "details": [
-      "detail-shirt.png"
+      "detail-back.png",
+      "detail-tag.png",
+      "detail-logo.png"
     ],
-    "photo_gaps": "Function test DONE 2026-06-21: TESTED & WORKING — sings and dances. ONLY ONE source photo still exists — hero.png and detail-shirt.png are both crops of the SAME single image. Before this is listing-complete we still need: (1) a back view and any sewn-in maker/care tag close-up to CONFIRM Gemmy + the model/year; (2) the battery compartment / underside; (3) a condition close-up of the price sticker on the shirt (and confirmation it removes cleanly); (4) a scale reference.",
-    "source_photos": "9577DC6E.jpeg (single original; hero + detail-shirt both derived from it)"
+    "photo_gaps": "RESHOT 2026-06-21 (8 frames, IMG_1057–1064). Now captured: clean matted front hero, full back view (confirms red cap), sewn-in maker tag (Avon © 2002), and HIP HOP logo close-up showing a faint shirt scuff. Function TESTED & WORKING. Still nice-to-have but non-blocking: a battery-compartment/underside shot and a scale reference.",
+    "source_photos": "IMG_1057 (6B9258A5, hero source) + IMG_1058–1064 (detail frames). NOTE: IMG_1065 in the same time-cluster is an unrelated 45rpm record, not this item.",
+    "cutout": "cutout.png",
+    "square": "square.png",
+    "card": "card.png"
+  },
+  "estimates": {
+    "circa": {
+      "value": "2002",
+      "est": false,
+      "basis": "Sewn-in maker tag reads '© AVON 2002'; corroborated by web references to Avon 'Hip Hop Harry' (2002).",
+      "confidence": "high",
+      "refine_with": "n/a — printed/marked fact"
+    },
+    "dimensions_in": {
+      "value": "~15 tall",
+      "est": true,
+      "basis": "Avon Hip Hop Harry documented at 14–15\" tall; not yet tape-measured.",
+      "confidence": "medium",
+      "refine_with": "Tape-measure standing height."
+    },
+    "weight_lb": {
+      "value": "~1–1.5 packed",
+      "est": true,
+      "basis": "Light plush + battery mechanism; not yet weighed.",
+      "confidence": "low",
+      "refine_with": "Weigh boxed for shipping."
+    },
+    "refinement_log": [
+      "2026-06-21: Maker confirmed Avon/T.L. Toys 2002 from sewn-in tag (was 'likely Gemmy'). Circa upgraded to proven. Repriced $28 -> $18."
+    ]
   },
   "pricing_report": "ops/pricing/RG-0054-pricing.md",
   "shipping": {
@@ -84,16 +113,28 @@
   },
   "hero_qa": {
     "status": "pass",
-    "checked_at": "2026-06-21T00:12:07.568460+00:00",
+    "checked_at": "2026-06-21T22:45:46.830491+00:00",
     "checker": "auto:hero_qa_gate v1",
     "checks": {
       "upright": true,
-      "level_deg": 0.0,
+      "level_deg": 0.471,
       "full_face": true,
       "bg_ok": true,
       "defects_ok": true
     },
     "reasons": []
   },
-  "added_at": "2026-06-20"
+  "added_at": "2026-06-20",
+  "matte": {
+    "model": "birefnet-general",
+    "tool": "image-processor/matte.py (BiRefNet/rembg)",
+    "non_generative": true,
+    "generated_at": "2026-06-21T22:45:28.324463+00:00",
+    "outputs": [
+      "cutout.png",
+      "square.png",
+      "card.png"
+    ],
+    "orientation": "leveled-upright"
+  }
 }
