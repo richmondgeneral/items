@@ -19,7 +19,9 @@
       "status": "listed",
       "object_id": "JXDPAG5ZJFUF2TXT5URG4KFM",
       "variation_id": "6T5QTDECV223S4W4AZDM3ESD",
-      "buy_link": "https://square.link/u/C2FgvaqT"
+      "buy_link": "https://square.link/u/C2FgvaqT",
+      "image_ids": ["D2AQK25S4RHO2MQHJOQ6RJM6"],
+      "dedup_note": "2026-06-20: consolidated duplicate Square listing. The same physical jacket had a second Square item (RG-APPAREL-JEONGMIN, object IFS3NKQGBABCMP7CLIE3E3ND, $45, created 2026-06-17) minted before RG-0024 (2026-06-19) without a dedupe check. Moved that listing's photo (image D2AQK25S4RHO2MQHJOQ6RJM6) onto RG-0024 and archived the duplicate (is_archived=true, ecom_visibility=UNAVAILABLE). Canonical price reconciled to $48 (per 2026-06-19 reprice)."
     },
     "ebay": {
       "status": "listed",
