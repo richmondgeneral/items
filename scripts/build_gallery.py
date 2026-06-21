@@ -1,0 +1,278 @@
+#!/usr/bin/env python3
+"""Idempotent gallery reconciler for items/index.html.
+
+The Shop gallery (`items/index.html`, the `.items-grid`) is the GitHub-Pages
+landing grid. Historically a new item's card was injected by a hand-run `sed`
+step (rg-full-auto Phase 7 / info-card-publishing.md). That step was brittle and
+easy to skip, so Listed items repeatedly went live as standalone pages while
+never appearing in the grid (RG-0028/0029/0034/0052/0053/0054).
+
+This script replaces that step with a deterministic, idempotent reconcile:
+
+  build_gallery.py            # apply: insert a card for every Listed/Sold item
+  build_gallery.py --apply    #   that is missing one (default mode)
+  build_gallery.py --check    # gate: exit 1 if any Listed/Sold item lacks a card
+  build_gallery.py --dry-run  # show what would change, write nothing
+
+Design guarantees
+-----------------
+* INSERT-ONLY. Existing cards are never edited or removed, so curated editorial
+  copy (titles, era lines, category labels) is preserved. Re-running is a no-op.
+* SKU ORDER. New cards are inserted at their correct ascending-SKU position.
+* Cards are derived from items/RG-XXXX/label.json. An item belongs in the
+  gallery when its `state` is Listed or Sold.
+
+`--check` is the verification gate: wire it into the listing workflow / reconcile
+so a Listed item can never silently miss the grid again.
+"""
+from __future__ import annotations
+
+import argparse
+import glob
+import json
+import os
+import re
+import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # items/
+INDEX = os.path.join(ROOT, "index.html")
+PLACEHOLDER = "<!-- Coming Soon Placeholder -->"
+
+# An item with one of these states should have a gallery card.
+GALLERY_STATES = {"Listed", "Sold"}
+
+# reporting-category text -> data-category filter slug (first keyword wins).
+# Slugs must match the filter tabs in index.html:
+#   all / tech / books / media / wearables / pottery / furniture / collectibles
+_SLUG_RULES = [
+    ("book", "books"),
+    ("ceramic", "pottery"), ("pottery", "pottery"), ("glass", "pottery"),
+    ("furniture", "furniture"),
+    ("compute", "tech"), ("electronic", "tech"), ("tech", "tech"),
+    ("analog", "media"), ("media", "media"), ("film", "media"),
+    ("wearable", "wearables"), ("apparel", "wearables"),
+    ("cloth", "wearables"), ("jewel", "wearables"),
+    ("collectible", "collectibles"),
+]
+
+
+def slug_for(repcat: str) -> str:
+    s = repcat.lower()
+    for needle, slug in _SLUG_RULES:
+        if needle in s:
+            return slug
+    return "collectibles"  # catch-all (matches the SOP category table)
+
+
+def clean_cat(repcat: str) -> str:
+    """'Pottery & Ceramics (reporting)' -> 'Pottery & Ceramics'."""
+    return re.sub(r"\s*\(reporting\)\s*$", "", repcat).strip()
+
+
+def attr_escape(text: str) -> str:
+    return text.replace("&", "&amp;").replace('"', "&quot;")
+
+
+def reporting_category(label: dict) -> str:
+    note = label.get("reporting_category_note")
+    if note:
+        return note
+    cats = label.get("channels", {}).get("square", {}).get("categories", [])
+    for c in cats:
+        c = clean_cat(c)
+        if c and c.lower() not in ("new arrivals", "new finds"):
+            return c
+    return "Collectibles"
+
+
+def is_sold(label: dict) -> bool:
+    if str(label.get("state", "")).strip().lower() == "sold":
+        return True
+    chans = label.get("channels", {})
+    return any(str(c.get("status", "")).lower() == "sold" for c in chans.values()
+               if isinstance(c, dict))
+
+
+def card_fields(sku: str, label: dict) -> dict:
+    product = label.get("product_name", sku)
+    # Card title: trim the descriptive tail after an em-dash; the rest goes to the era line.
+    title = re.split(r"\s+—\s+", product, maxsplit=1)[0].strip() or product
+    repcat = clean_cat(reporting_category(label))
+    # Era line: first up-to-3 segments of the attributes string.
+    attrs = label.get("attributes", "") or ""
+    segs = [s.strip() for s in re.split(r"[•·]", attrs) if s.strip()]
+    era = " • ".join(segs[:3]) if segs else repcat
+    hero = label.get("photos", {}).get("hero") or "hero.png"
+    price = str(label.get("price", "")).strip()
+    if price and not price.startswith("$"):
+        price = "$" + price
+    return {
+        "sku": sku,
+        "slug": slug_for(repcat),
+        "category": repcat,
+        "title": title,
+        "era": era,
+        "hero": hero,
+        "price": price or "$0",
+        "alt": attr_escape(product),
+        "sold": is_sold(label),
+    }
+
+
+def render_card(f: dict) -> str:
+    """Render a single 12-space-indented card block (comment + anchor), no trailing newline."""
+    if f["sold"]:
+        status_attr = ' data-status="sold"'
+        badge = '<span class="item-badge sold">Sold</span>'
+        price = f'<span class="item-price sold">Sold · {f["price"]}</span>'
+        cta = "View Archive"
+    else:
+        status_attr = ""
+        badge = '<span class="item-badge">New</span>'
+        price = f'<span class="item-price">{f["price"]}</span>'
+        cta = "View Story"
+    return (
+        f'            <!-- {f["sku"]}: {f["title"]} -->\n'
+        f'            <a href="./{f["sku"]}/" class="item-card" data-category="{f["slug"]}"{status_attr}>\n'
+        f'                <div class="item-image">\n'
+        f'                    {badge}\n'
+        f'                    <span class="item-sku">{f["sku"]}</span>\n'
+        f'                    <img src="./{f["sku"]}/{f["hero"]}" alt="{f["alt"]}" style="max-width: 100%; max-height: 200px; object-fit: contain; border-radius: 4px;">\n'
+        f'                </div>\n'
+        f'                <div class="item-info">\n'
+        f'                    <p class="item-category">{f["category"]}</p>\n'
+        f'                    <h3 class="item-title">{f["title"]}</h3>\n'
+        f'                    <p class="item-era">{f["era"]}</p>\n'
+        f'                    <div class="item-footer">\n'
+        f'                        {price}\n'
+        f'                        <span class="view-story">\n'
+        f'                            {cta}\n'
+        f'                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">\n'
+        f'                                <path d="M5 12h14M12 5l7 7-7 7"/>\n'
+        f'                            </svg>\n'
+        f'                        </span>\n'
+        f'                    </div>\n'
+        f'                </div>\n'
+        f'            </a>'
+    )
+
+
+def load_items() -> dict:
+    """sku -> label dict, for every items/RG-XXXX/label.json."""
+    out = {}
+    for lj in glob.glob(os.path.join(ROOT, "RG-*", "label.json")):
+        sku = os.path.basename(os.path.dirname(lj))
+        try:
+            out[sku] = json.load(open(lj, encoding="utf-8"))
+        except (json.JSONDecodeError, OSError) as e:
+            print(f"  ! skipping {sku}: {e}", file=sys.stderr)
+    return out
+
+
+def carded_skus(text: str) -> dict:
+    """sku -> char index of the start of its comment line, for cards in the grid."""
+    out = {}
+    pat = re.compile(
+        r'(?m)^[ \t]*<!-- (RG-\d{4})\b[^\n]*-->\n[ \t]*<a href="\./\1/" class="item-card"'
+    )
+    for m in pat.finditer(text):
+        out[m.group(1)] = m.start()
+    return out
+
+
+def should_be_carded(items: dict) -> set:
+    return {sku for sku, lab in items.items()
+            if str(lab.get("state", "")).strip() in GALLERY_STATES}
+
+
+def recount(text: str) -> str:
+    """Set the static #item-count to the number of non-sold cards (mirrors the page JS)."""
+    cards = re.findall(r'<a [^>]*class="item-card"[^>]*>', text)
+    available = sum(1 for c in cards if 'data-status="sold"' not in c)
+    return re.sub(
+        r'(<div class="stat-number" id="item-count">)\d*(</div>)',
+        rf'\g<1>{available}\g<2>', text, count=1,
+    )
+
+
+def reconcile(text: str, items: dict):
+    existing = carded_skus(text)
+    want = should_be_carded(items)
+    missing = sorted(want - set(existing))
+
+    pm = re.search(r'(?m)^[ \t]*' + re.escape(PLACEHOLDER), text)
+    if not pm:
+        raise SystemExit("ERROR: placeholder anchor not found in index.html")
+    placeholder_pos = pm.start()
+
+    # Compute insertion (pos, sku, block) against the ORIGINAL text.
+    inserts = []
+    skipped = []
+    for sku in missing:
+        item_dir = os.path.join(ROOT, sku)
+        hero = items[sku].get("photos", {}).get("hero") or "hero.png"
+        if not os.path.isfile(os.path.join(item_dir, hero)):
+            skipped.append((sku, f"hero image '{hero}' missing"))
+            continue
+        higher = sorted(s for s in existing if s > sku)
+        pos = existing[higher[0]] if higher else placeholder_pos
+        block = render_card(card_fields(sku, items[sku]))
+        inserts.append((pos, sku, block))
+
+    # Apply from highest pos to lowest; for equal pos, higher sku first so final order ascends.
+    for pos, sku, block in sorted(inserts, key=lambda t: (t[0], t[1]), reverse=True):
+        text = text[:pos] + block + "\n\n            " + text[pos:].lstrip(" \t")
+
+    inserted = [sku for _, sku, _ in inserts]
+    text = recount(text)
+    return text, inserted, skipped, missing
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description="Idempotent gallery reconciler for items/index.html")
+    g = ap.add_mutually_exclusive_group()
+    g.add_argument("--apply", action="store_true", help="insert missing cards and write (default)")
+    g.add_argument("--check", action="store_true", help="exit 1 if any Listed/Sold item lacks a card")
+    g.add_argument("--dry-run", action="store_true", help="show changes, write nothing")
+    args = ap.parse_args()
+
+    text = open(INDEX, encoding="utf-8").read()
+    items = load_items()
+
+    if args.check:
+        existing = set(carded_skus(text))
+        want = should_be_carded(items)
+        missing = sorted(want - existing)
+        # Also flag cards that point at an item dir which no longer exists.
+        orphans = sorted(sku for sku in existing
+                         if not os.path.isdir(os.path.join(ROOT, sku)))
+        if not missing and not orphans:
+            print(f"OK: gallery in sync — {len(want)} Listed/Sold items, all carded.")
+            return 0
+        if missing:
+            print(f"FAIL: {len(missing)} Listed/Sold item(s) missing a gallery card:")
+            for sku in missing:
+                print(f"  - {sku}  ({items[sku].get('product_name','?')})")
+        if orphans:
+            print(f"FAIL: {len(orphans)} gallery card(s) point at a missing item dir: {', '.join(orphans)}")
+        print("\nRun: python items/scripts/build_gallery.py --apply")
+        return 1
+
+    new_text, inserted, skipped, missing = reconcile(text, items)
+    for sku, why in skipped:
+        print(f"  ! skipped {sku}: {why} (intake incomplete)")
+    if not inserted:
+        print(f"Gallery already in sync ({len(should_be_carded(items))} Listed/Sold items, no cards to add).")
+        return 0
+    print(f"Cards to insert ({len(inserted)}): {', '.join(inserted)}")
+    if args.dry_run:
+        print("(--dry-run: nothing written)")
+        return 0
+    with open(INDEX, "w", encoding="utf-8") as fh:
+        fh.write(new_text)
+    print(f"Wrote {INDEX}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
