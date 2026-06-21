@@ -41,6 +41,31 @@ PLACEHOLDER = "<!-- Coming Soon Placeholder -->"
 # An item with one of these states should have a gallery card.
 GALLERY_STATES = {"Listed", "Sold"}
 
+# The "New" badge is client-side and AUTO-EXPIRING: each active card carries
+# data-added (from label.json added_at), and this script injects the badge only
+# when within NEW_DAYS of now — so it disappears on its own with no rebuild, and
+# editing/re-committing an old item never re-flags it as new. NEW_DAYS lives here
+# (one source of truth). Sold badges stay server-rendered.
+NEW_BADGE_JS = """    <!-- NEW_BADGE: client-side, auto-expiring New badge from data-added -->
+    <script>
+      (() => {
+        const NEW_DAYS = 30;
+        const now = Date.now();
+        document.querySelectorAll('.item-card[data-added]:not([data-status="sold"])').forEach(card => {
+          const t = Date.parse(card.dataset.added);
+          if (isNaN(t) || (now - t) / 86400000 > NEW_DAYS) return;
+          const img = card.querySelector('.item-image');
+          if (img && !img.querySelector('.item-badge')) {
+            const s = document.createElement('span');
+            s.className = 'item-badge';
+            s.textContent = 'New';
+            img.prepend(s);
+          }
+        });
+      })();
+    </script>
+"""
+
 # reporting-category text -> data-category filter slug (first keyword wins).
 # Slugs must match the filter tabs in index.html:
 #   all / tech / books / media / wearables / pottery / furniture / collectibles
@@ -118,6 +143,7 @@ def card_fields(sku: str, label: dict) -> dict:
         "hero": hero,
         "image": image,
         "transparent": image == "card.png",
+        "added": label.get("added_at", ""),
         "price": price or "$0",
         "alt": attr_escape(product),
         "sold": is_sold(label),
@@ -128,20 +154,21 @@ def render_card(f: dict) -> str:
     """Render a single 12-space-indented card block (comment + anchor), no trailing newline."""
     if f["sold"]:
         status_attr = ' data-status="sold"'
-        badge = '<span class="item-badge sold">Sold</span>'
+        badge_line = '                    <span class="item-badge sold">Sold</span>\n'
         price = f'<span class="item-price sold">Sold · {f["price"]}</span>'
         cta = "View Archive"
     else:
         status_attr = ""
-        badge = '<span class="item-badge">New</span>'
+        badge_line = ""  # "New" is injected client-side from data-added (auto-expiring)
         price = f'<span class="item-price">{f["price"]}</span>'
         cta = "View Story"
     img_attr = ' data-img="card"' if f.get("transparent") else ""
+    added_attr = f' data-added="{f["added"]}"' if f.get("added") else ""
     return (
         f'            <!-- {f["sku"]}: {f["title"]} -->\n'
-        f'            <a href="./{f["sku"]}/" class="item-card" data-category="{f["slug"]}"{status_attr}{img_attr}>\n'
+        f'            <a href="./{f["sku"]}/" class="item-card" data-category="{f["slug"]}"{status_attr}{img_attr}{added_attr}>\n'
         f'                <div class="item-image">\n'
-        f'                    {badge}\n'
+        f'{badge_line}'
         f'                    <span class="item-sku">{f["sku"]}</span>\n'
         f'                    <img src="./{f["sku"]}/{f["image"]}" alt="{f["alt"]}" style="max-width: 100%; max-height: 200px; object-fit: contain; border-radius: 4px;">\n'
         f'                </div>\n'
@@ -257,6 +284,31 @@ def relink_cards(text: str):
     return text, changed
 
 
+def rebadge(text: str, items: dict):
+    """Switch existing cards to the date-driven, auto-expiring New badge (opt-in).
+
+    Strips baked plain 'New' spans (Sold badges are kept), stamps data-added from
+    each item's label.json onto its carded anchor, and ensures NEW_BADGE_JS is present.
+    """
+    text, removed = re.subn(r'[ \t]*<span class="item-badge">New</span>\n', '', text)
+    stamped = []
+    for sku in sorted(carded_skus(text)):
+        added = (items.get(sku) or {}).get("added_at")
+        if not added or re.search(rf'<a href="\./{sku}/"[^>]*data-added=', text):
+            continue
+
+        def _add(m):
+            tag = m.group(0)
+            return tag if "data-added=" in tag else tag[:-1] + f' data-added="{added}">'
+        new = re.sub(rf'<a href="\./{sku}/" class="item-card"[^>]*>', _add, text, count=1)
+        if new != text:
+            text = new
+            stamped.append(sku)
+    if "NEW_BADGE:" not in text:
+        text = text.replace("</body>", NEW_BADGE_JS + "</body>", 1)
+    return text, removed, stamped
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Idempotent gallery reconciler for items/index.html")
     g = ap.add_mutually_exclusive_group()
@@ -265,6 +317,8 @@ def main() -> int:
     g.add_argument("--dry-run", action="store_true", help="show changes, write nothing")
     g.add_argument("--relink-cards", action="store_true",
                    help="switch existing cards to card.png where present (opt-in)")
+    g.add_argument("--rebadge", action="store_true",
+                   help="switch existing cards to the date-driven auto-expiring New badge (opt-in)")
     args = ap.parse_args()
 
     text = open(INDEX, encoding="utf-8").read()
@@ -278,6 +332,14 @@ def main() -> int:
         with open(INDEX, "w", encoding="utf-8") as fh:
             fh.write(new_text)
         print(f"Relinked {len(changed)} card(s) to card.png: {', '.join(changed)}")
+        return 0
+
+    if args.rebadge:
+        new_text, removed, stamped = rebadge(text, items)
+        with open(INDEX, "w", encoding="utf-8") as fh:
+            fh.write(new_text)
+        print(f"Rebadge: removed {removed} baked 'New' badge(s), stamped data-added on "
+              f"{len(stamped)} card(s); auto-expiring JS ensured.")
         return 0
 
     if args.check:
