@@ -32,10 +32,13 @@
       "primary_image_uploaded": true
     },
     "ebay": {
-      "status": "pending",
+      "status": "listed",
+      "item_id": "298433644753",
+      "url": "https://www.ebay.com/itm/298433644753",
       "price": "85.00",
+      "live_price": "65.00",
       "format": "Buy It Now + Best Offer",
-      "note": "Draft to be created. Filter set documented (6pc color/ND). Still read eyepiece focal lengths before publish to move the top of range."
+      "note": "Live listing found 2026-06-20 (record had been tracking it as 'draft to be created' — stale). PRICE MISMATCH: eBay still shows the OLD $65 OBO; Square/catalog were repriced to $85 on 6/20 after the 6-piece color/ND filter set was documented. eBay needs a reprice to $85 to match. Eyepiece focal lengths still unread."
     },
     "marketplace": {
       "status": "not_target"
