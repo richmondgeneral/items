@@ -24,5 +24,22 @@
   "photo_overrides": {
     "status": "needs_manual"
   },
-  "added_at": "2025-11-26"
+  "added_at": "2025-11-26",
+  "photos": {
+    "cutout": "cutout.png",
+    "square": "square.png",
+    "card": "card.png"
+  },
+  "matte": {
+    "model": "birefnet-general",
+    "tool": "image-processor/matte.py (BiRefNet/rembg)",
+    "non_generative": true,
+    "generated_at": "2026-06-21T20:00:32.413558+00:00",
+    "outputs": [
+      "cutout.png",
+      "square.png",
+      "card.png"
+    ],
+    "orientation": "as-shot"
+  }
 }
