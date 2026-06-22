@@ -362,6 +362,148 @@ def test_should_skip_status_json_sold(tmp_path):
 
 
 # ---------------------------------------------------------------------------
+# 5. --managed-only: the CI page-drift gate scopes to generator-managed pages.
+#
+# A "managed" item is one whose label.json carries a truthy `page` block. The
+# ~18 legacy hand-curated pages have NO page block and produce expected
+# non-drift "differences" ($80 vs $80.00, hand titles, sold archives) that must
+# NOT fail the gate — so --all --check --managed-only checks ONLY the page-block
+# items.
+# ---------------------------------------------------------------------------
+
+def test_managed_skus_selects_only_page_block_items():
+    # Mix: two with a (truthy) page block, two without, one with an empty page.
+    items = {
+        "RG-0055": {"page": {"story": "curated"}},          # managed
+        "RG-0001": {},                                       # unmanaged (no page)
+        "RG-0002": {"page": {}},                             # unmanaged (empty page)
+        "RG-0099": {"page": {"card_title": "Curated"}},      # managed
+        "RG-0003": {"product_name": "No page here"},         # unmanaged
+    }
+    assert bip.managed_skus(items) == ["RG-0055", "RG-0099"]
+
+
+def test_managed_skus_page_must_be_a_dict():
+    # A non-dict `page` (bad data) is NOT managed (mirrors _page()'s guard).
+    items = {
+        "RG-0010": {"page": "oops a string"},
+        "RG-0011": {"page": ["nope"]},
+        "RG-0012": {"page": None},
+        "RG-0013": {"page": {"story": "ok"}},
+    }
+    assert bip.managed_skus(items) == ["RG-0013"]
+
+
+def _write_item(items_root, sku, label, page_html=None):
+    """Create items_root/<sku>/{label.json,index.html} for the check entry point."""
+    d = items_root / sku
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "label.json").write_text(json.dumps(label), encoding="utf-8")
+    if page_html is not None:
+        (d / "index.html").write_text(page_html, encoding="utf-8")
+    return d
+
+
+def _run_check(monkeypatch, items_root, managed_only):
+    """Drive main() in --all --check [--managed-only] against a tmp items tree.
+
+    Returns (exit_code, captured_stdout).
+    """
+    import io
+    import contextlib
+
+    monkeypatch.setattr(bip, "ROOT", str(items_root))
+    argv = ["build_item_page.py", "--all", "--check"]
+    if managed_only:
+        argv.append("--managed-only")
+    monkeypatch.setattr(bip.sys, "argv", argv)
+    buf = io.StringIO()
+    with contextlib.redirect_stdout(buf):
+        rc = bip.main()
+    return rc, buf.getvalue()
+
+
+def test_managed_only_reports_managed_drift_ignores_unmanaged(tmp_path, monkeypatch):
+    items_root = tmp_path / "items"
+
+    # MANAGED item (has a page block) with a WRONG on-disk price -> must drift.
+    managed = minimal_label()
+    managed["sku"] = "RG-0055"
+    managed["page"] = {"story": "Curated story."}
+    good_html = bip.render_page("RG-0055", managed)
+    drifted_html = good_html.replace("$65.00", "$45.00")  # stale price on disk
+    _write_item(items_root, "RG-0055", managed, drifted_html)
+
+    # UNMANAGED item (no page block) whose on-disk page has a mechanical-title
+    # mismatch (exactly the legacy hand-curated-title "drift") -> must be ignored.
+    unmanaged = minimal_label()
+    unmanaged["sku"] = "RG-0001"
+    unmanaged.pop("page", None)
+    um_html = bip.render_page("RG-0001", unmanaged)
+    um_html = um_html.replace(
+        "<title>Widget Title | Richmond General</title>",
+        "<title>Hand Curated Legacy Title | Richmond General</title>",
+    )
+    _write_item(items_root, "RG-0001", unmanaged, um_html)
+
+    rc, out = _run_check(monkeypatch, items_root, managed_only=True)
+
+    # Exit non-zero because the CHECKED (managed) item drifts.
+    assert rc == 1, out
+    # The managed item's price drift IS reported.
+    assert "DRIFT RG-0055" in out
+    assert "price" in out.lower()
+    # The unmanaged item is NOT reported (skipped, not checked).
+    assert "DRIFT RG-0001" not in out
+    # Summary line reflects the scoping.
+    assert "managed pages checked: 1" in out
+    assert "drifted: 1" in out
+    assert "skipped (unmanaged): 1" in out
+
+
+def test_managed_only_passes_when_managed_in_sync(tmp_path, monkeypatch):
+    items_root = tmp_path / "items"
+
+    # One managed item, in sync.
+    managed = minimal_label()
+    managed["sku"] = "RG-0055"
+    managed["page"] = {"story": "Curated story."}
+    _write_item(items_root, "RG-0055", managed, bip.render_page("RG-0055", managed))
+
+    # One unmanaged item with a genuine on-disk price drift — ignored under --managed-only.
+    unmanaged = minimal_label()
+    unmanaged["sku"] = "RG-0001"
+    unmanaged.pop("page", None)
+    um_html = bip.render_page("RG-0001", unmanaged).replace("$65.00", "$45.00")
+    _write_item(items_root, "RG-0001", unmanaged, um_html)
+
+    rc, out = _run_check(monkeypatch, items_root, managed_only=True)
+
+    assert rc == 0, out
+    assert "managed pages checked: 1" in out
+    assert "drifted: 0" in out
+    assert "skipped (unmanaged): 1" in out
+
+
+def test_default_check_still_flags_unmanaged_drift(tmp_path, monkeypatch):
+    """Without --managed-only, the same unmanaged drift IS flagged (default behavior intact)."""
+    items_root = tmp_path / "items"
+
+    unmanaged = minimal_label()
+    unmanaged["sku"] = "RG-0001"
+    unmanaged.pop("page", None)
+    um_html = bip.render_page("RG-0001", unmanaged).replace("$65.00", "$45.00")
+    _write_item(items_root, "RG-0001", unmanaged, um_html)
+
+    rc, out = _run_check(monkeypatch, items_root, managed_only=False)
+
+    assert rc == 1, out
+    assert "DRIFT RG-0001" in out
+    # The plain --check path does NOT print the managed-summary line.
+    assert "managed pages checked" not in out
+
+
+# ---------------------------------------------------------------------------
 # Graceful degradation on a minimal old-schema label.
 # ---------------------------------------------------------------------------
 

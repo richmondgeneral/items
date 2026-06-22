@@ -25,6 +25,9 @@ Usage
   build_item_page.py --all              # (re)generate every items/RG-*/
   build_item_page.py RG-0055 --dry-run  # print first ~40 lines, write nothing
   build_item_page.py --all --check      # exit 1 if any page drifts from label.json
+  build_item_page.py --all --check --managed-only  # drift-check only generator-managed
+                                        # items (label has a `page` block); the CI gate
+                                        # uses this so legacy hand-curated pages don't fail
   build_item_page.py RG-0055 --force    # write even if protected / sold
 
 Living-test pages (TILT/iridescent RG-0001, variant-stack RG-0011/0027, the
@@ -577,6 +580,19 @@ def _all_skus():
     )
 
 
+def managed_skus(items: dict) -> list:
+    """SKUs whose label has a truthy `page` block — the "generator-managed" set.
+
+    ``items`` maps SKU -> parsed label dict. A page block makes an item managed
+    (its prose came through the generator), so its on-disk page is expected to
+    round-trip from label.json and any drift is a real failure. Legacy
+    hand-curated pages have NO page block (or a non-dict / empty one) and are
+    excluded, so their expected "$80 vs $80.00" / hand-title / sold-archive
+    differences never false-fail the CI drift gate. Returned sorted.
+    """
+    return sorted(sku for sku, label in items.items() if _page(label))
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(
         description="Generate items/RG-XXXX/index.html from label.json (single source of truth)."
@@ -585,6 +601,10 @@ def main() -> int:
     ap.add_argument("--all", action="store_true", help="iterate every items/RG-*/")
     ap.add_argument("--check", action="store_true",
                     help="report drift vs label.json; exit non-zero if any page drifts")
+    ap.add_argument("--managed-only", action="store_true",
+                    help="with --all --check, restrict to generator-managed items "
+                         "(label.json has a truthy `page` block); skip legacy "
+                         "hand-curated pages so their expected differences don't fail")
     ap.add_argument("--force", action="store_true",
                     help="write even if the page is protected (living-test/sold/buy-redirect)")
     ap.add_argument("--dry-run", action="store_true",
@@ -601,7 +621,25 @@ def main() -> int:
 
     # --check mode: compare on-disk pages to label-derived values.
     if args.check:
+        # --managed-only narrows the --all set to generator-managed items (those
+        # whose label.json carries a truthy `page` block), so legacy hand-curated
+        # pages (no page block) don't false-fail the CI drift gate. It only
+        # affects --all; a single-SKU --check still checks that SKU.
+        skipped_unmanaged = 0
+        if args.managed_only and args.all:
+            labels = {}
+            for sku in skus:
+                try:
+                    labels[sku] = _load_label(os.path.join(ROOT, sku))
+                except (OSError, json.JSONDecodeError) as e:
+                    print(f"  ! {sku}: cannot read label.json: {e}")
+                    labels[sku] = {}
+            managed = set(managed_skus(labels))
+            skipped_unmanaged = len(skus) - len(managed)
+            skus = [sku for sku in skus if sku in managed]
+
         any_drift = False
+        drifted = 0
         for sku in skus:
             item_dir = os.path.join(ROOT, sku)
             index = os.path.join(item_dir, "index.html")
@@ -610,6 +648,7 @@ def main() -> int:
             except (OSError, json.JSONDecodeError) as e:
                 print(f"  ! {sku}: cannot read label.json: {e}")
                 any_drift = True
+                drifted += 1
                 continue
             if not os.path.isfile(index):
                 # No page yet for a Listed/Sold item is itself a problem; for
@@ -617,15 +656,24 @@ def main() -> int:
                 if str(label.get("state") or "").strip() in ("Listed", "Sold"):
                     print(f"  ! {sku}: no index.html (Listed/Sold item)")
                     any_drift = True
+                    drifted += 1
                 continue
             drift = check_page(index, label)
             if drift:
                 any_drift = True
+                drifted += 1
                 print(f"DRIFT {sku}:")
                 for d in drift:
                     print(f"    - {d}")
+
+        if args.managed_only and args.all:
+            print(
+                f"managed pages checked: {len(skus)}, drifted: {drifted}, "
+                f"skipped (unmanaged): {skipped_unmanaged}"
+            )
         if not any_drift:
-            print(f"OK: {len(skus)} page(s) in sync with label.json.")
+            if not (args.managed_only and args.all):
+                print(f"OK: {len(skus)} page(s) in sync with label.json.")
             return 0
         return 1
 

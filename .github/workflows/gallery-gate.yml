@@ -1,11 +1,22 @@
-name: Gallery Gate
+name: Page & Gallery Gate
 
-# Asserts every Listed/Sold item has a card in the Shop gallery (index.html).
-# Runs on direct pushes to main (the normal RG flow) AND on PRs, so a live item
-# page that never got a gallery card turns the build red instead of drifting
-# silently (see the 2026-06-21 backfill of RG-0028/0029/0034/0052/0053/0054).
+# Two drift gates for the Shop, both pure-stdlib (ubuntu-latest ships python3):
 #
-# No dependencies: build_gallery.py is pure stdlib and ubuntu-latest ships python3.
+# 1. build_gallery.py --check — asserts every Listed/Sold item has a card in the
+#    Shop gallery (index.html), so a live item page that never got a gallery card
+#    turns the build red instead of drifting silently (see the 2026-06-21 backfill
+#    of RG-0028/0029/0034/0052/0053/0054).
+#
+# 2. build_item_page.py --all --check --managed-only — asserts no generator-managed
+#    item page drifts from its label.json (price / buy-link / title). This is SCOPED
+#    to "managed" items — those whose label.json carries a truthy `page` block — so
+#    the ~18 legacy hand-curated pages (no page block: $80 vs $80.00 formatting, hand
+#    titles, sold archives) produce expected non-drift "differences" that must NOT
+#    false-fail the gate. As items are migrated/regenerated they gain a page block
+#    and automatically come under this gate.
+#
+# Runs on direct pushes to main (the normal RG flow) AND on PRs.
+# File stays named gallery-gate.yml so nothing referencing it breaks.
 
 on:
   push:
@@ -14,11 +25,14 @@ on:
     branches: [main]
 
 jobs:
-  gallery-gate:
-    name: Every Listed/Sold item has a gallery card
+  page-and-gallery-gate:
+    name: Gallery cards present + managed item pages in sync
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: build_gallery.py --check
         run: python3 scripts/build_gallery.py --check
+
+      - name: build_item_page.py --check (managed)
+        run: python3 scripts/build_item_page.py --all --check --managed-only
