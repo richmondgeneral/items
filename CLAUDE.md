@@ -227,12 +227,11 @@ cp RG-XXXX-hero-converted.jpeg RG-XXXX/hero.jpeg
 
 If not using the automated skill:
 
-1. Create folder: `mkdir RG-XXXX`
-2. Copy template: `cp template/rg-item-card-template.html RG-XXXX/index.html`
-3. Manually replace all {{placeholders}} (see template header for full list)
-4. Add images following the structure above
-5. Run `./validate-item.sh RG-XXXX` before deploying
-6. Deploy:
+1. Create folder `mkdir RG-XXXX`, add images + `label.json`
+2. Generate the page: `python3 scripts/build_item_page.py RG-XXXX` — derives price/links/era/QR from `label.json`; put curated prose (story, SEO, card title, era line) in label.json's optional `page` block. (The legacy `template/rg-item-card-template.html` `{{placeholder}}` flow is superseded.)
+3. Add the gallery card: `python3 scripts/build_gallery.py --apply` (idempotent reconcile)
+4. Run `./validate-item.sh RG-XXXX` before deploying
+5. Deploy:
    ```bash
    git add RG-XXXX
    git commit -m "Add RG-XXXX: [Item Name]"
@@ -499,8 +498,7 @@ These are already in `.gitignore` but may have been committed before the rule wa
 **Problem:** New item deployed but not visible on main gallery page
 
 **Solution:**
-- Gallery (`index.html`) is manually curated
-- Add item to gallery grid if desired
+- The gallery is **reconciled by `scripts/build_gallery.py`** (not hand-curated). Run `python3 scripts/build_gallery.py --apply` to add a card for any Listed/Sold item missing one; `--update-card RG-XXXX` resyncs an existing card's price/title/era/image. `--check` (CI: **Page & Gallery Gate**) fails if a Listed/Sold item lacks a card.
 - Or rely on direct URL: `https://richmondgeneral.github.io/items/RG-XXXX/`
 
 ## Version Control
@@ -556,6 +554,8 @@ All operational skills are maintained in:
 
 - **rg-full-auto** (v6.0, autonomous default): End-to-end item onboarding (appraisal → catalog → payment → publishing). Use `--interactive` for the legacy supervised flow.
 - **rg-item-update**: Quick edits to existing catalog items (price, description, images, categories)
+- **rg-square-list**: One-command Square listing from `label.json` (item + inventory + primary image + payment link + qr-buy + write-back; idempotent, `--dry-run`)
+- **rg-reprice**: Cascade a price change across Square + payment link + qr-buy + `label.json` + item page + gallery card (`--dry-run`)
 - **image-processor**: Unified image processing with background removal and generation
 - **square-image-upload**: Upload/manage images in Square Catalog via API
 - **catalog-classifier**: Determines Square category assignment based on item attributes
