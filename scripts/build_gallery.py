@@ -228,6 +228,24 @@ def recount(text: str) -> str:
     )
 
 
+def _card_span(text, sku):
+    """(start, end) char offsets of a card block: its comment line through its closing </a>, or None."""
+    m = re.search(
+        rf'(?m)^[ \t]*<!-- {re.escape(sku)}\b[^\n]*-->\n[ \t]*<a href="\./{re.escape(sku)}/" class="item-card".*?</a>',
+        text, re.S)
+    return (m.start(), m.end()) if m else None
+
+
+def update_card(text, sku, items):
+    """Re-render one card in place from items[sku]'s label; byte-preserve all others. Returns (text, changed_bool)."""
+    span = _card_span(text, sku)
+    if not span or sku not in items:
+        return text, False
+    block = render_card(card_fields(sku, items[sku]))
+    text = text[:span[0]] + block + text[span[1]:]
+    return recount(text), True
+
+
 def reconcile(text: str, items: dict):
     existing = carded_skus(text)
     want = should_be_carded(items)
@@ -322,6 +340,8 @@ def main() -> int:
                    help="switch existing cards to card.png where present (opt-in)")
     g.add_argument("--rebadge", action="store_true",
                    help="switch existing cards to the date-driven auto-expiring New badge (opt-in)")
+    g.add_argument("--update-card", metavar="RG-XXXX",
+                   help="re-render ONE existing card in place from its label.json (byte-preserves all others)")
     ap.add_argument("--sku", nargs="*", default=None,
                     help="limit --relink-cards to these SKUs (e.g. --sku RG-0002)")
     args = ap.parse_args()
@@ -346,6 +366,23 @@ def main() -> int:
         print(f"Rebadge: removed {removed} baked 'New' badge(s), stamped data-added on "
               f"{len(stamped)} card(s); auto-expiring JS ensured.")
         return 0
+
+    if args.update_card:
+        sku = args.update_card
+        new_text, changed = update_card(text, sku, items)
+        if changed:
+            with open(INDEX, "w", encoding="utf-8") as fh:
+                fh.write(new_text)
+            print(f"Updated card: {sku}")
+            return 0
+        if _card_span(text, sku) is None:
+            # The SKU was requested but has no card to update.
+            print(f"No card for {sku} in the gallery — nothing to update.\n"
+                  f"Run: python items/scripts/build_gallery.py --apply  (to insert it)")
+            return 1
+        # Card exists but the item is missing from the label set (can't re-render).
+        print(f"{sku} has a card but no items/{sku}/label.json was loaded — cannot re-render.")
+        return 1
 
     if args.check:
         existing = set(carded_skus(text))
