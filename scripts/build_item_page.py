@@ -48,23 +48,30 @@ PAGES_BASE = "https://richmondgeneral.github.io/items"
 SEO_DESC_MAX = 155
 
 # Markers that mean "this page is a living experiment or a sold archive" — never
-# overwrite it without --force. Derived from the known living-test pages:
-#   RG-0001  TILT / iridescent foil
-#   RG-0011  As-Found/As-Restored variant-stack slider
-#   RG-0027  /buy/ redirect layer + variant-stack
+# overwrite it without --force. These are STRUCTURAL (class / data-attribute /
+# HTML-comment sentinel) forms that cannot plausibly appear in curated prose:
+# a Listed item whose story merely says the word "sold" or "variant-stack" must
+# NOT be mistaken for protected (that would silently defeat regen / the reprice
+# cascade). Verified against the real pages on disk:
+#   RG-0001       TILT / iridescent foil
+#   RG-0011       As-Found/As-Restored variant-stack slider
+#   RG-0027       /buy/ redirect layer + variant-stack + sold archive
 #   RG-0002/0027  sold-archive pattern
 _PROTECTED_MARKERS = (
+    # variant-stack slider (RG-0011, RG-0027)
     'class="variant-stack"',
-    "variant-stack",
-    'data-variant=',
     'data-mode="slider"',
+    "data-variant=",
+    # TILT / iridescent foil (RG-0001)
     'data-finish="iridescent"',
+    'class="iri-foil"',
     "IRIDESCENT FOIL CONTROLLER",
-    "iri-foil",
+    # /buy/ redirect layer (RG-0027/buy/index.html)
     "BUY REDIRECT LAYER",
-    "sold-status-panel",
+    # sold archive (RG-0002, RG-0027): the exact class combo + the panel/status
+    'class="sku-badge sold-badge"',
+    'class="sold-status-panel"',
     'data-status="sold"',
-    "sold-badge",
 )
 
 
@@ -106,13 +113,21 @@ def seo_title(label: dict) -> str:
 
 
 def era_line(label: dict) -> str:
-    """Curated ``page.era_line`` else first <=3 attribute segments joined ' • '."""
+    """Curated ``page.era_line`` else first <=3 attribute segments + circa value.
+
+    Fallback = first <=3 ``attributes`` segments, then ``estimates.circa.value``
+    appended (when present and not already the last segment), joined by ' • '
+    (per the P0 design). So a label with no curated era still surfaces its era.
+    """
     cur = _page(label).get("era_line")
     if cur:
         return cur
     attrs = str(label.get("attributes") or "")
-    segs = [s.strip() for s in re.split(r"[•·]", attrs) if s.strip()]
-    return " • ".join(segs[:3])
+    segs = [s.strip() for s in re.split(r"[•·]", attrs) if s.strip()][:3]
+    circa = str((((label.get("estimates") or {}).get("circa")) or {}).get("value") or "").strip()
+    if circa and (not segs or segs[-1] != circa):
+        segs.append(circa)
+    return " • ".join(segs)
 
 
 def story(label: dict) -> str:
@@ -206,7 +221,7 @@ def details(label: dict) -> dict:
     return {"Maker": maker, "Era": era, "Dimensions": dims, "Condition": cond_first}
 
 
-def main_image(sku: str, label: dict) -> str:
+def main_image(label: dict) -> str:
     """Relative path to the front hero image: cutout, else hero, else hero.jpeg."""
     photos = label.get("photos") or {}
     name = photos.get("cutout") or photos.get("hero") or "hero.jpeg"
@@ -218,7 +233,7 @@ def _cutout_name(label: dict) -> str:
     return photos.get("cutout") or photos.get("hero") or "hero.jpeg"
 
 
-def qr_buy_file(sku: str, label: dict, item_dir) -> str:
+def qr_buy_file(label: dict, item_dir) -> str:
     """``qr_codes.buy.file`` if set, else qr-buy.png if it exists, else qr-code.png."""
     qr = (label.get("qr_codes") or {}).get("buy") or {}
     if qr.get("file"):
@@ -411,7 +426,7 @@ def render_page(sku: str, label: dict, item_dir=None) -> str:
         "__OG_IMAGE__": og_image,
         "__SKU__": html.escape(sku),
         "__ARIA_LABEL__": aria,
-        "__MAIN_IMAGE__": main_image(sku, label),
+        "__MAIN_IMAGE__": main_image(label),
         "__IMG_ALT__": img_alt,
         "__CARD_TITLE__": title,
         "__ERA_LINE__": era,
@@ -421,7 +436,7 @@ def render_page(sku: str, label: dict, item_dir=None) -> str:
         "__DETAIL_ERA__": dera,
         "__DETAIL_DIMENSIONS__": ddim,
         "__DETAIL_CONDITION__": dcond,
-        "__QR_BUY__": qr_buy_file(sku, label, item_dir),
+        "__QR_BUY__": qr_buy_file(label, item_dir),
         "__FULFILLMENT__": html.escape(fulfillment_line(label)),
         "__BUY_LINK__": html.escape(buy_link(label), quote=True),
     }
@@ -511,6 +526,30 @@ def _load_label(item_dir) -> dict:
         return json.load(fh)
 
 
+def would_skip(item_dir, label: dict) -> str | None:
+    """Why a (non-forced) regen of this item would be skipped, or None to proceed.
+
+    Single source of truth for the skip rules shared by ``write_page`` and the
+    ``--dry-run`` path: Sold state, a protected existing page, or a sibling
+    ``buy/`` redirect dir. Returns a short human-readable reason or None.
+    """
+    if should_skip(label, item_dir):
+        return "item is Sold"
+    index = os.path.join(str(item_dir), "index.html")
+    if os.path.isfile(index):
+        try:
+            with open(index, encoding="utf-8") as fh:
+                existing = fh.read()
+        except OSError:
+            existing = ""
+        if is_protected(existing):
+            return "existing page is a living-test/sold page"
+    # The RG-0027 /buy/ redirect lives in a sibling dir — protect those items too.
+    if os.path.isdir(os.path.join(str(item_dir), "buy")):
+        return "has a /buy/ redirect layer"
+    return None
+
+
 def write_page(sku: str, item_dir, label: dict, force: bool = False):
     """Write items/<sku>/index.html. Returns the path, or None when skipped.
 
@@ -520,22 +559,9 @@ def write_page(sku: str, item_dir, label: dict, force: bool = False):
     index = os.path.join(str(item_dir), "index.html")
 
     if not force:
-        if should_skip(label, item_dir):
-            print(f"  - skip {sku}: item is Sold (use --force to regenerate)")
-            return None
-        if os.path.isfile(index):
-            try:
-                with open(index, encoding="utf-8") as fh:
-                    existing = fh.read()
-            except OSError:
-                existing = ""
-            if is_protected(existing):
-                print(f"  - skip {sku}: existing page is a living-test/sold page "
-                      f"(use --force to regenerate)")
-                return None
-        # The RG-0027 /buy/ redirect lives in a sibling dir — protect those items too.
-        if os.path.isdir(os.path.join(str(item_dir), "buy")):
-            print(f"  - skip {sku}: has a /buy/ redirect layer (use --force to regenerate)")
+        reason = would_skip(item_dir, label)
+        if reason:
+            print(f"  - skip {sku}: {reason} (use --force to regenerate)")
             return None
 
     out = render_page(sku, label, item_dir)
@@ -616,21 +642,11 @@ def main() -> int:
 
         if args.dry_run:
             # Show what WOULD happen, write nothing.
-            if not args.force and should_skip(label, item_dir):
-                print(f"  - {sku}: would SKIP (Sold)")
-                continue
-            index = os.path.join(item_dir, "index.html")
-            if not args.force and os.path.isfile(index):
-                try:
-                    existing = open(index, encoding="utf-8").read()
-                except OSError:
-                    existing = ""
-                if is_protected(existing):
-                    print(f"  - {sku}: would SKIP (living-test/sold page)")
+            if not args.force:
+                reason = would_skip(item_dir, label)
+                if reason:
+                    print(f"  - {sku}: would SKIP ({reason})")
                     continue
-            if not args.force and os.path.isdir(os.path.join(item_dir, "buy")):
-                print(f"  - {sku}: would SKIP (/buy/ redirect layer)")
-                continue
             out = render_page(sku, label, item_dir)
             print(f"=== {sku} (dry-run, first 40 lines) ===")
             for line in out.splitlines()[:40]:

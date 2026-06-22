@@ -106,8 +106,9 @@ def test_fallbacks_when_no_page_block():
     assert bip.card_title(label) == "Widget Title"
     # story <- condition_notes verbatim.
     assert bip.story(label) == label["condition_notes"]
-    # era_line <- first <=3 attribute segments joined by ' • '.
-    assert bip.era_line(label) == "Maker X • LARGE thing • 18in tall × 12.5in dia"
+    # era_line <- first <=3 attribute segments + estimates.circa.value (M-2),
+    # all joined by ' • '.
+    assert bip.era_line(label) == "Maker X • LARGE thing • 18in tall × 12.5in dia • c. 1936-1945"
     # seo_title <- card_title.
     assert bip.seo_title(label) == "Widget Title"
     # seo_description <- condition_notes truncated ~155 chars at a word boundary.
@@ -165,34 +166,62 @@ def test_dims_str_hwd_form():
     assert bip.dims_str({"height": 10, "width": 8, "depth": 4}) == "10 &times; 8 &times; 4 in"
 
 
+def test_dims_str_height_only():
+    # M-6: only one of height/width/depth present -> single value + " in".
+    assert bip.dims_str({"height": 9}) == "9 in"
+
+
+def test_dims_str_width_depth_only():
+    # M-6: width + depth, no height -> the two values joined + " in" (no height slot).
+    assert bip.dims_str({"width": 8, "depth": 4}) == "8 &times; 4 in"
+
+
 def test_dims_str_empty():
     assert bip.dims_str({}) == ""
 
 
+def test_era_line_fallback_appends_circa():
+    # M-2: fallback era line = first <=3 attribute segments + estimates.circa.value.
+    label = {"attributes": "A • B", "estimates": {"circa": {"value": "c.1950"}}}
+    assert bip.era_line(label) == "A • B • c.1950"
+
+
+def test_era_line_fallback_circa_not_duplicated():
+    # M-2: if circa.value already trails the attribute segments, don't repeat it.
+    label = {"attributes": "A • c.1950", "estimates": {"circa": {"value": "c.1950"}}}
+    assert bip.era_line(label) == "A • c.1950"
+
+
+def test_era_line_fallback_circa_only():
+    # M-2: no attribute segments, just a circa -> circa stands alone.
+    label = {"attributes": "", "estimates": {"circa": {"value": "c.1880"}}}
+    assert bip.era_line(label) == "c.1880"
+
+
 def test_qr_buy_file_prefers_label(tmp_path):
     label = {"qr_codes": {"buy": {"file": "custom-qr.png"}}}
-    assert bip.qr_buy_file("RG-0001", label, tmp_path) == "custom-qr.png"
+    assert bip.qr_buy_file(label, tmp_path) == "custom-qr.png"
 
 
 def test_qr_buy_file_falls_back_to_existing_file(tmp_path):
     (tmp_path / "qr-buy.png").write_bytes(b"x")
-    assert bip.qr_buy_file("RG-0001", {}, tmp_path) == "qr-buy.png"
+    assert bip.qr_buy_file({}, tmp_path) == "qr-buy.png"
 
 
 def test_qr_buy_file_final_fallback(tmp_path):
-    assert bip.qr_buy_file("RG-0001", {}, tmp_path) == "qr-code.png"
+    assert bip.qr_buy_file({}, tmp_path) == "qr-code.png"
 
 
 def test_main_image_prefers_cutout():
-    assert bip.main_image("RG-0001", {"photos": {"cutout": "cutout.png", "hero": "hero.jpeg"}}) == "./cutout.png"
+    assert bip.main_image({"photos": {"cutout": "cutout.png", "hero": "hero.jpeg"}}) == "./cutout.png"
 
 
 def test_main_image_hero_fallback():
-    assert bip.main_image("RG-0001", {"photos": {"hero": "hero.jpeg"}}) == "./hero.jpeg"
+    assert bip.main_image({"photos": {"hero": "hero.jpeg"}}) == "./hero.jpeg"
 
 
 def test_main_image_final_fallback():
-    assert bip.main_image("RG-0001", {}) == "./hero.jpeg"
+    assert bip.main_image({}) == "./hero.jpeg"
 
 
 def test_buy_link_present():
@@ -223,6 +252,18 @@ def test_check_page_in_sync(tmp_path):
     label = minimal_label()
     p = tmp_path / "index.html"
     p.write_text(bip.render_page("RG-0055", label), encoding="utf-8")
+    assert bip.check_page(p, label) == []
+
+
+def test_check_page_in_sync_no_buy_link(tmp_path):
+    # M-6: an item with NO square buy_link renders href="#" and is in sync
+    # against a label that also has no buy_link (no false drift).
+    label = minimal_label()
+    label["channels"] = {}  # drop the square buy_link
+    html = bip.render_page("RG-0055", label)
+    assert 'href="#" class="buy-button"' in html
+    p = tmp_path / "index.html"
+    p.write_text(html, encoding="utf-8")
     assert bip.check_page(p, label) == []
 
 
@@ -271,6 +312,40 @@ def test_is_protected_sold_markers():
 def test_is_protected_false_for_plain_page():
     html = bip.render_page("RG-0055", minimal_label())
     assert bip.is_protected(html) is False
+
+
+def test_is_protected_false_when_prose_mentions_sold_words():
+    """I-1: a normal active page whose curated story merely TALKS ABOUT sold /
+    sold-badge / sold-status-panel in prose must NOT be classified protected —
+    structural markers, not bare words, are what protect a page."""
+    label = minimal_label()
+    label["page"] = {
+        "story": (
+            "This piece sold briskly at auction. Note: our sold-badge and "
+            "sold-status-panel styling only appear once an item is actually "
+            "sold, which this one is not."
+        ),
+        "card_title": "A story about a sold-badge (still for sale)",
+    }
+    html = bip.render_page("RG-0055", label)
+    assert bip.is_protected(html) is False
+
+
+def test_is_protected_real_living_and_sold_pages_true():
+    """The genuine living-test / sold pages on disk must still read protected."""
+    for sku in ("RG-0001", "RG-0011", "RG-0027", "RG-0002"):
+        page = ITEMS / sku / "index.html"
+        if not page.exists():
+            continue
+        assert bip.is_protected(page.read_text(encoding="utf-8")) is True, sku
+
+
+def test_is_protected_real_rg0055_false():
+    """Critical regression: the real RG-0055 page (plain active, class="sku-badge"
+    not the sold combo) must remain unprotected so regen/reprice can touch it."""
+    page = ITEMS / "RG-0055" / "index.html"
+    if page.exists():
+        assert bip.is_protected(page.read_text(encoding="utf-8")) is False
 
 
 def test_should_skip_state_sold():
